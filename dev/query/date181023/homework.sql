@@ -43,33 +43,35 @@ VALUES (100, 'M', '유재석', SYSDATE, 5, '경기도 수원시 영통구');
 3. 위 입력된 데이터 중 에서 번호가 3번이며 점수가 97점인 사람의
     이름을 '테스트'로 성별을 'M'으로 변경한다.
 */
-SAVEPOINT beforeHW4;
 
 UPDATE 	personal_Info
 SET     name='테스트', sex='M'
 WHERE	num=3 AND score=97;
 
-/*
-4. 위의 데이터에서 이름이 '유재석'인 사람의성별을 'F'로 변경한다.
-*/
+COMMIT;
+
+-- 4. 위의 데이터에서 이름이 '유재석'인 사람의성별을 'F'로 변경한다.
+
 UPDATE	personal_Info
 SET		sex='F'
-WHERE	name='유재석';  
+WHERE	name='유재석';
 
+-- 5. 4번의 작업을 취소한다.
 
-
-/*
-5. 4번의 작업을 취소한다.
-
-6. 번호가 1번이며 이름이 김준현인 사람의 데이터를 삭제한다.
-
-7. 모든 데이터를 절삭한다.
-
-8. 테이블을 삭제한다.
-
-9. 휴지통을 비운다.
-
-
-*/
 ROLLBACK;
+
+-- 6. 번호가 1번이며 이름이 김준현인 사람의 데이터를 삭제한다.
+
+ DELETE FROM personal_Info
+ WHERE num=1 AND name='김준현';
+
+-- 7. 모든 데이터를 절삭한다.
+TRUNCATE TABLE personal_Info;
+
+-- 8. 테이블을 삭제한다.
+DROP TABLE personal_Info;
+
+-- 9. 휴지통을 비운다.
+PURGE RECYCLEBIN;
+
 SELECT * FROM personal_Info;
