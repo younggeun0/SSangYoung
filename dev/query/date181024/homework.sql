@@ -14,7 +14,7 @@ WHERE	deptno!=10 AND sal BETWEEN 1000 AND 3000;
     - 월급은 연봉을 12개월로 나눠 계산할 것.
 */
 
-SELECT	empno, ename, sal, comm, sal+comm total, sal/12 MONTHLYPAY
+SELECT	empno, ename, sal, comm, sal+comm total, ROUND(sal/12,2) MONTHLYPAY
 FROM	emp
 WHERE	comm IS NOT NULL AND comm != 0;
 
