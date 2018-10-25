@@ -1,0 +1,15 @@
+
+SELECT ADDMONTH(hiredate, 3)
+FROM emp;
+
+-- 날짜함수
+-- 날짜에 +를 사용하면 일을 더함
+SELECT SYSDATE+5
+FROM DUAL;
+
+SELECT ADD_MONTHS(SYSDATE,6)
+FROM DUAL;
+          
+-- 현재(2018-10-25)부터 2019-05-25까지의 개월수 차이를 구한다
+SELECT MONTHS_BETWEEN('2019-05-25', SYSDATE)
+FROM DUAL;
