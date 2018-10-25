@@ -94,8 +94,86 @@ FROM DUAL;
 
 SELECT TO_NUMBER('25') - TO_NUMBER('10')
 FROM DUAL;
-                 
+
 -- 문자열이 숫자형식을 갖을 경우에만 TO_NUMBER 사용 가능
 -- 숫자가 아닌 다른 형식은 TO_NUMBER가 숫자로 바꿀 수 없음
 SELECT TO_NUMBER('월요일')
 FROM DUAL;
+
+-- 조건함수 DECODE(값, 비교값, 출력값, 비교값, 출력값, ... , 비교값이없을때출력할값)
+
+-- 사원테이블에서 사원번호, 사원명, 연봉, 부서명을 조회
+-- 단, 부서명은 아래의 부서번호에 해당하는 부서명으로 출력
+-- 10-개발부, 20-유지보수부, 30-품질보증부, 그 외는 탁구부로 출력
+SELECT empno, ename, sal, deptno,
+       DECODE(deptno, 10, '개발부', 20, '유지보수부', 30, '품질보증부', '탁구부') dname
+FROM   emp;
+
+-- 그 외에 해당하는 결과값을 보기위해 30-품질보증부 삭제
+SELECT empno, ename, sal, deptno,
+       DECODE(deptno, 10, '개발부', 20, '유지보수부', '탁구부') dname
+FROM   emp;
+
+-- 사원번호, 사원명, 연봉, 부서번호, 인센티브  조회
+-- 단, 인센티브는 부서별로 아래와 같이 차등지급
+-- 10 - 연봉의 20%, 20 - 연봉의 50%, 30 - 연봉의 30%, 그 외 - 연봉의 10%
+
+SELECT empno, ename, sal, deptno,
+	   DECODE(deptno, 10, sal*0.2, 20, sal*0.5, 30, sal*0.3, sal*0.1) incentive,
+
+FROM emp;
+
+
+-- CASE
+-- 사원테이블에서 사원번호, 사원명, 연봉, 부서명을 조회
+-- 단, 부서명은 아래의 부서번호에 해당하는 부서명으로 출력
+-- 10-개발부, 20-유지보수부, 30-품질보증부, 그 외는 탁구부로 출력
+SELECT empno, ename, sal, deptno,
+	CASE deptno WHEN 10 THEN '개발부'
+				WHEN 20 THEN '유지보수부'
+				WHEN 30 THEN '품질보증부'
+				ELSE '탁구부'
+	END dname
+FROM emp;
+
+-- 위 예제와 동일한 조건에서 CASE를 이용 총 수령액(연봉+보너스+인센)을 조회
+SELECT empno, ename, sal, NVL(comm,0) bonus, deptno,
+	   CASE deptno WHEN 10 THEN sal+NVL(comm,0)+sal*0.2
+	   			   WHEN 20 THEN sal+NVL(comm,0)+sal*0.5
+	   			   WHEN 30 THEN sal+NVL(comm,0)+sal*0.3
+	   			   ELSE sal+NVL(comm,0)+sal*0.1
+	   END total
+FROM emp;
+
+-- 사원테이블에서 사원번호, 사원명, 직무를 조회
+-- 단, 직무의 첫 글자에 따라 다음과 같은 값을 출력
+-- 'C'-소모품, 'S'-돈벌어다 주는 사람
+-- 'M'-감시인, 'A'-살펴보는 사람, 'P'-두목님
+
+SELECT empno, ename, job,
+	   DECODE(SUBSTR(job,1,1),
+			'C', '소모품',
+			'S', '돈 벌어다 주는 사람',
+			'M', '감시인',
+			'A', '살펴보는 사람',
+			'P', '두목님') title
+FROM emp;
+
+
+SELECT empno, ename, job,
+       CASE SUBSTR(job,1,1) WHEN 'C' THEN '소모품'
+       						WHEN 'S' THEN '돈 벌어다 주는 사람'
+       						WHEN 'M' THEN '감시인'
+       						WHEN 'A' THEN '살펴보는 사람'
+       						WHEN 'P' THEN '두목님'
+		END title
+FROM emp;
+
+
+
+SELECT empno, ename, job
+FROM emp
+WHERE job LIKE 'C%';
+
+
+SELECT * FROM emp;
