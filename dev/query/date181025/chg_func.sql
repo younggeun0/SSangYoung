@@ -41,15 +41,61 @@ FROM DUAL;
 SELECT TO_CHAR(SYSDATE, 'yyyy-mm-dd am hh(hh24):mi:ss day dy q')
 FROM DUAL;
 
-
 -- perttern이 특수문자가 아닌 문자열 사용할때에는 "로 묶는다
 SELECT TO_CHAR(SYSDATE, 'yyyy"년" mm"월" dd"일"')
 FROM DUAL;
 
-
 -- perttern을 너무 길게 사용하면 Error 발생!
--- 어지간히 써선 에러 안남
+SELECT TO_CHAR(SYSDATE, 'yyyy " 년 " mm " 월 " dd " 일 " hh24 " 시 " mi " 분 " ss " 초 "')
+FROM DUAL;
 
+-- 이럴경우 잘라서 ||로 붙이는 방법을 사용
+SELECT TO_CHAR(SYSDATE, 'yyyy " 년 " mm " 월 " dd " 일 "') ||
+       TO_CHAR(' hh24 " 시 " mi " 분 " ss " 초 "')
+FROM DUAL;
 
+-- 사원테이블에서 사원번호, 사원명, 입사일을 조회
+-- 단, 입사일은 년-월-일 요일의 형식으로 출력할 것
+SELECT empno, ename, hiredate, TO_CHAR(hiredate, 'yyyy-mm-dd day hh:mi:ss')
+FROM emp;
 
+-- 사원테이블에서 입사년도가 '1981'년인 사원들의
+-- 사원번호, 사원명, 입사일, 연봉을 조회
 
+SELECT empno 사원번호, ename 사원명, sal 연봉, TO_CHAR(hiredate, 'mm"월 "dd"일"') 입사일
+FROM emp
+WHERE TO_CHAR(hiredate, 'yyyy')=1981;
+
+-- 현재 날짜가 아닌 날짜를 추가할 때
+-- 날짜 형식의 문자열을 추가하면 됨
+INSERT INTO class4_info(num, name, input_date)
+VALUES(8, '양세찬', '2018-10-21');
+
+INSERT INTO class4_info(num, name, input_date)
+VALUES(9, '양세형', TO_DATE('2018-10-22', 'yyyy-mm-dd'));
+
+SELECT * FROM class4_info
+WHERE name LIKE '양%';
+
+SELECT TO_CHAR(input_date, 'yyyy-mm')
+FROM class4_info;
+
+-- TO_CHAR는 날짜나 숫자를 입력받아야함.(함수의 값(인자)은 데이터형을 구분한다.)
+SELECT TO_CHAR('2018-10-25', 'mm')
+FROM DUAL;
+
+SELECT TO_CHAR(TO_DATE('2018-10-25', 'yyyy-mm-dd'), 'mm')
+FROM DUAL;
+
+-- 숫자 변환 : TO_NUMBER(숫자형식의문자열)
+
+SELECT '25'-'10'
+FROM DUAL;
+
+SELECT TO_NUMBER('25') - TO_NUMBER('10')
+FROM DUAL;
+                 
+-- 문자열이 숫자형식을 갖을 경우에만 TO_NUMBER 사용 가능
+-- 숫자가 아닌 다른 형식은 TO_NUMBER가 숫자로 바꿀 수 없음
+SELECT TO_NUMBER('월요일')
+FROM DUAL;
