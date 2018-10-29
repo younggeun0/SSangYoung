@@ -110,3 +110,29 @@ CREATE TABLE test_cascade(
 	  REFERENCES table_primary(id)
 	  ON DELETE CASCADE
 );
+
+INSERT INTO test_cascade(id, address)
+VALUES('song','강남구 역삼동');
+
+INSERT INTO test_cascade(id, address)
+VALUES('gong','강남구 역삼동');
+
+INSERT INTO test_cascade(id, address)
+VALUES('kang','강남구 역삼동');
+COMMIT;
+
+SELECT * FROM test_cascade;
+
+-- ON DELETE CASCADE가 설정되면
+-- 부모 레코드가 삭제되면 자식 레코드도 함께 삭제됨
+
+DELETE FROM table_primary
+WHERE id='gong';
+
+SELECT * FROM table_primary;
+SELECT * FROM test_cascade;
+SELECT * FROM table_foreign;
+
+
+-- ON DELETE CASCADE가 사용되지 않은 테이블에서 참조하는 레코드는
+-- 삭제되지 않는다
