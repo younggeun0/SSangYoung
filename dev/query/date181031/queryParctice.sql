@@ -141,21 +141,14 @@ FROM (SELECT ROWNUM r, country, maker, model, car_year, price, car_img,
 	       ORDER BY cmo.cc DESC))
 WHERE r BETWEEN 3 AND 6;
 /*
-2. 부서번호가 10과 30,40번인 모든 부서의 사원번호,사원명,입사일,
-   연봉,연봉순위,부서명,부서번호,위치, 우편번호,시도, 구군,동,번지 를 조회.
-  단,출력은 사원번호의 오름차순으로 정렬했을 때 2~5번째 레코드만 출력,
-   우편번호는 '-' 뒤부터 끝까지 출력, 번지가 없다면 '번지없음'으로 대체
-  하여 출력 ,입사일은 월-일-년 요일까지 출력
-
-
-3. 차량의 제조사가 '현대','기아','삼성','BMW','AUDI'이고 옵션에 'ABS','TCS'가
+3. 차량의 제조사가 '현대','기아','삼성','BMW','AUDI'이고 옵션에 'ABS'또는 'TCS'가
  있는 차량의  제조국, 제조사,모델명, 연식,가격, 옵션, 이미지, 배기량 조회
   --단, 연식의 내림차순 정렬하고, 연식이 같다면 가격의 내림차순으로 정렬
    하여 출력, 이미지는 이미지명과 확장자를 구분하여 출력할것,
    제조사명이 영어라면 Bmw, Audi 의 형식으로 출력 .
 */
 
-SELECT cc.country, INITCAP(cc.maker) maker, cmo.car_year, 
+SELECT cc.country, INITCAP(cc.maker) maker, cmo.car_year,
 	   cmo.price, cmo.car_option,
 	   SUBSTR(cmo.car_img,1,INSTR(cmo.car_img, '.')-1) i_name,
 	   SUBSTR(cmo.car_img,INSTR(cmo.car_img, '.')+1) f_ext,
@@ -163,8 +156,8 @@ SELECT cc.country, INITCAP(cc.maker) maker, cmo.car_year,
 FROM	car_country cc, car_maker cma, car_model cmo
 WHERE	(cma.maker = cc.maker AND cmo.model = cma.model)
   AND   cc.maker IN ('현대','기아','삼성','BMW','AUDI')
-  AND   cmo.car_option LIKE '%ABS%'
-  AND   cmo.car_option LIKE '%TCS%'
+  AND   (cmo.car_option LIKE '%ABS%'
+   OR   cmo.car_option LIKE '%TCS%')
 ORDER BY cmo.car_year DESC, cmo.price DESC;
 
 /*
@@ -173,10 +166,19 @@ ORDER BY cmo.car_year DESC, cmo.price DESC;
   단, 출력 가격의 오름차순을 정렬했을 때 2~7 사이의 레코드만 출력,
    [모델명] 차량의 연식은 [ xxxx ]이고, 제조국은 [국산|수입]이며,
    [XX]사가 제조사입니다. 가격은 [0,000,000]원 입니다.
+*/
 
-
-5. 제조사가 '현대'인 차량의 년식, 모델명, 연식별 총가격을 조회.
-
+SELECT r, model||' 차량의 연식은 '||car_year||'이고, 제조국은 '||country||
+	   '이며, '||maker||'가 제조사입니다. 가격은 '||TO_CHAR(price, '0,000,000')||
+	   '원 입니다.' output
+FROM(SELECT ROWNUM r, model, country, maker, price, car_year
+	 FROM(SELECT cma.model, cc.country, cc.maker, cmo.price, cmo.car_year
+	 	  FROM   car_country cc, car_maker cma, car_model cmo
+		  WHERE  (cma.maker = cc.maker AND cmo.model = cma.model)
+			 AND cma.model IN ('K5', '아반테', '소렌토', 'A8', 'SM3')
+		  ORDER BY cmo.price ASC))
+WHERE  r BETWEEN 2 AND 7;
+/*
 6. 사원명이 'S'로 끝나거나 이름5자이면서 세번째 글자가 'A'인
    사원의  사원번호, 사원명, 입사일,연봉,세금, 실수령액, 연봉인상액,
    부서번호,부서명,위치,우편번호,시도, 구군,동,번지 를 조회
@@ -185,28 +187,19 @@ ORDER BY cmo.car_year DESC, cmo.price DESC;
      10- 년봉 7%, 20- 년봉 4%, 30- 년봉+보너스 10%, 그외 3%로
      계산하여 3자리마다 ,를 넣어 출력.
      모든 영어는 소문자로 출력.
-
 */
 
+SELECT e.empno, LOWER(e.ename), e.hiredate, e.sal,
+	   e.sal*0.033 tax,
+	   TRUNC(e.sal+(e.sal/12)+NVL(e.comm,0)-(e.sal*0.33), 0) total,
+	   TO_CHAR(DECODE(e.deptno, 10, e.sal*0.07,
+	                  20, e.sal*0.04,
+	                  30, (e.sal+NVL(e.comm,0))*0.1,
+	                  e.sal*0.03), '999,999') s_inc,
+       d.deptno, LOWER(d.dname), LOWER(d.loc),
+       z.zipcode, z.sido, z.gugun, z.dong, z.bunji
+FROM   emp e, dept d, zipcode z
+WHERE  (e.deptno = d.deptno AND z.seq = e.empno)
+   AND (ename LIKE '%S' OR ename LIKE '__A__');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- 서브쿼리 안쓰고 풀 수 있음(서브쿼리는 일부분의 데이터를 가져올 때 사용!)
