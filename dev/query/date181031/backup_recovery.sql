@@ -23,10 +23,10 @@ SELECT tname FROM tab;
 -- 다시 복구된 테이블 확인 가능
 SELECT COUNT(*)
 FROM zipcode;
-
+                                    
 -- emp 삭제
 DROP TABLE emp;
 PURGE RECYCLEBIN;
 
 SELECT * FROM emp;
-
+SELECT * FROM cp_zipcode;
