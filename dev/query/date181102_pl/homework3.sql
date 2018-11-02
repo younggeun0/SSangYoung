@@ -25,7 +25,10 @@ DECLARE
 	TYPE p_tab IS TABLE OF p_rec
 	 INDEX BY BINARY_INTEGER;
 	 
-	users p_tab;
+	users p_tab; 
+	
+	yob NUMBER(4); 
+	gender CHAR(1);
 
 BEGIN         
 
@@ -47,16 +50,19 @@ BEGIN
 	FOR i IN 1..users.COUNT LOOP
 	
 		IF SUBSTR(users(i).ssn,8,1) IN (1, 3) THEN 
-			users(i).gender := 'M';
+			gender := 'M';
 		ELSE 
-		  users(i).gender := 'F';
+		  gender := 'F';
 		END IF;                  
 
 		IF SUBSTR(users(i).ssn,1,1) IN (0, 1) THEN				
-			users(i).age := TO_CHAR(SYSDATE, 'yyyy') - CONCAT(20,SUBSTR(users(i).ssn,1,2));
+			yob := CONCAT(20,SUBSTR(users(i).ssn,1,2));
 		ELSE 	
-	  	users(i).age := TO_CHAR(SYSDATE, 'yyyy') - CONCAT(19,SUBSTR(users(i).ssn,1,2));
-		END IF; 
+	  	yob := CONCAT(19,SUBSTR(users(i).ssn,1,2));
+		END IF;
+		
+		users(i).gender := gender;
+		users(i).age := TO_CHAR(SYSDATE, 'yyyy') - yob;
 		
 		DBMS_OUTPUT.PUT_LINE(users(i).name||' '
 												||users(i).ssn||' '
