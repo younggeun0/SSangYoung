@@ -21,3 +21,5 @@
 
 - 181101 : PL/SQL 기본
 
+- 181102 : PL/SQL 제어문, RECORD type, TABLE type
+
