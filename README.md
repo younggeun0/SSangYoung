@@ -1,7 +1,7 @@
 # 2018.10.22 ~ 2018.11    오라클 DBMS 학습
 <hr>
 
-학습내용 정리는 https://younggeun0.github.io/posts/에 업로드 예정
+학습내용 정리는 https://younggeun0.github.io/posts/ 에 업로드 예정
 
 - 181022 : ORACLE DBMS 설치, 환경설정
 
