@@ -1,0 +1,2 @@
+SELECT mgr/0 FROM emp
+WHERE mgr IS NOT NULL;
