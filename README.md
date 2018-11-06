@@ -24,3 +24,5 @@
 - 181102 : PL/SQL 제어문, RECORD type, TABLE type
 
 - 181105 : PL/SQL with DML, CURSOR
+
+- 181106 : PL/SQL CURSOR(using FOR), EXCEPTION
