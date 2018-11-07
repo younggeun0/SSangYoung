@@ -109,9 +109,40 @@ VALUES(item_num(), 'Park');
 
 SELECT * FROM test_func;
 
-
+-- 주민번호 유효성 검증 함수 사용
 SELECT valid_ssn_check('121212-1234567')
 FROM dual;
+
+INSERT INTO class4_info(num, name, ssn)
+VALUES(15, 'someone', '121212-1234567');
+
+SELECT num, name, ssn, valid_ssn_check(ssn)
+FROM class4_info;                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
