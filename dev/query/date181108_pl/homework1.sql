@@ -9,9 +9,19 @@ user_constraints, user_tab_cols, user_tab_columns
 
 
 */
-SELECT * FROM user_constraints;  -- CONSTRAINT_NAME, 제약사항 테이블엔 컬럼정보가 존재X
-, R_CONSTRAINT_NAME, CONSTRAINT_NAMESELECT * FROM user_tab_cols;     -- TABLE_NAME, COLUMN_NAME, DATA_TYPE
-SELECT * FROM user_tab_columns;
+SELECT * FROM user_constraints;  
+-- CONSTRAINT_NAME
+-- 제약사항 테이블엔 컬럼정보가 존재X
+SELECT * FROM user_tab_cols;     
+-- TABLE_NAME, COLUMN_NAME, DATA_TYPE
+
+-- CONSTRAINT_NAME, COLUMN_NAME, DATA_TYPE 을 출력
+
+
+
+
+
+
 
 --SELECT uc.CONSTRAINT_NAME, utc.COLUMN_NAME, utc.DATA_TYPE
 SELECT *
