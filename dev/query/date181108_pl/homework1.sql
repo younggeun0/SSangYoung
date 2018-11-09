@@ -18,8 +18,6 @@ SELECT * FROM user_tab_cols;
 SELECT * FROM user_cons_columns;
 
 
--- 조인, 스칼라서브쿼리 사용
--- 일단 필요컬럼 있는 조인은 했는데.. 이제 어떻게 줄이지
 SELECT ucc.CONSTRAINT_NAME, utc.COLUMN_NAME, utc.DATA_TYPE
 FROM   user_tab_cols utc, user_constraints uc, user_cons_columns ucc
 WHERE  (uc.TABLE_NAME = utc.TABLE_NAME AND uc.CONSTRAINT_NAME = ucc.CONSTRAINT_NAME)
