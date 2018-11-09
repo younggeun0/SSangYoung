@@ -3,7 +3,7 @@
 
 학습내용 정리는 https://younggeun0.github.io/posts/ 에 업로드 예정
 
-- 181022 : [ORACLE DBMS 설치, 환경설정](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-01/)
+- 181022 : [ORACLE DBMS, 환경설정](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-01/)
 
 - 181023 : [DDL, DCL](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-02/)
 
