@@ -1,7 +1,7 @@
 # 2018.10.22 ~ 2018.11    오라클 DBMS 학습
 <hr>
 
-학습내용 정리는 https://younggeun0.github.io/posts/ 에 업로드 중
+학습내용 https://younggeun0.github.io/posts/ 에 업로드 중
 
 - 181022 : [ORACLE DBMS](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-01/)
 
