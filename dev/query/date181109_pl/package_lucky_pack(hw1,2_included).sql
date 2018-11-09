@@ -10,7 +10,7 @@ AS
    -- out parameter에 설정하는 프로시저를 작성
    PROCEDURE get_ssn(birthdate CHAR, gender VARCHAR2, ssn OUT CHAR);    
 
-/*  181109 숙
+/*
 1.lucky_pack 패키지에 태어난해를 입력받으면 띠를 반환하는 
   함수를 추가하세요.
   띠 - 태어난해를 12로 나눈 나머지가 
