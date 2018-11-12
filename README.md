@@ -32,3 +32,5 @@
 - 181108 : [PL/SQL PROCEDURE](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-14/)
 
 - 181109 : [PL/SQL PACKAGE, TRIGGER](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-15/)
+
+- 181112 : [설계 문서작성, ERD, 테이블설계서, 정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-16/)
