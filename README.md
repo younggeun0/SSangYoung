@@ -1,5 +1,6 @@
-# 2018.10.22 ~ 2018.11    오라클 DBMS 학습
-<hr>
+# 2018.10.22 ~ 2018.11.13    오라클 DBMS 학습
+
+---
 
 학습내용 https://younggeun0.github.io/posts/ 에 업로드 중
 
@@ -34,3 +35,11 @@
 - 181109 : [PL/SQL PACKAGE, TRIGGER](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-15/)
 
 - 181112 : [설계 문서작성, ERD, 정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-16/)
+
+- 181113 : [정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-17/)
+
+
+# 2018.11.13 ~ 2019.0?    Java 학습
+
+---
+
