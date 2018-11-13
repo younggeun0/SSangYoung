@@ -1,4 +1,4 @@
-rem path - 특정프로그램(javac.exe, java.exe)를 설치된 경로에 상관없이 사용하기위해 path를 설정
+rem path - 특정프로그램(javac.exe, java.exe)를 설치된 경로에 상관없이 사용하기위한 path
 rem xxx_home - 프로그램끼리 경로를 참조하기 위해 설정하는 path
 
 set dev_home=C:\Users\owner\youngRepositories\SSangYoung\dev
