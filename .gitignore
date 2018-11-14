@@ -1,2 +1,5 @@
+# jdk 제외
 dev/java/
+
+# class 제외
 .class
