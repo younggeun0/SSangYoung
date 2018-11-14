@@ -1,5 +1,6 @@
-# jdk 제외
+# jdk 제외, apis 제외
 dev/java/
+dev/apis/
 
 # class, notepad저장파일 제외
 *.class
