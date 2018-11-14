@@ -28,5 +28,5 @@
 ---
 
 - 181113 : [Java, 기본문법](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-01/)
-- 181114 : [데이터형, 연산자]()
+- 181114 : [데이터형, 연산자](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-02/)
 
