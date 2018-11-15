@@ -15,7 +15,9 @@ class Homework2 {
 
 		// 하위 2byte를 분리하기 위해 left shift 연산자 사용 << 16
 		// 그 후 왼쪽 2byte를 0으로 채우기 위해 unsigned shift 연산자 사용
-		int j = i<<=16;
-		System.out.println(j >>>= 16);
+		
+		i<<=16;
+		
+		System.out.println(i>>>16);
 	}
 }
