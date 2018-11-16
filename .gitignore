@@ -1,3 +1,6 @@
+# 문서제외
+*.pdf
+
 # eclipse
 .classpath
 .project

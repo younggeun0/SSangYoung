@@ -15,10 +15,14 @@ class Homework2 {
 		System.out.println(i>>16);
 
 		// 하위 2byte를 분리하기 위해 left shift 연산자 사용 << 16
-		// 그 후 왼쪽 2byte를 0으로 채우기 위해 unsigned shift 연산자 사용
+		// 그 후 왼쪽 2byte를 0으로 채우기 위해 unsigned right shift 연산자 사용
+		
+		// &로 mask 연산
+		// 01111111 11111111 11111111 11111111
+		// 00000000	00000000 11111111 11111111 = 0x0000FFFF
+		System.out.println(i & 0x0000FFFF);
 		
 		i<<=16;
-		
 		System.out.println(i>>>16);
 	}
 }
