@@ -13,7 +13,7 @@
 - 181030 : [UNION, JOIN, SEQUENCE](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-07/)
 - 181031 : [VIEW, SYNONYM, INDEX, GRANT/REVOKE, BACKUP, RECOVERY](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-08/)
 - 181101 : [PL/SQL 기본](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-09/)
-- 181102 : [PL/SQL 제어문, RECORD type, TABLE type](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-10/)
+- 181102 : [PL/SQL 제어문, RECORD, TABLE](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-10/)
 - 181105 : [PL/SQL with DML, CURSOR](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-11/)
 - 181106 : [PL/SQL CURSOR(using FOR), EXCEPTION](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-12/)
 - 181107 : [PL/SQL FUNCTION, PROCEDURE](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-13/)
