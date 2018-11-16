@@ -5,3 +5,9 @@ dev/apis/
 # class, notepad저장파일 제외
 *.class
 *.bak
+
+# zip파일 제외
+*.zip
+
+# eclipse IDE 제외
+eclipse-jee-2018-09-win32/
