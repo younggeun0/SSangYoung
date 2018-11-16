@@ -1,6 +1,18 @@
-# jdk 제외, apis 제외
+# eclipse
+.classpath
+.project
+.metadata
+.settings
+.recommenders
+bin/**
+tmp/**
+
+
+
+# jdk 제외, apis, eclipse 제외
 dev/java/
 dev/apis/
+dev/eclipse/
 
 # class, notepad저장파일 제외
 *.class
@@ -9,5 +21,3 @@ dev/apis/
 # zip파일 제외
 *.zip
 
-# eclipse IDE 제외
-eclipse-jee-2018-09-win32/
