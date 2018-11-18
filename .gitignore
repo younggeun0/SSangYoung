@@ -1,4 +1,4 @@
-# 문서제외
+﻿# 문서제외
 *.pdf
 
 # eclipse
@@ -9,17 +9,15 @@
 .recommenders
 bin/**
 tmp/**
-
+*.bak
 
 
 # jdk 제외, apis, eclipse 제외
+dev/Java/
 dev/java/
 dev/apis/
 dev/eclipse/
 
-# class, notepad저장파일 제외
-*.class
-*.bak
 
 # zip파일 제외
 *.zip
