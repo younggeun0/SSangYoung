@@ -22,3 +22,4 @@ dev/eclipse/
 # zip파일 제외
 *.zip
 
+dev/env.bat
