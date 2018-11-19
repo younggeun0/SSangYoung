@@ -8,18 +8,18 @@ public class TestSwitchCase {
 		
 		switch(i) {
 		
-		case 0 : 
-			System.out.println("새벽");
-			break;
-		case 1 :
-			System.out.println("아침");
-			break;
-		case 2 : 
-			System.out.println("점심");
-			break;
-		default :
-			System.out.println("저녁");
-			break;
+			case 0 : 
+				System.out.println("새벽");
+				break;
+			case 1 :
+				System.out.println("아침");
+				break;
+			case 2 : 
+				System.out.println("점심");
+				break;
+			default :
+				System.out.println("저녁");
+				break;
 		}
 	}
 }
