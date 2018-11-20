@@ -2,6 +2,7 @@
 *.pdf
 
 # eclipse
+*.class
 .classpath
 .project
 .metadata
