@@ -1,12 +1,11 @@
 package date181120;
 
-/**
+/*
  * 0 0 
  *  1 0 1 1
  *   2 0 2 1 2 2
  *    3 0 3 1 3 2 3 3
  * 출력하기 
- * @author owner
  */
 public class HW2 {
 	public static void main(String[] args) {

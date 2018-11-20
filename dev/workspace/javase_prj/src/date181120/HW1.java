@@ -1,11 +1,11 @@
 package date181120;
 
-/**
+/*
  * 구구단 출력 (flow chart 그리고 구현)
  * 2x1=2 3x1=3 4x1=4 ... 9x1=9
  * ...
  * 2x9=18...             9x9=81
- * @author owner
+ * 
  */
 public class HW1 {
 
