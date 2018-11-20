@@ -1,7 +1,8 @@
 package date181120;
 
 /*
- * 구구단 출력(flow chart 그리고)
+ * I don't know why but on github it doesn't show korean properly..
+ * printing gugudan (after making flow chart)
  * 
  * 2x1=2 3x1=3... 9x1=9
  * ...
