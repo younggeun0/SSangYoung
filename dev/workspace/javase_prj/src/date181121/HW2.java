@@ -13,12 +13,17 @@ public class HW2 {
 	
 	public static void starTriangle() {
 		
-		for(int i=1;i<5;i++) {
-			for(int j=0; j<i; j++) {
+		int i=1;		
+		do {
+			int j=0;
+			do {
 				System.out.print("*");
-			}
+				j++;
+			} while(j<i);
+			
 			System.out.println();
-		}
+			i++;
+		}while(i<5);
 	}
 
 	public static void main(String[] args) {
