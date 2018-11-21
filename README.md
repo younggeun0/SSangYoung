@@ -33,3 +33,4 @@
 - 181116 : [Eclipse](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-04/)
 - 181119 : [조건문 if, switch](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-05/)
 - 181120 : [switch, 반복문 for](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-06/)
+- 181121 : [while, variable, method](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-07/)
