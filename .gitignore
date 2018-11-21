@@ -1,5 +1,6 @@
 ﻿# 문서제외
 *.pdf
+*.pptx
 
 # eclipse
 *.class
