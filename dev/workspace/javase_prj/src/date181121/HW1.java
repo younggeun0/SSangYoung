@@ -7,12 +7,17 @@ public class HW1 {
 
 	public void gugudan() {
 		
-		for(int i=1; i<10; i++) {
+		int i = 1;
+		while(i<10) {
 			
-			for (int j=2; j<10; j++) {
+			int j = 2;
+			while(j<10) {
 				System.out.print(j+" * "+i+" = "+(j*i)+"\t");
+				j++;
 			}
+			
 			System.out.println();
+			i++;
 		}
 	}
 	
