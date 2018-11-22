@@ -36,5 +36,6 @@ public class Method {
 		
 		// 4.
 		System.out.println(Method.sumTwoNum(5, 3));
+		
 	}
 }

@@ -38,8 +38,9 @@ public class TestOverload02 {
 		// 구구단 3단을 출력하는 method
 		// to2.gugudan();
 		
-		// 입력하는 단이 2~9단 사이일 때 해당 단을 출력하는 method
+		// 입력하는 단이 2~9단 사이일 때 
+		// 해당 단부터 9단까지 출력 출력하는 method
 		to2.gugudan(5);
-		
+		 
 	}
 }
