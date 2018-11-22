@@ -69,9 +69,16 @@ public class HW1 {
 	 * @param names 친구들의 이름들
 	 */
 	public void printMyFrinedsName(String... names) {
-		for (String name : names) {
-			System.out.print(name + " ");
+		
+		// 기존 for문
+		for(int i=0; i<names.length; i++) {
+			System.out.print(names[i]+" ");
 		}
+		
+		// 향상된 for문
+		/*for (String name : names) {
+			System.out.print(name + " ");
+		}*/
 		System.out.println();
 	}
 	
