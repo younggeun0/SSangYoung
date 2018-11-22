@@ -69,10 +69,12 @@ public class HW1 {
 	 * @param names 친구들의 이름들
 	 */
 	public void printMyFrinedsName(String... names) {
+		int cnt = 0;
 		
 		// 기존 for문
 		for(int i=0; i<names.length; i++) {
 			System.out.print(names[i]+" ");
+			cnt++;
 		}
 		
 		// 향상된 for문
@@ -80,6 +82,7 @@ public class HW1 {
 			System.out.print(name + " ");
 		}*/
 		System.out.println();
+		System.out.println("친구수 : " + cnt);
 	}
 	
 	public static void main(String[] args) {
