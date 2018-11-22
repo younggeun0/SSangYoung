@@ -56,10 +56,10 @@ public class HW1 {
 	}
 	
 	/**
-	 *  호출하면 자신의 주소를 출력하는 method
+	 *  호출하면 자신(클래스)의 주소를 출력하는 method
 	 */
-	public void getMyAddress() {
-		System.out.println("서울 ~구 ~동 ~로");
+	public void getClassAddress(HW1 mine) {
+		System.out.println(mine);
 	}
 	
 	
@@ -102,7 +102,7 @@ public class HW1 {
 
 		
 		// 5.
-		hw1.getMyAddress();
+		hw1.getClassAddress(hw1);
 		
 		// 6.
 		hw1.printMyFrinedsName("친구1","친구2","친구3","친구4","친구5");
