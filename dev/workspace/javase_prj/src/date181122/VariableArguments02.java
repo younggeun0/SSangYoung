@@ -1,14 +1,12 @@
 package date181122;
 
-import javax.print.attribute.standard.PrinterName;
-
 public class VariableArguments02 {
 
 	/**
 	 * 가변 인수를 받기위한 매개변수는 가장 마지막에만 사용할 수 있다.
-	 * @param i
-	 * @param d
-	 * @param j
+	 * @param i 첫번째 인수
+	 * @param d 두번째 인수
+	 * @param j 세번째 인수 
 	 */
 	public void test2(int i, double d, int ... j) {
 		System.out.println("처음 매개변수 : i = "+i);
