@@ -18,9 +18,10 @@ public class HW1 {
 
 	/**
 	 *  호출하면 자신의 이름을 반환하는 method
+	 *  @return 이름
 	 */
-	public void getMyName() {
-		System.out.println("오영근");
+	public String getMyName() {
+		return "오영근";
 	}
 
 	/**
@@ -57,6 +58,7 @@ public class HW1 {
 	
 	/**
 	 *  호출하면 자신(클래스)의 주소를 출력하는 method
+	 *  @param mine 주소를 보여줄 객체
 	 */
 	public void getClassAddress(HW1 mine) {
 		System.out.println(mine);
@@ -91,7 +93,7 @@ public class HW1 {
 		
 		
 		// 1.
-		hw1.getMyName();
+		System.out.println(hw1.getMyName());
 		
 		// 2.
 		System.out.println(hw1.getYearOfBirth(29));
