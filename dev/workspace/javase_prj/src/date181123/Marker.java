@@ -16,6 +16,34 @@ public class Marker {
 	private int body;		// 마카펜의 몸체의 갯수
 	private int cap;		// 마카펜의 뚜껑의 갯수
 
+	/**
+	 *  기본 생성자로 마카펜 객체가 생성되면 검은색, 
+	 *  뚜껑1개, 몸체1개인 마카펜 객체를 생성합니다.<br>
+	 *  11-26-2018 코드 추가
+	 */
+	public Marker() {
+		this("검은색",1,1);
+		System.out.println("Marker 기본 생성자");
+		/*color = "검은색";
+		body = 1;
+		cap = 1;*/
+	}
+	
+	/**
+	 * 인자있는 생성자 - 검은색, 뚜껑과 몸체가 1개가 아닌 
+	 * 마카펜을 생성할 때 사용하는 생성자<br>
+	 * 색, 뚜껑의 수, 몸체의 수를 입력받아 마카펜을 생성하는 생성자
+	 * @param color 마카펜 색
+	 * @param cap 뚜껑의 수
+	 * @param body 몸체의 수
+	 * 11-26-2018 코드 추가
+	 */
+	public Marker(String color, int cap, int body) {
+		this.color = color;
+		this.body = body;
+		this.cap = cap;
+		System.out.println("Marker 매개변수 있는 생성자");
+	}
 	
 	// setter
 	/**

@@ -15,8 +15,8 @@ public class UseRamen {
 		System.out.printf("%s의 가격은 %d원입니다. 스프는 %d개 있습니다.\n",
 				Nyuguri.getName(), Nyuguri.getPrice(), Nyuguri.getSoupNum());
 		
-		System.out.println(Nyuguri.Cooked());
-		System.out.println(Nyuguri.Cooked(450, "육전","버섯","대파","고춧가루"));
+		System.out.println(Nyuguri.cooked());
+		System.out.println(Nyuguri.cooked(450, "육전","버섯","대파","고춧가루"));
 		
 		Ramen Ohjjam = new Ramen();
 		
@@ -29,8 +29,8 @@ public class UseRamen {
 		System.out.printf("%s의 가격은 %d원입니다. 스프는 %d개 있습니다.\n",
 				Ohjjam.getName(), Ohjjam.getPrice(), Ohjjam.getSoupNum());
 		
-		System.out.println(Ohjjam.Cooked());
-		System.out.println(Ohjjam.Cooked(600));
+		System.out.println(Ohjjam.cooked());
+		System.out.println(Ohjjam.cooked(600));
 		
 	}
 

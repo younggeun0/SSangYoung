@@ -66,14 +66,14 @@ public class Ramen {
 	}
 	
 	// 동사적 특징
-	public String Cooked() {
+	public String cooked() {
 		// 재료없이 조리하기
 		String msg = name+" 라면은 "+checkSpicy()+"정도의 매움단계를 갖고 \n"
 				+ "면발 두께는 "+checkNoodle()+"입니다.\n";
 		
 		return msg+" 라면을 조리 없이 먹기위해 뿌십니다.";
 	}
-	public String Cooked(int water, String... ingredients) {
+	public String cooked(int water, String... ingredients) {
 		// 재료있게 조리하기
 		String msg;
 		

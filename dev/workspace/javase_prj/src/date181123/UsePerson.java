@@ -11,9 +11,9 @@ public class UsePerson {
 		// 객체 생성 : heap에 생성되고 instance 변수는 자동 초기화
 		Person young = new Person();
 		
-		young.setEye(2);
+		/*young.setEye(2);
 		young.setNose(1);
-		young.setMouth(1);
+		young.setMouth(1);*/
 		young.setName("영근");
 		
 		// 참조형 데이터형인 Person은 heap의 주소를 가지고 있다.
