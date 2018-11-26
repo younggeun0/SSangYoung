@@ -11,6 +11,30 @@ public class Person {
 
 	private int eye, nose, mouth;	// 눈코입
 	private String name;			// 이름
+	
+	/**
+	 * 사람클래스의 기본 생성자<br>
+	 * 눈 2개, 코 1개, 입 1개를 가진 사람 객체를 생성
+	 * 11-26-2018 코드 추가
+	 */
+	public Person() {
+		this(2, 1, 1);
+//		eye = 2;
+//		nose = 1;
+//		mouth = 1;
+	}
+	
+	/**
+	 * 눈 2개, 코 1개, 입 1개가 아닌 사람 객체를 생성할 때 사용하는 생성자
+	 * @param eye 눈의 수
+	 * @param nose 코의 수
+	 * @param mouth 입의 수
+	 */
+	public Person(int eye, int nose, int mouth) {
+		this.eye = eye;
+		this.nose = nose;
+		this.mouth = mouth;
+	}
 
 	/**
 	 * 생성된 사람 객체의 눈의 갯수를 설정하는 일<br>
