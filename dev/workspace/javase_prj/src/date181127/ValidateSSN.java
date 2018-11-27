@@ -58,11 +58,14 @@ public class ValidateSSN {
 		int checkNum = 0;
 		
 		int j = 2;
+		// 901206-123456 7
+		// 234567-892345
 		// 앞6자리
 		for(int i=0; i<6; i++) {
 			checkNum += Integer.parseInt(ssn.substring(i, i+1))*j;
 			j++;
 		}
+		
 		// 뒤6자리
 		for(int i=7; i<ssn.length()-1; i++) {
 			checkNum += Integer.parseInt(ssn.substring(i, i+1))*j;
@@ -82,6 +85,9 @@ public class ValidateSSN {
 	
 	// 1-5 생년월일을 반환하는 일. 예) 1988-11-11 
 	private String getBirthDate() {
+		
+		// 내국인 1,2,  3,4
+		// 외국인 5,6,  7,8
 		
 		int flag = Integer.parseInt(ssn.substring(7,8));
 		String birthdate;
@@ -181,9 +187,10 @@ public class ValidateSSN {
 	}
 	
 	public static void main(String[] args) {
-		String ssn = "901206-2344599";
+		String ssn = "901206-1000020";
 		//            01234567890123
 		ValidateSSN vs = new ValidateSSN(ssn);
+		
 		
 		if (vs.checkLength()) {
 			if(vs.checkHyphen()) {
