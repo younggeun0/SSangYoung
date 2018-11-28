@@ -191,7 +191,6 @@ public class ValidateSSN {
 		//            01234567890123
 		ValidateSSN vs = new ValidateSSN(ssn);
 		
-		
 		if (vs.checkLength()) {
 			if(vs.checkHyphen()) {
 				if(vs.validateSSN()) {
