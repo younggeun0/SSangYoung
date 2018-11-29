@@ -1,5 +1,5 @@
 /*
-숙제 1.
+ * 숙제 1.
 번호,이름,주소,나이,성별을  저장할 수 있는 클래스를 만들고 
 아래와 같은 값을 입력합니다.
 
@@ -61,7 +61,7 @@ public class PersonalInfo {
 	public String getGender() {
 		return gender;
 	}
-
+	
 	// 1. 배열에 입력하는 method를 작성할것.
 	public void setAllInfo(int num, String name, String address, int age, String gender) {
 		this.num = num;

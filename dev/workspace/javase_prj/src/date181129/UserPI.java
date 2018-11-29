@@ -3,6 +3,7 @@ package date181129;
 public class UserPI {
 
 	public static void main(String[] args) {
+		
 		PersonalInfo[] pi = new PersonalInfo[7];
 		int cntSeoul = 0;
 		int sumOfAge = 0;
@@ -10,8 +11,7 @@ public class UserPI {
 		String oldestName="";
 		String oldestGender="";
 		
-		
-		for (int i = 0; i < pi.length; i++) {
+		for(int i=0; i<pi.length; i++) {
 			pi[i] = new PersonalInfo();
 		}
 
