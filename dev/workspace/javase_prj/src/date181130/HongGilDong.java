@@ -1,4 +1,4 @@
-package date181129;
+package date181130;
 
 /**
  * 사람의 공통 특징을 부모(Person)로 부터 사용하고 자신만의 특징만 정의
@@ -14,6 +14,7 @@ public class HongGilDong extends Person{
 	 * 홍길동은 싸움을 평민보다 잘하므로 7로 시작
 	 */
 	public HongGilDong() {
+		super();
 		level = 7;
 	}
 	
@@ -47,14 +48,14 @@ public class HongGilDong extends Person{
 		return result;
 	}
 	
-	/**
-	 * 부모클래스가 제공하는 method의 기능이 자식에게 맞지 않아
-	 * 장소인 식당을 주막으로 변경, 화폐단위 원을 냥으로 변경
-	 */
 	@Override
 	public String eat(String menu, int price) {
-		return getName()+"이 주막에서 "+menu
+		return super.getName()+"이(가) 주막에서 "+menu
 				+"인 음식을 "+price+"냥 내고 사먹는다.";
 	}
 	
+	@Override
+	public String toString() {
+		return "홍길동 객체의 값 : 눈 "+getEye()+", 코 "+getNose()+", 입 "+getMouth();
+	}
 }
