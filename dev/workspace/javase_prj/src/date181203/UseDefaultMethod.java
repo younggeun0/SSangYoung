@@ -6,6 +6,10 @@ public class UseDefaultMethod implements UseDefault {
 	public void test() {
 		System.out.println("Override한 method");
 	}
+	
+	public void test2() {
+		System.out.println("test2 method");
+	}
 
 	public static void main(String[] args) {
 		
@@ -13,6 +17,7 @@ public class UseDefaultMethod implements UseDefault {
 		UseDefaultMethod udm = new UseDefaultMethod();
 		udm.test();
 		udm.temp();	// default method
+		udm.test2();
 		
 		// is-a 관계의 객체화
 		UseDefault ud = new UseDefaultMethod();
