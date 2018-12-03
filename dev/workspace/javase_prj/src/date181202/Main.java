@@ -39,7 +39,5 @@ public class Main {
 		System.out.println("서울시 거주자 "+seoulPpl+"명");
 		System.out.println("나이 합 "+sumOfAge+"살");
 		System.out.printf("최고령자 \"%s(%s)\"\n", oldestName, oldestGender);
-		
-		
 	}
 }
