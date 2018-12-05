@@ -43,4 +43,4 @@
 - 181130 : [Override, super](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-14/)
 - 181203 : [객체다형성, abstract class, interface](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-15/)
 - 181204 : [inner classes, import, 자주 사용하는 클래스들](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-16/)
-- 181205 : [자주 사용하는 ](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-17/)
+- 181205 : [자주 사용하는 클래스들](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-17/)
