@@ -1,5 +1,7 @@
 package date181205;
-
+/* 1~45까지의 사이의 수 중 무작위로 하나를 봅아 6개의 세트를 만들어 배열로 반환하는 
+ * method를 만들고 호출하여 출력할 것. 단, 중복된 수는 배열에 입력되지 않아야 한다. 
+ * (뽑는걸로 다시 구현해볼 것)*/
 public class Lotto {
 
 	private int[] ball = new int[45];
