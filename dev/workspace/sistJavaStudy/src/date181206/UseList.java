@@ -2,6 +2,7 @@ package date181206;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Vector;
 import java.util.LinkedList;
 
@@ -58,6 +59,7 @@ public class UseList {
 		al.add("김정윤"); al.add("김정운");	al.add("공선의"); al.add("정택성");
 		System.out.println(al+" / "+al1);
 
+		/*
 		// size() : 데이터의 크기(size != capacity )
 		System.out.println("al 크기 : "+al.size()+" / al1 크기 : "+al1.size());
 		
@@ -87,7 +89,14 @@ public class UseList {
 		for(String name : al) {
 			System.out.print(name+" ");
 		}
-		System.out.println();
+		System.out.println();*/
+		
+		// iterator를 이용한 출력
+		Iterator<String> ita = al.iterator();
+		
+		while(ita.hasNext()) {
+			System.out.println(ita.next());
+		}
 		
 		// 모두 삭제
 		al.clear();
@@ -197,9 +206,9 @@ public class UseList {
 		
 		System.out.println("************************ArrayList*************************");
 		ul.useArrayList();
-		System.out.println("************************Vector****************************");
-		ul.useVector();
-		System.out.println("************************LinkedList************************");
-		ul.useLinkedList();
+		//System.out.println("************************Vector****************************");
+		//ul.useVector();
+		//System.out.println("************************LinkedList************************");
+		//ul.useLinkedList();
 	}
 }
