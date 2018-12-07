@@ -9,7 +9,7 @@ main method의 arguments로 날짜를 여러개 입력 받아 입력받은 날짜의
      15 토
      30 일  
 */
-public class RunDayOfWeek {
+public class RunCheckDayOfWeek {
 
 	public static void main(String[] args) {
 		
