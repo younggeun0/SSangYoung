@@ -11,7 +11,7 @@ public class DayCheck {
 	public Map<Integer,String> getDay(String[] day) {
 		int tmp = 0;
 
-		String[] dayOfWeek = { "일","월","화","수","목","금","토" };
+		//String[] dayOfWeek = { "일","월","화","수","목","금","토" };
 		Set<Integer> set = new HashSet<>();
 		Map<Integer, String> map = new HashMap<>();
 		Calendar c = Calendar.getInstance();
@@ -28,7 +28,8 @@ public class DayCheck {
 		
 		for(int i=0; i<arrDay.length; i++) {
 			c.set(Calendar.DAY_OF_MONTH, arrDay[i]);
-			map.put(arrDay[i], dayOfWeek[c.get(Calendar.DAY_OF_WEEK)-1]);
+			map.put(arrDay[i], 
+					"일,월,화,수,목,금,토".split(",")[c.get(Calendar.DAY_OF_WEEK)-1]);
 		}
 		
 		return map;
