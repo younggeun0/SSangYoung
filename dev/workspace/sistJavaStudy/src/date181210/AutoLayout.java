@@ -57,9 +57,9 @@ public class AutoLayout extends Frame {
 		Panel panelLeftCenter = new Panel();
 		Panel panelGender = new Panel();
 		
-		panelGender.setLayout(new GridLayout(1, 2));
-		panelGender.add(cgMale);
-		panelGender.add(cgFemale);
+		panelCenter.setLayout(new GridLayout(1, 2));
+		panelCenter.add(panelLeftCenter);
+		panelCenter.add(ta);
 		
 		panelLeftCenter.setLayout(new GridLayout(4, 2));
 		panelLeftCenter.add(lblName);
@@ -71,9 +71,10 @@ public class AutoLayout extends Frame {
 		panelLeftCenter.add(lblGender);
 		panelLeftCenter.add(panelGender);
 		
-		panelCenter.setLayout(new GridLayout(1, 2));
-		panelCenter.add(panelLeftCenter);
-		panelCenter.add(ta);
+		panelGender.setLayout(new GridLayout(1, 2));
+		panelGender.add(cgMale);
+		panelGender.add(cgFemale);
+		
 		add(BorderLayout.CENTER, panelCenter);
 		
 		// 위치, 사이즈, 가시화, 종료처리
