@@ -20,12 +20,11 @@ public class CFCDesign extends Frame {
 		taEx = new TextArea("오늘은 화요일");
 		taEx.setBounds(30, 80, 150, 100);
 		cColor = new Choice();
-		cColor.add("색선택");
-		cColor.add("검은색");
-		cColor.add("파란색");
-		cColor.add("빨간색");
-		cColor.add("초록색");
-		cColor.add("심홍색");
+		String[] arrColor = { "색선택","검은색","파란색","빨간색","초록색","심홍색" }; 
+		cColor = new Choice();
+		for (int i=0; i<arrColor.length; i++) {
+			cColor.add(arrColor[i]);
+		}
 		cColor.setBounds(200, 80, 80, 20);
 
 		setLayout(null);
