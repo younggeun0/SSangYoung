@@ -47,4 +47,5 @@
 - 181206 : [자주 사용하는 클래스들(2), JCF](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-18/)
 - 181207 : [JCF, JFC](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-19/)
 - 181210 : [AWT LayoutManager, Menu, 색변경](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-20/)
-- 181211 : [Event Handling](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-21/)
+- 181211 : [Event Handling(1)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-21/)
+- 181212 : [Event Handling(2)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-22/)
