@@ -17,7 +17,9 @@ public class ManualLayout extends Frame {
 		Label lblFontStyle = new Label("글꼴스타일");
 		Label lblSize = new Label("크기");
 		Label lblEx = new Label("보기");
-
+		Label lblPreview = new Label("AaBbYyZz");
+		lblPreview.setFont(new Font(Font.DIALOG, Font.PLAIN, 25));
+		
 		List listFont = new List();
 		listFont.add("Dialog");
 		listFont.add("Serif");
@@ -43,8 +45,8 @@ public class ManualLayout extends Frame {
 		TextField tfFont = new TextField();
 		TextField tfFontStyle = new TextField();
 		TextField tfSize = new TextField();
-		TextField tfEx = new TextField("AaBbYyZz", 15);
-		tfEx.setFont(new Font(Font.DIALOG, Font.PLAIN, 25));
+		// TextField tfEx = new TextField("AaBbYyZz", 15);
+		// tfEx.setFont(new Font(Font.DIALOG, Font.PLAIN, 25));
 		Button btnApply = new Button("확인");
 		Button btnCancel = new Button("취소");
 
@@ -75,8 +77,8 @@ public class ManualLayout extends Frame {
 		
 		lblEx.setBounds(110, 200, 25, 20);
 		add(lblEx);
-		tfEx.setBounds(110, 220, 125, 30);
-		add(tfEx);
+		lblPreview.setBounds(110, 220, 125, 30);
+		add(lblPreview);
 		
 		btnApply.setBounds(200, 265, 60, 25);
 		add(btnApply);
