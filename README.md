@@ -49,3 +49,4 @@
 - 181210 : [AWT LayoutManager, Menu, 색변경](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-20/)
 - 181211 : [Event Handling(1)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-21/)
 - 181212 : [Event Handling(2)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-22/)
+- 181213 : [메모장 구현, Dialog, Swing](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-23/)
