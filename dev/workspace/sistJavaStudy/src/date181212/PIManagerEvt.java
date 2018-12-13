@@ -10,10 +10,12 @@ import java.awt.event.TextListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class PIManagerEvt extends WindowAdapter implements TextListener, ActionListener, ItemListener {
+public class PIManagerEvt extends WindowAdapter implements ActionListener, ItemListener {
 
 	private PIManager pim;
 	private String name, age, addr;
+	
+	public PIManagerEvt() { }
 	
 	public PIManagerEvt(PIManager pim) {
 		this.pim = pim;
@@ -23,9 +25,13 @@ public class PIManagerEvt extends WindowAdapter implements TextListener, ActionL
 	public void windowClosing(WindowEvent e) {
 		pim.dispose();
 	}
-
+		
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		name = pim.getTfName().getText();
+		age = pim.getTfAge().getText();
+		addr = pim.getTfAddr().getText();
+		
 		if (e.getSource() == pim.getBtnAdd()) {
 			add();
 		}
@@ -41,19 +47,6 @@ public class PIManagerEvt extends WindowAdapter implements TextListener, ActionL
 	}
 
 	@Override
-	public void textValueChanged(TextEvent e) {
-		if (e.getSource() == pim.getTfName()) {
-			name = pim.getTfName().getText();
-		}
-		if (e.getSource() == pim.getTfAge()) {
-			age = pim.getTfAge().getText();
-		}
-		if (e.getSource() == pim.getTfAddr()) {
-			addr = pim.getTfAddr().getText();
-		}
-	}
-
-	@Override
 	public void itemStateChanged(ItemEvent e) {
 		String selectedItem = pim.getListPi().getSelectedItem();
 		
@@ -64,7 +57,7 @@ public class PIManagerEvt extends WindowAdapter implements TextListener, ActionL
 	}
 	
 	public void add() {
-		if (!(name == null || age == null || addr == null)) {
+		if (!(name.isEmpty() || age.isEmpty() || addr.isEmpty())) {
 			StringBuilder item = new StringBuilder();
 			item.append(name).append(" / ").append(age).append(" / ").append(addr);
 			pim.getListPi().add(item.toString());
@@ -78,7 +71,7 @@ public class PIManagerEvt extends WindowAdapter implements TextListener, ActionL
 	
 	public void edit() {
 		List tempList = pim.getListPi();
-		if (tempList.getSelectedItem() != null) {
+		if (tempList.getSelectedIndex() != -1) {
 			int selectedIndex = pim.getListPi().getSelectedIndex();
 			
 			StringBuilder newItem = new StringBuilder();
@@ -90,7 +83,21 @@ public class PIManagerEvt extends WindowAdapter implements TextListener, ActionL
 	
 	public void delete() {
 		List tempList = pim.getListPi();
-		if (tempList.getSelectedItem() != null) {
+		if (!(name.isEmpty() || age.isEmpty() || addr.isEmpty())) {
+			StringBuilder item = new StringBuilder();
+			item.append(name).append(" / ").append(age).append(" / ").append(addr);
+			
+			String[] arrItem = tempList.getItems();
+			for(int i=0; i<arrItem.length; i++) {
+				if (item.toString().equals(arrItem[i])) {
+					tempList.remove(i);
+					
+					pim.getTfName().setText("");
+					pim.getTfAge().setText("");
+					pim.getTfAddr().setText("");
+				}
+			}
+		} else if (tempList.getSelectedIndex() != -1) {
 			
 			int selectedIndex = pim.getListPi().getSelectedIndex();
 			

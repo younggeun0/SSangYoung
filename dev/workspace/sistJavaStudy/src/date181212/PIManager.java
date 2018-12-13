@@ -59,9 +59,6 @@ public class PIManager extends Frame {
 		
 		// 이벤트객체와 컴포넌트 연결
 		PIManagerEvt pime = new PIManagerEvt(this);
-		tfName.addTextListener(pime);
-		tfAge.addTextListener(pime);
-		tfAddr.addTextListener(pime);
 		listPi.addItemListener(pime);
 		btnAdd.addActionListener(pime);
 		btnDel.addActionListener(pime);
