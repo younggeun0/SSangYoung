@@ -47,7 +47,6 @@ public class FriendsListEvt extends WindowAdapter implements ActionListener, Ite
 		if (e.getSource() == fl.getBtnAllUnblock()) {
 			allUnblock();
 		}
-		
 	}
 	@Override
 	public void windowClosing(WindowEvent e) {
@@ -89,7 +88,6 @@ public class FriendsListEvt extends WindowAdapter implements ActionListener, Ite
 		for(int i=0; i<arrFriend.length; i++) {
 			fl.getListBlockedFriend().add(arrFriend[i]);
 		}
-		
 		fl.getListFriend().removeAll();
 	}
 	
