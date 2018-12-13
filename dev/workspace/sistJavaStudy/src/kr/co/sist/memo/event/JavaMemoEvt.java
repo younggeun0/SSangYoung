@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 
 import kr.co.sist.memo.view.JavaMemo;
 import kr.co.sist.memo.view.MemoFormat;
+import kr.co.sist.memo.view.MemoHelp;
 
 public class JavaMemoEvt extends WindowAdapter implements ActionListener {
 
@@ -120,6 +121,6 @@ public class JavaMemoEvt extends WindowAdapter implements ActionListener {
 	 * 메모장 정보를 제공하는 다이얼로그를 실행
 	 */
 	public void helpDialog() {
-		
+		new MemoHelp(jm);
 	}
 }
