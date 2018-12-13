@@ -3,10 +3,8 @@ package kr.co.sist.memo.view;
 import java.awt.Button;
 import java.awt.Dialog;
 import java.awt.TextArea;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
+import kr.co.sist.memo.event.MemoHelpEvt;
 
 public class MemoHelp extends Dialog {
 
@@ -29,18 +27,10 @@ public class MemoHelp extends Dialog {
 		add(btnConfirm);
 		
 		setBounds(jm.getX()+80, jm.getY()+80, 480, 200);
-		btnConfirm.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				dispose();
-			}
-		});
+		
+		MemoHelpEvt mhe = new MemoHelpEvt(this);
+		btnConfirm.addActionListener(mhe);
+		addWindowListener(mhe);
 		
 		setVisible(true);
 	}
