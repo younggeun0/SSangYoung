@@ -5,33 +5,31 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import static java.lang.Integer.parseInt;
 
 public class Process {
 	
 	private List<DataVO> list;
-	private int javaTot, oracleTot;
+	private int scoreTot;
+	
+	private static final int INSERT_DATA = 1;
+	private static final int VIEW_DATA = 2;
+	private static final int EXIT = 3;
 
 	public Process() {
-		
 		list = new ArrayList<DataVO>();
-		
-		while(true) {
-			inputMenu();
-		}
+		inputMenu();
 	}
 	
 	public boolean addData() {
-		String[] data = JOptionPane.showInputDialog("데이터입력\n예) 이름,자바점수,오라클점수").split(",");
+		String input = JOptionPane.showInputDialog("데이터입력\n예) 이름,자바점수,오라클점수");
+		String[] data = input.replaceAll(" ", "").split(",");
 
 		if (data.length == 3) {
 			
 			try {
-				for(int i=0; i<data.length; i++) {
-					data[i] = data[i].trim();
-				}
-				
-				int javaScore = Integer.parseInt(data[1]);
-				int oracleScore = Integer.parseInt(data[2]);
+				int javaScore = parseInt(data[1]);
+				int oracleScore = parseInt(data[2]);
 				
 				if ((javaScore > -1 && javaScore < 101) && (oracleScore > -1 && oracleScore < 101)) {
 					DataVO dataVO = new DataVO(data[0], javaScore, oracleScore);
@@ -60,49 +58,65 @@ public class Process {
 		if(list.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "데이터가 없습니다.");
 			return;
-		} else {
+		} 
+		
+		JTextArea jta = new JTextArea(10,40);
+		jta.setEditable(false);
+		
+		StringBuilder viewData = new StringBuilder();
+		viewData.append("번호\t이름\t자바\t오라클\t총점\t평균\n");
+		
+		int tempTot = 0;
+		for(int i=0; i<list.size(); i++) {
+			DataVO tempVO = list.get(i);
+			int javaScore = tempVO.getJavaScore();
+			int oracleScore = tempVO.getOracleScore();
+			tempTot = javaScore + oracleScore;
 			
-			JTextArea jta = new JTextArea(10,40);
-			jta.setEditable(false);
-			jta.append("번호\t이름\t자바\t오라클\t총점\t평균\n");
-			
-			for(int i=0; i<list.size(); i++) {
-				int javaScore = list.get(i).getJavaScore();
-				int oracleScore = list.get(i).getOracleScore();
-				
-				jta.append((i+1)+"\t"+list.get(i).getName()+"\t"
-						+javaScore+"\t"+oracleScore+"\t"+(javaScore+oracleScore)
-						+"\t"+((javaScore+oracleScore)/2)+"\n");
-				javaTot += javaScore;
-				oracleTot += oracleScore;
-			}
-			jta.append("\t\t\t\t총점 : "+(javaTot+oracleTot)+"\t 평균 : "+((javaTot+oracleTot)/(list.size()*2)));
-			
-			JOptionPane.showMessageDialog(null, jta);
+			viewData.append(i+1).append("\t").append(tempVO.getName())
+				.append("\t").append(javaScore).append("\t").append(oracleScore)
+				.append("\t").append(tempTot).append("\t").append((tempTot/2)+"\n");
+			scoreTot += tempTot;
+			tempTot = 0;
 		}
 		
+		viewData.append("\n\n\t\t\t\t총점 : "+scoreTot+"\t 평균 : "+(String.format("%5.2f", scoreTot/(double)(list.size()*2))));
+		
+		jta.append(viewData.toString());
+		JOptionPane.showMessageDialog(null, jta);
 	}
 	
 	public void inputMenu() {
-		try {
-			int menu = Integer.parseInt(JOptionPane.showInputDialog("메뉴입력\n1.입력 2.출력 3.종료"));
+		
+		boolean exitFlag = false;
+		do {
+			
+			try {
+				int menu = parseInt(JOptionPane.showInputDialog("메뉴입력\n1.입력 2.출력 3.종료"));
+				
+				switch(menu) {
+				case INSERT_DATA:
 
-			if (menu == 1) {
-				addData();
-			}
-			
-			if (menu == 2) {
-				viewData();
-			}
-			
-			if (menu == 3) {
-				switch (JOptionPane.showConfirmDialog(null, "정말 종료하시겠습니까?")) {
-				case JOptionPane.OK_OPTION:
-					System.exit(0);
+					if(addData()) {
+						JOptionPane.showMessageDialog(null, "추가됐습니다!");
+					} 
+					
+					break;
+				case VIEW_DATA:
+					viewData();
+					
+					break;
+				case EXIT:
+					switch (JOptionPane.showConfirmDialog(null, "정말 종료하시겠습니까?")) {
+					case JOptionPane.OK_OPTION:
+						exitFlag = true;
+						break;
+					}
+					break;
 				}
+			} catch (NumberFormatException nfe) {
+				JOptionPane.showMessageDialog(null, "메뉴는 1~3 숫자만 입력가능합니다.");
 			}
-		} catch (NumberFormatException nfe) {
-			JOptionPane.showMessageDialog(null, "메뉴는 1~3 숫자만 입력가능합니다.");
-		}
+		} while(!exitFlag);
 	}
 }
