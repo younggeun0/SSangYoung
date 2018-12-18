@@ -51,4 +51,5 @@
 - 181212 : [AWT Event Handling(2)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-22/)
 - 181213 : [메모장 구현, Dialog, Swing(1)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-23/)
 - 181214 : [Swing(2)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-24/)
-- 181217 : [Swing(3), Exception Handling](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-25/)
+- 181217 : [Swing(3), Exception Handling(1)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-25/)
+- 181218 : [Exception Handling(2)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-26/)
