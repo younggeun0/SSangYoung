@@ -16,7 +16,6 @@ public class FileHomework2 {
 	public FileHomework2() {
 		
 		getPath();
-		
 		if(checkWord("java")) {
 			deleteFiles();
 		} else {
@@ -25,7 +24,6 @@ public class FileHomework2 {
 	}
 	
 	public void getPath() {
-		
 		path = JOptionPane.showInputDialog("경로를 입력하세요\n예)c:/dev/temp");
 	}
 	
