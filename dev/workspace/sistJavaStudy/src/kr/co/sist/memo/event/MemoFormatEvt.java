@@ -8,6 +8,10 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import kr.co.sist.memo.view.MemoFormat;
 
@@ -64,7 +68,40 @@ public class MemoFormatEvt extends WindowAdapter implements ActionListener, Item
 	 */
 	public void setTaNoteFont() {
 		mf.getJm().getTaNote().setFont(mf.getLblPreview().getFont());
+		
+		try {
+			saveFontConfig(); // 설정한 글꼴상태정보를 저장
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		mf.dispose();
+	}
+	
+	/**
+	 * 설정한 폰트의 상태를 파일로 저장 - 다음번에 프로그램이 실행되면
+	 * 현재 저장된 폰트값을 적용하여 Ta를 설정하면 변경상태가 유지됨
+	 */
+	private void saveFontConfig() throws IOException {
+		
+		BufferedWriter bw = null;
+		
+		try {
+			// 미리보기 라벨에 설정된 폰트정보를 얻음
+			Font fontTemp = mf.getLblPreview().getFont();
+			StringBuilder fontData = new StringBuilder();
+			
+			fontData.append(fontTemp.getFamily()).append(",")
+			 .append(fontTemp.getStyle()).append(",")
+			 .append(fontTemp.getSize());
+			
+			bw = new BufferedWriter(new FileWriter("C:/Users/owner/youngRepositories/SSangYoung/dev/temp/fontConfig.dat"));
+			bw.write(fontData.toString());
+			bw.flush();
+			
+		} finally {
+			if (bw != null) bw.close();
+		}
 	}
 
 	@Override

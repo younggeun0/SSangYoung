@@ -1,6 +1,7 @@
 package kr.co.sist.memo.view;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Menu;
 import java.awt.MenuBar;
@@ -21,7 +22,7 @@ public class JavaMemo extends Frame {
 	private MenuItem miNew, miOpen, miSave, miNewSave, miEnd, miFormat, miHelp;
 	private TextArea taNote;
 	
-	public JavaMemo() {
+	public JavaMemo(Font fontConfig) {
 		super("메모장 - 제목없음");
 		
 		// 메뉴 생성
@@ -40,7 +41,12 @@ public class JavaMemo extends Frame {
 
 		// TextArea 생성
 		taNote = new TextArea();
-
+		
+		// 매개변수로 들어오는 fontConfig를 사용하여 TextArea의 font설정
+		if (fontConfig != null) {
+			taNote.setFont(fontConfig);
+		}
+		
 		// 배치
 		// 메뉴아이템 -> 메뉴
 		menuFile.add(miNew); menuFile.addSeparator();

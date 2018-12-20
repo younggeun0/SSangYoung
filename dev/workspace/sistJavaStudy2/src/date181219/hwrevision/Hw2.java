@@ -14,7 +14,7 @@ public class Hw2 {
 	private int javaFiles;
 	private List<Integer> listIdx;
 
-	public Hw2() {
+	public Hw2() throws NullPointerException {
 
 		getPath();
 
@@ -23,24 +23,17 @@ public class Hw2 {
 		if (file.isFile()) {
 			JOptionPane.showMessageDialog(null, "입력값은 경로가 아니라 파일입니다.");
 		} else {
-			
 			checkJava();
-
-			String msg = "java파일이 " + javaFiles + "개 존재합니다. 삭제하시겠습니까?";
-
-			int select = JOptionPane.showConfirmDialog(null, msg);
-
-			switch (select) {
-			case JOptionPane.OK_OPTION: // OK
-				for (int i = 0; i < listIdx.size(); i++) {
-					files[listIdx.get(i)].delete();
-				}
-			}
+			confirmDelete();
 		}
 	}
 
-	public void getPath() {
-		path = JOptionPane.showInputDialog("경로를 입력하세요.\n예)c:/dev");
+	public void getPath() throws NullPointerException {
+		try {
+			path = JOptionPane.showInputDialog("경로를 입력하세요.\n예)c:/dev");
+		} catch (NullPointerException npe) {
+			JOptionPane.showMessageDialog(null, "경로가 아닙니다. 다시 입력해주세요.");
+		}
 	}
 
 	public void checkJava() {
@@ -60,7 +53,24 @@ public class Hw2 {
 		}
 	}
 
+	public void confirmDelete() {
+		String msg = "java파일이 " + javaFiles + "개 존재합니다. 삭제하시겠습니까?";
+
+		int select = JOptionPane.showConfirmDialog(null, msg);
+
+		switch (select) {
+		case JOptionPane.OK_OPTION: // OK
+			for (int i = 0; i < listIdx.size(); i++) {
+				files[listIdx.get(i)].delete();
+			}
+		}
+	}
+
 	public static void main(String[] args) {
-		new Hw2();
+		try {
+			new Hw2();
+		} catch (NullPointerException npe) {
+			JOptionPane.showMessageDialog(null, "경로가 아닙니다. 다시 입력해주세요.");
+		}
 	}
 }

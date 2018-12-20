@@ -14,6 +14,7 @@ public class UseFileInputStream {
 	
 	public UseFileInputStream() {
 		File file = new File("C:/Users/owner/youngRepositories/SSangYoung/dev/temp/java_read.txt");
+		
 		if (file.exists()) {
 			
 			try {

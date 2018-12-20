@@ -82,7 +82,7 @@ public class UseTitledBorder extends JFrame implements ActionListener {
 			// 비밀번호에 값이 있다면 아이디가 admin, 비밀번호가 123과 같은지 
 			// 비교하여 같다면 자바메모장 클래스를 실행
 			if(id.equals("admin") && pw.equals("123")) {
-				new JavaMemo();
+//				new JavaMemo();
 				dispose();
 			} else {
 				jlOutput.setText("아이디나 비밀번호를 확인해주세요.");
