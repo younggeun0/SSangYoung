@@ -1,4 +1,4 @@
-@echo off
+
 path "C:\Program Files (x86)\Evernote\Evernote";
 start Evernote.exe
 

@@ -12,6 +12,7 @@ import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 import kr.co.sist.memo.view.MemoFormat;
 
@@ -84,23 +85,31 @@ public class MemoFormatEvt extends WindowAdapter implements ActionListener, Item
 	 */
 	private void saveFontConfig() throws IOException {
 		
-		BufferedWriter bw = null;
+//		BufferedWriter bw = null;
+		ObjectOutputStream oos = null;
 		
 		try {
 			// 미리보기 라벨에 설정된 폰트정보를 얻음
 			Font fontTemp = mf.getLblPreview().getFont();
-			StringBuilder fontData = new StringBuilder();
 			
-			fontData.append(fontTemp.getFamily()).append(",")
-			 .append(fontTemp.getStyle()).append(",")
-			 .append(fontTemp.getSize());
+			oos = new ObjectOutputStream(new FileOutputStream(
+					"C:/Users/owner/youngRepositories/SSangYoung/dev/temp/fontConfig.dat"));
 			
-			bw = new BufferedWriter(new FileWriter("C:/Users/owner/youngRepositories/SSangYoung/dev/temp/fontConfig.dat"));
-			bw.write(fontData.toString());
-			bw.flush();
+			oos.writeObject(fontTemp);
+			oos.flush();
+			
+//			StringBuilder fontData = new StringBuilder();
+//			fontData.append(fontTemp.getFamily()).append(",")
+//			 .append(fontTemp.getStyle()).append(",")
+//			 .append(fontTemp.getSize());
+			
+//			bw = new BufferedWriter(new FileWriter("C:/Users/owner/youngRepositories/SSangYoung/dev/temp/fontConfig.dat"));
+//			bw.write(fontData.toString());
+//			bw.flush();
 			
 		} finally {
-			if (bw != null) bw.close();
+//			if (bw != null) bw.close();
+			if (oos != null) oos.close();
 		}
 	}
 
