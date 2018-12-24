@@ -24,3 +24,6 @@ dev/workspace/sistJavaStudy/doc/
 
 # zip파일 제외
 *.zip
+
+# 팀프로젝트 생략
+dev/workspace/logAnalysisApp/
