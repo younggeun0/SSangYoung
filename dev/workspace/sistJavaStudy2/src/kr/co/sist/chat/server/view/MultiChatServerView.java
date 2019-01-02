@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
 
-import kr.co.sist.chat.server.controller.MultiChatServerEvt;
+import kr.co.sist.chat.server.evt.MultiChatServerEvt;
 
 /**
  * 채팅방 관리자 화면
@@ -42,11 +42,11 @@ public class MultiChatServerView extends JFrame {
 		MultiChatServerEvt mcse = new MultiChatServerEvt(this);
 		btnOpenServer.addActionListener(mcse);
 		btnCloseServer.addActionListener(mcse);
+		
 		addWindowListener(mcse);
 		
 		setBounds(400, 200, 400, 650);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public JList<String> getJlChatList() {
