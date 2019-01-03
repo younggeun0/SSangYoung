@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://quantum.sourceforge.net/update-site/">
+      Sourceforge provided Quantum web site.
+   </description>
+   <feature url="features/com.quantum.feature_3.3.9.jar" id="com.quantum.feature" version="3.3.9">
+      <category name="Core"/>
+   </feature>
+   <feature url="features/com.quantum.erd.feature_3.3.9.jar" id="com.quantum.erd.feature" version="3.3.9">
+      <category name="Optional Features"/>
+   </feature>
+   <feature url="features/com.quantum.dbunit.feature_3.3.9.jar" id="com.quantum.dbunit.feature" version="3.3.9">
+      <category name="Export-Import"/>
+   </feature>
+   <feature url="features/com.quantum.beanshell.feature_3.3.9.jar" id="com.quantum.beanshell.feature" version="3.3.9">
+      <category name="Optional Features"/>
+   </feature>
+   <feature url="features/com.quantum.help.feature_3.3.9.jar" id="com.quantum.help.feature" version="3.3.9">
+      <category name="Core"/>
+   </feature>
+   <feature url="features/com.quantum.flatfiles.feature_3.3.9.jar" id="com.quantum.flatfiles.feature" version="3.3.9">
+      <category name="Export-Import"/>
+   </feature>
+   <feature url="features/com.quantum.derby.feature_3.3.9.jar" id="com.quantum.derby.feature" version="3.3.9">
+      <category name="Optional Features"/>
+   </feature>
+   <category-def name="Export-Import" label="Export-Import">
+      <description>
+         Features to export database data or structure to different file formats.
+      </description>
+   </category-def>
+   <category-def name="Optional Features" label="Optional Features"/>
+   <category-def name="Core" label="Core">
+      <description>
+         Basic Navigation
+      </description>
+   </category-def>
+</site>
