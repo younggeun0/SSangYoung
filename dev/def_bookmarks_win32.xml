@@ -1,0 +1,82 @@
+<?xml version="1.0" ?>
+<SAVED_DATA>
+	<bookmarks>
+		<jdbcDriver className="org.apache.derby.jdbc.EmbeddedDriver" name="org.apache.derby.jdbc.EmbeddedDriver" type="DERBY" version="">
+			<jar fileName="C:/Users/owner/youngRepositories/SSangYoung/dev/file::/C::/Users/owner/youngRepositories/SSangYoung/dev/eclipse/plugins/com.quantum.derby_3.3.9.jar!/lib/derby.jar" />
+		</jdbcDriver>
+		<jdbcDriver className="oracle.jdbc.OracleDriver" name="Oracle JDBC driver" type="ORACLE" version="11.2.0.1.0">
+			<jar fileName="C:\Users\owner\youngRepositories\SSangYoung\dev\drivers\ojdbc6.jar" />
+		</jdbcDriver>
+		<bookmark>
+			<name>(Internal) Derby</name>
+			<username>QUANTUM</username>
+			<password />
+			<prompt>false</prompt>
+			<connect>jdbc:derby:C:/Users/owner/youngRepositories/SSangYoung/dev/file::/C::/Users/owner/youngRepositories/SSangYoung/dev/eclipse/plugins/com.quantum.derby_3.3.9.jar!/data/quantum</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>true</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+			<type>DERBY</type>
+			<substituteVariables>false</substituteVariables>
+			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
+			<driverLocation>C:/Users/owner/youngRepositories/SSangYoung/dev/file::/C::/Users/owner/youngRepositories/SSangYoung/dev/eclipse/plugins/com.quantum.derby_3.3.9.jar!/lib/derby.jar</driverLocation>
+			<Other_Schemas schemaRule="useAll" />
+			<quickList />
+			<queryList />
+		</bookmark>
+		<bookmark>
+			<name>oracle</name>
+			<username>scott</username>
+			<password>tiger</password>
+			<prompt>false</prompt>
+			<connect>jdbc:oracle:thin:@localhost:1521:orcl</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>false</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>oracle.jdbc.OracleDriver</driver>
+			<type>ORACLE</type>
+			<substituteVariables>false</substituteVariables>
+			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
+			<driverLocation>C:\Users\owner\youngRepositories\SSangYoung\dev\drivers\ojdbc6.jar</driverLocation>
+			<Other_Schemas schemaRule="useSelected">
+				<schema>SCOTT</schema>
+			</Other_Schemas>
+			<quickList />
+			<queryList>
+				<query>
+					<queryString></queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1111)</queryString>
+				</query>
+				<query>
+					<queryString>UPDATE &quot;SCOTT&quot;.&quot;CP_EMP3&quot; SET JOB = '바지' WHERE (EMPNO = 1114)</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1)</queryString>
+				</query>
+				<query>
+					<queryString>select * from cp_emp3</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;CP_EMP3&quot; (EMPNO, ENAME, DEPTNO, JOB, SAL ) VALUES  ( 1111, '김희철', 10, '아이롱', 200 )</queryString>
+				</query>
+				<query>
+					<queryString>SELECT * FROm cp_emp3
+WHERE deptno = 10</queryString>
+				</query>
+			</queryList>
+		</bookmark>
+	</bookmarks>
+</SAVED_DATA>
