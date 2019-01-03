@@ -41,6 +41,7 @@ public class UseConnection {
 			System.out.println(cnt+"건 추가 성공");
 			
 		} finally {
+			// 5. 연결 끊기
 			if (stmt != null) {
 				stmt.close();
 			}
