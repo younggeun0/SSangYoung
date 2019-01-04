@@ -76,6 +76,15 @@
 					<queryString>SELECT * FROm cp_emp3
 WHERE deptno = 10</queryString>
 				</query>
+				<query>
+					<queryString>CREATE table cp_dept AS (SELECT * FROM dept where 1=0)</queryString>
+				</query>
+				<query>
+					<queryString>ALTER TABLE cp_dept ADD CONSTRAINT pk_cp_dept PRIMARY KEY(deptno)</queryString>
+				</query>
+				<query>
+					<queryString>select deptno from cp_dept order by deptno</queryString>
+				</query>
 			</queryList>
 		</bookmark>
 	</bookmarks>
