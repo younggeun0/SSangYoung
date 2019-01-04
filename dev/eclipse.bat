@@ -1,3 +1,4 @@
+@echo off
 rem @echo off 프롬프트 내용 없앨 때 사용
 
 rem path를 사용하기위해 path가 설정된 파일을 호출
