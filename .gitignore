@@ -27,3 +27,6 @@ dev/workspace/sistJavaStudy/doc/
 
 # 팀프로젝트 생략
 dev/workspace/logAnalysisApp/
+
+# xml파일 일단 생략
+.xml
