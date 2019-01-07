@@ -85,6 +85,28 @@ WHERE deptno = 10</queryString>
 				<query>
 					<queryString>select deptno from cp_dept order by deptno</queryString>
 				</query>
+				<query>
+					<queryString>CREATE TABLE test_login ( 
+	id VARCHAR2(16) CONSTRAINT pk_test_login PRIMARY KEY,
+	pass VARCHAR2(16) NOT NULL,
+	name VARCHAR2(30))</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO test_login(id, pass, name)
+VALUES ('jung','1234','정택성')</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO test_login(id, pass, name)
+VALUES ('lee','1234','이재현')</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO test_login(id, pass, name)
+VALUES ('gong','1234','공선의')</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO test_login(id, pass, name)
+VALUES ('kim','1234','김건하')</queryString>
+				</query>
 			</queryList>
 		</bookmark>
 	</bookmarks>
