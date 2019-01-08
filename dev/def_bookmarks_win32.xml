@@ -107,6 +107,13 @@ VALUES ('gong','1234','공선의')</queryString>
 					<queryString>INSERT INTO test_login(id, pass, name)
 VALUES ('kim','1234','김건하')</queryString>
 				</query>
+				<query>
+					<queryString>SELECT utc.column_name, utc.data_type, utc.data_precision, ucc.constraint_name
+FROM user_tab_cols utc, user_cons_columns ucc
+WHERE utc.table_name='DEPT'
+ AND utc.table_name = ucc.table_name(+)
+ AND utc.column_name = ucc.column_name(+)</queryString>
+				</query>
 			</queryList>
 		</bookmark>
 	</bookmarks>
