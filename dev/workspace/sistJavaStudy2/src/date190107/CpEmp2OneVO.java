@@ -12,7 +12,6 @@ public class CpEmp2OneVO {
 	}
 	
 	public CpEmp2OneVO(int sal, String ename, Date hiredate) {
-		super();
 		this.sal = sal;
 		this.ename = ename;
 		this.hiredate = hiredate;
@@ -26,5 +25,10 @@ public class CpEmp2OneVO {
 	}
 	public Date getHiredate() {
 		return hiredate;
+	}
+
+	@Override
+	public String toString() {
+		return "CpEmp2OneVO [sal=" + sal + ", ename=" + ename + ", hiredate=" + hiredate + "]";
 	}
 }

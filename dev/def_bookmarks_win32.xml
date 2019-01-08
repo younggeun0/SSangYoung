@@ -1,9 +1,6 @@
 <?xml version="1.0" ?>
 <SAVED_DATA>
 	<bookmarks>
-		<jdbcDriver className="oracle.jdbc.OracleDriver" name="Oracle JDBC driver" type="ORACLE" version="11.2.0.1.0">
-			<jar fileName="D:\git\repositories\SSangYoung\dev\drivers\ojdbc6.jar" />
-		</jdbcDriver>
 		<jdbcDriver className="org.apache.derby.jdbc.EmbeddedDriver" name="org.apache.derby.jdbc.EmbeddedDriver" type="DERBY" version="">
 			<jar fileName="C:/Users/owner/youngRepositories/SSangYoung/dev/file::/C::/Users/owner/youngRepositories/SSangYoung/dev/eclipse/plugins/com.quantum.derby_3.3.9.jar!/lib/derby.jar" />
 		</jdbcDriver>
@@ -109,38 +106,6 @@ VALUES ('gong','1234','공선의')</queryString>
 				<query>
 					<queryString>INSERT INTO test_login(id, pass, name)
 VALUES ('kim','1234','김건하')</queryString>
-				</query>
-			</queryList>
-		</bookmark>
-		<bookmark>
-			<name>oracle_youngs_laptop</name>
-			<username>scott</username>
-			<password>tiger</password>
-			<prompt>false</prompt>
-			<connect>jdbc:oracle:thin:@localhost:1521:orcl</connect>
-			<autoCommit>true</autoCommit>
-			<autoCommitPreference>Always True</autoCommitPreference>
-			<autoCommitIgnoreView>false</autoCommitIgnoreView>
-			<quoteAll>false</quoteAll>
-			<sendQueryAsIs>false</sendQueryAsIs>
-			<stripNewline>false</stripNewline>
-			<shutdownOnDisconnect>false</shutdownOnDisconnect>
-			<defaultEncoding />
-			<driver>oracle.jdbc.OracleDriver</driver>
-			<type>ORACLE</type>
-			<substituteVariables>false</substituteVariables>
-			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
-			<driverLocation>D:\git\repositories\SSangYoung\dev\drivers\ojdbc6.jar</driverLocation>
-			<Other_Schemas schemaRule="useSelected">
-				<schema>SCOTT</schema>
-			</Other_Schemas>
-			<quickList />
-			<queryList>
-				<query>
-					<queryString>CREATE TABLE cp_dept AS (SELECT * FROM dept WHERE 1=0)</queryString>
-				</query>
-				<query>
-					<queryString>ALTER TABLE cp_dept ADD CONSTRAINT pk_cp_dept PRIMARY KEY(deptno)</queryString>
 				</query>
 			</queryList>
 		</bookmark>
