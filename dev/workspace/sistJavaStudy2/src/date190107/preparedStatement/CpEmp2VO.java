@@ -1,4 +1,4 @@
-package date190107;
+package date190107.preparedStatement;
 
 public class CpEmp2VO {
 
