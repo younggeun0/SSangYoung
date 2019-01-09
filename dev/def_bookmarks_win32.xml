@@ -55,9 +55,6 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString></queryString>
-				</query>
-				<query>
 					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1111)</queryString>
 				</query>
 				<query>
@@ -113,6 +110,22 @@ FROM user_tab_cols utc, user_cons_columns ucc
 WHERE utc.table_name='DEPT'
  AND utc.table_name = ucc.table_name(+)
  AND utc.column_name = ucc.column_name(+)</queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;TEST_DDL&quot; </queryString>
+				</query>
+				<query>
+					<queryString>SELECT tname FROM tab WHERE tname='dept'</queryString>
+				</query>
+				<query>
+					<queryString>SELECT tname FROM tab WHERE tname='DEPT'</queryString>
+				</query>
+				<query>
+					<queryString>SELECT * FROM user_procedures</queryString>
+				</query>
+				<query>
+					<queryString>SELECT * FROM user_procedures
+WHERE object_type='PROCEDURE'</queryString>
 				</query>
 			</queryList>
 		</bookmark>
