@@ -31,3 +31,4 @@ dev/workspace/logAnalysisApp/
 # xml파일 일단 생략
 .xml
 dev/def_bookmarks_win32.xml
+*.xml
