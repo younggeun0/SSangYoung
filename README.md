@@ -65,4 +65,5 @@
 - 190107 : [JDBC(3), SQL Injection, PreparedStatement](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-36/)
 - 190108 : [JDBC(4), Singleton Pattern, ResultSetMetaData, CLOB](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-37/)
 - 190109 : [JDBC(5), PreparedStatement BIND 변수, Procedure, CallableStatement](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-38/)
+- 190110 : [JDBC(6), CallableStatement를 사용한 CRUD, 오라클 외부접속, Transaction 처리](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-39/)
 
