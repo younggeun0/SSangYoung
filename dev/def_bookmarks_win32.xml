@@ -55,25 +55,6 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1111)</queryString>
-				</query>
-				<query>
-					<queryString>UPDATE &quot;SCOTT&quot;.&quot;CP_EMP3&quot; SET JOB = '바지' WHERE (EMPNO = 1114)</queryString>
-				</query>
-				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1)</queryString>
-				</query>
-				<query>
-					<queryString>select * from cp_emp3</queryString>
-				</query>
-				<query>
-					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;CP_EMP3&quot; (EMPNO, ENAME, DEPTNO, JOB, SAL ) VALUES  ( 1111, '김희철', 10, '아이롱', 200 )</queryString>
-				</query>
-				<query>
-					<queryString>SELECT * FROm cp_emp3
-WHERE deptno = 10</queryString>
-				</query>
-				<query>
 					<queryString>CREATE table cp_dept AS (SELECT * FROM dept where 1=0)</queryString>
 				</query>
 				<query>
@@ -126,6 +107,24 @@ WHERE utc.table_name='DEPT'
 				<query>
 					<queryString>SELECT * FROM user_procedures
 WHERE object_type='PROCEDURE'</queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMPEMP&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASDFG&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASDF&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABC&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABCD&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASD&quot; </queryString>
 				</query>
 			</queryList>
 		</bookmark>

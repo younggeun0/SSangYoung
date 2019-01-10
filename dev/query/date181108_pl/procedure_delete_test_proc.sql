@@ -24,7 +24,10 @@ BEGIN
  	ELSE                               
  		msg := i_empno||'번 사원은 존재하지 않습니다.';	
  	END IF;
- 	
+ 	                
+ 	EXCEPTION
+ 	WHEN OTHERS THEN
+ 		res_msg := '문제발생'||sqlerrm;
 
 END;
 /
