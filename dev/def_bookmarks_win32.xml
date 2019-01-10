@@ -55,21 +55,6 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString>CREATE table cp_dept AS (SELECT * FROM dept where 1=0)</queryString>
-				</query>
-				<query>
-					<queryString>ALTER TABLE cp_dept ADD CONSTRAINT pk_cp_dept PRIMARY KEY(deptno)</queryString>
-				</query>
-				<query>
-					<queryString>select deptno from cp_dept order by deptno</queryString>
-				</query>
-				<query>
-					<queryString>CREATE TABLE test_login ( 
-	id VARCHAR2(16) CONSTRAINT pk_test_login PRIMARY KEY,
-	pass VARCHAR2(16) NOT NULL,
-	name VARCHAR2(30))</queryString>
-				</query>
-				<query>
 					<queryString>INSERT INTO test_login(id, pass, name)
 VALUES ('jung','1234','정택성')</queryString>
 				</query>
@@ -125,6 +110,18 @@ WHERE object_type='PROCEDURE'</queryString>
 				</query>
 				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASD&quot; </queryString>
+				</query>
+				<query>
+					<queryString></queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;SDF&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMP22&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMP33&quot; </queryString>
 				</query>
 			</queryList>
 		</bookmark>
