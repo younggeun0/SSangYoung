@@ -56,18 +56,6 @@
 			<queryList>
 				<query>
 					<queryString>INSERT INTO test_login(id, pass, name)
-VALUES ('jung','1234','정택성')</queryString>
-				</query>
-				<query>
-					<queryString>INSERT INTO test_login(id, pass, name)
-VALUES ('lee','1234','이재현')</queryString>
-				</query>
-				<query>
-					<queryString>INSERT INTO test_login(id, pass, name)
-VALUES ('gong','1234','공선의')</queryString>
-				</query>
-				<query>
-					<queryString>INSERT INTO test_login(id, pass, name)
 VALUES ('kim','1234','김건하')</queryString>
 				</query>
 				<query>
@@ -103,16 +91,10 @@ WHERE object_type='PROCEDURE'</queryString>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASDF&quot; </queryString>
 				</query>
 				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABC&quot; </queryString>
-				</query>
-				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABCD&quot; </queryString>
 				</query>
 				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASD&quot; </queryString>
-				</query>
-				<query>
-					<queryString></queryString>
 				</query>
 				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;SDF&quot; </queryString>
@@ -122,6 +104,21 @@ WHERE object_type='PROCEDURE'</queryString>
 				</query>
 				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMP33&quot; </queryString>
+				</query>
+				<query>
+					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABC&quot; </queryString>
+				</query>
+				<query>
+					<queryString></queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (NAME = 'asdfa')</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (NAME = '뉘신지..')</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (IMG = 'img.jpg')</queryString>
 				</query>
 			</queryList>
 		</bookmark>
