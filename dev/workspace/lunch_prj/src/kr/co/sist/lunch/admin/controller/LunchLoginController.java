@@ -93,6 +93,8 @@ public class LunchLoginController extends WindowAdapter implements ActionListene
 				return;
 			} else {
 				new LunchMainView(adminName);
+				// 로그인이 성공했다면 id를 모든 객체에서 사용할 수 있도록 static변수에 설정
+				LunchMainView.adminId = id;
 				llv.dispose();
 			}
 		}

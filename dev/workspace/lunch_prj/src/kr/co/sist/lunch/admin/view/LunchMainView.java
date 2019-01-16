@@ -27,6 +27,8 @@ public class LunchMainView extends JFrame {
 	private DefaultComboBoxModel<Integer> cbmYear, cbmMonth, cbmDay;
 	private JTable jtLunch, jtOrder; // 메뉴, 주문
 	private Calendar cal;
+	
+	public static String adminId;
 
 	public LunchMainView(String adminName) {
 		super("도시락 관리 [로그인 계정 : "+adminName+"]");
@@ -36,8 +38,32 @@ public class LunchMainView extends JFrame {
 		jtb = new JTabbedPane();
 		// 도시락 
 		String[] lunchColumns = { "번호", "도시락 코드", "이미지", "도시락명", "가격" };
-		dtmLunch = new DefaultTableModel(lunchColumns, 4);
-		jtLunch = new JTable(dtmLunch);
+		dtmLunch = new DefaultTableModel(lunchColumns, 4) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		jtLunch = new JTable(dtmLunch) {
+			@Override
+			public Class<?> getColumnClass(int column) {
+				return getValueAt(0, column).getClass();
+			}
+		};
+		
+		// 컬럼 위치 못 바꾸도록 막음
+		jtLunch.getTableHeader().setReorderingAllowed(false);
+		
+		// 도시락 목록 로우크기 설정
+		jtLunch.setRowHeight(110);
+		
+		// 도시락 목록 컬럼 크기 설정, 전체 사이즈 width 800을 나눈다.
+		// 이미지는 w(122) * h(110)
+		jtLunch.getColumnModel().getColumn(0).setPreferredWidth(80);
+		jtLunch.getColumnModel().getColumn(1).setPreferredWidth(120);
+		jtLunch.getColumnModel().getColumn(2).setPreferredWidth(125);
+		jtLunch.getColumnModel().getColumn(3).setPreferredWidth(265);
+		jtLunch.getColumnModel().getColumn(4).setPreferredWidth(220);
 		
 		// 주문
 		String[] orderColumns = { "번호", "주문번호","도시락 코드",

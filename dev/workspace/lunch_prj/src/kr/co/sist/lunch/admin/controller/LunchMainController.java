@@ -6,25 +6,72 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.List;
 
-import javax.swing.JComboBox;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import kr.co.sist.lunch.admin.model.LunchAdminDAO;
+import kr.co.sist.lunch.admin.view.LunchAddView;
+import kr.co.sist.lunch.admin.view.LunchDetailView;
 import kr.co.sist.lunch.admin.view.LunchMainView;
+import kr.co.sist.lunch.admin.vo.LunchDetailVO;
+import kr.co.sist.lunch.admin.vo.LunchVO;
 
 public class LunchMainController extends WindowAdapter implements ActionListener,MouseListener {
 
 	private LunchMainView lmv;
 	private LunchAdminDAO la_dao;
 	
+	private static final int DOUBLE_CLICK = 2;
+	
 	public LunchMainController(LunchMainView lmv) {
 		this.lmv =lmv;
 		la_dao = LunchAdminDAO.getInstance();
+		// 도시락 목록을 초기화
+		setLunch();
 	}
 	
-	private void setLunch() {
-
+	/**
+	 * JTable에 DB에서 조회한 도시락 정보를 보여준다.
+	 */
+	public void setLunch() {
+		DefaultTableModel dtmLunch = lmv.getDtmLunch();
+		
+		dtmLunch.setRowCount(0);
+		
+		try {
+			// DB에서 도시락 정보를 조회
+			List<LunchVO> listLunch = la_dao.selectLunch();
+			
+			LunchVO lv = null;
+			String imgPath = "C:/Users/owner/youngRepositories/SSangYoung/dev/workspace/lunch_prj/src/kr/co/sist/lunch/admin/img/s_";
+			Object[] rowData = null;
+			// JTable에 조회한 정보를 출력
+			for(int i=0; i<listLunch.size(); i++) {
+				lv = listLunch.get(i);
+				
+				// dtmLunch에 데이터를 추가하기위한 일차원배열(Vector)을 생성
+				rowData = new Object[5];
+				rowData[0] = new Integer(i+1);
+				rowData[1] = lv.getLunchCode();
+				rowData[2] = new ImageIcon(imgPath+lv.getImg());
+				rowData[3] = lv.getLunchName();
+			    rowData[4] = lv.getPrice();
+				dtmLunch.addRow(rowData);		
+			}
+			
+			if (listLunch.isEmpty()) { // 입력된 도시락이 없을 때 
+				JOptionPane.showMessageDialog(lmv, "입력된 제품이 없습니다.");
+			}
+		} catch (SQLException se) {
+			JOptionPane.showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
+			se.printStackTrace();
+		}
 	}
 	
 	private void searchOrder() {
@@ -65,7 +112,7 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 		}
 		
 		if (ae.getSource() == lmv.getJbtAddLunch()) {
-			
+			new LunchAddView(lmv, this);
 		}
 		
 		if (ae.getSource() == lmv.getJbtCalcOrder()) {
@@ -75,17 +122,34 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 	
 	@Override
 	public void mouseClicked(MouseEvent me) {
-		if (me.getSource() == lmv.getJtb()) {
+		
+		// 일정 시간안에 두번 클릭하면 더블클릭
+		switch (me.getClickCount()) {
+		case DOUBLE_CLICK : 
+			if (me.getSource() == lmv.getJtb()) { 
+				
+			}
 			
+			if (me.getSource() == lmv.getJtLunch()) { 
+				// 도시락 테이블에서 더블클릭이 되면
+				// 도시락 코드로 검색을하여 상세정보를 전달한다.
+				JTable jt = lmv.getJtLunch();
+				String lunchCode = (String)jt.getValueAt(jt.getSelectedRow(), 1);
+				try {
+					LunchDetailVO ldvo = la_dao.selectDetailLunch(lunchCode);
+					new LunchDetailView(lmv, ldvo, this);
+				} catch (SQLException e) {
+					JOptionPane.showMessageDialog(lmv, "DB에서 문제가 발생했습니다.");
+					e.printStackTrace();
+				}
+				
+			}
+			
+			if (me.getSource() == lmv.getJtOrder()) {
+				
+			}
 		}
 		
-		if (me.getSource() == lmv.getJtLunch()) {
-			
-		}
-		
-		if (me.getSource() == lmv.getJtOrder()) {
-			
-		}
 	}
 	
 	@Override

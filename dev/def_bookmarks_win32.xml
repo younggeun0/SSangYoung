@@ -55,20 +55,6 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString>INSERT INTO test_login(id, pass, name)
-VALUES ('kim','1234','김건하')</queryString>
-				</query>
-				<query>
-					<queryString>SELECT utc.column_name, utc.data_type, utc.data_precision, ucc.constraint_name
-FROM user_tab_cols utc, user_cons_columns ucc
-WHERE utc.table_name='DEPT'
- AND utc.table_name = ucc.table_name(+)
- AND utc.column_name = ucc.column_name(+)</queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;TEST_DDL&quot; </queryString>
-				</query>
-				<query>
 					<queryString>SELECT tname FROM tab WHERE tname='dept'</queryString>
 				</query>
 				<query>
@@ -119,6 +105,15 @@ WHERE object_type='PROCEDURE'</queryString>
 				</query>
 				<query>
 					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (IMG = 'img.jpg')</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000021')</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000023')</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000022')</queryString>
 				</query>
 			</queryList>
 		</bookmark>

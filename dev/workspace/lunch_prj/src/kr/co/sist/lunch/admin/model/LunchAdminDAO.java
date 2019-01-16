@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.co.sist.lunch.admin.view.LunchMainView;
 import kr.co.sist.lunch.admin.vo.AdminLoginVO;
+import kr.co.sist.lunch.admin.vo.LunchAddVO;
+import kr.co.sist.lunch.admin.vo.LunchDetailVO;
 import kr.co.sist.lunch.admin.vo.LunchVO;
 
 public class LunchAdminDAO {
@@ -42,6 +45,99 @@ public class LunchAdminDAO {
 		return con;
 	}
 	
+	public boolean deleteLunch(String lunchCode) throws SQLException {
+		boolean flag = false;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			String deleteLunch = "DELETE FROM LUNCH WHERE LUNCH_CODE=?";
+			pstmt = con.prepareStatement(deleteLunch);
+			pstmt.setString(1, lunchCode);
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if (cnt == 1) {
+				flag = true;
+			}
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
+		return flag;
+	}
+	
+	/**
+	 * 도시락 정보를 추가하는 일
+	 * @param lav
+	 * @throws SQLException
+	 */
+	public void insertLunch(LunchAddVO lav) throws SQLException {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = getConnection();
+			String insertLunch = "INSERT INTO LUNCH(LUNCH_CODE, LUNCH_NAME, IMG, SPEC, PRICE, ID) VALUES(LUNCH_CODE,?,?,?,?,?)";
+			pstmt = con.prepareStatement(insertLunch);
+			pstmt.setString(1, lav.getLunchName());
+			pstmt.setString(2, lav.getImg());
+			pstmt.setString(3, lav.getSpec());
+			pstmt.setInt(4, lav.getPrice());
+			pstmt.setString(5, LunchMainView.adminId);
+			
+			pstmt.executeUpdate();
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+	}
+	
+	/**
+	 * 입력되는 코드에 의한 도시락 상세정보를 조회
+	 * @param lunchCode
+	 * @return
+	 * @throws SQLException
+	 */
+	public LunchDetailVO selectDetailLunch(String lunchCode) throws SQLException {
+		LunchDetailVO ldvo = null;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			String selectDetailVO = "SELECT IMG, LUNCH_NAME, TO_CHAR(INPUT_DATE, 'YYYY-MM-DD') INPUT_DATE, SPEC, PRICE FROM LUNCH WHERE LUNCH_CODE=?";
+			pstmt = con.prepareStatement(selectDetailVO);
+			pstmt.setString(1, lunchCode);
+			
+			rs = pstmt.executeQuery();
+			// 입력된 코드로 조회된 레코드가 존재할 때 VO를 생성하고 값 추가
+			
+			if (rs.next()) {
+				ldvo = new LunchDetailVO(lunchCode, 
+					rs.getString("LUNCH_NAME"), rs.getString("INPUT_DATE"),
+					rs.getString("SPEC"),rs.getInt("PRICE"), rs.getString("IMG"));
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
+		return ldvo;
+	}
+	
 	/**
 	 * 입력된 도시락 코드, 이미지, 도시락명, 단가 조회
 	 * @return
@@ -59,7 +155,7 @@ public class LunchAdminDAO {
 			con = getConnection();
 			
 			// 3.
-			String selectLunch = "SELECT LUNCH_CODE, LUNCH_NAME, IMG, PRICE FROM LUNCH";
+			String selectLunch = "SELECT LUNCH_CODE, LUNCH_NAME, IMG, PRICE FROM LUNCH ORDER BY LUNCH_CODE DESC";
 			pstmt = con.prepareStatement(selectLunch);
 			// 4,5
 			rs = pstmt.executeQuery();
@@ -81,9 +177,9 @@ public class LunchAdminDAO {
 		return list;
 	}
 	
-	/*public static void main(String[] args) {
+	/*public static void main(String[] args) { // 단위테스트용
 		try {
-			System.out.println(new LunchAdminDAO().getInstance().selectLunch());
+			System.out.println(new LunchAdminDAO().getInstance().selectDetailLunch("L_00000001"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
