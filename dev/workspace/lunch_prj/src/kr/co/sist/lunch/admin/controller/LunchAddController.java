@@ -100,7 +100,13 @@ public class LunchAddController extends WindowAdapter implements ActionListener 
 			// 리스트 갱신
 			lmc.setLunch();
 			JOptionPane.showMessageDialog(lav, "도시락이 추가되었습니다.");
-			lav.dispose();
+			// 다음 도시락의 입력을 편하게 하기위해 초기화
+			lav.getJtfLunchName().setText("");
+			lav.getJtfLunchPrice().setText("");
+			lav.getJtaLunchSpec().setText("");
+			lav.getJlLunchImg().setIcon(new ImageIcon("C:/Users/owner/youngRepositories/SSangYoung/dev/workspace/lunch_prj/src/kr/co/sist/lunch/admin/img/no_img.jpg"));
+			lav.getJtfLunchName().requestFocus();
+			
 		} catch (SQLException se) {
 			JOptionPane.showMessageDialog(lav, "DB에서 문제 발생");
 			se.printStackTrace();

@@ -10,9 +10,12 @@ import java.util.List;
 
 import kr.co.sist.lunch.admin.view.LunchMainView;
 import kr.co.sist.lunch.admin.vo.AdminLoginVO;
+import kr.co.sist.lunch.admin.vo.CalcVO;
 import kr.co.sist.lunch.admin.vo.LunchAddVO;
 import kr.co.sist.lunch.admin.vo.LunchDetailVO;
+import kr.co.sist.lunch.admin.vo.LunchUpdateVO;
 import kr.co.sist.lunch.admin.vo.LunchVO;
+import kr.co.sist.lunch.admin.vo.OrderVO;
 
 public class LunchAdminDAO {
 	
@@ -69,6 +72,147 @@ public class LunchAdminDAO {
 		}
 		
 		return flag;
+	}
+	
+	/**
+	 * 도시락 코드, 도시락명, 이미지, 가격, 특장점을 입력받아 
+	 * 도시락 코드에 해당하는 도시락을 변경.
+	 * 이미지가 ""라면 이미지는 변경하지 않는다.
+	 * @param luvo
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean updateLunch(LunchUpdateVO luvo) throws SQLException {
+		boolean flag = false;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			
+			StringBuilder updateLunch = new StringBuilder();
+			
+			updateLunch
+			.append("UPDATE LUNCH ")
+			.append("SET LUNCH_NAME=?, PRICE=?, SPEC=? ");
+			if (!luvo.getImg().equals("")) {
+				updateLunch.append(", IMG=? ");
+			}
+			updateLunch.append("WHERE LUNCH_CODE=?");
+			
+			pstmt = con.prepareStatement(updateLunch.toString());
+			pstmt.setString(1, luvo.getLunchName());
+			pstmt.setInt(2, luvo.getPrice());
+			pstmt.setString(3, luvo.getSpec());
+
+			// 인덱스를 이용하여 줄인 코드
+			int index = 4;
+			if (!luvo.getImg().equals("")) {
+				pstmt.setString(index++, luvo.getImg());
+			} 
+			pstmt.setString(index, luvo.getLunchCode());
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if(cnt == 1) {
+				flag = true;
+			}
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		return flag;
+	}
+	
+	public List<CalcVO> selectCalc(String date) throws SQLException {
+		List<CalcVO> list = new ArrayList<CalcVO>();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			
+			StringBuilder selectCalc = new StringBuilder();
+
+			selectCalc
+			.append("	SELECT l.lunch_name, l.lunch_code, sum(o.quan) total, sum(o.quan)*l.price price	")
+			.append("	FROM lunch l, ordering o	")
+			.append("	WHERE o.lunch_code = l.lunch_code	")
+			.append("	AND TO_CHAR(o.order_date, 'yyyy-mm-dd') = TO_CHAR(TO_DATE(?, 'yyyy-mm-dd'), 'yyyy-mm-dd')	")
+			.append("	GROUP BY l.lunch_code, l.lunch_name, l.price	")
+			.append("	ORDER BY l.lunch_code	");
+			
+			pstmt = con.prepareStatement(selectCalc.toString());
+			pstmt.setString(1, date);
+			
+			rs = pstmt.executeQuery();
+			
+			CalcVO cvo = null;
+			while(rs.next()) {
+				cvo = new CalcVO(rs.getString("lunch_code"), rs.getString("lunch_name"),
+						rs.getInt("price"), rs.getInt("total"));
+				list.add(cvo);
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); } 
+		}
+		
+		return list;
+	}
+	
+	/**
+	 * 오늘의 13시 이전 주문 현황
+	 * @return
+	 * @throws SQLException 
+	 */
+	public List<OrderVO> selectOrderList() throws SQLException {
+		List<OrderVO> list = new ArrayList<OrderVO>();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			con = getConnection();
+			
+			StringBuilder selectOrder = new StringBuilder();
+			
+			selectOrder
+			.append("	SELECT o.order_num, l.lunch_code, l.lunch_name, o.order_name, o.quan,	")
+			.append("	o.quan*l.price price, TO_CHAR(o.order_date, 'yyyy-mm-dd hh:mi:ss') order_date, o.phone, o.ip_address, o.status	")
+			.append("	FROM lunch l, ordering o	")
+			.append("	WHERE l.lunch_code = o.lunch_code	")
+//			.append("	 AND TO_CHAR(order_date, 'yyyy-mm-dd')=TO_CHAR(SYSDATE, 'yyyy-mm-dd')	")
+			.append("	 AND TO_CHAR(order_date, 'yyyy-mm-dd')='2019-01-15'	")
+			.append("	 AND TO_CHAR(order_date, 'hh24') <= 13	")
+			.append("	ORDER BY o.order_num	");
+			
+			pstmt = con.prepareStatement(selectOrder.toString());
+			rs = pstmt.executeQuery();
+			
+			OrderVO ovo = null;
+			while(rs.next()) {
+				ovo = new OrderVO(rs.getString("order_num"), rs.getString("lunch_code"),
+						rs.getString("lunch_name"), rs.getString("order_name"), rs.getString("order_date"),
+						rs.getString("phone"), rs.getString("ip_address"), rs.getString("status"),
+						rs.getInt("quan"), rs.getInt("price"));
+				list.add(ovo);
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
+		return list;
 	}
 	
 	/**
@@ -177,13 +321,13 @@ public class LunchAdminDAO {
 		return list;
 	}
 	
-	/*public static void main(String[] args) { // 단위테스트용
+	public static void main(String[] args) { // 단위테스트용
 		try {
-			System.out.println(new LunchAdminDAO().getInstance().selectDetailLunch("L_00000001"));
+			System.out.println(new LunchAdminDAO().getInstance().selectOrderList());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
 	/**
 	 * ID와 Password를 입력받아 lunch_admin에서 이름을 조회하는 일
