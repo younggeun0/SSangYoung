@@ -1,8 +1,8 @@
 package kr.co.sist.lunch.admin.controller;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowAdapter;
@@ -13,10 +13,11 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import static javax.swing.JOptionPane.*; // static method
 
 import kr.co.sist.lunch.admin.model.LunchAdminDAO;
 import kr.co.sist.lunch.admin.view.LunchAddView;
@@ -35,6 +36,7 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 	private static final int DOUBLE_CLICK = 2;
 	
 	private int selectedRow;
+	private String selectedOrderNum;
 	
 	public LunchMainController(LunchMainView lmv) {
 		this.lmv =lmv;
@@ -74,10 +76,10 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 			}
 			
 			if (listLunch.isEmpty()) { // 입력된 도시락이 없을 때 
-				JOptionPane.showMessageDialog(lmv, "입력된 제품이 없습니다.");
+				showMessageDialog(lmv, "입력된 제품이 없습니다.");
 			}
 		} catch (SQLException se) {
-			JOptionPane.showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
+			showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
 			se.printStackTrace();
 		}
 	}
@@ -114,7 +116,7 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 			}
 			
 		} catch (SQLException se) {
-			JOptionPane.showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
+			showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
 			se.printStackTrace();
 		}
 	}
@@ -159,11 +161,11 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 			}
 			
 			if (list.isEmpty()) {
-				JOptionPane.showMessageDialog(lmv, 
+				showMessageDialog(lmv, 
 						searchDate.toString()+"일 에는 판매된 도시락이 없습니다.");
 			}
 		} catch (SQLException se) {
-			JOptionPane.showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
+			showMessageDialog(lmv, "DB에서 데이터를 받아오는 중 문제발생...");
 			se.printStackTrace();
 		}
 	}
@@ -191,6 +193,10 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 //		lmv.getJcbDay().setSelectedItem(new Integer(currDay)); // 오늘을 선택
 	}
 	
+	private void msgCenter(Component parentComponent, String message ) {
+		showMessageDialog(parentComponent, message);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent ae) {
 		if (ae.getSource() == lmv.getJcbMonth()) { // 월별 마지막 일자 변경
@@ -206,19 +212,62 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 		}
 		
 		if (ae.getSource() == lmv.getJmOrderRemove()) {
-			JOptionPane.showConfirmDialog(lmv, "주문정보를 삭제하시겠습니까?");
-		}
+			JTable jt = lmv.getJtOrder();
+			// 제작 상태가 N인 상태에서만 동작
+			if (jt.getValueAt(selectedRow, 10).toString().equals("N")) {
+				switch(showConfirmDialog(lmv, selectedOrderNum+" 주문정보를 삭제하시겠습니까?")) {
+				case OK_OPTION :
+					try {
+						if (la_dao.deleteOrder(selectedOrderNum)) {
+							msgCenter(lmv, selectedOrderNum+" 주문이 삭제되었습니다.");
+							jt.remove(selectedRow);
+							lmv.getJpOrderMenu().setVisible(false);
+							searchOrder();
+						} else {
+							msgCenter(lmv, selectedOrderNum+" 주문이 삭제되지 않았습니다.");
+							lmv.getJpOrderMenu().setVisible(false);
+						} // end else
+					} catch (SQLException se) {
+						msgCenter(lmv, "DB에서 문제 발생");
+						se.printStackTrace();
+					} // end catch
+					break;
+				case NO_OPTION :
+				case CANCEL_OPTION :
+					lmv.getJpOrderMenu().setVisible(false);
+				} // end switch
+			} else {
+				showMessageDialog(lmv, "제작이 완료된 주문내역은 삭제할 수 없습니다.");
+				lmv.getJpOrderMenu().setVisible(false);
+			} // end else
+		} // end if
 		
 		if (ae.getSource() == lmv.getJmOrderStatus()) {
-			switch(JOptionPane.showConfirmDialog(lmv, "주문을 완료처리 하시겠습니까?")) {
-			case JOptionPane.OK_OPTION :
-				JTable jt = lmv.getJtOrder();
-				jt.setValueAt("Y", selectedRow, 10);
+			JTable jt = lmv.getJtOrder();
+			// 제작 상태가 N인 상태에서만 동작
+			if (jt.getValueAt(selectedRow, 10).toString().equals("N")) {
+				switch(showConfirmDialog(lmv, "주문을 완료처리 하시겠습니까?")) {
+				case OK_OPTION :
+					// DB Table의 해당 레코드를 변경
+					try {
+						if(la_dao.updateStatus(selectedOrderNum)) { // 상태변환 성공
+							jt.setValueAt("Y", selectedRow, 10);
+							lmv.getJpOrderMenu().setVisible(false);
+						} else { // 상태변환 실패
+							showMessageDialog(lmv, "도시락 제작상태 변환 실패");
+						}
+					} catch (SQLException se) {
+						showMessageDialog(lmv, "DB에서 문제 발생");
+						se.printStackTrace();
+					}
+					break;
+				case NO_OPTION :
+				case CANCEL_OPTION :
+					lmv.getJpOrderMenu().setVisible(false);
+				}
+			} else {
+				showMessageDialog(lmv, "이미 제작이 완료된 도시락입니다.");
 				lmv.getJpOrderMenu().setVisible(false);
-				///////////////////////////////////////////////////////////////////////////////////////////////
-				///// 2019-01-17 작업 끝, 변경 내용 DB 처리부터 시작
-				///////////////////////////////////////////////////////////////////////////////////////////////
-				break;
 			}
 		}
 	}
@@ -229,7 +278,7 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 		if (me.getSource() == lmv.getJtb()) { // 탭에서 클릭이 발생했을 때만
 			if (lmv.getJtb().getSelectedIndex() == 1) { // 처음 탭에서 이벤트 발생 
 				// 현재까지의 주문사항을 조회
-				System.out.println("------");
+				System.out.println("---");
 				searchOrder();
 			}
 		}
@@ -246,6 +295,7 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 			int r = jt.rowAtPoint(me.getPoint());
 	        if (r >= 0 && r < jt.getRowCount()) {
 	        	jt.setRowSelectionInterval(r, r); // 시작행과 끝행 사이에 행을 선택
+	        	selectedOrderNum = (String) jt.getValueAt(jt.getSelectedRow(), 1);
 	        } else {
 	        	jt.clearSelection();
 	        }
@@ -273,7 +323,7 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 					LunchDetailVO ldvo = la_dao.selectDetailLunch(lunchCode);
 					new LunchDetailView(lmv, ldvo, this);
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(lmv, "DB에서 문제가 발생했습니다.");
+					showMessageDialog(lmv, "DB에서 문제가 발생했습니다.");
 					e.printStackTrace();
 				}
 			}

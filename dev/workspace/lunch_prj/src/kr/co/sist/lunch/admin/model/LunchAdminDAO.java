@@ -75,6 +75,72 @@ public class LunchAdminDAO {
 	}
 	
 	/**
+	 * 도시락 제작 완료 시점에 호출되어 해당 주문 도시락의 완성 상태를 변경하는 일.
+	 * @param orderNum
+	 * @return
+	 * @throws SQLException 
+	 */
+	public boolean updateStatus(String orderNum) throws SQLException {
+		boolean flag = false;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			
+			String updateStatus = "UPDATE ORDERING SET STATUS='Y' WHERE ORDER_NUM=?";
+			pstmt = con.prepareStatement(updateStatus);
+			pstmt.setString(1, orderNum);
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if (cnt == 1) {
+				flag = true;
+			}
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); } 
+		}
+		
+		return flag;
+	}
+	
+	/**
+	 * 주문된 도시락을 삭제하는 일
+	 * @param orderNum
+	 * @return
+	 * @throws SQLException 
+	 */
+	public boolean deleteOrder(String orderNum) throws SQLException {
+		boolean flag = false;
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = getConnection();
+			String deleteOrder = "DELETE FROM ORDERING WHERE ORDER_NUM=?";
+			pstmt = con.prepareStatement(deleteOrder);
+			pstmt.setString(1, orderNum);
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if (cnt == 1) {
+				flag = true;
+			}
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); } 
+		}
+		
+		return flag;
+	}
+	
+	/**
 	 * 도시락 코드, 도시락명, 이미지, 가격, 특장점을 입력받아 
 	 * 도시락 코드에 해당하는 도시락을 변경.
 	 * 이미지가 ""라면 이미지는 변경하지 않는다.
@@ -189,9 +255,8 @@ public class LunchAdminDAO {
 			.append("	o.quan*l.price price, TO_CHAR(o.order_date, 'yyyy-mm-dd hh:mi:ss') order_date, o.phone, o.ip_address, o.status	")
 			.append("	FROM lunch l, ordering o	")
 			.append("	WHERE l.lunch_code = o.lunch_code	")
-//			.append("	 AND TO_CHAR(order_date, 'yyyy-mm-dd')=TO_CHAR(SYSDATE, 'yyyy-mm-dd')	")
-			.append("	 AND TO_CHAR(order_date, 'yyyy-mm-dd')='2019-01-15'	")
-			.append("	 AND TO_CHAR(order_date, 'hh24') <= 13	")
+			.append("	 AND TO_CHAR(order_date, 'yyyy-mm-dd')=TO_CHAR(SYSDATE, 'yyyy-mm-dd')	")
+//			.append("	 AND TO_CHAR(order_date, 'hh24') <= 13	")
 			.append("	ORDER BY o.order_num	");
 			
 			pstmt = con.prepareStatement(selectOrder.toString());
