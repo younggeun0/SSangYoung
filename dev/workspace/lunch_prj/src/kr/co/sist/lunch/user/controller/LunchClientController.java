@@ -178,15 +178,6 @@ public class LunchClientController extends WindowAdapter implements ActionListen
 		return fileList;
 	}
 	
-	/*public LunchClientController() {
-		
-	}
-	
-	public static void main(String[] args) {
-		new LunchClientController().lunchImageList();
-	}
-	*/
-	
 	/**
 	 * 주문자명과 전화번호를 가지고 도시락을 조회
 	 */

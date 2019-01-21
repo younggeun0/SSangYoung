@@ -25,7 +25,6 @@ public class LunchClientDAO {
 	private static LunchClientDAO lc_dao;
 	
 	private LunchClientDAO() {
-		
 		try {
 			// 1.
 			Class.forName("oracle.jdbc.OracleDriver");
