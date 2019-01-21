@@ -18,4 +18,9 @@ public class OrderInfoVO {
 	public String getOrderTel() {
 		return orderTel;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderInfoVO [orderName=" + orderName + ", orderTel=" + orderTel + "]";
+	}
 }

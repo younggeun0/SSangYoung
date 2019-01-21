@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -28,7 +29,8 @@ import kr.co.sist.lunch.admin.vo.LunchDetailVO;
 import kr.co.sist.lunch.admin.vo.LunchVO;
 import kr.co.sist.lunch.admin.vo.OrderVO;
 
-public class LunchMainController extends WindowAdapter implements ActionListener,MouseListener {
+public class LunchMainController extends WindowAdapter 
+		implements ActionListener,MouseListener, Runnable {
 
 	private LunchMainView lmv;
 	private LunchAdminDAO la_dao;
@@ -38,12 +40,27 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 	private int selectedRow;
 	private String selectedOrderNum;
 	
+	private Thread threadOrdering;
+	
 	public LunchMainController(LunchMainView lmv) {
 		this.lmv =lmv;
 		la_dao = LunchAdminDAO.getInstance();
 		// 도시락 목록을 초기화
 		setLunch();
-		
+	}
+	
+	@Override
+	public void run() {
+		// 30초마다 한번씩 조회를 수행
+		try {
+			while (true) {
+				searchOrder();
+				Thread.sleep(1000 * 30);
+			}
+		} catch (InterruptedException e) {
+			JOptionPane.showMessageDialog(lmv, "주문조회 중 문제가 발생");
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -276,10 +293,14 @@ public class LunchMainController extends WindowAdapter implements ActionListener
 	@Override
 	public void mouseClicked(MouseEvent me) {
 		if (me.getSource() == lmv.getJtb()) { // 탭에서 클릭이 발생했을 때만
-			if (lmv.getJtb().getSelectedIndex() == 1) { // 처음 탭에서 이벤트 발생 
+			if (lmv.getJtb().getSelectedIndex() == 1) { // 두번째 탭(주문)에서 이벤트 발생 
+				// 실시간으로 DB를 조회하여 주문현황을 갱신
+				if (threadOrdering == null) {
+					threadOrdering = new Thread(this);
+					threadOrdering.start();
+				}
 				// 현재까지의 주문사항을 조회
-				System.out.println("---");
-				searchOrder();
+//				searchOrder();
 			}
 		}
 		

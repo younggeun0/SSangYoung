@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import kr.co.sist.lunch.admin.model.LunchAdminDAO;
+import kr.co.sist.lunch.admin.run.LunchAdminMain;
 import kr.co.sist.lunch.admin.view.LunchAddView;
 import kr.co.sist.lunch.admin.vo.LunchAddVO;
 
@@ -97,6 +98,10 @@ public class LunchAddController extends WindowAdapter implements ActionListener 
 			LunchAdminDAO.getInstance().insertLunch(lavo); // DB에 추가
 			// 이미지를 사용하는 폴더로 복사
 			uploadImg(file);
+			
+			// 파일 리스트에 새로운 파일명을 추가
+			LunchAdminMain.lunchImageList.add(file.getName());
+			
 			// 리스트 갱신
 			lmc.setLunch();
 			JOptionPane.showMessageDialog(lav, "도시락이 추가되었습니다.");

@@ -1,5 +1,6 @@
 package kr.co.sist.lunch.user.model;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import kr.co.sist.lunch.user.vo.LunchListVO;
 import kr.co.sist.lunch.user.vo.OrderAddVO;
 import kr.co.sist.lunch.user.vo.OrderInfoVO;
 import kr.co.sist.lunch.user.vo.OrderListVO;
+import oracle.jdbc.OracleTypes;
 
 /**
  * 도시락 주문자에 대한 DB처리 
@@ -162,28 +164,50 @@ public class LunchClientDAO {
 		return flag;
 	}
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		LunchClientDAO lc_dao = LunchClientDAO.getInstance();
 		try {
-			System.out.println(lc_dao.insertOrder(new OrderAddVO("영근쓰", "010-2222-3333", "211.63.89.144", "L_00000002", 3)));
+			System.out.println(lc_dao
+					.selectOrder(new OrderInfoVO("이재현", "010-2314-8781")));
 		} catch (SQLException se) {
 			se.printStackTrace();
 		}
-	}*/
+	}
 	
 	
 	public List<OrderListVO> selectOrder(OrderInfoVO oivo) throws SQLException {
 		List<OrderListVO> list = new ArrayList<OrderListVO>();
 		
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
 		
 		try {
 			
+			con = getConn();
+			cstmt = con.prepareCall(" { call lunch_order_select(?,?,?) }");
+			// in parameter : 외부 값을 프로시저 안으로 넣을 때
+			cstmt.setString(1, oivo.getOrderName());
+			cstmt.setString(2, oivo.getOrderTel());
+			// out parameter : 프로시저 내부 값을 외부에서 받을 때 
+			cstmt.registerOutParameter(3, OracleTypes.CURSOR);
+			
+			// 쿼리 실행 (프로시저 실행)
+			cstmt.execute();
+
+			// out parameter에 저장된 값을 자바의 변수(rs)로 저장
+			rs = (ResultSet)cstmt.getObject(3);
+			
+			OrderListVO olvo = null;
+			while(rs.next()) {
+				olvo = new OrderListVO(rs.getString("lunch_name"),
+						rs.getString("order_date"), rs.getInt("quan"));
+				list.add(olvo);
+			}
+			
 		} finally {
 			if (rs != null) { rs.close(); }
-			if (pstmt != null) { pstmt.close(); }
+			if (cstmt != null) { cstmt.close(); }
 			if (con != null) { con.close(); }
 		}
 		return list;

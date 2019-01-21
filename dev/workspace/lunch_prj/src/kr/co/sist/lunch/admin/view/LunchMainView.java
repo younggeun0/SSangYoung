@@ -42,7 +42,7 @@ public class LunchMainView extends JFrame {
 		jtb = new JTabbedPane();
 		// 도시락 
 		String[] lunchColumns = { "번호", "도시락 코드", "이미지", "도시락명", "가격" };
-		dtmLunch = new DefaultTableModel(lunchColumns, 4) {
+		dtmLunch = new DefaultTableModel(lunchColumns, 0) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;

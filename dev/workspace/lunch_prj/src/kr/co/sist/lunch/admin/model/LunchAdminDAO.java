@@ -208,6 +208,7 @@ public class LunchAdminDAO {
 			.append("	FROM lunch l, ordering o	")
 			.append("	WHERE o.lunch_code = l.lunch_code	")
 			.append("	AND TO_CHAR(o.order_date, 'yyyy-mm-dd') = TO_CHAR(TO_DATE(?, 'yyyy-mm-dd'), 'yyyy-mm-dd')	")
+			.append("	AND o.status='Y'	")
 			.append("	GROUP BY l.lunch_code, l.lunch_name, l.price	")
 			.append("	ORDER BY l.lunch_code	");
 			

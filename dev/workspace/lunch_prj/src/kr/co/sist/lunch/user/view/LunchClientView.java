@@ -43,6 +43,8 @@ public class LunchClientView extends JFrame {
 				return getValueAt(0, column).getClass();
 			}
 		};
+		
+		
 		// 전체 창 가로길이 800
 		jtLunch.getColumnModel().getColumn(0).setPreferredWidth(80);
 		jtLunch.getColumnModel().getColumn(1).setPreferredWidth(130);
@@ -53,8 +55,19 @@ public class LunchClientView extends JFrame {
 		
 		// 주문현황
 		String[] orderColumns = { "번호", "도시락명", "수량", "주문일자" };
-		dtmOrderList = new DefaultTableModel(orderColumns, 3);
+		dtmOrderList = new DefaultTableModel(orderColumns, 3) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
 		jtOrder = new JTable(dtmOrderList);
+		
+		jtOrder.setRowHeight(20);
+		jtOrder.getColumnModel().getColumn(0).setPreferredWidth(100);
+		jtOrder.getColumnModel().getColumn(1).setPreferredWidth(300);
+		jtOrder.getColumnModel().getColumn(2).setPreferredWidth(100);
+		jtOrder.getColumnModel().getColumn(3).setPreferredWidth(300);
 		
 		jtfName = new JTextField(10);
 		jtfTel = new JTextField(10);
@@ -88,8 +101,11 @@ public class LunchClientView extends JFrame {
 		add(jtp);
 		
 		LunchClientController lcc = new LunchClientController(this);
+		jtfName.addActionListener(lcc);
+		jtfTel.addActionListener(lcc);
 		jtLunch.addMouseListener(lcc);
 		jbtSearch.addActionListener(lcc);
+		jtp.addMouseListener(lcc);
 		addWindowListener(lcc);
 		
 		setBounds(400, 300, 800, 600);
