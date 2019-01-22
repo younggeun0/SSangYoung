@@ -139,8 +139,8 @@ public class LunchClientDAO {
 			con = getConn();
 			StringBuilder insertOrder = new StringBuilder();
 			
-			insertOrder.append("INSERT INTO ordering(order_num, order_name, phone, ip_address, lunch_code, quan)")
-			.append("VALUES(order_code,?,?,?,?,?)");
+			insertOrder.append("INSERT INTO ordering(order_num, order_name, phone, ip_address, lunch_code, quan, request, request_status)")
+			.append("VALUES(order_code,?,?,?,?,?,?,?)");
 			
 			pstmt = con.prepareStatement(insertOrder.toString());
 			pstmt.setString(1, oavo.getOrderName());
@@ -148,6 +148,12 @@ public class LunchClientDAO {
 			pstmt.setString(3, oavo.getIpAddress());
 			pstmt.setString(4, oavo.getLunchCode());
 			pstmt.setInt(5, oavo.getQuan());
+			pstmt.setString(6, oavo.getRequest());
+			if (oavo.getRequest().equals("")) {
+				pstmt.setString(7, "Y");
+			} else {
+				pstmt.setString(7, "N");
+			}
 			
 			int cnt = pstmt.executeUpdate();
 			

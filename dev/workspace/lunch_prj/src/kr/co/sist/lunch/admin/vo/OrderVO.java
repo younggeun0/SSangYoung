@@ -2,11 +2,11 @@ package kr.co.sist.lunch.admin.vo;
 
 public class OrderVO {
 	
-	private String orderNum, lunchCode, lunchName, orderName, orderDate, phone, ipAddress, status;
+	private String orderNum, lunchCode, lunchName, orderName, orderDate, phone, ipAddress, status, requestStatus;
 	private int quan, price;
 	
 	public OrderVO(String orderNum, String lunchCode, String lunchName, String orderName, String orderDate,
-			String phone, String ipAddress, String status, int quan, int price) {
+			String phone, String ipAddress, String status, int quan, int price, String requestStatus) {
 		this.orderNum = orderNum;
 		this.lunchCode = lunchCode;
 		this.lunchName = lunchName;
@@ -17,6 +17,11 @@ public class OrderVO {
 		this.status = status;
 		this.quan = quan;
 		this.price = price;
+		this.requestStatus = requestStatus;
+	}
+	
+	public String getRequestStatus() {
+		return requestStatus;
 	}
 
 	public String getOrderNum() {

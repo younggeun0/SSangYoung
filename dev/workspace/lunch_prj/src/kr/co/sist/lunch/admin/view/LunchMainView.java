@@ -72,7 +72,7 @@ public class LunchMainView extends JFrame {
 		// 주문
 		String[] orderColumns = { "번호", "주문번호","도시락 코드",
 				"도시락명", "주문자명", "수량", "가격", "주문일",
-				"연락처", "주문자 IP", "제작상태" };
+				"연락처", "주문자 IP", "제작상태", "요청확인상태" };
 		dtmOrder = new DefaultTableModel(orderColumns, 4) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
@@ -94,6 +94,7 @@ public class LunchMainView extends JFrame {
 		jtOrder.getColumnModel().getColumn(8).setPreferredWidth(100);
 		jtOrder.getColumnModel().getColumn(9).setPreferredWidth(100);
 		jtOrder.getColumnModel().getColumn(10).setPreferredWidth(60);
+		jtOrder.getColumnModel().getColumn(11).setPreferredWidth(60);
 		
 		// 정산
 		String[] calcColumns = { "번호", "도시락명(도시락 코드)", "수량", "가격" };

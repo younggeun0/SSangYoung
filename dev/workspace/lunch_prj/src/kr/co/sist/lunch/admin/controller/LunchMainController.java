@@ -128,6 +128,7 @@ public class LunchMainController extends WindowAdapter
 				vec.add(ovo.getPhone());
 				vec.add(ovo.getIpAddress());
 				vec.add(ovo.getStatus());
+				vec.add(ovo.getRequestStatus());
 				
 				dtmOrder.addRow(vec);
 			}
@@ -227,21 +228,22 @@ public class LunchMainController extends WindowAdapter
 		if (ae.getSource() == lmv.getJbtCalcOrder()) { // 정산 버튼 클릭
 			searchCalc();
 		}
-		
+
 		if (ae.getSource() == lmv.getJmOrderRemove()) {
 			JTable jt = lmv.getJtOrder();
+
 			// 제작 상태가 N인 상태에서만 동작
 			if (jt.getValueAt(selectedRow, 10).toString().equals("N")) {
-				switch(showConfirmDialog(lmv, selectedOrderNum+" 주문정보를 삭제하시겠습니까?")) {
-				case OK_OPTION :
+				switch (showConfirmDialog(lmv, selectedOrderNum + " 주문정보를 삭제하시겠습니까?")) {
+				case OK_OPTION:
 					try {
 						if (la_dao.deleteOrder(selectedOrderNum)) {
-							msgCenter(lmv, selectedOrderNum+" 주문이 삭제되었습니다.");
+							msgCenter(lmv, selectedOrderNum + " 주문이 삭제되었습니다.");
 							jt.remove(selectedRow);
 							lmv.getJpOrderMenu().setVisible(false);
 							searchOrder();
 						} else {
-							msgCenter(lmv, selectedOrderNum+" 주문이 삭제되지 않았습니다.");
+							msgCenter(lmv, selectedOrderNum + " 주문이 삭제되지 않았습니다.");
 							lmv.getJpOrderMenu().setVisible(false);
 						} // end else
 					} catch (SQLException se) {
@@ -249,41 +251,49 @@ public class LunchMainController extends WindowAdapter
 						se.printStackTrace();
 					} // end catch
 					break;
-				case NO_OPTION :
-				case CANCEL_OPTION :
+				case NO_OPTION:
+				case CANCEL_OPTION:
 					lmv.getJpOrderMenu().setVisible(false);
 				} // end switch
 			} else {
 				showMessageDialog(lmv, "제작이 완료된 주문내역은 삭제할 수 없습니다.");
 				lmv.getJpOrderMenu().setVisible(false);
 			} // end else
+
 		} // end if
-		
+
 		if (ae.getSource() == lmv.getJmOrderStatus()) {
 			JTable jt = lmv.getJtOrder();
-			// 제작 상태가 N인 상태에서만 동작
-			if (jt.getValueAt(selectedRow, 10).toString().equals("N")) {
-				switch(showConfirmDialog(lmv, "주문을 완료처리 하시겠습니까?")) {
-				case OK_OPTION :
-					// DB Table의 해당 레코드를 변경
-					try {
-						if(la_dao.updateStatus(selectedOrderNum)) { // 상태변환 성공
-							jt.setValueAt("Y", selectedRow, 10);
-							lmv.getJpOrderMenu().setVisible(false);
-						} else { // 상태변환 실패
-							showMessageDialog(lmv, "도시락 제작상태 변환 실패");
+			// 요청사항을 읽어 Y인 상태에서만 동작
+			if (jt.getValueAt(selectedRow, 11).toString().equals("Y")) {
+
+				// 제작 상태가 N인 상태에서만 동작
+				if (jt.getValueAt(selectedRow, 10).toString().equals("N")) {
+					switch (showConfirmDialog(lmv, "주문을 완료처리 하시겠습니까?")) {
+					case OK_OPTION:
+						// DB Table의 해당 레코드를 변경
+						try {
+							if (la_dao.updateStatus(selectedOrderNum)) { // 상태변환 성공
+								jt.setValueAt("Y", selectedRow, 10);
+								lmv.getJpOrderMenu().setVisible(false);
+							} else { // 상태변환 실패
+								showMessageDialog(lmv, "도시락 제작상태 변환 실패");
+							}
+						} catch (SQLException se) {
+							showMessageDialog(lmv, "DB에서 문제 발생");
+							se.printStackTrace();
 						}
-					} catch (SQLException se) {
-						showMessageDialog(lmv, "DB에서 문제 발생");
-						se.printStackTrace();
+						break;
+					case NO_OPTION:
+					case CANCEL_OPTION:
+						lmv.getJpOrderMenu().setVisible(false);
 					}
-					break;
-				case NO_OPTION :
-				case CANCEL_OPTION :
+				} else {
+					showMessageDialog(lmv, "이미 제작이 완료된 도시락입니다.");
 					lmv.getJpOrderMenu().setVisible(false);
 				}
 			} else {
-				showMessageDialog(lmv, "이미 제작이 완료된 도시락입니다.");
+				msgCenter(lmv, "요청사항을 먼저 확인해주세요.");
 				lmv.getJpOrderMenu().setVisible(false);
 			}
 		}
@@ -304,7 +314,30 @@ public class LunchMainController extends WindowAdapter
 			}
 		}
 		
+		if (me.getSource() == lmv.getJtOrder() && me.getClickCount() == 2) {
+
+			String orderNum = (String)lmv.getJtOrder().getValueAt(lmv.getJtOrder().getSelectedRow(),1);
+			
+			try {
+				String msg = la_dao.selectRequest(orderNum);
+				
+				if (msg != null) {
+					msgCenter(lmv, "주문 요청사항 : "+msg);
+					if(la_dao.updateRequestStatus(orderNum)) {
+						lmv.getJtOrder().setValueAt("Y", selectedRow, 11);
+					} else {
+						msgCenter(lmv, "주문 요청사항 읽기 실패");
+					}
+				} else {
+					msgCenter(lmv, "주문 요청사항이 없습니다.");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		if (me.getSource() == lmv.getJtOrder() && me.getButton() == MouseEvent.BUTTON3) {
+			
 			
 			JPopupMenu jp = lmv.getJpOrderMenu();
 			jp.setLocation(me.getXOnScreen(), me.getYOnScreen());
@@ -348,6 +381,10 @@ public class LunchMainController extends WindowAdapter
 					e.printStackTrace();
 				}
 			}
+		}
+		
+		if (lmv.getJtb().getSelectedIndex() == 1) {
+			searchOrder();
 		}
 	}
 	

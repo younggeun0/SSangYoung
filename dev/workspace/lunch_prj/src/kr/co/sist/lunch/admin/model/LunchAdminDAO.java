@@ -74,6 +74,61 @@ public class LunchAdminDAO {
 		return flag;
 	}
 	
+	public String selectRequest(String orderNum) throws SQLException {
+		String msg = "";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConnection();
+			String selectRequest = "SELECT request FROM ordering WHERE order_num=?";
+			pstmt = con.prepareStatement(selectRequest);
+			pstmt.setString(1, orderNum);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				msg = rs.getString("request");
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
+		return msg;
+	}
+	
+	public boolean updateRequestStatus(String orderNum) throws SQLException {
+		boolean flag = false;
+
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			con = getConnection();
+			String updateRequestStatus = "UPDATE ordering SET request_status='Y' WHERE order_num=?";
+			pstmt = con.prepareStatement(updateRequestStatus);
+			pstmt.setString(1, orderNum);
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if (cnt == 1) {
+				flag = true;
+			}
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
+		return flag;
+	}
+	
 	/**
 	 * 도시락 제작 완료 시점에 호출되어 해당 주문 도시락의 완성 상태를 변경하는 일.
 	 * @param orderNum
@@ -253,7 +308,7 @@ public class LunchAdminDAO {
 			
 			selectOrder
 			.append("	SELECT o.order_num, l.lunch_code, l.lunch_name, o.order_name, o.quan,	")
-			.append("	o.quan*l.price price, TO_CHAR(o.order_date, 'yyyy-mm-dd hh:mi:ss') order_date, o.phone, o.ip_address, o.status	")
+			.append("	o.quan*l.price price, TO_CHAR(o.order_date, 'yyyy-mm-dd hh:mi:ss') order_date, o.phone, o.ip_address, o.status, o.request_status ")
 			.append("	FROM lunch l, ordering o	")
 			.append("	WHERE l.lunch_code = o.lunch_code	")
 			.append("	 AND TO_CHAR(order_date, 'yyyy-mm-dd')=TO_CHAR(SYSDATE, 'yyyy-mm-dd')	")
@@ -268,7 +323,7 @@ public class LunchAdminDAO {
 				ovo = new OrderVO(rs.getString("order_num"), rs.getString("lunch_code"),
 						rs.getString("lunch_name"), rs.getString("order_name"), rs.getString("order_date"),
 						rs.getString("phone"), rs.getString("ip_address"), rs.getString("status"),
-						rs.getInt("quan"), rs.getInt("price"));
+						rs.getInt("quan"), rs.getInt("price"), rs.getString("request_status"));
 				list.add(ovo);
 			}
 			
