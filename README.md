@@ -73,4 +73,4 @@
 - 190117 : [도시락 주문 프로그램(4)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-44/)
 - 190118 : [도시락 주문 프로그램(5)](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-45/)
 - 190121 : [도시락 주문 프로그램(6), 데이터를 전달하는 방식](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-46/)
-
+- 190122 : [도시락 주문 프로그램(7), 2차 프로젝트 진행](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-47/)
