@@ -23,7 +23,7 @@
 - 181113 : [정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-17/)
 
 
-# 2018.11.13 ~ 2019    Java 학습
+# 2018.11.13 ~ 2019.01.22    Java 학습
 
 ---
 
