@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다른 페이지와 연결 anchor tag</title>
+</head>
+<body>
+	<a id="top"></a>
+	<p>
+		<a name="kim"></a>
+		<h1>김정윤</h1>
+		<h2>31세/남</h2>
+		<h3>대구에서 태어나 철권을 사랑하는 젊은이로 ....</h3>
+	</p>
+	
+	<p>
+		<a name="gong"></a>
+		<h1>공선의</h1>
+		<h2>28세/남</h2>
+		<h3>청주에서 태어나 서울에서 살고 있으며 돈을 좋아하는 ....</h3>
+	</p>
+	
+	<p>
+		<a name="jung"></a>
+		<h1>정택성</h1>
+		<h2>27세/남</h2>
+		<h3>서울 구로구에서 태어나 그 지역에서 살고 있으며 댄스를 좋아하던 이 청년은... 나중에 자라서 훌륭한 개발자가 됩니다.</h3>
+	</p>
+	
+	<a id="hi"></a>
+	<strong>URL 사용</strong>
+	<br>
+	<a href="http://localhost:8080/html_prj/date190124/font.html">url이용
+		font.html</a>
+	<br>
+	<a href="http://localhost:8080/html_prj/date190124/link_a/a.html">url이용
+		a.html</a>
+	<br>
+	<a href="http://localhost:8080/html_prj/date190123/link_b/b.html">url이용
+		b.html</a>
+	<br>
+	<br>
+	<strong>상대경로 사용</strong>
+	<br>
+	<a href="/html_prj/date190124/link_a/a.html">상대경로 이용 a.html</a>
+	<br>
+	<a href="./link_a/a.html">상대경로 이용 a.html</a>
+	<br>
+	<a href="link_a/a.html">상대경로 이용 a.html</a>
+	<br>
+	<a href="../date190123/link_b/b.html">상대경로 이용 b.html</a>
+	<br>
+	<!-- 
+<strong>절대경로(절대 사용하지 말아야할 경로)</strong><br>
+<a href="C:\Users\owner\youngRepositories\SSangYoung\dev\workspace\html_prj\WebContent\date190124\font.html">font 페이지 이동</a>
+ -->
+
+	<strong>새창으로 띄우기</strong>
+	<br>
+	<a href="http://daum.net" target="_blank">다음</a>
+	<br>
+	<br>
+	<strong>현재창에 띄우기</strong>
+	<br>
+	<a href="http://daum.net">다음</a>
+	<br>
+
+
+	<a href="#hi">click me</a><br>
+	
+	 [ <a href="#kim">김정윤</a> | <a href="#gong">공선의</a> | <a href="#jung">정택성</a>| <a href="#top">위로</a> ]
+	 
+
+
+
+</body>
+</html>
