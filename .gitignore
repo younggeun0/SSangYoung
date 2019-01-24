@@ -32,3 +32,12 @@ dev/workspace/logAnalysisApp/
 .xml
 dev/def_bookmarks_win32.xml
 *.xml
+
+# tomcat생략
+dev/apache-tomcat-8.5.37/*
+
+#exe파일 생략
+*.exe
+
+#log 생략
+*.log
