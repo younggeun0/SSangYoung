@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+
+<table border="1" cellspacing="0" align="center">
+	<form>
+		<tr>
+			<th colspan="2">회원가입</th>
+		</tr>
+		<tr>
+			<td><label>아이디</label></td>
+			<td>
+				<input type="text" name="id" readonly="readonly" placeholder="아이디"/>
+				<input type="button" value="중복확인"/>
+			</td>
+		</tr>
+		<tr>
+			<td><label>비밀번호</label></td>
+			<td><input type="password" name="pass1" placeholder="비밀번호"/></td>
+		</tr>
+		<tr>
+			<td><label>비밀번호 확인</label></td>
+			<td><input type="password" name="pass2" placeholder="비밀번호 확인"/></td>
+		</tr>
+		<tr>
+			<td><label>이름</label></td>
+			<td><input type="text" name="name" placeholder="이름" /></td>
+		</tr>
+		<tr>
+			<td><label>주민번호</label></td>
+			<td>
+				<input type="text" maxlength="6" name="ssn1" size="6"/> - 
+				<input type="text" maxlength="7" name="ssn2" size="7"/>
+			</td>
+		</tr>
+		<tr>
+			<td><label>성별</label></td>
+			<td>
+				<input type="radio" name="gender" value="male"/>남자
+				<input type="radio" name="gender" value="female"/>여자
+			</td>
+		</tr>
+		<tr>
+			<td><label>생년월일</label></td>
+			<td>
+				<select name="yearofbirth_year">
+					<option value="2019" selected="selected">2019
+					<option value="2018">2018
+					<option value="2017">2017
+				</select> 년  
+				<select name="yearofbirth_month">
+					<option value="1" selected="selected">1
+					<option value="2">2
+					<option value="3">3
+					<option value="4">4
+					<option value="5">5
+					<option value="6">6
+					<option value="7">7
+					<option value="8">8
+					<option value="9">9
+					<option value="10">10
+					<option value="11">11
+					<option value="12">12
+				</select> 월 
+				<select name="yearofbirth_day">
+					<option value="1" selected="selected">1
+					<option value="2">2
+					<option value="3">3
+					<option value="4">4
+					<option value="5">5
+					<option value="6">6
+					<option value="7">7
+					<option value="8">8
+					<option value="9">9
+					<option value="10">10
+					<option value="11">11
+					<option value="12">12
+					<option value="13">13
+					<option value="14">14
+					<option value="15">15
+					<option value="16">16
+					<option value="17">17
+					<option value="18">18
+					<option value="19">19
+					<option value="20">20
+					<option value="21">21
+					<option value="22">22
+					<option value="23">23
+					<option value="24">24
+					<option value="25">25
+					<option value="26">26
+					<option value="27">27
+					<option value="28">28
+					<option value="29">29
+					<option value="30">30
+					<option value="31">31
+				</select> 일
+			</td>
+		</tr>
+		<tr>
+			<td><label>나이</label></td>
+			<td><input type="text" name="age" maxlength="3"/></td>
+		</tr>
+		<tr>
+			<td><label>관심언어</label></td>
+			<td>
+				<input type="checkbox" name="language" value="java">Java
+				<input type="checkbox" name="language" value="c">C/C++
+				<input type="checkbox" name="language" value="python">Python
+				<input type="checkbox" name="language" value="vb">VB<br/>
+				<input type="checkbox" name="language" value="jsp">JSP
+				<input type="checkbox" name="language" value="servlet">Servlet
+				<input type="checkbox" name="language" value="asp">Asp
+				<input type="checkbox" name="language" value="php">Php
+			</td>
+		</tr>
+		<tr>
+			<td><label>결혼여부</label></td>
+			<td>
+				<input type="radio" name="marriage" checked="checked">미혼
+				<input type="radio" name="marriage">기혼
+			</td>
+		</tr>
+		<tr>
+			<td><label>결혼기념일</label></td>
+			<td>
+				<input type="text" name="weddingAnniversary_year" size="4" maxlength="4"/>년 
+				<input type="text" name="weddingAnniversary_month" size="2" maxlength="2"/>월 
+				<input type="text" name="weddingAnniversary_day" size="2" maxlength="2"/>일
+			</td>
+		</tr>
+		<tr>
+			<td><label>우편번호</label></td>
+			<td>
+				<input type="text" name="zipcode1" readonly="readonly" size="3"/> - 
+				<input type="text" name="zipcode2" readonly="readonly" size="3"/>
+				<input type="button" name="btnZipcode" value="우편번호검색"/>
+			</td>
+		</tr>
+		<tr>
+			<td><label>가입인사</label></td>
+			<td><textarea name="welcomespeech" rows=10 cols=40></textarea>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" name="register" value="가입"/>
+				<input type="reset" name="reset" value="초기화"/> 
+			</td>
+		</tr>
+	</form>
+</table>
+
+</body>
+</html>

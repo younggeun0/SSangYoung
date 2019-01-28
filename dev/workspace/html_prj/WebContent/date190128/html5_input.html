@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5에서 추가된 HTML Form Control</title>
+</head>
+<body>
+
+<div>
+	<strong>의미적 Form Control</strong><br/>
+	<!-- 디자인은 text와 같지만 소스보기할 때 
+	입력값이 무엇인지 의미적으로 전달하는 Control들 -->
+	<label>이름</label>
+	<input type="text" name="name" placeholder="이름"/><br/>
+	<label>이메일</label>
+	<input type="email" name="email" placeholder="이메일"/><br/>
+	<label>전화번호</label>
+	<input type="tel" name="tel" placeholder="전화번호"/><br/>
+	<label>사이트 URL</label>
+	<input type="url" name="url" placeholder="URL"/><br/>
+</div>
+
+<div>
+	<strong>기능을 가진 HTML Form Control</strong><br/>
+	<label>날짜</label>
+	<!-- value 속성값으로 "년-월-일"형식의 값이 입력되면 해당 날짜 정보가 입력되어 보여진다. -->
+	<input type="date" name="date" value="2018-10-19"/>
+	<br/>
+	<input type="date" name="date" value="김정윤"/>
+	<br/>
+	<input type="month" name="mon" value="2018-10"/>
+	<br/>
+	<input type="datetime-local" name="date"/>
+	<br/>
+	<br/>
+	<label>색선택</label>
+	<input type="color" name="col" value="#FF0000"/>
+	
+	<br/>
+	<br/>
+	
+	<label>숫자</label><br/>
+	<input type="number" name="num"/>
+	
+	<br/><br/>
+	
+	<!--  minvalue="최소값", maxvalue="최대값" value="현재값" -->
+	<label>범위</label>
+	0<input type="range" name="ran" minvalue="0" maxvalue="100" value="12"/>100
+</div>
+
+</body>
+</html>
