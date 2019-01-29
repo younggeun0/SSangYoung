@@ -81,8 +81,8 @@
 ---
 
 - 190123 : [Web, HTML, Tags](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-01/)
-- 190123 : [Tags](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-02/)
-- 190123 : [table 태그, 특수문자, 영역 태그, HTML Form Control](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-03/)
+- 190124 : [Tags](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-02/)
+- 190125 : [table 태그, 특수문자, 영역 태그, HTML Form Control](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-03/)
 - 190128 : [HTML Form Control, HTML5에서 추가된 태그와 지원하는 태그](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-04/)
 
 # 2019.01.29 ~ 2019.?    CSS 학습
