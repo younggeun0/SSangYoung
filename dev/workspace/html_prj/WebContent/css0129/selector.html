@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>selector 사용</title>
+<style type="text/css">
+	/* tag selector : 설정한 디자인을 정의한 모든 태그가 적용받는다. */
+	/* div { font-family:궁서체; }
+	p { font-family:궁서체; }
+	input { font-family:궁서체; } */
+	/* multiple selector : 태그 여러개를 정의하고 설정한 디자인을 정의한 여러 태그가 적용받는다 */
+	div,a { font-family:궁서체; }
+	
+</style>
+</head>
+<body>
+	<div>div 태그</div>
+	<p>p 태그</p>
+	<div>div 태그</div>
+	<p>p 태그
+		<div>p 안에 div</div>
+	</p>
+	<a href="http://sist.co.kr" target="_blank">sist이동</a>
+	<div>div 태그</div>
+	<input type="text" /><br/>
+	<input type="text" />
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글꼴 관련 CSS 속성</title>
+<style type="text/css">
+	/* id selector */
+	/* 글꼴 */
+	#a { font-family: 궁서체 }
+	/* 크기 */
+	#b { font-size: 40px }
+	/* 색 */
+	#c { color: #0000FF }
+	/* 여러개의 속성을 한번에 적용 ;으로 속성을 구분하여 여러개를 사용할 수 있다.*/
+	#d {
+		font-family: 돋움체, dotum, 휴먼옛체, SansSerif;
+		font-size: 19px;
+		color: #00FF00;
+	}
+	
+	#e { font-weight: bold }
+	
+	/* 밑줄, 윗줄, 취소선, 선없음 */
+	#f {text-decoration: underline }
+	#g { text-decoration: overline }
+	#h { text-decoration: line-through }
+	
+	/* 링크가 걸려있는 모든 태그의 글자색을 #333으로 크기를 12px로,
+		글꼴을 돋움체로, 밑줄을 없앤다. 
+		마우스가 올라가면 밑줄을 보여주고 글짜 색을 원하는 색으로 변경. 
+	*/
+	a { 
+		color: #333;
+		font-size: 12px;
+		font-family: 돋움체;
+		text-decoration: none;
+	}
+	
+	a:hover {
+		text-decoration:underline;
+		color:#339966;
+	}
+	
+</style>
+</head>
+<body>
+	<div id="a">글꼴 변경</div>
+	<div id="b">크기 변경</div>
+	<div id="c">색 변경</div>
+	<div id="d">글꼴, 색, 크기 변경</div>
+	<div id="e">진하게</div>
+	<div>
+		<span id="f">밑줄</span>
+		<span id="g">윗줄</span>
+		<span id="h">취소선</span>
+	</div>
+	
+	<a href="#void">링크</a>
+	<a href="#void">링크</a>
+	<a href="#void">링크</a>
+	<a href="#void">링크</a>
+</body>
+</html>

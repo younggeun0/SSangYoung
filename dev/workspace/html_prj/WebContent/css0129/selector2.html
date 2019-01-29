@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>id selector, class selector</title>
+<style type="text/css">
+	/* id selector :
+		HTML에서 "유일"한 디자인을 가져야 할 때 사용
+		#id명 { 속성:값; ... } 
+		
+		class selector :
+		HTML에서 중복된 디자인을 원하는 태그만 가져야할 때 사용
+		.class명 { 속성:값; ... }
+	*/
+	#title { font-size:25px; font-weight:bold; font-family:궁서체 }
+	.content { font-family:휴먼편지체; text-decoration:line-through; }
+	
+	/* behavior selector :
+		HTML에서 사용자가 마우스 포인터를 특정위치에 올린경우 디자인을 적용해야 할 때
+		모든selector:HOVER{ 속성:값; ... } 
+	*/
+	a:hover { font-size:20px; color:#FF0000 }	
+</style>
+</head>
+<body>
+<div id="title">
+	CSS는 Hakon Wium Lie가 1994년에 웹 디자이너를 위해 제안하였습니다. 
+</div>
+<p class="content">
+	CSS(Cascading Style Sheet)의 약어로 HTML에서 통일성있는 디자인을 제공할 수 있다.
+</p>
+<p>
+	HTML은 구조를 가지고 있고 CSS는 디자인을 담당한다.
+</p>
+<p class="content">
+	표준안은 W3C(<a href="http://w3c.org" target="_new">표준안 확인</a>)에서 제정, 발표, 관리를 한다.
+</p>
+<div>
+	CSS3에서는 그림자, 테두리, 애니메이션 효과 등이 추가되었습니다. 
+</div>
+
+</body>
+</html>
