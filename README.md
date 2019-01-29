@@ -76,7 +76,7 @@
 - 190122 : [도시락 주문 프로그램(7), 2차 프로젝트 진행](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-47/)
 - 190123 : [소프트웨어 테스트 방식, 단위테스트와 통합테스트, JavaSE 마무리](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-48/)
 
-# 2019.01.23 ~ 2019.?    HTML 학습
+# 2019.01.23 ~ 2019.28    HTML 학습
 
 ---
 
@@ -84,3 +84,9 @@
 - 190123 : [Tags](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-02/)
 - 190123 : [table 태그, 특수문자, 영역 태그, HTML Form Control](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-03/)
 - 190128 : [HTML Form Control, HTML5에서 추가된 태그와 지원하는 태그](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-04/)
+
+# 2019.01.29 ~ 2019.?    CSS 학습
+
+---
+
+-190129 : [CSS, selector, attribute](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-01/)
