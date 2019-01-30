@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	#abs_1 { 
+		position:absolute; 
+		top:100px; left:100px; 
+		width:300px; height:100px;
+		background-color:#FF0000 
+	}
+	/* absolute가 relative 안에 들어있을 때에만 좌표에 영향을 받는다. */
+	#abs_2 { 
+		position:absolute; 
+		top:0px; left:0px; 
+		width:300px; height:100px;
+		background-color:#FF00FF 
+	}
+	#abs_3 { 
+		position:absolute; 
+		top:0px; left:0px; 
+		width:300px; height:100px;
+		background-color:#00FFFF 
+	}
+#fix_1 {
+	position:fixed;
+	top:100px; left:600px;
+	width:200px;
+}
+#fix_2 {
+	position:fixed;
+	top:100px; left:400px;
+	width:200px;
+}
+</style>
+</head>
+<body>
+<!--
+	작성자 : owner
+	작성일 : 2019. 1. 30.
+	내용 : 
+-->
+<div>A</div>
+<div>B</div>
+<div style="height:600px">C</div>
+<div id="abs_1">absolute</div>
+<div style="position:relative;">
+	<div id="abs_2">D absolute</div>
+	<div id="fix_2"><img src="../common/images/img1_1.png"/></div>
+</div>
+<div id="abs_3">Test</div>
+<div id="fix_1"><img src="../common/images/sist_logo.jpg"/></div>
+</body>
+</html>

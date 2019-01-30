@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지 사용</title>
+<style type="text/css">
+	/* 
+		이미지는 모든 태그 바닥에 설정할 수 있다.
+		repeat-x : x좌표로 이미지를 반복시킬 때,
+		repeat-y : y좌표로 이미지를 반복시킬 때,
+		no-repeat : 반복하지 않음
+	*/
+	body { background: #FFFFFF url(../common/line.png) repeat-x; }
+	div { width:600px; height:300px; background: #FFFFFF url('../common/daum.png') no-repeat; }
+	form,table { background: #FFFFFF url("../common/sist_logo.jpg");}
+</style>
+</head>
+<body>
+	<div></div>
+	<form>
+		<label>이름</label><input type="text"/><br/>
+		<label>나이</label><input type="text"/><br/>
+		<label>주소</label><input type="text"/><br/>
+	</form>
+	<table border="1">
+		<tr height="30">
+			<td width="100">Java</td>
+			<td width="100">Oracle DBMS</td>
+			<td width="100">JDBC</td>
+		</tr>
+		<tr height="30">
+			<td width="100">HTML</td>
+			<td width="100">CSS</td>
+			<td width="100">JavaScript</td>
+		</tr>
+		<tr height="30">
+			<td width="100">Java EE(Servlet/EE)</td>
+			<td width="100">AJAX</td>
+			<td width="100">Framework</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/> 
+<style type="text/css">
+	#joinTitle { font-weight:bold; font-size:20px; }
+	.tdAlign { text-align:center }
+	table { margin:0px auto }
+	tr { height: 20px }
+</style>
+</head>
+<body>
+	<form action="">
+		<table border="0">
+			<tr>
+				<td colspan="2" class="tdAlign"><strong><span id="joinTitle">회원가입</span></strong></td>
+			</tr>
+			<tr>
+				<td>아이디</td>
+				<td>
+					<input type="text" class="inputBox" readonly="readonly" style="width:100px">
+					<button type="button" class="btn">중복확인</button>
+				</td>
+			</tr>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password"  class="inputBox" style="width:165px"></td>
+			</tr>
+			<tr>
+				<td>비밀번호 확인</td>
+				<td><input type="password" class="inputBox" style="width:165px"></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" class="inputBox" style="width:120px"></td>
+			</tr>
+			<tr>
+				<td>주민번호</td>
+				<td><input type="text" class="inputBox" style="width:60px" maxlength="6"><label> - </label><input type="password" class="inputBox" style="width:70px" maxlength="7"></td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td><input type="radio" value="남자" name="gender" checked="checked" >남자<input type="radio" value="여자" name="gender">여자</td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td>
+					<select name="year" class="inputBox">
+						<option value="2019" selected="selected">2019</option>
+						<option value="2018" >2018</option>
+						<option value="2017" >2017</option>
+					</select>
+					<label>년</label>					
+					
+					<select class="inputBox">
+						<option value="01" selected="selected">01</option>
+						<option value="02">02</option>
+						<option value="03">03</option>
+						<option value="04">04</option>
+						<option value="05">05</option>
+						<option value="06">06</option>
+						<option value="07">07</option>
+						<option value="08">08</option>
+						<option value="09">09</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					<label>월</label>	
+					
+					<select class="inputBox">
+						<option value="01" selected="selected">01</option>
+						<option value="02">02</option>
+						<option value="03">03</option>
+						<option value="04">04</option>
+						<option value="05">05</option>
+						<option value="06">06</option>
+						<option value="07">07</option>
+						<option value="08">08</option>
+						<option value="09">09</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+					</select>				
+					<label>일</label>					
+				</td>
+			</tr>
+			<tr>
+				<td>나이</td>
+				<td><input type="text" class="inputBox" style="width:30px" maxlength="3"></td>
+			</tr>
+			<tr>
+				<td>관심언어</td>
+				<td>
+				<input type="checkbox" value="Java" name="interestlang">Java
+				<input type="checkbox" value="C/C++" name="interestlang">C/C++
+				<input type="checkbox" value="Python" name="interestlang">Python
+				<input type="checkbox" value="VB" name="interestlang">VB
+				<br>
+				<input type="checkbox" value="JSP" name="interestlang">JSP
+				<input type="checkbox" value="Servlet" name="interestlang">Servlet
+				<input type="checkbox" value="ASP" name="interestlang">ASP
+				<input type="checkbox" value="php" name="interestlang">php
+				</td>
+			</tr>
+			<tr>
+				<td>결혼여부</td>
+				<td><input type="radio" value="미혼" name="marrige" checked="checked" >미혼<input type="radio" value="기혼" name="marrige">기혼</td>
+			</tr>
+			<tr>
+				<td>결혼기념일</td>
+				<td><input type="text" class="inputBox" maxlength="4" style="width:40px">년&nbsp;<input type="text"  class="inputBox" maxlength="2" style="width:20px">월&nbsp;<input type="text" style="width:20px" class="inputBox" maxlength="2">일</td>
+			</tr>
+			<tr>
+				<td>우편번호</td>
+				<td><input type="text" class="inputBox"readonly="readonly" style="width:30px"><label> - </label><input type="text" class="inputBox" readonly="readonly" style="width:30px">&nbsp;<button type="button" class="btn">우편번호검색</button></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td><input type="text" class="inputBox" readonly="readonly" style="width:250px"></td>
+			</tr>
+			<tr>
+				<td>상세주소</td>
+				<td><input type="text" class="inputBox" style="width:250px"></td>
+			</tr>
+			<tr valign="middle">
+				<td>가입인사</td>
+				<td><textarea rows="5" cols="50" class="inputBox" style="width:250px; height:100px;"></textarea></td>
+			</tr>
+			<tr>
+				<td class="tdAlign" colspan="2"><button type="submit" class="btn">가입</button>&nbsp;<button type="reset" class="btn">초기화</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

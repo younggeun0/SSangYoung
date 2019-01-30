@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정렬</title>
+<style type="text/css">
+	/* text-align: left, center, right로 수평정렬을 할 수 있음 */
+	#div_text {
+		width:600px;
+		height:200px;
+		border:1px solid #333;
+		text-align:center;
+	}
+	/* vertical-align은 행의 높이가 존재하는 tag에서 사용한다. */
+	#left { text-align: left }
+	#center { text-align: center }
+	#right { text-align: right }
+	#top { vertical-align: top }
+	#middle { vertical-align: middle }
+	#bottom { vertical-align: bottom }
+	/* 문자열이 아닌 태그를 가운데 정렬할 때에는 margin으로 한다. */
+	table,div { margin:0px auto }
+</style>
+</head>
+<body>
+	<div id="div_text">
+		<strong>문자열 수평 정렬</strong>
+		<br/>
+		안뇽!
+	</div>
+	
+	<br/><br/>
+	
+	<table border="1">
+		<tr height="100">
+			<td id="left" width="80">왼쪽</td>
+			<td id="center" width="80">가운데</td>
+			<td id="right" width="80">오른쪽</td>
+		</tr>
+		<tr height="100">
+			<td id="top" width="80">위</td>
+			<td id="middle" width="80">가운데</td>
+			<td id="bottom" width="80">아래</td>
+		</tr>
+	</table>
+</body>
+</html>
