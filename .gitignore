@@ -44,3 +44,6 @@ dev/apache-tomcat-8.5.37/*
 
 #수업사용 media파일 생략
 dev/workspace/html_prj/WebContent/date190128/media/*
+
+#tern 플러그인 내용 제외
+.tern-project
