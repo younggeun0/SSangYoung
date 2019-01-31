@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	#wrap { margin:0px auto; width:800px; height:860px; }
+	#header { position:relative; width:800px; height:140px; background:#FFFFFF url(http://localhost:8080/html_prj/common/images/header_bg.png) repeat-x; }
+	#headerTitle { position:absolute; top:45px; left:280px; font-size:35px; font-family:monaco, HY견고딕, 고딕; font-weight:bold; color:white; }
+	#container { width:800px; height:600px; }
+	#footer { width:800px; height:120px; }
+	#footerTitle { float:right; font-weight:bold; font-size:15px; padding-top:20px; padding-right:20px }
+	
+	#container > .shadow { text-shadow: -10px -5px 3px #FF0000; }
+	.box-shadow {margin-top:10px; border:1px solid #333; box-shadow: 10px 10px 10px #999999; width:200px; height:150; background-color:#FFFF99; overflow:auto; }
+	/* 
+		border-radius : 모든 방향 적용;
+		특정 위치만 호를 적용할 수 있다.
+		border-radius: 좌상px 우상px 우하px 좌하px;
+	 */
+	.radius { border:1px solid #333; width:300px; height:100px; margin-top:20px; border-radius:0px 10px 0px 10px }
+	.radius1 { background-color:#FFFFCC; border:1px solid #333; width:200px; height:200px; margin-top:20px; border-radius:100px 100px 100px 100px;
+		box-shadow:10px 10px 10px #478BBB }
+</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="header">
+		<div id="headerTitle">SIST Class4</div>
+	</div>
+	<div id="container">
+	
+		오늘은 <span class="shadow">1월 31일</span>입니다.<br>
+		<div class="box-shadow">
+			공지사항<br/>
+			내일은 금요일 입니다.<br/>
+			즐거운 설 명절 되시고,<br/> 2월 7일 목요일에 뵙겠습니다.
+		</div>
+		<div class="radius">
+			이번주는 SKY캐슬 막방입니다.<br/>
+			김주영선생님은 과연 교도소에서 재소자들을 SKY를 보낼 수 있을 것인가.. 
+		</div>
+		<div class="radius1">
+		
+		</div>
+	</div>
+	<div id="footer">
+		<div id="footerTitle">copyright&copy; all right reserved. class4 </div>
+	</div>
+</div>
+</body>
+</html>
