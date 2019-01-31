@@ -89,14 +89,14 @@
 
 ---
 
--190129 : [CSS, selector, attribute(1)](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-01/)
--190130 : [attribute(2)](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-02/)
--190131 : [attribute(3), CSS 페이지 디자인, HTML5 Semantic Tag, 부모 자식 선택자](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-03/)
+- 190129 : [CSS, selector, attribute(1)](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-01/)
+- 190130 : [attribute(2)](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-02/)
+- 190131 : [attribute(3), CSS 페이지 디자인, HTML5 Semantic Tag, 부모 자식 선택자](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-03/)
 
 
 # 2019.01.31 ~ 2019.?    JavaScript 학습
 
 ---
 
--190131 : [JavaScript](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-01/)
+- 190131 : [JavaScript](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-01/)
 
