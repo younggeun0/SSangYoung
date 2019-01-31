@@ -98,5 +98,5 @@
 
 ---
 
--190129 : [JavaScript](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-01/)
+-190131 : [JavaScript](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-01/)
 
