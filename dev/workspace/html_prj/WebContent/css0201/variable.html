@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수의 사용</title>
+<script type="text/javascript">
+	// 지역변수
+	// 1.변수의 선언
+	var name;
+	
+	// 2. 값 할당, 데이터형 결정
+	name = "김정운";
+	
+	// 3. 값 사용
+	alert("이름 "+name+"님 새해 복 많이 받으세요.");
+	
+	
+	// 2. 값 할당, 데이터형 결정
+	name = 31;
+	
+	// 3. 값 사용
+	alert("나이 "+name+"세 입니다.");
+	
+	name = true;
+	
+	// 3. 값 사용
+	alert("불린? "+name+"입니다.");
+	
+	// 전역 변수
+	// 1. 선언과 함께 값 할당
+	age = 31;
+
+	// 2. 값 할당
+	age = 31.2;
+	
+	alert("전역변수 "+age);
+	
+	function test() {
+		// 지역
+		var addr = "경상북도 대프리카";
+		// 전역
+		addr1 = "서울시 강남구 역삼동";
+	}
+	
+	test();
+	
+	// alert(addr); // error 발생, var는 function-scope
+	
+	alert(addr1);
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>
