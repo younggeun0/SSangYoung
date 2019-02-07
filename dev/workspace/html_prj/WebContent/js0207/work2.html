@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var lang = prompt("언어입력(java, HTML, javascript, CSS)", "");
+	var name = "";
+	var year = 0;
+	var age = 0;
+	
+	function calAge(year) {
+		return 2019 - year + 1;
+	}
+	
+	function showLangMaker(lang, name, year, age) {
+		console.log(lang+" "+name+" "+year+" "+age);
+		document.write("<div id='lang-maker'><table><tr>");
+		document.write("<td id='maker-img' rowspan='3'><img src='../common/images/lang_makers/"+lang.toLowerCase()+".jpg'></td>");
+		document.write("<td class='font-bold'>이름</td>");
+		document.write("<td>"+name+"</td>");
+		document.write("</tr><tr>");
+		document.write("<td class='font-bold'>태어난 해</td>");
+		document.write("<td>"+year+"</td>");
+		document.write("</tr><tr>");
+		document.write("<td class='font-bold'>나이</td>");
+		document.write("<td>"+age+"</td>");
+		document.write("</tr></table></div>");
+	}
+	
+	if (lang == "JAVA" || lang == "java") {
+		name = "제임스 고슬링";
+		year = 1965;
+		age = calAge(year);
+		showLangMaker(lang, name, year, age);
+	} else if(lang == "HTML" || lang == "html") {
+		name = "팀 버너스 리";
+		year = 1955;
+		age = calAge(year);
+		showLangMaker(lang, name, year, age);
+	} else if(lang == "JAVASCRIPT" || lang == "javascript") {
+		name = "브렌던 아이크";
+		year = 1961;
+		age = calAge(year);
+		showLangMaker(lang, name, year, age);
+	} else if(lang == "CSS" || lang == "css") {
+		name = "하콤 비움 리";
+		year = 1965;
+		age = calAge(year);
+		showLangMaker(lang, name, year, age);
+	} else {
+		alert("언어는 java, HTML, javascript, CSS만 선택가능합니다.");
+	}
+</script>
+<style type="text/css">
+	#lang-maker {
+		width:600px;
+		height:300px;
+		margin:0px auto;
+		box-shadow: 5px 5px 3px black;
+	}
+	
+	table {
+		width:600px;
+		height:300px;
+		border-spacing: 0px;
+		border:1px solid black;
+		text-align: center;
+		vertical-align: center;
+	}
+	
+	.font-bold {
+		font-weight:bold;
+	}
+	
+	td {
+		border:1px solid black;
+	}
+	
+	#maker-img { width:240px }
+</style>
+</head>
+<body>
+<!-- Java - 제임스 고슬링 1955 --> 
+<!-- CSS - 하콤 비움 리 1965 --> 
+<!-- HTML - 팀 버너스리 1955 --> 
+<!-- JavaScript - 브렌던 아이크 1961 -->
+<!-- <div id="lang-maker">
+	<table>
+		<tr>
+			<td id="maker-img" rowspan="3"><img src="../common/images/lang_makers/java.jpg"></td>
+			<td class="font-bold">이름</td>
+			<td>창시자 이름</td>
+		</tr>
+		<tr>
+			<td class="font-bold">태어난 해</td>
+			<td>0000</td>
+		</tr>
+		<tr>
+			<td class="font-bold">나이</td>
+			<td>00</td>
+		</tr>
+	</table>
+</div> -->
+</body>
+</html>
