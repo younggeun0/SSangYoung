@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+
+	marquee {
+		font-size:20px;
+		font-weight:bold;
+	}
+	
+</style>
+<script type="text/javascript">
+	var name = prompt("이름을 입력해주세요.", "초기값");
+	
+	var img="img.png";
+	var msg="평민";
+	// 조건문 : 단일 if - 조건에 맞을 때에만 코드를 실행해야 할 때 사용
+	if(name == "이재찬"){
+		img="img1_1.png";
+		msg="반장";
+	}
+	
+	document.write("<img src='../common/images/"+img+"'><br>");
+	document.write(name+"은 "+msg+"<br>");
+	
+	var num = prompt("임의의 수를 입력해주세요.", "2");
+	var msg = "";
+	
+	// if  ~ else : 둘 중 하나의 코드를 반드시 실행해야 할 때 
+	if (num%2 == 0) { // 짝수인 경우
+		document.write("<marquee scrollamount='"+num*2+"' direction='right''>"+num+"는 짝수입니다. =:&gt;"+"</marquee>");
+	} else { // 홀수인 경우
+		document.write("<marquee scrollamount='"+num+"'>&lt;:="+num+"는 홀수입니다."+"</marquee>");
+	}
+	
+	// 다중 if(else~if) : 연관된 여러 조건을 비교할 때
+	var bloodType = prompt("혈액형을 입력해주세요.", "A");
+	
+	if(bloodType=="A" || bloodType=="a") {
+		alert(bloodType+"의 특징은 세심하고 치밀하다.");
+	} else if(bloodType=="B" || bloodType=="b") {
+		alert(bloodType+"의 특징은 털털함. 내것이 아니면 관심 없다.");
+	} else if(bloodType=="AB" || bloodType=="ab") {
+		alert(bloodType+"의 특징은 복잡함. 합리적.");
+	} else {
+		alert(bloodType+"의 특징은 질긴 생명력. 리더쉽 좋음.");
+	}
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
