@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0208 숙제2</title>
+<script type="text/javascript">
+	var classFour = new Array();
+	
+	classFour[0] = new Array();
+	classFour[1] = new Array();
+	classFour[2] = new Array();
+	
+	classFour[0] = [ "김정운", "이재찬", "김민정", "박은영", "정택성", "이봉현", "백인제" ];
+	classFour[1] = [ "박영민", "김정윤" ,"최지우", "노진경", "김희철", "박소영", "이지수" ];
+	classFour[2] = [ "이재현", "공선의", "박정미", "최혜원", "김건하", "오영근" ];
+	
+	var name = prompt("이름을 입력해주세요", "");
+	var jo = 0;
+	var flag = false;
+	
+	for(var i=0; i<classFour.length; i++) {
+		for(var j=0; j<classFour[i].length; j++) {
+			if (classFour[i][j] == name) {
+				flag = true;
+				jo = i;
+			}			
+		}
+	}
+	
+	if (flag == true) {
+		document.write("입력 : "+name+"<br/>");
+		document.write("조 : "+(jo+1)+"조 입니다.<br/>");
+		document.write("구성원 : <select>");
+		for(var i=0; i<classFour[jo].length; i++) {
+			document.write("<option>"+classFour[jo][i]+"</option>")
+		}
+		document.write("</select>");
+		
+	} else {
+		alert("4반에는 "+name+"이 존재하지 않습니다.")
+	}
+	
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>0208 숙제1</title>
+<script type="text/javascript">
+	var row = prompt("행의 수를 입력해주세요","");
+	var col = prompt("열의 수를 입력해주세요","");
+	var color = prompt("선 색(RGB)를 입력해주세요.예) #000000","");
+	
+	document.write("<table width='800' height='600' border='1' bordercolor='"+color+"'>");
+	for(var i = 0; i<row; i++) {
+		document.write("<tr>");
+		for(var j=0; j<col; j++) {
+			document.write("<td></td>");			
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+</script>
+</head>
+<body>
+</body>
+</html>

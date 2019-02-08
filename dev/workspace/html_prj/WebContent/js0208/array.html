@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+// 배열 생성
+// 1. 생성 : var 배열명 = new Array();
+
+var arr = new Array();
+console.log("방의 갯수 : "+arr.length);
+
+// 2. 값 할당 : 방의 수가 증가 - 가변길이형
+arr[0] = 2;
+arr[1] = 2.8;
+arr[2] = "오늘은 금요일";
+arr[3] = true;
+
+console.log("방의 갯수 : "+arr.length);
+
+// 3. 값 사용
+document.write(arr[2]);
+
+// 4. 모든 방의 값 출력
+document.write("<ul>");
+for(var i=0; i<arr.length; i++) {
+	document.write("<li>"+i+"번째 방 : "+arr[i]+"</li>");
+}
+document.write("</ul>");
+
+
+//////////////////// 배열의 초기화 /////////////////////
+// 1. 초기화 : var 배열명 = [ 값, .... ];
+var nameArray = [ "공선의","이재현","최지우","김정윤","박영민" ];
+nameArray[5] = "김건하";
+document.write("방의 개수 : "+nameArray.length+"<br>");
+for(var i=0; i<nameArray.length; i++) {
+	document.write("이름 : ");
+	document.write("<input type='text' value='"+nameArray[i]+"님'><br>");
+}
+
+// 배열을 생성하여 구구단 2단의 결과값을 처음 방부터 추가한 후,
+// 체크박스를 생성하여 출력
+
+var gugu = new Array();
+
+document.write("<div>");
+for(var i=0; i<9; i++) {
+	gugu[i] = 2*(i+1); 
+	document.write("<input type='checkbox'>")
+	document.write(gugu[i]);
+	document.write("</input>")
+}
+document.write("</div>");
+
+var temp = [ "대추", "호두", "밤", "감", "배", "사과" ];
+//temp[temp.length]="바나나"; // 이렇게도 가능하나..
+// 가장 마지막 방에 값을 추가하는 함수 : push(값);
+
+temp.push("바나나");
+temp.push("망고스틴");
+
+temp.pop(); 
+temp.pop();
+temp.pop(); 
+
+// 특정 인덱스 사이의 값을 삭제 : splice(시작인덱스, 지울방의수)
+temp.splice(0, 3);
+for(var i=0; i<temp.length; i++) {
+	document.write(temp[i]+"<br/>");
+}
+
+
+</script>
+</head>
+<body>
+</body>
+</html>

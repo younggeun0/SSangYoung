@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#red-div {
+		width:100px;
+		height:30px;
+		margin:0px auto;
+		font-size:50px;
+		color:red;
+		text-shadow:5px 5px 3px red;
+		text-align:center;
+	}
+	
+	table {
+		width:900px;
+	}
+	
+	td {
+		text-align: center;
+	}
+	
+	td:hover {
+		background-color:cyan;
+	}
+</style>
+<script type="text/javascript">
+	
+	document.write("<table border='1'>");
+	document.write("<tr>");
+	for(var i=0; i<10; i++) {
+		document.write("<td width='40' align='center'>"+(i+1)+"</td>");
+	}
+	document.write("</tr>");
+	document.write("</table>");
+	
+	// 1~31의 <option>을 가진 <select>를 생성
+	document.write("<div>");
+	document.write("<select>");
+	for(var i=1; i<32; i++) {
+		document.write("<option>"+i+"</option>");
+	}
+	document.write("</select>");
+	document.write("</div>");
+	
+	// 1~100까지의 합을 div 빨간색으로 그림자를 넣어 출력
+	document.write("<div id='red-div'>");
+	var sum = 0;
+	for (var i=1; i<101; i++) {
+		sum+=i;
+	}
+	document.write(sum);
+	document.write("</div>");
+	
+	// 다중 for
+	document.write("<div>");	
+	document.write("<table border='1'>");	
+	for(var j=1; j<10; j++) {
+	document.write("<tr>");	
+	for(var i=2; i<10; i++) {
+		document.write("<td>"+i+"*"+j+"="+(i*j)+"</td>");
+	}
+	document.write("</tr>");	
+	}
+	document.write("</table>");	
+	document.write("</div>");	
+	
+// SIST로고가 L 테이블에 형태로 출력되도록 만들기
+document.write("<div>");
+document.write("<table>");
+for(var j=1; j<6; j++) {
+	document.write("<tr>");
+	for(var i=1; i<j; i++) {
+		document.write("<td>");
+		document.write("<img src='http://localhost:8080/html_prj/common/images/sist_logo.jpg'>");
+		document.write("</td>");
+	}
+	document.write("</tr>");
+}
+document.write("</table>");
+document.write("</div>");
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

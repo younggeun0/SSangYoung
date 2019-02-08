@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>switch case</title>
+<style type="text/css">
+	#bloodTable { border-spacing:0px; }
+	td,th { border:1px solid #333; text-align:center; }
+	#btTitle { width:80px; }
+	#btSpec { width:300px; }
+</style>
+<script type="text/javascript">
+	var bloodType = prompt("혈액형을 입력해주세요.", "");
+
+	var output="";
+	switch(bloodType.toUpperCase()) {
+	case 'A': 
+		output="세심하고 치밀하다.";
+		break;
+	case 'B':
+		output="털털함, 내것아님 관심없음";
+		break;
+	case 'O':
+		output="복집하고 합리적임";
+		break;
+	case 'AB':
+		output="질긴 생명력, 리더쉽이 좋음";
+		break;
+	default:
+		output="사람 혈액형이 아닙니다.";
+		break;
+	}
+	
+	// JS에서 보여지는 부분과 많이 결합하면 나쁜 코드..
+	// 가급적이면 분리하는 방향으로 만들어진다.
+	document.write("<table id='bloodTable'>");
+	document.write("<tr>");
+	document.write("<th id='btTitle'>혈액형</th>");
+	document.write("<th id='btSpec'>특징</th>");	
+	document.write("</tr>");
+	document.write("<tr>");
+	document.write("<td>"+bloodType+"</td>");
+	document.write("<td>"+output+"</td>");
+	document.write("</tr>");
+	document.write("</table>");
+</script>
+</head>
+<body>
+</body>
+</html>
