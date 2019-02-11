@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/////////////////////////// 무기명 함수로 이벤트 처리 /////////////////////////////
+	var flag = false;
+	window.onload = function() {
+		window.document.getElementById("btn").onclick = function() {
+			// 이미지 태그 얻기
+			var img = document.getElementById("img");
+			if (flag == false) {
+				img.src = "../common/images/img2.jpg";
+				flag = true;
+			} else if (flag == true){
+				img.src = "../common/images/img.png";
+				flag = false;
+			}
+		}
+		document.getElementById("div").onmouseout = function() {
+			// 이미지 태그 얻기
+			var img = document.getElementById("img");
+			img.src = "../common/images/img.png";
+		}
+		///////////////////////// 무기명 함수로 이벤트 처리 /////////////////////////////
+		
+		////////////////////////////// addEventListener 함수 이벤트 처리 /////////////////
+		window.document.getElementById("btn1").addEventListener("click", chgImg);
+		window.document.getElementById("name").addEventListener("click", setName);
+		window.document.getElementById("addr").addEventListener("click", setAddr);
+		////////////////////////////// addEventListener 함수 이벤트 처리 /////////////////
+	}
+	
+	function chgImg() {
+		document.getElementById("img").src="../common/images/img1_1.png";
+	}
+	
+	function setName() {
+		document.getElementById("div1").innerHTML="<strong>공선의</strong>";
+	}
+	
+	function setAddr() {
+		document.getElementById("div1").innerHTML="<marquee>서울시 양천구 목동</marquee>";
+	}
+	
+
+</script>
+</head>
+<body>
+	<input type="button" value="무기명 함수 클릭" class="btn" id="btn"/>
+	<input type="button" value="addEventListener 클릭" class="btn" id="btn1"/>
+	<div id ="div" style="height:400px;">
+		<img src="../common/images/img.png" id="img"/>
+	</div>
+	
+	<input type="button" value="이름" class="btn" id="name"/>
+	<input type="button" value="주소" class="btn" id="addr"/>
+	<div id="div1" style="width:400px; height:150px; border:1px solid #333"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 함수 정의, 호출 : function 함수명(매개변수, ...) { ... }
+	// 매개변수 없는 함수
+	function test1() {
+		alert('test1 호출');
+	}
+	
+	// 호출 : 함수명();
+	test1();
+	
+	// 매개변수 있는 함수 : 매개변수는 전역변수형태
+	function test2(name, age) {
+		alert("이름 입력 :" +  name +"나이 입력 : "+age);
+	};
+	
+	// 반환값이 있는 함수 : 함수의 가장 마지막줄에 return
+	// 반환형은 정의하지 않는다.
+	  function test3() {
+		var msg = "오늘은 월요일입니다."
+		return "";
+	}
+	
+	// 반환값이 있는 함수는 호출 시 결과값을 갖는다.
+	var returnValues = test3();
+	alert(returnValues);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

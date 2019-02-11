@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		// 이벤트 등록
+		document.getElementById("frm").addEventListener("click", getValue);
+		document.getElementById("id").addEventListener("click", idGetValue);
+	} 
+	
+	function getValue() {
+		// form태그의 이름 속성을 사용하여 값설정
+		
+		// form 태그 얻기
+		var obj = document.frm;
+		
+		// form 태그의 하위 컨트롤 값 얻기
+		var name = obj.name.value;
+		var addr = obj.addr.value;
+		var age = obj.age.value;
+		
+		alert("이름 : "+name+"\n주소 : "+addr+"\n나이 : "+age);
+		
+	}
+	
+	function idGetValue() {
+		// form 태그를 거치지 않고 id속성으로 태그를 찾아서 값 얻기
+		var name = document.getElementById("name").value;
+		var addr = document.getElementById("addr").value;
+		var age = document.getElementById("age").value;
+		
+		alert("id 속성으로 값 얻기 : "+name+"/"+addr+"/"+age);
+		
+	}
+</script>
+</head>
+<body>
+	<form name="frm">
+		<label>이름</label>
+		<input type="text" name="name" class="inputBox" id="name"><br/>
+		<label>주소</label>
+		<input type="text" name="addr" class="inputBox" id="addr"><br/>
+		<label>나이</label>
+		<input type="password" name="age" class="inputBox" id="age"><br/>
+		<input type="button" value="form 값얻기" class="btn" id="frm"><br/>
+		<input type="button" value="id 값얻기" class="btn" id="id"><br/>
+		<input type="button" value="onclick 값얻기" class="btn" onclick="getValue()"><br/>
+	</form>
+</body>
+</html>

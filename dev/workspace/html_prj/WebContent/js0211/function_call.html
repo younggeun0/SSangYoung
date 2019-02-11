@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript">
+	// 사용자 동작에 의한 함수 호출
+	// onload로 호출되면 <body>태그 내의 정보가 loading된 후 실행되기 때문에
+	// tag의 정보를 script 영역에서 얻을 수 있다.
+	
+	// script 영역에서 직접 호출하면 <body>가 로딩되기 전에 호출되므로 tag의 정보를
+	// script영역에서 얻을 수 없다.
+	function test() {
+		// var val = document.getElementById("temp");
+		alert("test!!");
+	}
+	
+	// test();
+</script>
+</head>
+<!-- <body onload="test()"> -->
+<body>
+<img src="../common/images/img.png" onclick="test()">
+<!-- <input type="text" id="temp" value="월요일" onchange="test()"> -->
+<label>클릭</label>
+<input type="button" onclick="test()" value="클릭" class="btn"/>
+<label>키가 눌릴 때</label>
+<input type="text" class="inputBox" onkeydown="test()"/>
+<label>키가 올라올 때</label>
+<input type="text" class="inputBox" onkeyup="test()"/><br/>
+<label>마우스포인터가 들어갈 때</label>
+<img src="../common/images/img.png" style="border:2px solid #333" onmouseover="test()"/><br/>
+<label>마우스포인터가 빠져나갈 때</label>
+<img src="../common/images/img.png" style="border:2px solid #333" onmouseout="test()"/><br/>
+<label>값이 변경될 때</label><br><br/>
+<!-- select의 onchange는 다른 옵션이 선택되면 변경된 것으로 간주 -->
+<select onchange="test()">
+	<option>어머님</option>
+	<option>아버님</option>
+</select>
+<!-- input이나 textarea의 onchange는 커서가 들어갔을 때의 값과 
+빠져나갔을 때의 값이 다를 때 변경된 것으로 간주한다. -->
+<input type="text" onchange="test()">
+<textarea style="width:400px; height:100px" onchange="test()"></textarea>"
+<label>커서가 빠져나갔을 때</label>
+<input type="text" onblur="test()"/> 
+<label>더블 클릭</label>
+<input type="button" value="더블클릭" ondblclick="test()"/><br/> 
+
+</body>
+</html>

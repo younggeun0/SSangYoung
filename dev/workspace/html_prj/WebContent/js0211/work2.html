@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숙제2</title>
+<script type="text/javascript">
+	
+	window.onload = function() {
+		document.getElementById("btn").addEventListener("click", printTable);
+	}
+	
+	function printTable() {
+		
+		var dan = document.gugudan.dan.value;
+		
+		var divNode = document.getElementById("table");
+		var output = "";
+
+		if(dan >= 2 && dan <= 9) {
+			
+			output+="<form name='frm'><table border='1'>";
+			for(var i=1; i<10; i++) {
+				output+="<tr><td onclick='alert("+(dan*i)+")'>"+dan+"*"+i+"</td></tr>";
+			}
+			output+="</table></form>";
+			
+			divNode.innerHTML = output;
+		} else {
+			output = "구구단은 2~9단 사이입니다.<br/><marquee><img src='../common/images/img2.jpg'><marquee>";
+			
+			divNode.style="width:400px; height:200px";
+			divNode.innerHTML = output;
+		}
+	}
+	
+	
+</script>
+</head>
+<body>
+	<div>
+		<form name="gugudan">
+			<label>구구단</label>
+			<input type="text" name="dan">
+			<input type="button" id="btn" value="입력"> 
+		</form>
+	</div>
+	<div id="table"></div>
+</body>
+</html>

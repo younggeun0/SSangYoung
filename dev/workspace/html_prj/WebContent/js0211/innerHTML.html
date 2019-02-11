@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>innerHTML</title>
+<script type="text/javascript">
+	window.onload = () => {
+		document.getElementById("id").addEventListener("click", getValue);
+	}
+	
+	var getValue = () => {
+
+		var obj = document.frm;
+		var name = obj.name.value;
+		var addr = obj.addr.value;
+		var age = obj.age.value;
+		
+		// 1. div 얻기
+		var divNode = document.getElementById("output");
+		var output = "이름 : <strong>"+name+
+			"</strong></br>나이 : "+age+"</br>주소 : "+addr;
+		
+		divNode.innerHTML = output;
+	}
+</script>
+</head>
+<body>
+	<div>
+	<form name="frm">
+		<label>이름</label>
+		<input type="text" name="name"><br/>
+		<label>주소</label>
+		<input type="text" name="addr"><br/>
+		<label>나이</label>
+		<input type="password" name="age"><br/>
+		<input type="button" value="id 값얻기" id="id"><br/>
+	</form>
+	</div>
+	<div id="output"></div>
+</body>
+</html>
