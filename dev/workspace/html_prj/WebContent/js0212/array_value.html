@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	// 배열(name속성이 같다면 배열)로 된 값 얻기
+	window.onload = function() {
+		document.getElementById("radio").addEventListener("click", processRadio);
+		document.getElementById("check").addEventListener("click", processCheck);
+		document.getElementById("selectBtn").addEventListener("click", processSelect);		
+		document.getElementById("select").addEventListener("change",processSelect);
+	}
+	
+	function processRadio() {
+		var obj = document.frm;
+		
+		// alert(obj.gender[0].value+"/"+obj.gender[1].value); // M/F
+		// alert(obj.gender[0].checked+"/"+obj.gender[1].checked); // false /false(선택안하면)
+		
+		if(!(obj.gender[0].checked || obj.gender[1].checked)) {
+			alert("성별을 선택해주세요");
+			return;
+		}
+		
+		var checkedGender = "";
+		
+		for(var i=0; i<obj.gender.length; i++) {
+			if(obj.gender[i].checked) {
+				checkedGender = obj.gender[i].value;
+			}
+		}
+		
+		document.getElementById("output").innerHTML = "선택성별 : "+checkedGender;
+	}
+
+	function processCheck() {
+		// 선택된 체크박스 값얻기
+		var obj = document.frm;
+		var flag = false;
+		
+		var output = "<ul>";
+		for(var i=0; i<obj.games.length; i++) {
+			if(obj.games[i].checked) {
+				flag = true;
+				output += "<li>"+obj.games[i].value+"</li>";
+			}
+		}
+		output += "</ul>";
+		
+		if(!flag) {
+			output+="<li>선택하신 게임이 없습니다.</li>";
+		}
+		
+		document.getElementById("output").innerHTML = output;
+	}
+	
+	function processSelect() {
+		
+		var output ="";
+		
+		output = document.frm.job.value;
+
+		if(output == "none") {
+			alert("직업을 선택해주세요.");
+			return;
+		}
+		
+		document.getElementById("output").innerHTML = output;
+	}
+	
+</script>
+</head>
+<body>
+	<form name="frm">
+	<div>
+		<label>성별</label>
+		<input type="radio" name="gender" value="M"/>남자	
+		<input type="radio" name="gender" value="F"/>여자	
+	</div>
+	<div>
+		<label>게임</label>
+		<input type="checkbox" name="games" value="철권"/>철권
+		<input type="checkbox" name="games" value="아스팔트"/>아스팔트
+		<input type="checkbox" name="games" value="GTA2"/>GTA2
+		<input type="checkbox" name="games" value="하스스톤"/>하스스톤
+		<input type="checkbox" name="games" value="리니지"/>리니지
+		<input type="checkbox" name="games" value="마인크래프트"/>마인크래프트
+	</div>
+	<div>
+		<label>관심직업선택</label>
+		<select name="job" id="select">
+			<option value="none">----관심 직업----</option>
+			<option value="쓰앵님">쓰앵님</option>
+			<option value="FrontEnd개발자">FrontEnd 개발자</option>
+			<option value="BackEnd개발자">BackEnd 개발자</option>
+			<option value="운영">운영</option>
+			<option value="유지보수개발자">유지보수개발자</option>
+		</select>
+	</div>
+	<div>
+		<input type="button" value="라디오 값 얻기" id="radio"/>
+		<input type="button" value="체크박스 값 얻기" id="check"/>
+		<input type="button" value="셀렉트값 얻기" id="selectBtn"/>
+	</div>
+	</form>
+	<div id="output"></div>
+</body>
+</html>

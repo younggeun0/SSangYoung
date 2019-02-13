@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("flag").addEventListener("change", setChecked);
+	}
+	
+	function setChecked() {
+		var obj = document.frm;
+		
+		for(var i=0; i<obj.mail.length; i++) {
+			obj.mail[i].checked = obj.flag.checked;
+		}
+		
+	}
+</script>
+</head>
+<body>
+	<div>
+		<form name="frm">
+		<table>
+			<thead>
+			<tr>
+				<th width="10"><input type="checkbox" name="flag" id="flag"/></th>
+				<th width="350">제목</th>
+				<th width="80">작성자</th>
+				<th width="80">수신일</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" name="mail"/></td>
+					<td>안녕하세요? 저번에 바다에서 뵀던... 바다이야기</td>
+					<td>김실장</td>
+					<td>2018-02-12</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mail"/></td>
+					<td>안녕하세요? 저번에 바다에서 또 뵀던... 바다이야기</td>
+					<td>김실장</td>
+					<td>2018-02-12</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mail"/></td>
+					<td>대박 승률... 야마토</td>
+					<td>이실장</td>
+					<td>2018-02-12</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mail"/></td>
+					<td>[업무협조]김정윤 담당자님 안녕하세요? 저번에 바다에서...</td>
+					<td>이실장</td>
+					<td>2018-02-12</td>
+				</tr>
+			</tbody>
+		</table>
+		</form>
+	</div>
+</body>
+</html>

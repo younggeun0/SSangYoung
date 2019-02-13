@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	fieldset { border:1px solid :#333; width:400px; margin-top:10px; }
+	img { width: 100px; }
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("unique").addEventListener("click", uniqueVal);
+		document.getElementById("checked").addEventListener("click", setChecked);
+		document.getElementById("flag").addEventListener("change", setChecked2);
+	}
+	
+	function uniqueVal() {
+		var obj = document.frm;
+		
+		obj.name.value = "정택성"; // text 값설정
+		obj.password.value = "jmt111"; // password 값설정
+		obj.addr.value = "서울시 구로구"; // hidden 값설정, 소스보는 상태에서 버튼 클릭 시 값 추가 확인가능
+		
+		obj.img.src = "../common/images/img1_1.png"; // img변경
+		
+		// HTML 5에서 제공하는 Form Control
+		obj.date.value = "1993-07-29"; // date 변경, 년-월-일 형태만 적용됨
+		obj.range.value = 80; // range 변경
+	}
+	
+	function setChecked() {
+		// checked 상태 변경
+		var obj = document.frm;
+		
+		// radio의 상태 변경
+		obj.gender[0].checked = "true";
+		
+		// checkbox의 상태 변경
+		obj.hobby[0].checked = "true";
+		obj.hobby[1].checked = "true";
+		obj.hobby[4].checked = "true";
+		
+	}
+	
+	function setSelected() {
+		// selected 상태 변경
+		var obj = document.frm;
+		obj.tel1[1].selected = "true";
+	}
+	
+	function setChecked2() {
+		var obj = document.frm1;
+		
+		if(!obj.flag.checked) {
+			for(var i=0; i<obj.mail.length; i++) {
+				obj.mail[i].checked = false;
+			}
+		} else {
+			for(var i=0; i<obj.mail.length; i++) {
+				obj.mail[i].checked = true;
+			}
+		}
+		
+	}
+</script>
+</head>
+<body>
+	<div>
+		<h2>JavaScript의 값을 HTML Form Control에 설정</h2>
+		<form name="frm">
+			<fieldset>
+				<legend>이름이 유일한 Form Control</legend>
+				<label>이름</label>
+				<input type="text" name="name"/><br/>
+				<label>나이</label>
+				<input type="password" name="password"/><br/>
+				<label>주소</label>
+				<input type="hidden" name="addr"/><br/>
+				<label>이미지</label>
+				<img src="../common/images/img.png" name="img"/><br/>
+				<label>날짜</label>
+				<input type="date" name="date"/><br/>
+				<label>범위</label>
+				0<input type="range" name="range" min="0" max="100"/>100<br/>
+				<input type="button" value="값설정" id="unique"/>
+			</fieldset>
+			<fieldset>
+				<legend>checked 속성 변경</legend>
+				<label>성별</label>
+				<input type="radio" name="gender" value="남자">남자
+				<input type="radio" name="gender" value="여자">여자<br/>
+				<label>취미</label>
+				<input type="checkbox" name="hobby" value="게임">게임
+				<input type="checkbox" name="hobby" value="등산">등산
+				<input type="checkbox" name="hobby" value="낚시">낚시
+				<input type="checkbox" name="hobby" value="독서">독서
+				<input type="checkbox" name="hobby" value="음악감상">음악감상
+				<br/>
+				<input type="button" value="checked설정" id="checked"/>
+			</fieldset>
+			<fieldset>
+				<legend>selected 속성 변경</legend>
+				<label>국번 선택</label>
+				<select name="tel1">
+					<option>---국번 선택---</option>
+					<option value="010">010</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="018">018</option>
+					<option value="019">019</option>
+				</select>
+				<br/>
+				<input type="button" value="selected 설정" onclick="setSelected()"/>
+			</fieldset>
+		</form>
+		<div>
+			<form name="frm1">
+			<table>
+				<thead>
+				<tr>
+					<th width="10"><input type="checkbox" name="flag" id="flag"/></th>
+					<th width="350">제목</th>
+					<th width="80">작성자</th>
+					<th width="80">수신일</th>
+				</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="checkbox" name="mail"/></td>
+						<td>안녕하세요? 저번에 바다에서 뵀던... 바다이야기</td>
+						<td>김실장</td>
+						<td>2018-02-12</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="mail"/></td>
+						<td>안녕하세요? 저번에 바다에서 또 뵀던... 바다이야기</td>
+						<td>김실장</td>
+						<td>2018-02-12</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="mail"/></td>
+						<td>대박 승률... 야마토</td>
+						<td>이실장</td>
+						<td>2018-02-12</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="mail"/></td>
+						<td>[업무협조]김정윤 담당자님 안녕하세요? 저번에 바다에서...</td>
+						<td>이실장</td>
+						<td>2018-02-12</td>
+					</tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

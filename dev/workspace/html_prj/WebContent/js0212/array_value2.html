@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	// 배열(name속성이 같다면 배열)로 된 값 얻기
+	window.onload = function() {
+		document.getElementById("select").addEventListener("change",processSelect);
+	}
+	
+	function processSelect() {
+		
+		var obj = document.frm;
+		
+		// select 값 얻기(가장 간단)
+		var output = obj.job.value;
+		
+		// 선택된 인덱스 번째 값 얻기
+		alert(obj.job.selectedIndex);
+		alert(obj.job[obj.job.selectedIndex].value);
+
+		if(output == "none") {
+			alert("직업을 선택해주세요.");
+			return;
+		}
+		
+		// select는 굳이 배열을 쓸 필요가 없다.
+		/* var output = "";
+		
+		for(var i =0; i<obj.job.length; i++) {
+			if(obj.job[i].selected) {
+				output+=obj.job[i].value;
+			}
+		} */
+		
+		document.getElementById("output").innerHTML = output;
+	}
+	
+</script>
+</head>
+<body>
+	<form name="frm">
+		<label>관심직업선택</label>
+		<select name="job" id="select">
+			<option value="none">----관심 직업----</option>
+			<option value="쓰앵님">쓰앵님</option>
+			<option value="FrontEnd개발자">FrontEnd 개발자</option>
+			<option value="BackEnd개발자">BackEnd 개발자</option>
+			<option value="운영">운영</option>
+			<option value="유지보수개발자">유지보수개발자</option>
+		</select>
+	</div>
+	</form>
+	<div id="output"></div>
+</body>
+</html>

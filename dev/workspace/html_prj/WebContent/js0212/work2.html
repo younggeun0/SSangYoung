@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숙제2</title>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("rangeBox").addEventListener("mousemove", changeSize);
+	}
+	
+	function changeSize() {
+		var img = document.getElementById("img");
+		var rangeBox = document.getElementById("rangeBox");
+		img.width = rangeBox.value;
+		img.height = rangeBox.value;
+	}
+
+</script>
+</head>
+<body>
+<div style="height:300px; width:300px; border:1px solid #333">
+	<img src="../common/images/img.png" width="30" height="30" id="img"/>	
+</div>
+<div>
+	30<input type="range" id="rangeBox" min="30" max="300" value="30"/>300
+</div>
+</body>
+</html>

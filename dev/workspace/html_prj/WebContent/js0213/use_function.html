@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../common/css/main_v20190130.css"/>
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+	// 아이디와 비밀번호 
+	window.onload = function() {
+		var obj = document.loginForm;
+		obj.id.focus(); // id input태그로 커서 옮기기
+		
+	}
+	
+	function checkNull() {
+		console.log(window.event.keyCode);
+		
+		var obj = document.loginForm;
+		
+		// alert("눌린키의 코드값 : "+window.event.keyCode+"(keycode) "+window.event.which+"(which)");
+		
+		// id에서 enter가 눌려지면, id가 입력되었는지 확인하고 
+		// 입력되었으면 커서를 비밀번호로 이동시킴
+		
+		// 비밀번호에서 엔터가 눌려지면 id가 입력되었는지 확인하고 입력되었으면 
+		// 비밀번호가 입력되었는지 확인하고 비밀번호가 입력되어 있지 않으면 커서를 비밀번호로 이동시킴
+		// 아이디와 비밀번호 어디든 엔터가 쳐지고 값이 들어있다면 alert("로그인")을 출력한다.
+		if(window.event.keyCode == 13) {
+			if(obj.id.value.trim()=="") {
+				obj.id.value="";
+				obj.id.focus();
+				return;
+			} else {
+				obj.pwd.focus();
+			}
+			
+			if(obj.pwd.value.trim()=="") {
+				obj.pwd.value="";
+				obj.pwd.focus();
+				return;
+			} else {
+				alert("로그인");
+			}
+		}
+	}
+
+	function checkEmail() {
+		var obj = document.emailFrm;
+		var input = obj.email.value.trim();
+		
+		if(input.length < 5) { 
+			alert("이메일은 5자보다 적을 수 없습니다.")
+			document.getElementById("resultDiv").innerHTML = "";
+			return;
+		}
+		var cnt1 = 0;
+		var cnt2 = 0;
+		
+		cnt1 = input.indexOf("@"); // 없으면 -1
+		cnt2 = input.lastIndexOf("."); // 없으면 -1
+		
+		var output="";
+		if (cnt1 == -1 || cnt2 == -1) {
+			output=`<span style="color:#FF0000;">잘못된 메일형식</sapn>`;
+		} else {
+			output="유효한 메일";
+		}
+		document.getElementById("resultDiv").innerHTML = output;			
+	}
+	
+</script>
+</head>
+<body>
+<div id="loginBox">
+	<form name="loginForm">
+	<table>
+		<tr>
+			<td>
+				<input type="text" name="id" id="id" placeholder="아이디" title="아이디" class="inputBox" tabindex="1" onkeydown="checkNull()"/>
+			</td>
+			<td rowspan="2">
+				<input type="button" value="로그인" class="btn" style="width:50px; height:50px" tabindex="3"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="password" name="pwd" id="pwd" placeholder="비밀번호" title="비밀번호" class="inputBox" tabindex="2" onkeydown="checkNull()"/>
+			</td>
+		</tr>
+	</table>
+	</form>
+</div>
+<div>
+	<form name="emailFrm">
+		<!--
+		  입력된 이메일이 5글자 이상이면서 
+		  @과 .이 존재하는지 둘 다 있으면 
+			입력한 메일과 "유효한 메일" 메시지를 resultDiv에 출력하고 
+			그렇지 않으면 "잘못된 메일형식"을 글자색이 #FF0000으로 resultDiv에 출력 
+		-->
+		<label>이메일</label>
+		<input type="text" name="email" class="inputBox" id="email"/>
+		<input type="button" value="유효성검증" class="btn" onclick="checkEmail()""/>
+	</form>
+</div>
+<div id="resultDiv"></div>
+</body>
+</html>
