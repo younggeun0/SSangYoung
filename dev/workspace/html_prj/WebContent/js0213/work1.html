@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>숙제01</title>
+<style type="text/css">
+	#output { 
+		width:200px; 
+		height:100px;
+		border:1px solid #333; 
+		margin-top:10px; 
+	}
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("lowerCase").addEventListener("click", viewCase);
+		document.getElementById("upperCase").addEventListener("click", viewCase);
+		document.getElementById("number").addEventListener("click", viewCase);
+	}
+	
+	function viewCase() {
+		var obj = document.frm;
+		var divNode = document.getElementById("output");
+		var data = obj.input.value;
+		var output = "";
+		
+		console.log("???");
+		if (this.value == '소문자') {
+			output += "소문자 : "+data.replace(/[A-Z0-9]/g,"");
+		} else if (this.value == '대문자') {
+			output += "대문자 : "+data.replace(/[a-z0-9]/g,"");
+		} else if (this.value == '숫자') {
+			output += "숫자 : "+data.replace(/[A-Za-z]/g,"");
+		}
+		
+		divNode.innerHTML = output;
+	}
+</script>
+</head>
+<body>
+<div>
+	<form name="frm">
+	<input type="text" name="input" value="abcy12Ab3456Z"/>
+	<input type="button" id="lowerCase" value="소문자" />
+	<input type="button" id="upperCase" value="대문자" />
+	<input type="button" id="number" value="숫자" />
+	</form>
+</div>
+<div id="output"></div>
+</body>
+</html>
