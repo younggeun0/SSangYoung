@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function pageMove(sel) {
+		if(sel.selectedIndex != 0) { // 선택한 옵션이 처음 옵션이 아닐 때
+			if(confirm(sel.value+" 사이트로 이동하시겠습니까?")){
+				location.replace("http://"+sel.value); // GET방식 이동
+			}
+		}
+	}
+	
+	function moveOffice(officeName, url) {
+		if (confirm(officeName+" 사이트로 이동하시겠습니까?")) {
+			location.href=url;
+		}
+	}
+</script>
+</head>
+<body>
+<select onchange="pageMove(this)">
+	<option selected>--- 자주 가는 사이트 ---</option>
+	<option value="daum.net">다음</option>
+	<option value="naver.com">네이버</option>
+	<option value="google.com">구글</option>
+	<option value="sist.co.kr">SIST</option>
+</select>
+<div>
+	<!-- 이미지를 자르지 않고 특정 좌표에 링크를 설정할 경우 사용하는 map태그 -->
+	<map id="seoulMap" name="seoulMap">
+		<area shape="rect" coords="293,256,339,296" onclick="moveOffice('강남구청','http://www.gangnam.go.kr/main.do')" title="강남구청"/>
+		<area shape="rect" coords="149,230,191,254" href="javascript:moveOffice('영등포구청','http://www.ydp.go.kr/main/main.do')" title="영등포구청"/>
+		<area shape="rect" coords="324,53,377,123" href="javascript:moveOffice('노원구청','https://www.nowon.kr/')" title="노원구청"/>
+		<area shape="rect" coords="74,264,121,292" href="javascript:moveOfficE('구로구청','http://www.guro.go.kr/')" title="구로구청"/>
+		<area shape="rect" coords="238,186,279,213" href="javascript:moveOffice('중구청','http://www.junggu.seoul.kr/index.jsp')" title="중구청"/>
+	</map>
+	<img src="images/map.gif" usemap="#seoulMap" />
+</div>
+</body>
+</html>

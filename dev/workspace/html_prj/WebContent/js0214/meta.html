@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="5;http://sist.co.kr"/>
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	window.onload = () => {
+		// pageMove();
+	}
+	
+	var cnt = 0;
+	
+	const pageMove = () => {
+		cnt++;
+		if(cnt == 5) {
+			location.href="http://sist.co.kr";			
+		}
+		setTimeout(pageMove, 1000);
+	}
+	/* setTimeout(() => {
+		location.href="http://sist.co.kr";
+	}, 5000); */
+</script>
+</head>
+<body>
+접속하신 http://text.com는 2019년 2월 15일부터 http://sist.co.kr로 도메인이 변경됩니다.<br/>
+5초후 사이트를 이동합니다.<br/>
+바로 이동하시려면 <a href="http://sist.co.kr">여기</a>를 눌러주세요.
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../common/css/main_v20190130.css"/>
+<script type="text/javascript">
+	function regexp() {
+		var data = "abcㄱdef123가a나다ABC!~$zzz햏a-z";
+		
+		var divNode = document.getElementById("output");
+		var output = "";
+		
+		output += "<ul><li><strong>원본 데이터 : "+data+"</strong></li>";
+		output += "<li>가장 처음 등장하는 a 삭제 : " + data.replace(/a/,"")					 +"</li>";  
+		output += "<li>모든 a 삭제 : "		 					 + data.replace(/a/g,"")				 +"</li>";
+		output += "<li>대괄호 없는 a-z 삭제 : "  		 + data.replace(/a-z/g, "")		 +"</li>";
+		output += "<li>모든 소문자 삭제 : "					 + data.replace(/[a-z]/g, "")		 +"</li>";
+		output += "<li>모든 대문자 삭제 : "					 + data.replace(/[A-Z]/g, "")		 +"</li>";
+		output += "<li>모든 영문자 삭제 : "          + data.replace(/[a-zA-Z]/g, "") + "</li>";
+		output += "<li>모든 숫자 삭제 : "            + data.replace(/[0-9]/g, "") 	 +"</li>";
+		output += "<li>모든 한글 삭제 : "            + data.replace(/[ㄱ-힣]/g, "") 	 +"</li>";
+		
+		divNode.innerHTML = output;
+	}
+	
+	function chk() {
+		var obj = document.frm;
+		
+		var txt1 = obj.txt1.value;
+		// 대소문자만 입력했는지 체크
+		if( txt1.replace(/[a-zA-Z]/g, "") != "" ) {
+			alert("영문자만 입력가능합니다.");
+			obj.txt1.value="";
+			return;
+		}
+		
+		var txt2 = obj.txt2.value;
+		// 숫자만 입력했는지 체크
+		if (txt2.replace(/[0-9]/g, "") != "") {
+			alert("숫자만 입력가능합니다.");
+			obj.txt2.value = "";
+			return;
+		}
+		
+		var txt3 = obj.txt3.value;
+		// 특수문자만 입력했는지 체크
+		if (txt3.replace(/[~!@#$%^&*()_+={}\[\];:]/ig, "") != "") {
+			console.log(txt3.replace(/[a-z0-9ㄱ-힣]/ig,""));
+			alert("특수문자만 입력가능합니다.");
+			obj.txt3.value = "";
+			return;
+		}
+	}
+</script>
+</head>
+<body>
+	<!-- <input type="button" value="클릭" class="btn" onclick="regexp()"/> -->
+	<form name="frm">
+		<label>대문자와 소문자만 입력가능</label><br/>
+		<input type="text" name="txt1" class="inputBox"/><br/>
+		<label>숫자만 입력가능</label><br/>
+		<input type="text" name="txt2" class="inputBox"/><br/>
+		<label>특수문자만 입력가능</label><br/>
+		<input type="text" name="txt3" class="inputBox"/><br/>
+		<input type="button" value="클릭" class="btn" onclick="chk()"/>
+	</form>
+	<div id="output"></div>
+</body>
+</html>
