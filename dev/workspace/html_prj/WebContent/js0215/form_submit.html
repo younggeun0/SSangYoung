@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../common/css/main_v20190130.css"/>
+<script type="text/javascript">
+	useSubmit = () => {
+		
+		var obj = document.frm;
+		
+		if(obj.name.value.replace(/ /g,"") == "") {
+			obj.name.value="";
+			obj.name.focus();
+			alert('이름은 필수 입력입니다.');
+			return;
+		}
+		
+		if(obj.age.value.replace(/ /g, "") == "") {
+			obj.age.value="";
+			obj.age.focus();
+			alert('나이는 필수 입력입니다.');
+			returnl
+		}
+		
+		alert('서버(BackEnd) 전송합니다');
+
+		// 단순 페이지 이동 : 값은 이동하지 않고 페이지 이동만 한다.
+		// location.href="request.jsp";
+		// location.replace("request.jsp");
+		
+		// form태그가 감싸고 있는 모든 HTML Form Control의 값을 가지고 페이지 이동한다.
+		obj.submit();
+	}
+</script>
+</head>
+<body>
+<form action="request.jsp" method="get" name="frm">
+	<label>이름</label>
+	<input type="text" name="name" id="name" class="inputBox"/><br/>
+	<label>나이</label>
+	<input type="text" name="age" id="age" class="inputBox"/><br/>
+	<label>주민번호</label>
+	<input type="password" name="ssn" id="ssn" class="inputBox"/><br/>
+	<input type="button" value="버튼 전송" class="btn" onclick="useSubmit()"/><br/>
+	<!-- submit은 JS의 유효성 검증 결과에 상관없이 BackEnd로 전송한다. -->
+	<input type="submit" value="submit 전송" class="btn" onclick="useSubmit()"/><br/>
+</form>
+</body>
+</html>

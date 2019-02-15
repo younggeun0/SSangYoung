@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#popupWrap {
+		margin:0px auto;
+		width:450px; 
+		height: 550px;
+	}
+	
+	#popupContainer {
+		width:460px;
+		height:520px;
+	}
+	
+	#popupFooter {
+		width:460px;
+		height:30px;
+	}
+</style>
+<script type="text/javascript">
+
+	function winClose() {
+		// 팝업창 닫기 : popup인 경우 그냥 닫히고, 
+		// window인 경우 confrim dialog로 닫기 여부를 묻는다. 
+		self.close();
+	}
+	
+</script>
+</head>
+<body>
+<div id="popupWrap">
+	<div id="popupContainer">
+		<img src="images/newyear_2019.jpg" alt="img"/>
+	</div>
+	<div id="popupFooter">
+		<input type="checkbox" name="closeFlag"/>오늘 하루 이 창을 열지 않음
+		<a href="#void" onclick="winClose()">닫기</a>
+	</div>
+</div>
+</body>
+</html>

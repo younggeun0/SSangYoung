@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	historyCnt = () => {
+		alert(history.length);
+	}
+	
+	historyBack = () => {
+		history.back();
+	}
+	
+	historyGo = () => {
+		history.go(2);
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="히스토리의 수" onclick="historyCnt()">
+	<input type="button" value="뒤로" onclick="historyBack()">
+	<input type="button" value="앞으로" onclick="historyGo()">
+</body>
+</html>
