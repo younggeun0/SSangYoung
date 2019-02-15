@@ -106,4 +106,5 @@
 - 190212 : [값 얻기, HTML Form Control 사용](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-06/)
 - 190213 : [함수사용](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-07/)
 - 190214 : [정규식, 페이지이동, map태그, meta태그](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-08/)
+- 190215 : [페이지 이동(2), popup](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-09/)
 
