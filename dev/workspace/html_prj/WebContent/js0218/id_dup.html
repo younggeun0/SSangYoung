@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#idWrap {
+		width: 502px;
+		height:303px;
+		background: #FFFFFF url(images/id_background.png) no-repeat;
+		margin:0px auto;
+		position: relative;
+	}
+	
+	#idContainer {
+		position: absolute;
+		top: 110px;
+		left:80px;
+	}
+</style>
+<script type="text/javascript">
+	window.onload = () => {
+		document.getElementById("sendId").addEventListener("click",sendOpener);
+		document.getElementById("id").addEventListener("keydown",keyCheck); // keyup하면 submit되버림
+	}
+	
+	function keyCheck() {
+		if(window.event.which == 13) {
+			sendOpener();
+		}		
+	}
+	
+	function sendOpener() {
+		
+		// 1. 자식창에서 전송할 값 받기
+		var idObj = document.cFrm.id; 
+		
+		if (idObj.value.trim() == "") {
+			alert("전송할 id를 입력해주세요.");
+			idObj.focus();
+			return;
+		}
+		
+		// 2. 부모창으로 값 넘기기
+		opener.window.document.joinFrm.id.value = idObj.value.trim();
+		
+		// 3. 자식창 닫기
+		self.close();
+	}
+</script>
+</head>
+<body>
+<div id="idWrap">
+	<div id="idContainer">
+		<form name="cFrm">
+			<label>아이디</label>
+			<input type="text" id="id" name="id" class="inputBox" autofocus="autofocus"/>
+			<input type="button" value="사용" class="btn" id="sendId"/>
+		</form>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>약관</title>
+<link rel="stylesheet" type="text/css" href="common/css/main_v20190130.css"/>
+<style type="text/css">
+	#wrap {
+		width:1007px;
+		margin:0px auto;
+	}
+	
+	#agrHeader {
+		width:1007px;
+		height: 195px;
+		background: #FFFFFF url(images/header.png) no-repeat;
+	}	
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById("agr").addEventListener("click", chkCheckBox);
+	}
+	
+	function chkCheckBox() {
+		if (!document.getElementById("ag1").checked) {
+			alert("이용약관에 동의하셔야 합니다.");
+			return;
+		}
+		if (!document.getElementById("ag2").checked) {
+			alert("개인정보활용에 동의하셔야 합니다.");
+			return;
+		}
+		
+		location.href="member_join.html";
+	}
+</script>
+</head>
+<body>
+	<div id="wrap">
+	<div id="agrHeader"></div>
+	<div id="agrContent">
+		<table>
+			<tr align="center">
+				<td><strong>약 관</strong></td>
+			</tr>
+			<tr>
+				<td>
+					<textarea cols="100" rows="10" readonly="readonly" align="left">
+					 	 1. 동의?
+					</textarea><br/>
+					<input type="checkbox" id="ag1"/>이용약관에 동의합니다.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea cols="100" rows="10" readonly="readonly" align="left">
+					 	 2. 어보감
+					</textarea><br/>
+					<input type="checkbox" id="ag2"/>개인정보활용에 동의합니다.
+				</td>
+			</tr>
+			<tr>
+				<td align="center">
+					<input type="button" value="동의" id="agr" class="btn"/>&nbsp;
+					<input type="reset" value="동의안함" id="n_agr" class="btn"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+</body>
+</html>
