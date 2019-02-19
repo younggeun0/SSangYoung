@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"  href="http://localhost:8080/html_prj/common/css/main_v190130.css">
+<style type="text/css">
+
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	//로컬스토리지의 값 얻기
+	var name = localStorage.getItem("name");
+	var img = localStorage.getItem("img");
+	if(name==null){
+		alert("저장된 정보가 없습니다.");
+		location.href="use_storage.html";
+	}
+	var msg="";
+	if(img=="img.png"){
+		msg="무엇인가 집중하고 있는 잘생긴 김정윤";
+	}
+	if(img=="img1_1.png"){
+		msg="어떤 춤을 춰야할지 고민하고 있는 정택성";
+	}
+	if(img=="img2.jpg"){
+		msg="그날의 피로는 그날 푼다 이재찬";
+	}
+	
+	document.getElementById("img").src="../common/images/"+img;
+	document.getElementById("name").innerHTML = "<strong>"+name+"</strong>"
+	document.getElementById("spec").innerHTML = "<strong>"+msg+"</strong>"
+}
+</script>
+</head>
+<body>
+<table border="1">
+<tr>
+	<td rowspan="3"><img id="img" height="80"></td>
+	<td>라벨영역</td><td>데이터영역</td>
+</tr>
+<tr>
+	<td>이름</td><td><span id="name"></span></td>
+</tr>
+<tr>
+	<td>특징</td><td><span id="spec"></span></td>
+</tr>
+</table>
+
+
+
+</body>
+</html>
