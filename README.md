@@ -94,7 +94,7 @@
 - 190131 : [attribute(3), CSS 페이지 디자인, HTML5 Semantic Tag, 부모 자식 선택자](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-03/)
 
 
-# 2019.01.31 ~ 2019.?    JavaScript 학습
+# 2019.01.31 ~ 2019.02.20    JavaScript 학습
 
 ---
 
@@ -107,4 +107,13 @@
 - 190213 : [함수사용](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-07/)
 - 190214 : [정규식, 페이지이동, map태그, meta태그](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-08/)
 - 190215 : [페이지 이동(2), popup](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-09/)
-- 190218 : [JavaScript 정리 10 - select태그 option 생성, 회원가입 유효성 검증](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+- 190218 : [select태그 option 생성, 회원가입 유효성 검증](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+- 190219 : [회원가입 유효성 검증, canvas, Storage, JSON](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+- 190220 : [JSON, closure, class, prototype](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+
+
+# 2019.02.20 ~ 2019.?    jQuery 학습
+
+---
+
+- 190220 : [jQuery](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-01/)
