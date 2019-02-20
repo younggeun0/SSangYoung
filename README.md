@@ -1,4 +1,6 @@
-# 2018.10.22 ~ 2018.11.13    오라클 DBMS 학습
+# SIST Python & Java 응용 SW 실무 개발자 양성과정 학습내용 정리 Repository
+
+## 2018.10.22 ~ 2018.11.13    오라클 DBMS 학습
 
 ---
 
@@ -23,7 +25,7 @@
 - 181113 : [정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-17/)
 
 
-# 2018.11.13 ~ 2019.01.23    Java 학습
+## 2018.11.13 ~ 2019.01.23    Java 학습
 
 ---
 
@@ -76,7 +78,7 @@
 - 190122 : [도시락 주문 프로그램(7), 2차 프로젝트 진행](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-47/)
 - 190123 : [소프트웨어 테스트 방식, 단위테스트와 통합테스트, JavaSE 마무리](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-48/)
 
-# 2019.01.23 ~ 2019.28    HTML 학습
+## 2019.01.23 ~ 2019.28    HTML 학습
 
 ---
 
@@ -85,7 +87,7 @@
 - 190125 : [table 태그, 특수문자, 영역 태그, HTML Form Control](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-03/)
 - 190128 : [HTML Form Control, HTML5에서 추가된 태그와 지원하는 태그](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-04/)
 
-# 2019.01.29 ~ 2019.1.31    CSS 학습
+## 2019.01.29 ~ 2019.1.31    CSS 학습
 
 ---
 
@@ -94,7 +96,7 @@
 - 190131 : [attribute(3), CSS 페이지 디자인, HTML5 Semantic Tag, 부모 자식 선택자](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-03/)
 
 
-# 2019.01.31 ~ 2019.02.20    JavaScript 학습
+## 2019.01.31 ~ 2019.02.20    JavaScript 학습
 
 ---
 
@@ -112,7 +114,7 @@
 - 190220 : [JSON, closure, class, prototype](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
 
 
-# 2019.02.20 ~ 2019.?    jQuery 학습
+## 2019.02.20 ~ 2019.?    jQuery 학습
 
 ---
 
