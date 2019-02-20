@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"  href="http://localhost:8080/html_prj/common/css/main_v190130.css">
+<style type="text/css">
+	#output{height:80px; width: 500px; overflow: auto; border: 1px solid #333}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		document.getElementById("btn").addEventListener("click", useJson);
+	}
+	function useJson() {
+		//JSON: JavaScript Object Notation
+		//1. JSONObject 형태의 문자열을 생성
+		var data=
+			"{'name':'김건하','age':30,'job':'뛰어난 자바개발자','flag':true,'pubDate':'2019-02-19'}";
+		//2. eval 함수를 사용하여 JSONObject객체를 생성한다.
+		var json_obj = eval("("+data+")");
+		//3. 값얻기
+		var output= document.getElementById("output");
+		output.innerHTML="이름: "+ json_obj.name+"<br/> 나이: "+json_obj.age
+			+"<br/>job: "+json_obj.job+"<br/>flag :" +json_obj.flag+"<br/>생성일: "+json_obj.pubDate;
+		
+	}//useJson
+</script>
+</head>
+<body>
+	<div id="output"></div>
+	<input type="button" value="JSONObject 사용" class="btn" id="btn"/>
+
+</body>
+</html>

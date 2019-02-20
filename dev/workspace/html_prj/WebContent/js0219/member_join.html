@@ -98,6 +98,68 @@
 			return;
 		}
 		
+		var ssn = obj.ssn1.value + obj.ssn2.value;
+		
+		var flagNum = [2,3,4,5,6,7,8,9,2,3,4,5];
+		var temp = 0;
+		// 주민번호 각 자리에 2,3,4,5,6,7,8,9,2,3,4,5를 곱한 값의 결과를 모두 더함
+		for(var i=0; i<flagNum.length; i++) {
+			temp+=ssn.charAt(i)*flagNum[i];
+		}
+		// 위에 계산된 값을 11로 나눈 나머지를 11에서 빼고 그 결과를 10으로 나눈 나머지를 구함.
+		temp = (11-(temp%11))%10;
+		
+		// 위 계산된 결과가 주민번호 마지막자리와 일치하면 유효, 아님 무효
+		if (temp == ssn.charAt(12)) {
+			
+			// 성별체크
+			var genderFlag = ssn.charAt(6);
+			if(genderFlag%2 == 0) {
+				obj.gender[1].checked = true;
+			} else {
+				obj.gender[0].checked = true;
+			}
+			
+			var ssn_year = parseInt(ssn.substring(0,2));
+			var ssn_month = parseInt(ssn.substring(2,4));
+			var ssn_day = parseInt(ssn.substring(4,6));
+			
+			// 생년월일
+			if (genderFlag <= 2) {
+				ssn_year = 1900 + ssn_year;
+			} else if (genderFlag <= 4) {
+				ssn_year = 2000 + ssn_year;
+			}
+			
+			// 생년월일 체크
+			var b_flag = false; // 준비된 생년이 있는지 체크하는 flag변수
+			for(var i=0; i<obj.b_year.length; i++) {
+				if (obj.b_year[i].value == ssn_year) {
+					obj.b_year[i].selected = true;
+					b_flag = true;
+					break;
+				}
+			}
+			
+			if (!b_flag) { // 준비된 생년이 없을 때 
+				// 새 옵션 생성
+				obj.b_year.options[obj.b_year.length] = new Option(ssn_year, ssn_year); 
+				// 추가된 옵션 선택
+				obj.b_year[obj.b_year.length-1].selected = true;
+			}
+			
+			// 월 설정
+			obj.b_month[ssn_month-1].selected = true;
+			
+			// 일설정
+			obj.b_day[ssn_day-1].selected = true;
+			
+			// 나이
+			var date = new Date();
+			obj.age.value = date.getFullYear() - ssn_year + 1;
+		} else {
+			alert("잘못된 주민번호입니다.");
+		}
 	}
 	
 	function checkPass() { // 비밀번호가 일치하는지 체크하는 함수
@@ -113,7 +175,49 @@
 	}
 	
 	function nullCheck() { // 필수 입력값 체크하는 함수
+		var obj = document.joinFrm;
+	
+		if (obj.id.value == "") {
+			alert("아이디는 필수 입력.");
+			obj.id.focus();
+			return;
+		}
+		if (obj.pass1.value == "") {
+			alert("비밀번호는 필수 입력.");
+			obj.pass1.focus();
+			return;
+		}
+		if (obj.pass2.value == "") {
+			alert("비밀번호 확인은 필수 입력.");
+			obj.pass2.focus();
+			return;
+		}
+		if (obj.name.value == "") {
+			alert("이름은 필수 입력.");
+			obj.name.focus();
+			return;
+		}
+		if (obj.ssn1.value == "") {
+			alert("주민번호 첫자리는 필수 입력.");
+			obj.ssn1.focus();
+			return;
+		}
+		if (obj.ssn2.value == "") {
+			alert("주민번호 두번째자리는 필수 입력.");
+			obj.ssn2.focus();
+			return;
+		}
+		if (obj.zipcode1.value == "" || obj.zipcode2.value==""||obj.addr1.value=="") {
+			alert("주소를 검색해주세요.");
+			return;
+		}
+		if (obj.addr2.value =="") {
+			alert("상세주소는 필수 입력");
+			obj.addr2.focus();
+			return;
+		}
 		
+		obj.sumbmit(); // 입력값이 모두 입력되었으면 서버로 전송
 	}
 	
 	function popupCenter() {
