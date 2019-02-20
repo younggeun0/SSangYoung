@@ -1,10 +1,12 @@
-# SIST Python & Java 응용 SW 실무 개발자 양성과정 학습내용 정리 Repository
+# SIST 학습내용 정리 Repository
+
+- **Python & Java 응용 SW 실무 개발자 양성과정**
 
 ## 2018.10.22 ~ 2018.11.13    오라클 DBMS 학습
 
 ---
 
-학습내용 https://younggeun0.github.io/posts/ 에 업로드 중
+학습내용은 https://younggeun0.github.io/posts/ 에 업로드 중
 
 - 181022 : [ORACLE DBMS](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-01/)
 - 181023 : [DDL, DCL](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-02/)
