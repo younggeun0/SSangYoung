@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		
+		
+		$(".btn").click(function() {
+			// HTML Form Control의 값을 얻을 때에는 .val()을 사용
+			var name = $("[name='name']").val();
+			var output = "";
+			
+			// output = $("#html").html()+`<marquee scrollamount="10">${name}</marquee>`;
+			output = "<marquee scrollamount='10'>"+name+"</marquee>";
+
+			$("#html").html(output);
+			$("#text").text(output);
+		});
+		
+		$("#sel").change(function() {
+			// this : 이벤트를 발생시킨 HTML Form Control 객체 자신
+			// #sel 이란 id대신 this를 사용가능,
+			// this는 나(jQuery Object)랑 가장 가까이 있는 객체
+			var selValue = $(this).val(); 
+			
+			if (selValue != "none") {
+				if (selValue == "html") {
+					// html()로 얻으면 태그 자체가 모두 얻어진다.
+					$("#output").html("html로 얻기 : "+$("#html").html());	
+				} else {
+					// text()로 얻으면 태그 자체가 얻어지지 않고 문자열만 얻어진다.
+					alert($("#text").text());
+					$("#output").html("text로 얻기 : "+$("#html").text());	
+					
+				}
+			}
+		});
+		
+	});
+</script>
+</head>
+<body>
+<div id="inputFrm">
+	<label>이름</label>
+	<input type="text" class="inputBox" name="name">
+	<input type="button" value="입력" class="btn">
+</div>
+<div id="html"></div>
+<div id="text"></div>
+
+<select id="sel">
+	<option value="none">--선택--</option>
+	<option value="html">html 얻기</option>
+	<option value="text">text 얻기</option>
+</select>
+
+<div id="output"></div>
+
+</body>
+</html>
