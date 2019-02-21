@@ -121,3 +121,4 @@
 ---
 
 - 190220 : [jQuery](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-01/)
+- 190221 : [selector, event, CSS methods, DOM 사용, 반복함수](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-02/)
