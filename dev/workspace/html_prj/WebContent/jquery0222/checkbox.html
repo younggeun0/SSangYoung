@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+	
+	$("#flag").click(function() {
+		var flag = $(this).is(":checked"); 
+		var movieArr = $("[name='movie']");
+		
+			$.each(movieArr, function(idx, movie) {
+				// name="movie"인 체크박스의 체크 상태를 변경하는 속성 추가
+				$(movie).attr("checked",flag); 
+				//$(movie).prop("checked",flag); 
+			});
+	})
+	
+	$("#btn").click(function() {
+		// 체크박스 중 선택된 제목을 얻는다.
+		
+		var checkArr = $("[name='movie']"); // 이름이 같은 Control들은 배열로 처리된다.
+		var data = "[ { 'movie' : '해리포터', 'synopsis':'해리포터가 비밀의 방에 들어가기 위해 비밀번호를 찾아 나가는데...' },"
+			+ "{ 'movie' : '사바하', 'synopsis' : '가나다라 마바사바하!!'}, "
+			+ "{ 'movie' : '극한직업', 'synopsis' : '마약반 형사가 지금까지 이런 맛은 없었다.. 새로운 마약을 발견하는 영화...'}, "
+			+ "{ 'movie' : '신데렐라', 'synopsis' : '신데렐라가 유리구두를 잃어버리고 마는데...'} ]";
+		
+		var output = "<ul>";
+		
+		var movieJsonArr = eval("("+data+")");
+		
+		$.each(checkArr, function(idx, cb) {
+			if($(this).is(":checked")) { // $(cb) == $(this)
+				checkMovie = $(this).val(); // 할당해서 쓰면 매번 HTML에 접근 안해도 됨
+			
+				output += "<li>"+checkMovie+"</li>";
+				// 선택된 영화의 줄거리를 가지고 있는 JSONArray에서 값 얻기
+				$.each(movieJsonArr, function(idx, movieJson) {
+					if (movieJson.movie == checkMovie) { // 여기서 this는 movieJson이 됨
+						output += "<li>&nbsp;&nbsp;"+movieJson.synopsis+"</li>";
+					}
+				});
+			}
+		});
+		
+		output += "</ul>"
+		
+		$("#movieView").html(output);
+	});
+	
+	$("#btn1").click(function() {
+	
+     var radioArr = $("[name='movie1']");
+
+     // checkbox와 다르게 radio는 하나만 선택가능
+     var imgName = $("[name='movie1']:checked").val();
+
+		if (imgName == undefined) {
+		 alert("영화를 선택해주세요.");
+		 return;
+		}
+     
+     /* 배열을 바녹시켜 선택된 라디오가 존재한다면 값을 얻음
+     var imgName = "";
+     $.each(radioArr, function(idx, radio) {
+           if ($(this).is(":checked")) { // this == radio
+                imgName = $(this).val();
+           }
+     });*/
+
+     $("#img").attr("src","images/"+imgName+".png");
+	});
+	
+	
+});
+
+</script>
+</head>
+<body>
+<div>
+	<label>감상영화선택</label><br/>
+	<input type="checkbox" name="flag" id="flag">전체선택</br>
+	<input type="checkbox" name="movie" value="해리포터">해리포터와 비밀의방<br/>
+	<input type="checkbox" name="movie" value="사바하">사바하<br/>
+	<input type="checkbox" name="movie" value="극한직업">극한직업<br/>
+	<input type="checkbox" name="movie" value="신데렐라">신데렐라<br/>
+	<input type="button" value="선택한 값 얻기" class="btn" id="btn">
+</div>
+<div id="movieView" style="height:250px;"></div>
+<div>
+	<label>감상영화선택</label><br/>
+	<input type="radio" name="movie1" value="harry">해리포터와 비밀의방<br/>
+	<input type="radio" name="movie1" value="sabaha">사바하<br/>
+	<input type="radio" name="movie1" value="extreme">극한직업<br/>
+	<input type="radio" name="movie1" value="cinderella">신데렐라<br/>
+	<input type="button" value="포스터보기" class="btn" id="btn1">
+</div>
+<div>
+	<img id="img">
+</div>
+</body>
+</html>
