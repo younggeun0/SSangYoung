@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	
+	$("#btnInput").click(function() {
+		// 입력값으로 table에 행 추가
+		var name=$("#name").val();
+		var age=$("#age").val();
+		var addr=$("#addr").val();
+
+		$("#tab:last").append("<tr><td>"
+				+name+"</td><td>"+age+"</td><td>"
+				+addr+"</td></tr>");
+		
+		$("#name").val("");
+		$("#age").val("");
+		$("#addr").val("");
+	});
+	
+	$("#btnRemove").click(function() {
+		if ($("#tab tr").length > 1) {
+			$("#tab:last tr:last").remove();
+		}
+	});
+	
+	
+$("#l_add").click(function() {
+	// 입력 폼 추가
+	if ($("#licenseFrm div").length < 5) {
+		var output = "<div>자격증명 <input type='text' style='inputBox' name='license' class='inputBox'><br/>"
+			+"취득일 <input type='date' name='l_date'> "
+			+"발급기관 <input type='text' style='inputBox' class='inputBox' name='auth'></div>";
+		
+		$("#licenseFrm").append(output);
+	} else {
+		alert("자격증은 5개까지만 입력가능합니다.");
+	}
+});
+
+$("#l_remove").click(function() {
+	$("#licenseFrm div:last").remove();
+});
+	
+});
+</script>
+</head>
+<body>
+<div>
+	<label>이름</label>
+	<input type="text" name="name" id="name" class="inputBox"><br/>
+	<label>나이</label>
+	<input type="text" name="age" id="age" class="inputBox"><br/>
+	<label>주소</label>
+	<input type="text" name="addr" id="addr" class="inputBox"><br/>
+	<input type="button" value="행 추가" class="btn" id="btnInput">
+	<input type="button" value="마지막행 삭제" class="btn" id="btnRemove">
+</div>
+<table border='1' id='tab'>
+	<tr>
+		<th width="80">이름</th>
+		<th width="40">나이</th>
+		<th width="200">주소</th>
+	</tr>
+</table></br>
+<div id="licenseDiv" style="width:500px;">
+<div>
+	<span style="float:left">자격사항</span>
+	<span style="float:right">
+		<a href="#void"><img src="images/add.png" title="자격사항 추가" id="l_add"></a>
+		<a href="#void"><img src="images/remove.png" title="자격사항 삭제" id="l_remove"></a>
+	</span>
+</div>
+</div>
+<div id="licenseFrm" style="clear:both;"></div>
+</body>
+</html>
