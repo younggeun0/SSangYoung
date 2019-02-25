@@ -27,7 +27,7 @@
 - 181113 : [정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-17/)
 
 
-## 2018.11.13 ~ 2019.01.23    Java 학습
+## 2018.11.13 ~ 2019.01.23    Java SE 학습
 
 ---
 
@@ -116,10 +116,17 @@
 - 190220 : [JSON, closure, class, prototype](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
 
 
-## 2019.02.20 ~ 2019.?    jQuery 학습
+## 2019.02.20 ~ 2019.02.25    jQuery 학습
 
 ---
 
 - 190220 : [jQuery](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-01/)
 - 190221 : [selector, event, CSS methods, DOM 사용, 반복함수](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-02/)
 - 190222 : [Form Control 값 설정/ 얻기, HTML에 속성 추가, 태그 추가/삭제](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-03/)
+- 190225 : [Effect, Plugin](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-04/)
+
+## 2019.02.25 ~ 2019.?    Jave EE 학습
+
+---
+
+- 190225 : [Java EE, Servlet]()
