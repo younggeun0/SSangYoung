@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	#imgOutput { display:none; }
+	#idWarning { color:red; font-size:14px; font-weight: bold; }
+	#txt { cursor: pointer };
+	}
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#show").click(function() {
+		$("#imgOutput").show();
+	});
+	
+	$("#hide").click(function() {
+		$("#imgOutput").hide();
+	});
+	
+	$("#toggle").click(function() {
+		$("#imgOutput").toggle();
+	});
+	
+	$("#fadeIn").click(function() {
+		$("#imgOutput").fadeIn(1000, function() {
+			// 보여지는 것이 완료되었을 때 처리할 코드
+			alert("이미지 처리 완료");
+		});
+	});
+	
+	$("#fadeOut").click(function() {
+		$("#imgOutput").fadeOut(3000, function() {
+			alert("숨김 완료~");
+		});
+	});
+	
+	////////////////// HTML Form Control의 값이 입력되지 않았을 때 ///////////////////////
+	$("#btnDup").click(function() {
+		
+	});
+	
+	$("#btnJoin").click(function() {
+		var id = $("#id").val().trim();
+		
+		if (id == "") {
+			// 1. idWarning 글자를 넣어서 보여준다.
+			$("#idWarning").html("아이디는 필수 입력");
+			
+			var temp = [1000, 1000, 1000, 500, 500];
+			$.each(temp, function(idx, ms){
+				$("#idWarning").fadeIn(ms).fadeOut(ms);
+			});
+			// method체인으로 반복해서 Warning을 보여준다.
+			
+			return;
+		}
+		
+		alert("가입 페이지로 이동"); // 원래 $("폼태그id").submit(); 수행해야 함
+	});
+	
+$("#txt").click(function() {
+	var txt = $("#txt").text();
+	
+	if(txt=="보이기"){
+		$("#txt").text("숨기기");
+		$("#imgOutput").slideDown();
+	}else{
+		$("#txt").text("보이기");
+		$("#imgOutput").slideUp();
+	}
+});
+});
+</script>
+</head>
+<body>
+<div>
+	<input type="button" value="보이기" class="btn" id="show"/>
+	<input type="button" value="숨기기" class="btn" id="hide"/>
+	<input type="button" value="보이기/숨기기" class="btn" id="toggle"/>
+	<input type="button" value="서서히 보이기" class="btn" id="fadeIn"/>
+	<input type="button" value="서서히 숨기기" class="btn" id="fadeOut"/>
+</div><br/><br/>
+<div>
+	<label>아이디</label>
+	<input type="text" name="id" class="inputBox" id="id" autofocus="autofocus"'/>
+	<input type="button" value="중복확인" class="btn" id="btnDup"/>
+	<span id="idWarning"></span><br/>
+	<input type="button" value="가입" class="btn" id="btnJoin"/><br/>
+</div><br/><br/>
+<div>
+	<span id="txt">보이기</span>
+</div>
+<div id="imgOutput">
+	<img src="../common/images/img2.jpg"/>
+</div>
+</body>
+</html>
