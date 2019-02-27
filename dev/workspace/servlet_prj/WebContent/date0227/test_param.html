@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/servlet_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	#wrap { margin:0px auto; width:800px; height:860px; }
+	#header { position:relative; width:800px; height:140px; background:#FFFFFF url(http://localhost:8080/servlet_prj/common/images/header_bg.png) repeat-x; }
+	#headerTitle { position:absolute; top:45px; left:280px; font-size:35px; font-family:monaco, HY견고딕, 고딕; font-weight:bold; color:white; }
+	#container { width:800px; height:600px; }
+	#footer { width:800px; height:120px; }
+	#footerTitle { float:right; font-weight:bold; font-size:15px; padding-top:20px; padding-right:20px }
+</style>
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#btnGet").click(function() {
+			// HTML Form Control의 유효성 검증 후 
+			$("#getFrm").submit();
+		});
+		$("#btnPost").click(function() {
+			// HTML Form Control의 유효성 검증 후 
+			$("#postFrm").submit();
+		})
+	});
+</script>
+</head>
+<body>
+<div id="wrap">
+	<div id="header">
+		<div id="headerTitle">SIST Class4</div>
+	</div>
+	<div id="container">
+<div id="getDiv">
+	<h2>이름이 유일한 HTML Form Control 값 전송</h2>
+	<form method="get" action="../param_value" id="getFrm">
+		<table>
+			<tr>
+				<td><label>이름</label></td>
+				<td><input type="text" name="name" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td><label>나이</label></td>
+				<td><input type="password" name="age" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td><label>메일링여부</label></td>
+				<!-- checkbox가 하나라면 배열로 처리되지 않는다. -->
+			<td><input type="checkbox" name="mailing">수신</td>
+		</tr>
+		<tr>
+			<td><label>성별</label></td>
+			<td>
+				<input type="radio" name="gender" value="남자" checked="checked">남자
+				<input type="radio" name="gender" value="여자">여자
+			</td>
+		</tr>
+		<tr>
+			<td><label>숨김값</label></td>
+			<td>
+				<input type="hidden" name="addr" value="서울시 강남구 역삼동 한독빌딩">
+			</td>
+		</tr>
+		<tr>
+			<td><label>사용메일</label></td>
+			<td>
+				<select name="email" class="inputBox">
+					<option value="gmail.com">---지메일---</option>
+					<option value="naver.com">---네이버메일---</option>
+					<option value="daum.com">---다음메일---</option>
+					<option value="korea.com">---코리아메일---</option>
+					<option value="hotmail.com">---핫메일---</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label>가입인사</label></td>
+			<td><textarea style="width:300px; height:100px;" name="greeting"></textarea></td>
+			</tr>
+			<tr>
+				<td colspans="2">
+					<input type="button" value="전송" class="btn" id="btnGet">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+<div id="postDiv">
+	<h2>이름이 유일한 HTML Form Control 값 전송 POST</h2>
+	<form method="post" action="../param_value" id="postFrm">
+		<table>
+			<tr>
+				<td><label>이름</label></td>
+				<td><input type="text" name="name" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td><label>나이</label></td>
+				<td><input type="password" name="age" class="inputBox"></td>
+			</tr>
+			<tr>
+				<td><label>메일링여부</label></td>
+				<!-- checkbox가 하나라면 배열로 처리되지 않는다. -->
+			<td><input type="checkbox" name="mailing">수신</td>
+		</tr>
+		<tr>
+			<td><label>성별</label></td>
+			<td>
+				<input type="radio" name="gender" value="남자" checked="checked">남자
+				<input type="radio" name="gender" value="여자">여자
+			</td>
+		</tr>
+		<tr>
+			<td><label>숨김값</label></td>
+			<td>
+				<input type="hidden" name="addr" value="서울시 강남구 역삼동 한독빌딩">
+			</td>
+		</tr>
+		<tr>
+			<td><label>사용메일</label></td>
+			<td>
+				<select name="email" class="inputBox">
+					<option value="gmail.com">---지메일---</option>
+					<option value="naver.com">---네이버메일---</option>
+					<option value="daum.com">---다음메일---</option>
+					<option value="korea.com">---코리아메일---</option>
+					<option value="hotmail.com">---핫메일---</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label>가입인사</label></td>
+			<td><textarea style="width:300px; height:100px;" name="greeting"></textarea></td>
+			</tr>
+			<tr>
+				<td colspans="2">
+					<input type="button" value="전송" class="btn" id="btnPost">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>
+	</div>
+	<div id="footer">
+		<div id="footerTitle">copyright&copy; all right reserved. class4 </div>
+	</div>
+</div>
+</body>
+</html>
