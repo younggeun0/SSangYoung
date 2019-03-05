@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	#wrap { margin:0px auto; width:725px; height:470px; }
+	#container { width:725px; height:440; }
+	#footer { width:725px; height:30px; }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#closeWin").click(function() {
+			$("form").submit();
+		});
+	});
+</script>
+</head>
+<body>
+<div id="wrap">
+	<div id="container">
+		<img src="../common/images/popup.jpg">
+		<br/>
+		3월 디잘잘배 철권대회 오픈!!<br/>
+		일시 : 3월 8일 19:00시부터 토너먼트 진행<br/>
+		경품 : 1등 - 김정윤 1일 사용쿠폰, 2등 - 김정윤 반나절 쿠폰, 3등 - 최지우 한달사용 쿠폰<br/>
+	</div>
+	<div id="footer">
+		<form action="../popup_close.do" name="frm">
+			<input type="checkbox" name="popupFlag"/>오늘하루 그만보기
+			<a href="#void" id="closeWin">닫기</a>
+		</form>
+	</div>
+</div>
+</body>
+</html>
