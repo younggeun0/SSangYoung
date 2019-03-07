@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/sist/common/css/main_v20190130.css"/> 
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/> 
 <style type="text/css">
 	#joinTitle { font-weight:bold; font-size:20px; }
 	.tdAlign { text-align:center }
@@ -23,8 +23,10 @@
 	
 	.alert { color: #FF0000 }
 </style>
+<!-- jQuery CDN(Content Delivery Network) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
-	window.onload = function() {
+	$(function() {
 		var obj = document.joinFrm;
 		// 옵션 생성
 		var b_year = obj.b_year; // 1. select 얻기
@@ -60,14 +62,15 @@
 		}
 		
 		////////////////////////////////// 이벤트 등록 //////////////////////////////
-		document.getElementById("idDup").addEventListener("click", popupCenter);
-		document.getElementById("searchZip").addEventListener("click", popupCenter);
-		document.getElementById("daumZip").addEventListener("click", execPostCode);
-		document.getElementById("btnJoin").addEventListener("click", nullCheck);
-		document.getElementById("pass2").addEventListener("blur", checkPass);
-		document.getElementById("ssn1").addEventListener("keyup", moveToSsn2);
-		document.getElementById("ssn2").addEventListener("keyup", chkSsn);
-	}
+		$("#idDup").click(function() {
+			window.open("../id_dup", "idDup", "width=532, height=333");
+		});
+		$("#daumZip").click(execPostCode);
+		$("#btnJoin").click(nullCheck);
+		$("#pass2").blur(checkPass);
+		$("#ssn1").keyup(moveToSsn2);
+		$("#ssn2").keyup(chkSsn);
+	});
 	
 	// 주민번호 앞자리에서 6글자가 입력되면 커서를 Ssn2로 이동
 	function moveToSsn2() {
@@ -98,6 +101,70 @@
 			return;
 		}
 		
+		var ssn = obj.ssn1.value + obj.ssn2.value;
+		
+		/* 
+		var flagNum = [2,3,4,5,6,7,8,9,2,3,4,5];
+		var temp = 0;
+		// 주민번호 각 자리에 2,3,4,5,6,7,8,9,2,3,4,5를 곱한 값의 결과를 모두 더함
+		for(var i=0; i<flagNum.length; i++) {
+			temp+=ssn.charAt(i)*flagNum[i];
+		}
+		// 위에 계산된 값을 11로 나눈 나머지를 11에서 빼고 그 결과를 10으로 나눈 나머지를 구함.
+		temp = (11-(temp%11))%10;
+		*/
+		// 위 계산된 결과가 주민번호 마지막자리와 일치하면 유효, 아님 무효
+		//if (temp == ssn.charAt(12)) {
+			
+			// 성별체크
+			var genderFlag = ssn.charAt(6);
+			if(genderFlag%2 == 0) {
+				obj.gender[1].checked = true;
+			} else {
+				obj.gender[0].checked = true;
+			}
+			
+			var ssn_year = parseInt(ssn.substring(0,2));
+			var ssn_month = parseInt(ssn.substring(2,4));
+			var ssn_day = parseInt(ssn.substring(4,6));
+			
+			// 생년월일
+			if (genderFlag <= 2) {
+				ssn_year = 1900 + ssn_year;
+			} else if (genderFlag <= 4) {
+				ssn_year = 2000 + ssn_year;
+			}
+			
+			// 생년월일 체크
+			var b_flag = false; // 준비된 생년이 있는지 체크하는 flag변수
+			for(var i=0; i<obj.b_year.length; i++) {
+				if (obj.b_year[i].value == ssn_year) {
+					obj.b_year[i].selected = true;
+					b_flag = true;
+					break;
+				}
+			}
+			
+			if (!b_flag) { // 준비된 생년이 없을 때 
+				// 새 옵션 생성
+				obj.b_year.options[obj.b_year.length] = new Option(ssn_year, ssn_year); 
+				// 추가된 옵션 선택
+				obj.b_year[obj.b_year.length-1].selected = true;
+			}
+			
+			// 월 설정
+			obj.b_month[ssn_month-1].selected = true;
+			
+			// 일설정
+			obj.b_day[ssn_day-1].selected = true;
+			
+			// 나이
+			var date = new Date();
+			obj.age.value = date.getFullYear() - ssn_year + 1;
+		/* } else {
+			alert("잘못된 주민번호입니다.");
+		} */
+		
 	}
 	
 	function checkPass() { // 비밀번호가 일치하는지 체크하는 함수
@@ -113,31 +180,51 @@
 	}
 	
 	function nullCheck() { // 필수 입력값 체크하는 함수
+		var obj = document.joinFrm;
+	
+		if (obj.id.value == "") {
+			alert("아이디는 필수 입력.");
+			obj.id.focus();
+			return;
+		}
+		if (obj.pass1.value == "") {
+			alert("비밀번호는 필수 입력.");
+			obj.pass1.focus();
+			return;
+		}
+		if (obj.pass2.value == "") {
+			alert("비밀번호 확인은 필수 입력.");
+			obj.pass2.focus();
+			return;
+		}
+		if (obj.name.value == "") {
+			alert("이름은 필수 입력.");
+			obj.name.focus();
+			return;
+		}
+		if (obj.ssn1.value == "") {
+			alert("주민번호 첫자리는 필수 입력.");
+			obj.ssn1.focus();
+			return;
+		}
+		if (obj.ssn2.value == "") {
+			alert("주민번호 두번째자리는 필수 입력.");
+			obj.ssn2.focus();
+			return;
+		}
+		if (obj.zipcode.value == "" || obj.addr1.value=="") {
+			alert("주소를 검색해주세요.");
+			return;
+		}
+		if (obj.addr2.value =="") {
+			alert("상세주소는 필수 입력");
+			obj.addr2.focus();
+			return;
+		}
 		
+		$("form").submit(); // 입력값이 모두 입력되었으면 서버로 전송
 	}
 	
-	function popupCenter() {
-		
-		var width=0;
-		var height=0;
-		var html="";
-		var id="";
-		
-		
-		if (this.id == "idDup") {
-			id="idDup";
-			html="id_dup.html";			
-			width=532;
-			height=333;
-		}
-		if (this.id == "searchZip") {
-			id="searchZip";
-			html="search_zip.html";
-			width=502;
-			height=450;
-		}
-		window.open(html, id, "width="+width+", height="+height);
-	}
 </script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -277,17 +364,8 @@
 			<tr>
 				<td><span class="alert">*</span>우편번호</td>
 				<td>
-					<input type="text" name="zipcode1" class="inputBox"readonly="readonly" style="width:30px">
-					<label> - </label>
-					<input type="text" name="zipcode2" class="inputBox" readonly="readonly" style="width:30px">&nbsp;
-					<button type="button" class="btn" id="searchZip">우편번호검색</button>&nbsp;
-				</td>
-			</tr>
-			<tr>
-				<td><span class="alert">*</span>변경된 우편번호</td>
-				<td>
 					<input type="text" id="zipcode" name="zipcode" class="inputBox" readonly="readonly" style="width:30px">&nbsp;
-					<button type="button" class="btn" id="daumZip">다음우편번호검색</button>
+					<button type="button" class="btn" id="daumZip">우편번호검색</button>
 				</td>
 			</tr>
 			<tr>
@@ -309,7 +387,7 @@
 			</tr>
 			<tr>
 				<td class="tdAlign" colspan="2">
-					<button type="submit" class="btn" id="btnJoin">&nbsp;가입</button>&nbsp;
+					<button type="button" class="btn" id="btnJoin">&nbsp;가입</button>&nbsp;
 					<button type="reset" class="btn">초기화</button>
 				</td>
 			</tr>

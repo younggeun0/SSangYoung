@@ -55,19 +55,6 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString>SELECT tname FROM tab WHERE tname='dept'</queryString>
-				</query>
-				<query>
-					<queryString>SELECT tname FROM tab WHERE tname='DEPT'</queryString>
-				</query>
-				<query>
-					<queryString>SELECT * FROM user_procedures</queryString>
-				</query>
-				<query>
-					<queryString>SELECT * FROM user_procedures
-WHERE object_type='PROCEDURE'</queryString>
-				</query>
-				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMPEMP&quot; </queryString>
 				</query>
 				<query>
@@ -114,6 +101,18 @@ WHERE object_type='PROCEDURE'</queryString>
 				</query>
 				<query>
 					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000022')</queryString>
+				</query>
+				<query>
+					<queryString>select * from ordering</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;WEB_MEMBER&quot; (ID, PASS, NAME, SSN, GENDER, BIRTH, AGE, MARRIAGE, MARRIAGE_DATE, ZIPCODE, ADDR1, ADDR2, GREETING, INPUT_DATE, IP_ADDR ) VALUES  ( 'hong', 'QL0AFWMIX8NRZTKeof9cXsvbvu8=', '노진경', '', '', '', '', '', '', '', '', '', '', TO_DATE('','yyyy-mm-dd hh24:mi:ss'), '' )</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;WEB_MEMBER&quot; (ID, PASS, NAME, SSN, GENDER, BIRTH, AGE, MARRIAGE, MARRIAGE_DATE, ZIPCODE, ADDR1, ADDR2, GREETING, INPUT_DATE, IP_ADDR ) VALUES  ( 'hong', 'QL0AFWMIX8NRZTKeof9cXsvbvu8=', '노진경', 'op4q9OPQnn5Avf5xZ6wx+Ey61Mg=', '남자', '', '', '', '', '', '', '', '', TO_DATE('','yyyy-mm-dd hh24:mi:ss'), '' )</queryString>
+				</query>
+				<query>
+					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;WEB_MEMBER&quot; (ID, PASS, NAME, SSN, GENDER, BIRTH, AGE, MARRIAGE, MARRIAGE_DATE, ZIPCODE, ADDR1, ADDR2, GREETING, INPUT_DATE, IP_ADDR ) VALUES  ( 'hong', 'QL0AFWMIX8NRZTKeof9cXsvbvu8=', '노진경', 'op4q9OPQnn5Avf5xZ6wx+Ey61Mg=', '남자', '1988-1-1', '30', '미혼', '', '11111', '서울시 강서구 공항동', '김포공항', '나는 4강의장 노진경이다!!!!!!!!!!!!', SYSDATE, '211.63.89.139' )</queryString>
 				</query>
 			</queryList>
 		</bookmark>
