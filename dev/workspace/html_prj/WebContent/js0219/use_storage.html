@@ -3,37 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"  href="http://localhost:8080/html_prj/common/css/main_v190130.css">
-<style type="text/css">
-
-</style>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v190130.css"/>
+</head>
 <script type="text/javascript">
-window.onload=function(){
-	document.getElementById("btn").addEventListener("click",setData);
-}//function
-function setData() {
-	//사용자가 입력한 값을 계속해서 쓰기 위해 로컬 스토리지 설정
-	var obj= document.frm;
-	var img="";
-	var name="";
-	
-	localStorage.setItem("name",obj.name.value);
-	
-	for(var i=0;i<obj.img.length; i++){
-		if(obj.img[i].checked){
-			img= obj.img[i].value;
-		}
-	}
-	localStorage.setItem("img",img);
-	
-	alert("설정되었습니다. ")
+window.onload = () => {
+	document.getElementById("btn").addEventListener("click", setData);
 }
 
+function setData() {
+	var obj = document.frm;
+	var img = "";
+	var name = "";
+	
+	localStorage.setItem("name", obj.name.value);
+	
+	for(var i=0; i<obj.img.length; i++) {
+		if(obj.img[i].checked) {
+			img = obj.img[i].value;
+		}
+	}
+	localStorage.setItem("img", img);
+	
+	alert("설정되었습니다.");
+}
 </script>
-</head>
 <body>
 <form name="frm">
-	<label>이름</label><input type="text" class="inputBox"  name="name"/><br/>
+	<label>이름</label>
+	<input type="text" class="inputBox" name="name"/><br/>
 	<label>이미지선택</label>
 	<table>
 	<tr>
@@ -46,7 +43,7 @@ function setData() {
 	</tr>
 	<tr>
 		<td>
-			<input type="radio" value="img1_1.png" name="img"/>집중하는 정택성
+			<input type="radio" value="img1_1.png" name="img" />집중하는 정택성
 		</td>
 		<td>
 			<img src="../common/images/img1_1.png" width="80"/>
@@ -64,5 +61,6 @@ function setData() {
 	</form>
 	<input type="button" value="입력" id="btn" class="btn"/>
 	<a href="use_storage1.html">페이지 이동</a>
+</form>
 </body>
 </html>

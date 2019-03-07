@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<script type="text/javascript">
+	
+window.onload = function() {
+	document.getElementById("class1").addEventListener("click",useClass1);
+	document.getElementById("class2").addEventListener("click",useClass2);
+	document.getElementById("class3").addEventListener("click",useInheritance);
+}	
+
+function useClass1() {
+	// 기본 생성자를 사용하는 클래스
+	
+	// 1. 클래스 선언
+	function DataVO() { // 클래스명이면서 생성자명
+		var name;
+
+		function setName(i_name) {
+			name = i_name;
+		}
+		
+		function getName() {
+			return name;
+		}
+		
+		// closure
+		return { setName:setName, getName:getName };
+	} 
+	
+	// 클래스는 함수와 다르게 객체를 생성하여 사용
+	var vo = new DataVO();
+	
+	vo.setName("영근");
+	alert(vo.getName());
+}
+
+function useClass2() {
+	// 매개변수 있는 생성자를 사용하는 클래스
+	
+	// 1. 클래스 선언
+	function DataVO(i_name) {
+		
+		var name = i_name;
+		
+		function setName(i_name) {
+			name = i_name;
+		}
+		
+		function getName() {
+			return name;
+		}
+		
+		return { setName:setName, getName:getName };
+	}
+	
+	// 2. 객체 생성
+	var vo = new DataVO("오영");
+	
+  alert(vo.getName());
+  
+  vo.setName("오근");
+  
+  alert(vo.getName());
+}
+
+function useInheritance() {
+	// 1. 부모클래스 생성
+	function Parent() {
+		var name;
+		
+		function printName() {
+			// 상속관계에서 클래스의 변수를 사용할 때에는 this.을 붙여서 변수를 사용
+			// 객체에 생성된 변수임을 명시하여 사용
+			alert("부모 함수 : "+this.name);
+		}
+		
+		// closure
+		return { name:name, printName:printName };
+	}
+	
+	// 2. 자식클래스 생성
+	function Child() {}
+	
+	// 3. 상속 처리
+	Child.prototype = new Parent();
+	
+	// 4. 자식 클래스의 변수나 함수를 등록하여 사용
+	Child.prototype.age;
+	Child.prototype.printAge = function() { 
+		// 등록된 변수는 클래스안에 등록되므로 this를 사용하여 접근
+		alert(this.age+"살"); 
+	};
+	Child.prototype.birthYear = function(age) {
+		var date = new Date();
+		alert((date.getFullYear() - age + 1) +"년생");
+	}
+
+	// 5. 사용
+	var c_obj = new Child();
+	
+	c_obj.name = "김정윤";
+	c_obj.printName();
+	
+	// 등록된 변수의 사용
+	c_obj.age = 20;
+	c_obj.printAge();
+	c_obj.birthYear(32);
+	
+	$.
+}
+
+
+	
+</script>
+</head>
+<body>
+<input type="button" value="클래스1" id="class1" class="btn"/> 
+<input type="button" value="클래스2" id="class2" class="btn"/> 
+<input type="button" value="상속" id="class3" class="btn"/>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+	$(function() {
+		var nameArr = ["김정윤", "박영민", "노진경", "김희철"];
+
+		$("#arr").click(function() {
+			var output = "<ul>";
+		
+			$.each(nameArr, function(idx, name) {
+				output += "<li>("+idx+") "+name+"</li>";
+			});
+			
+			output+="</ul>";
+			
+			$("#output").html(output);
+		});
+		
+$("#jsonArr").click(function() {
+	var data = "[ { 'name':'김정윤', 'img':'img.png', 'age': 31, 'spec':'디잘잘', 'job':'개발자' },"
+		+ "{ 'name':'정택성', 'img':'img1_1.png', 'age': 27, 'spec':'춤잘잘', 'job':'개발자' },"
+		+ "{ 'name':'이재찬', 'img':'img2.jpg', 'age': 28, 'spec':'잠잘잘', 'job':'개발자' }]";
+	
+	var json_arr = eval("("+data+")");
+	var output = "<table border='1'><tr><th>번호</th><th>이름</th><th width='150'>이미지</th></tr>";
+	$.each(json_arr, function(idx, json_obj) {
+		output+="<tr><td>"+(idx+1)+"</td><td>"+json_obj.name 
+			+ "</td><td style='position:relative; height:150px;'>"
+			+ "<img style='position:absolute; top:0px; left:0px; width:150px; height:150px;' src='../common/images/"+json_obj.img+"'>"
+			+ "<div style='position:absolute; top:120px; left:20px; color:#FFFFFF; font-weight:bold;'>"
+			+ json_obj.age+"세/"+json_obj.spec+"/"+json_obj.job+"/"+"<div></td></tr>";
+	});
+	
+	output += "</table>";
+	$("#output").html(output);
+});
+	}); // document.ready()
+</script>
+</head>
+<body>
+<input type="button" value="배열사용" id="arr" class="inputBox">
+<input type="button" value="JSONArray 사용" id="jsonArr" class="inputBox">
+<div id="output"></div>
+</body>
+</html>

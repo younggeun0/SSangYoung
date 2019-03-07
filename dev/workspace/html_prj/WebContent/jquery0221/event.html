@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+	
+	// 버튼이 눌렸을 때
+	$("#btn").click(function() {
+		alert("버튼을 클릭하셨습니다.");
+	});
+	
+	// 커서에 들어왔을 때
+	$("#f_in").focusin(function() {
+		alert("커서가 들어왔습니다.");
+	});
+	
+	// 커서가 나갔을 때
+	$("#f_out").focusout(function() {
+		alert("커서가 나갔습니다..");
+	});
+	
+	/* // 키가 눌릴 때
+	$("#keydown").keydown(function() {
+		// 어떤 키든 눌렸을 때 
+		alert("키가 눌렸을 때");
+	}); */
+	
+	// 이벤트 발생 함수는 매개변수를 정의하면 event객체가 값으로 들어온다.
+	// 특정 키가 눌렸을 때
+	$("#keydown").keydown(function(event) {
+		// alert(window.event.which) // JS
+		alert("특정 키가 눌림." + event.which);
+		
+		if (event.which == 13) {
+			alert("엔터키입니다.");
+		}
+	});
+	
+	// 키가 올라올 때
+	$("#keyup").keyup(function() {
+		alert("키가 올라올 때");
+	});
+		
+	$("#chg").change(function() {
+		alert("다른 옵션이 선택될 때");
+	})
+	
+	$("#m_in").mouseover(function() {
+		alert("마우스 포인터가 들어왔을 때");
+	});
+	
+	$("#m_out").mouseout(function() {
+		alert("마우스 포인터가 나갔을 때");
+	});
+	
+	$("#m_move").mousemove(function(evt) {
+		// alert("마우스가 움직였을 때");
+		$("#output").html("마우스 포인터 X좌표 : "+evt.pageX+"/"+" Y좌표 : "+evt.pageY);
+	});
+
+});
+
+</script>
+</head>
+<body>
+<strong>이벤트 발생과 처리</strong><br/><br/>
+<input type="button" value="클릭" id="btn"><br/><br/>
+<input type="text" value="커서가 들어올 때" id="f_in"><br/><br/>
+<input type="text" value="커서가 나갈 때" id="f_out"><br/><br/>
+<input type="text" value="키가 눌릴 때" id="keydown"><br/><br/>
+<input type="text" value="키가 올라올 때" id="keyup"><br/><br/>
+<select id="chg">
+	<option>DBMS Oracle</option>
+	<option>Java SE</option>
+	<option>HTML</option>
+	<option>CSS</option>
+	<option>JavaScript</option>
+	<option>jQuery</option>
+</select><br/><br/>
+<strong>포인터가 들어왔을 때</strong><br/>
+<img src="../common/images/img.png" id="m_in" width="100"><br/><br/>
+<strong>포인터가 나갔을 때</strong><br/>
+<img src="../common/images/img.png" id="m_out" width="100"><br/><br/>
+<strong>포인터가 움직일 때</strong><br/>
+<img src="../common/images/img.png" id="m_move"  width="100"><br/><br/>
+<div id="output"></div>
+</body>
+</html>

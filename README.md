@@ -1,8 +1,12 @@
-# 2018.10.22 ~ 2018.11.13    오라클 DBMS 학습
+# SIST 학습내용 정리 Repository
+
+- **Python & Java 응용 SW 실무 개발자 양성과정**
+
+## 2018.10.22 ~ 2018.11.13    오라클 DBMS 학습
 
 ---
 
-학습내용 https://younggeun0.github.io/posts/ 에 업로드 중
+학습내용은 https://younggeun0.github.io/posts/ 에 업로드 중
 
 - 181022 : [ORACLE DBMS](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-01/)
 - 181023 : [DDL, DCL](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-02/)
@@ -23,7 +27,7 @@
 - 181113 : [정규화](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-17/)
 
 
-# 2018.11.13 ~ 2019.01.23    Java 학습
+## 2018.11.13 ~ 2019.01.23    Java SE 학습
 
 ---
 
@@ -76,7 +80,7 @@
 - 190122 : [도시락 주문 프로그램(7), 2차 프로젝트 진행](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-47/)
 - 190123 : [소프트웨어 테스트 방식, 단위테스트와 통합테스트, JavaSE 마무리](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-48/)
 
-# 2019.01.23 ~ 2019.28    HTML 학습
+## 2019.01.23 ~ 2019.28    HTML 학습
 
 ---
 
@@ -85,7 +89,7 @@
 - 190125 : [table 태그, 특수문자, 영역 태그, HTML Form Control](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-03/)
 - 190128 : [HTML Form Control, HTML5에서 추가된 태그와 지원하는 태그](https://younggeun0.github.io/HTML-%EC%A0%95%EB%A6%AC-04/)
 
-# 2019.01.29 ~ 2019.1.31    CSS 학습
+## 2019.01.29 ~ 2019.1.31    CSS 학습
 
 ---
 
@@ -94,7 +98,7 @@
 - 190131 : [attribute(3), CSS 페이지 디자인, HTML5 Semantic Tag, 부모 자식 선택자](https://younggeun0.github.io/CSS-%EC%A0%95%EB%A6%AC-03/)
 
 
-# 2019.01.31 ~ 2019.?    JavaScript 학습
+## 2019.01.31 ~ 2019.02.20    JavaScript 학습
 
 ---
 
@@ -107,4 +111,28 @@
 - 190213 : [함수사용](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-07/)
 - 190214 : [정규식, 페이지이동, map태그, meta태그](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-08/)
 - 190215 : [페이지 이동(2), popup](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-09/)
-- 190218 : [JavaScript 정리 10 - select태그 option 생성, 회원가입 유효성 검증](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+- 190218 : [select태그 option 생성, 회원가입 유효성 검증](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+- 190219 : [회원가입 유효성 검증, canvas, Storage, JSON](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+- 190220 : [JSON, closure, class, prototype](https://younggeun0.github.io/JS-%EC%A0%95%EB%A6%AC-10/)
+
+
+## 2019.02.20 ~ 2019.02.25    jQuery 학습
+
+---
+
+- 190220 : [jQuery](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-01/)
+- 190221 : [selector, event, CSS methods, DOM 사용, 반복함수](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-02/)
+- 190222 : [Form Control 값 설정/ 얻기, HTML에 속성 추가, 태그 추가/삭제](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-03/)
+- 190225 : [Effect, Plugin](https://younggeun0.github.io/jQuery-%EC%A0%95%EB%A6%AC-04/)
+
+## 2019.02.25 ~ 2019.?    Jave EE 학습
+
+---
+
+- 190225 : [Java EE, Servlet](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-01/)
+- 190226 : [Servlet 요청처리, Servlet Life Cycle, Class Life Cycle Servlet 호출](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-02/)
+- 190227 : [HttpServletRequest, HTML Form Control의 입력값 받기, Tomcat 한글처리](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-03/)
+- 190228 : [같은 이름의 Param처리, 페이지 이동, 관계 유지](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-04/)
+- 190304 : [Session, Cookie](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-05/)
+- 190305 : [Cookie 사용, init-param/ context-param](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-06/)
+- 190306 : [DBCP](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-07/)

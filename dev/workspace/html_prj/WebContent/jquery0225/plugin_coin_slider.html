@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<link rel="stylesheet" href="../common/js/coin-slider-styles.css" type="text/css" />
+<style type="text/css">
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- coin slider 플러그인 -->
+<script type="text/javascript" src="../common/js/coin-slider.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('#coin-slider').coinslider({ effect: 'random', navigation: false, opacity:1, delay:0.5 });
+  });
+</script>
+</head>
+<body>
+<div id='coin-slider'>
+  <a href="#void" target="_blank">
+    <img src='images/city_1.png' >
+    <span>
+      살기좋은 대구시 달서구 상인동
+    </span>
+  </a>
+  <a href="#void" target="_blank">
+    <img src='images/city_2.png' >
+    <span>
+      서울시 구로구 안양천변
+    </span>
+  </a>
+  <a href="#void" target="_blank">
+    <img src='images/city_3.png' >
+    <span>
+      인천시 남동구 야경
+    </span>
+  </a>
+  <a href="#void" target="_blank">
+    <img src='images/city_4.png' >
+    <span>
+      경기도 광주시 오포읍
+    </span>
+  </a>
+</div>
+</body>
+</html>

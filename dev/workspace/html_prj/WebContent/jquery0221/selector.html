@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+<!-- 다운받은 js를 사용 -->
+<script type="text/javascript" src="../common/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+
+
+$(function() { // 가장 권장(document.ready와 같음)
+	// $(document).ready(function() {
+	// $(window).load(function() {
+
+	// $("div").css("background-color", "#71E3CD");
+	
+	// id selector : #id명
+	// $("#a").css("background-color","#FF0000");
+	
+	// class selector : .class명
+	// $(".b").css("background-color", "#00FF00");
+	
+	// tag selector(single) 
+	// $("div").css("background-color", "#0000FF");
+	// $("p").css("background-color", "#54C1F0");
+	
+	// tag selector(multiple)
+	// $("div,span, a").css("background-color","#44E16E");
+	
+	// sub selector : 부모태그명 > 자식태그명
+	// $("div > p > span").css("background-color", "#E3BE71");
+	
+	// 가장 처음 태그만 : 태그명:first
+	// $("li:first").css("background-color", "#AE71E3");
+	
+	// 가장 마지막 태그만 : 태그명:last
+	// $("li:last").css("background-color","#E3717C");
+	
+	// sub selector와 같이 사용 가능
+	// $("ol > li:last").css("background-color","#61DB5E");
+	
+	// 홀수번째 태그만 : 태그명:odd
+	// $("li:odd").css("background-color", "#B68580");
+	
+	// 짝수번째 태그만 : 태그명:even
+	// $("li:even").css("background-color", "#AC80B6");
+	
+	// 특정 인덱스 번째 태그 : 태그명:eq(인덱스)
+	// $("li:eq(2)").css("background-color", "#67D4D0");
+	
+	// attribute selector : [속성명='값']
+	//$("a[target='b']").css("background-color","#D46784");
+		
+	// $("tr:even").css("background-color","#FF00FF");
+	
+	// $("td:eq(0), td:eq(3), td:eq(8)").css("background-color", "#00FFFF");
+	// div의 class가 b인 태그에만 적용
+	// $("div.b").css("background-color", "#FFFF00");
+	});
+
+</script>
+</head>
+<body>
+<strong>selector 사용</strong>
+<div id="a">id가 a인 div</div>
+<p class="b">처음 p</p>
+<p class="c">두번째 p</p>
+<div class="c">클래스가 c인 div</div>
+<div class="b">
+	<p>div 안에 p <span>div &gt; p &gt; span</span></p>
+</div>
+<span>span</span>
+<p>세번째 p</p>
+<ol>
+	<li>사과</li>
+	<li>배</li>
+	<li>포도</li>
+	<li>딸기</li>
+</ol>
+<ul>
+	<li>서울</li>
+	<li>경기</li>
+	<li>충청</li>
+	<li>경상</li>
+	<li>전라</li>
+	<li>제주</li>
+</ul>
+<a href="#void" target="a">링크1</a><br/>
+<a href="#void" target="b">링크2</a><br/>
+<a href="#void" target="c">링크3</a><br/>
+<input type="text" name="name" value="이름" id="name">
+<table border="1">
+	<tr>
+		<td width="50">1</td>
+		<td width="50">2</td>
+		<td width="50">3</td>
+	</tr>
+	<tr>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+	</tr>
+	<tr>
+		<td>7</td>
+		<td>8</td>
+		<td>9</td>
+	</tr>
+</table>
+</body>
+</html>

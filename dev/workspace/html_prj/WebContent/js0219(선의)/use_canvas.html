@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"  href="http://localhost:8080/html_prj/common/css/main_v190130.css">
+<style type="text/css">
+	#can{border: 1px solid #333}
+</style>
+<script type="text/javascript">
+	window.onload=function(){
+		document.getElementById("rect").addEventListener("click", drawRect)
+		document.getElementById("img").addEventListener("click", drawImg)
+		document.getElementById("line").addEventListener("click", drawLine)
+	}//function
+	function drawRect() {
+		//1. canvas 얻기
+		var can= document.getElementById("can");
+		//2. 2d 그래픽을 그릴 수 있는 객체
+		var ctx=can.getContext("2d")
+		//초기화: 그래픽 객체를 초기화
+		ctx.clearRect(0,0,can.width, can.height);
+		//4. 색변경 :속성 fillStyle="rgb(R,G,B)", fillStyle="rgba(R,G,B,alpha(투명도))" 
+		ctx.fillStyle="rgb(255,0,0)"
+		//3. 지정한 좌표에 사각형 그리기fillRect(x,y,w,h)
+		ctx.fillRect(10,10,80,40);
+		//4. 색변경 :속성 fillStyle="rgb(R,G,B)", fillStyle="rgba(R,G,B,alpha(투명도))" 
+		ctx.fillStyle="rgb(255,0,0,0.2)"//투명도 0.0~1까지 설정
+		ctx.fillRect(40,40,80,40);
+	}
+	function drawImg() {
+		//1. canvas 얻기
+		var can= document.getElementById("can");
+		//2. 2d 그래픽을 그릴 수 있는 객체
+		var ctx=can.getContext("2d")
+		ctx.clearRect(0,0,can.width, can.height);
+		//3. 이미지 객체를 생성
+		var img =new Image();
+		//4. 이미지 객체의 경로 설정: img.src="이미지 경로" 
+		img.src="../common/images/img.png";
+		//5. 이미지를 그린다.: ctx.drawImage(이미지 객체,x,y)
+		ctx.drawImage(img,100,50);
+		//이미지 크기를 변경하여 그린다.
+		//ctx.drawImage(img,30,30,100,100);
+		
+	}
+	function drawLine() {
+		//1. canvas 얻기
+		var can= document.getElementById("can");
+		//2. 2d 그래픽을 그릴 수 있는 객체
+		var ctx=can.getContext("2d")
+		ctx.clearRect(0,0,can.width,can.height);//can 초기화
+		//3. 선긋기 시작함수호출: ctx.beginPath()
+		ctx.beginPath();
+		//시작좌표: ctx.moveTo(x1,y1)
+		ctx.moveTo(25, 50); //시작 좌표 재설정
+		//끝좌표: ctx.lineTo(x1,y1)
+		ctx.lineTo(150, 50); //끝좌표를 설정하여 선을 그린다
+		ctx.lineTo(25, 150);// 위에서 설정된 좌표를 시작점으로 선을 그린다.
+		//마지막선이 설정되지 않으면 자동으로 채워준다.
+		
+		//ctx.moveTo(25, 50); //좌표가 재설정되고
+		//ctx.lineTo(25, 150);// 재설정된 좌표에서 설정된 좌표로 선을 긋는다.
+		ctx.stroke();
+		//3. 선긋기 끝 함수 호출: ctx.closePath()
+		ctx.closePath();
+	}
+</script>
+</head>
+<body>
+<canvas id="can" width="500" height="500"></canvas>
+<br/>
+<input type="button" value="사각형" class="btn" id="rect"/>
+<input type="button" value="이미지" class="btn" id="img"/>
+<input type="button" value="선" class="btn"id= "line"/>
+
+</body>
+</html>

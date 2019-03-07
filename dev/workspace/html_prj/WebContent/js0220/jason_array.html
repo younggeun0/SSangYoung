@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../common/css/main_v190130.css"/>
+<style type="text/css">
+	#output {
+		border:1px solid #444;
+		width: 600px;
+		height: 300px;
+		overflow:auto;
+	}
+</style>
+<!-- 외부파일 방식으로 JSONArray를 변수에 저장하여 가지고 있는 js를 연결 -->
+<script type="text/javascript" src="data.js"></script>
+<script type="text/javascript">
+
+window.onload = () => {
+	//document.getElementById("btn").addEventListener("click", useJsonArray);
+	document.getElementById("selGroup").addEventListener("change", useJson);
+}
+
+function useJsonArray() {
+	// 1. data 생성
+	var data = "[ {'name':'박영민','age':27,'role':'조장-예매관리'}, {'name':'김정윤', 'age':31,'role':'얼굴-디자인,UI,스넥관리' }, {'name':'최지우', 'age':26,'role':'조원-로그인,정산관리'}, {'name':'노진경', 'age':32,'role':'조원-결석,휴가,상영관리,영화관리'},{'name':'김희철', 'age':26,'role':'조원-예매,업무부심'},{'name':'박소영', 'age':25,'role':'조원-스넥판매'},{'name':'이지수', 'age':30,'role':'조원-사용자 로그인,회원관리'} ]";
+	
+	// 2. JSONArray 생성
+	var json_array = eval("("+data+")");
+	console.log(json_array);
+	
+	var output = "<table border='1'>";
+	output+="<tr><th width='80'>이름</th><th width='40'>나이</th><th width='300'>역할</th></tr>"
+	for(var i=0; i<json_array.length; i++) {
+		output+="<tr><td>"+json_array[i].name+"</td><td>"+json_array[i].age+"</td><td>"+json_array[i].role+"</td></tr>";
+	}
+	output+="</table>";
+	
+	document.getElementById("output").innerHTML = output;
+}
+
+function useJson() {
+	// 외부파일방식으로 연결한 js에서 제공하는 JSON을 사용.
+	var sel = document.getElementById("selGroup");
+	
+	if (sel.selectedIndex != 0) {
+		if(confirm(sel.value+"조를 조회하시겠습니까?")) {
+			
+			var divNode = document.getElementById("output");
+			var output = "<table border='1'>";
+			output+="<tr><th colspan='2'>"+sel.value+"조 조회 결과</th></tr>";
+			output+="<tr><th width='100'>이름</th><th width='300'>역할</th></tr>";
+			
+			console.log(json_obj);
+			
+			var group_data = json_obj.data;
+			
+			var cnt = 0;
+			for(var i=0; i<group_data.length; i++) {
+				if(group_data[i].group == sel.value) {
+					output+="<tr><td>"+group_data[i].name
+						+"</td><td>"+group_data[i].role+"</td></tr>";
+					cnt++;
+				}
+			}
+			
+			output+="<tr><td colspan='2'>전체["+group_data.length
+				+"건] 중 조회 결과["+cnt+"건]이 조회되었습니다.</td></tr>"
+			output+="<tr><td colspan='2'>데이터 생성일자 : "+json_obj.pubDate+ "</td></tr>";
+			output+="</table>";
+			divNode.innerHTML = output;
+		}
+	}
+}
+
+</script>
+</head>
+<body>
+<div id="output"></div>
+<!-- <input type="button" value="클릭" class="inputBox" id="btn"/> -->
+<select id="selGroup">
+	<option>----조를 선택해주세요----</option>
+	<option value="1">봉현이의 1조</option>
+	<option value="2">영민이의 2조</option>
+	<option value="3">행운의 3조</option>
+</select>
+</body>
+</html>

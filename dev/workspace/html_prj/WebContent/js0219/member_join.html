@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/> 
+<style type="text/css">
+	#joinTitle { font-weight:bold; font-size:20px; }
+	.tdAlign { text-align:center }
+	table { margin:0px auto }
+	tr { height: 20px }
+
+	#wrap {
+	width:1007px;
+	margin:0px auto;
+	}
+	
+	#joinHeader {
+		width:1007px;
+		height: 195px;
+		background: #FFFFFF url(images/header.png) no-repeat;
+	}	
+	
+	.alert { color: #FF0000 }
+</style>
+<script type="text/javascript">
+	window.onload = function() {
+		var obj = document.joinFrm;
+		// 옵션 생성
+		var b_year = obj.b_year; // 1. select 얻기
+		var date = new Date();
+		var year_idx = 0;
+
+		// 20살의 나이를 가진 년도에 selected
+		var flag_year = date.getFullYear()-20+1;
+
+		for(var i=1950; i < date.getFullYear()+1; i++) {
+			// 2. select의 옵션 생성
+			b_year.options[year_idx] = new Option(i+"년", i);
+			if(flag_year == i) {
+				b_year.selectedIndex = year_idx;
+			}
+			year_idx++;
+		}
+		
+		// 월 설정
+		var b_month = obj.b_month;
+		var month_idx = 0;
+		for (var i=1; i<13; i++) {
+			b_month.options[month_idx] = new Option(i+"월", i);
+			month_idx++;
+		}
+		
+		// 일 설정, 무조건 1~31로 설정
+		var b_day = obj.b_day;
+		var day_idx = 0;
+		for (var i=1; i<32; i++) {
+			b_day.options[day_idx] = new Option(i+"일", i);
+			day_idx++;
+		}
+		
+		////////////////////////////////// 이벤트 등록 //////////////////////////////
+		document.getElementById("idDup").addEventListener("click", popupCenter);
+		document.getElementById("searchZip").addEventListener("click", popupCenter);
+		document.getElementById("daumZip").addEventListener("click", execPostCode);
+		document.getElementById("btnJoin").addEventListener("click", nullCheck);
+		document.getElementById("pass2").addEventListener("blur", checkPass);
+		document.getElementById("ssn1").addEventListener("keyup", moveToSsn2);
+		document.getElementById("ssn2").addEventListener("keyup", chkSsn);
+	}
+	
+	// 주민번호 앞자리에서 6글자가 입력되면 커서를 Ssn2로 이동
+	function moveToSsn2() {
+		
+		var obj = document.joinFrm;
+		
+		if(obj.ssn1.value.replace(/[0-9]/g,"") != "") {
+			alert("주민번호는 숫자로만 구성됩니다.");
+			obj.ssn1.value = "";
+			obj.ssn1.focus();
+			return;
+		}
+		
+		if(document.getElementById("ssn1").value.length == 6) {
+			document.getElementById("ssn2").focus();
+		}
+	}
+	
+	// 입력한 주민번호의 유효성 검증
+	function chkSsn() {
+		
+		var obj = document.joinFrm;
+		
+		if(obj.ssn2.value.replace(/[0-9]/g,"") != "") {
+			alert("주민번호는 숫자로만 구성됩니다.");
+			obj.ssn2.value = "";
+			obj.ssn2.focus();
+			return;
+		}
+		
+		var ssn = obj.ssn1.value + obj.ssn2.value;
+		
+		var flagNum = [2,3,4,5,6,7,8,9,2,3,4,5];
+		var temp = 0;
+		// 주민번호 각 자리에 2,3,4,5,6,7,8,9,2,3,4,5를 곱한 값의 결과를 모두 더함
+		for(var i=0; i<flagNum.length; i++) {
+			temp+=ssn.charAt(i)*flagNum[i];
+		}
+		// 위에 계산된 값을 11로 나눈 나머지를 11에서 빼고 그 결과를 10으로 나눈 나머지를 구함.
+		temp = (11-(temp%11))%10;
+		
+		// 위 계산된 결과가 주민번호 마지막자리와 일치하면 유효, 아님 무효
+		if (temp == ssn.charAt(12)) {
+			
+			// 성별체크
+			var genderFlag = ssn.charAt(6);
+			if(genderFlag%2 == 0) {
+				obj.gender[1].checked = true;
+			} else {
+				obj.gender[0].checked = true;
+			}
+			
+			var ssn_year = parseInt(ssn.substring(0,2));
+			var ssn_month = parseInt(ssn.substring(2,4));
+			var ssn_day = parseInt(ssn.substring(4,6));
+			
+			// 생년월일
+			if (genderFlag <= 2) {
+				ssn_year = 1900 + ssn_year;
+			} else if (genderFlag <= 4) {
+				ssn_year = 2000 + ssn_year;
+			}
+			
+			// 생년월일 체크
+			var b_flag = false; // 준비된 생년이 있는지 체크하는 flag변수
+			for(var i=0; i<obj.b_year.length; i++) {
+				if (obj.b_year[i].value == ssn_year) {
+					obj.b_year[i].selected = true;
+					b_flag = true;
+					break;
+				}
+			}
+			
+			if (!b_flag) { // 준비된 생년이 없을 때 
+				// 새 옵션 생성
+				obj.b_year.options[obj.b_year.length] = new Option(ssn_year, ssn_year); 
+				// 추가된 옵션 선택
+				obj.b_year[obj.b_year.length-1].selected = true;
+			}
+			
+			// 월 설정
+			obj.b_month[ssn_month-1].selected = true;
+			
+			// 일설정
+			obj.b_day[ssn_day-1].selected = true;
+			
+			// 나이
+			var date = new Date();
+			obj.age.value = date.getFullYear() - ssn_year + 1;
+		} else {
+			alert("잘못된 주민번호입니다.");
+		}
+	}
+	
+	function checkPass() { // 비밀번호가 일치하는지 체크하는 함수
+		var obj = document.joinFrm;
+	
+		if(obj.pass1.value != obj.pass2.value) {
+			alert('비밀번호가 틀립니다.');
+			obj.pass1.value = "";
+			obj.pass2.value = "";
+			obj.pass1.focus();
+			return;
+		}
+	}
+	
+	function nullCheck() { // 필수 입력값 체크하는 함수
+		var obj = document.joinFrm;
+	
+		if (obj.id.value == "") {
+			alert("아이디는 필수 입력.");
+			obj.id.focus();
+			return;
+		}
+		if (obj.pass1.value == "") {
+			alert("비밀번호는 필수 입력.");
+			obj.pass1.focus();
+			return;
+		}
+		if (obj.pass2.value == "") {
+			alert("비밀번호 확인은 필수 입력.");
+			obj.pass2.focus();
+			return;
+		}
+		if (obj.name.value == "") {
+			alert("이름은 필수 입력.");
+			obj.name.focus();
+			return;
+		}
+		if (obj.ssn1.value == "") {
+			alert("주민번호 첫자리는 필수 입력.");
+			obj.ssn1.focus();
+			return;
+		}
+		if (obj.ssn2.value == "") {
+			alert("주민번호 두번째자리는 필수 입력.");
+			obj.ssn2.focus();
+			return;
+		}
+		if (obj.zipcode1.value == "" || obj.zipcode2.value==""||obj.addr1.value=="") {
+			alert("주소를 검색해주세요.");
+			return;
+		}
+		if (obj.addr2.value =="") {
+			alert("상세주소는 필수 입력");
+			obj.addr2.focus();
+			return;
+		}
+		
+		obj.sumbmit(); // 입력값이 모두 입력되었으면 서버로 전송
+	}
+	
+	function popupCenter() {
+		
+		var width=0;
+		var height=0;
+		var html="";
+		var id="";
+		
+		
+		if (this.id == "idDup") {
+			id="idDup";
+			html="id_dup.html";			
+			width=532;
+			height=333;
+		}
+		if (this.id == "searchZip") {
+			id="searchZip";
+			html="search_zip.html";
+			width=502;
+			height=450;
+		}
+		window.open(html, id, "width="+width+", height="+height);
+	}
+</script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function execPostCode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById("roadAddr").value = roadAddr;
+                // document.getElementById("jibunAddr").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("extraAddr").value = extraRoadAddr;
+                } else {
+                    document.getElementById("extraAddr").value = '';
+                }
+            }
+        }).open();
+    }
+</script>
+</head>
+<body>
+<div id="wrap">
+<div id="joinHeader"></div>
+<div id="joinContent">
+	<form action="member.jsp" name="joinFrm">
+		<table border="0">
+			<tr>
+				<td colspan="2" class="tdAlign"><strong><span id="joinTitle">회원가입</span></strong></td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>아이디</td>
+				<td>
+					<input type="text" class="inputBox" name="id" readonly="readonly" style="width:100px">
+					<button type="button" class="btn" id="idDup">중복확인</button>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>비밀번호</td>
+				<td><input type="password"  id="pass1" name="pass1" class="inputBox" style="width:165px"></td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>비밀번호 확인</td>
+				<td><input type="password" id="pass2" name="pass2" class="inputBox" style="width:165px"></td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>이름</td>
+				<td><input type="text" name="name" class="inputBox" style="width:120px"></td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>주민번호</td>
+				<td>
+					<input type="text" name="ssn1" id="ssn1" class="inputBox" style="width:60px" maxlength="6">
+					<label> - </label>
+					<input type="password" name="ssn2" id="ssn2" class="inputBox" style="width:70px" maxlength="7">
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;성별</td>
+				<td>
+					<input type="radio" value="남자" name="gender" >남자
+					<input type="radio" value="여자" name="gender">여자
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;생년월일</td>
+				<td>
+					<select name="b_year" class="inputBox">
+					</select>
+					<label>년</label>					
+					
+					<select name="b_month" class="inputBox">
+					</select>
+					<label>월</label>	
+					
+					<select name="b_day" class="inputBox">
+					</select>				
+					<label>일</label>					
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;나이</td>
+				<td><input name="age" type="text" class="inputBox" style="width:30px" maxlength="3"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;관심언어</td>
+				<td>
+				<input type="checkbox" value="Java" name="interestlang">Java
+				<input type="checkbox" value="C/C++" name="interestlang">C/C++
+				<input type="checkbox" value="Python" name="interestlang">Python
+				<input type="checkbox" value="VB" name="interestlang">VB
+				<br>
+				<input type="checkbox" value="JSP" name="interestlang">JSP
+				<input type="checkbox" value="Servlet" name="interestlang">Servlet
+				<input type="checkbox" value="ASP" name="interestlang">ASP
+				<input type="checkbox" value="php" name="interestlang">php
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;결혼여부</td>
+				<td>
+					<input type="radio" value="미혼" name="marriageFlag" checked="checked" >미혼
+					<input type="radio" value="기혼" name="marrige">기혼
+				</td>
+			</tr>
+			<tr>
+				<td>&nbsp;결혼기념일</td>
+				<td>
+					<input type="text" name="m_year" class="inputBox" maxlength="4" style="width:40px">년&nbsp;
+					<input type="text" name="m_month" class="inputBox" maxlength="2" style="width:20px">월&nbsp;
+					<input type="text" name="m_day" style="width:20px" class="inputBox" maxlength="2">일
+				</td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>우편번호</td>
+				<td>
+					<input type="text" name="zipcode1" class="inputBox"readonly="readonly" style="width:30px">
+					<label> - </label>
+					<input type="text" name="zipcode2" class="inputBox" readonly="readonly" style="width:30px">&nbsp;
+					<button type="button" class="btn" id="searchZip">우편번호검색</button>&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>변경된 우편번호</td>
+				<td>
+					<input type="text" id="zipcode" name="zipcode" class="inputBox" readonly="readonly" style="width:30px">&nbsp;
+					<button type="button" class="btn" id="daumZip">다음우편번호검색</button>
+				</td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>주소</td>
+				<td>
+					<input type="text" name="addr1" id="roadAddr" class="inputBox" readonly="readonly" style="width:250px">
+					참고 주소:<input type="text" id="extraAddr" class="inputBox">
+				</td>
+			</tr>
+			<tr>
+				<td><span class="alert">*</span>상세주소</td>
+				<td><input type="text" name="addr2" class="inputBox" style="width:250px"></td>
+			</tr>
+			<tr valign="middle">
+				<td>가입인사</td>
+				<td>
+					<textarea name="greetings" class="inputBox" style="width:250px; height:100px;"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdAlign" colspan="2">
+					<button type="submit" class="btn" id="btnJoin">&nbsp;가입</button>&nbsp;
+					<button type="reset" class="btn">초기화</button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="alert">*표는 필수 입력사항</td>
+			</tr>
+		</table>
+	</form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	.class1 {
+		border:5px solid #333;
+		text-decoration: none;
+		font-weight: normal;
+		font-size: 10px;
+		color: #0000FF;
+	}
+	.class2 { 
+		border:2px solid #333;
+		text-decoration: underline;
+		font-weight: bold; 
+		font-size: 20px;
+	}
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+	$(function() { // ready
+		
+		$("#getAttr").click(function() {
+			var width = $("#a").css("width");
+			var height = $("#a").css("height");
+			var bg = $("#a").css("background-color");
+			alert("div#a의 넓이 : "+width+"/ 높이 : "+height+"/ 바닥색 : "+bg);
+		});
+	
+		$("#setCss").click(function() {
+			$("#b").css("color","#FF0000");
+		});
+		
+		$("#removeClass").click(function() {
+			$("#d").removeClass("class2");
+		});
+		
+		$("#addClass").click(function() {
+			$("#c").addClass("class1");
+		});
+		
+		$("#chain").click(function() {
+			/* $("#c").removeClass("class2");
+			$("#c").addClass("class1"); */
+			
+			$("#c").removeClass("class2").addClass("class1");
+		});
+	
+	});
+	
+</script>
+</head>
+<body>
+<div>
+	<input type="button" value="style 속성 얻기" class="btn" id="getAttr">
+	<input type="button" value="style 속성 하나 설정" class="btn" id="setCss">
+	<input type="button" value="class 속성 추가" class="btn" id="addClass">
+	<input type="button" value="class 속성 삭제" class="btn" id="removeClass">
+	<input type="button" value="class 속성 삭제 후 추가" class="btn" id="chain">
+</div>
+<div id="a" style="width:500px; height:50px; background-color:#dfdfdf;">속성 얻는 div</div>
+<div id="b">속성 설정하는 div</div>
+<div id="c" class="class2">CSS class 속성을 추가하는 div</div>
+<div id="d" class="class2">CSS class 속성을 삭제하는 div</div>
+<div id="e" class="class2">CSS class 속성을 삭제 후 추가하는 div</div>
+</body>
+</html>

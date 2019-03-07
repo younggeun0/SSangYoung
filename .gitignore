@@ -35,6 +35,10 @@ dev/def_bookmarks_win32.xml
 
 # tomcat생략
 dev/apache-tomcat-8.5.37/*
+dev/apache-tomcat-7.0.93/*
+
+#container생략
+dev/container/*
 
 #exe파일 생략
 *.exe
@@ -47,3 +51,6 @@ dev/workspace/html_prj/WebContent/date190128/media/*
 
 #tern 플러그인 내용 제외
 .tern-project
+
+#jQuery 플러그인 제외
+dev/jquery_plugins/*

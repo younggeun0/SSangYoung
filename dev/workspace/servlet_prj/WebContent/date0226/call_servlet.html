@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html_prj/common/css/main_v20190130.css"/>
+<style type="text/css">
+	#wrap {
+		width: 500px;
+		height: 400px;
+		margin:0px auto;
+	}
+	
+	#get {
+		width: 220px;
+		height: 150px;
+		border: 1px solid #333;
+		border-radius: 10px;
+		box-shadow: 10px 10px 10px #333;
+		float: left;
+		padding-top:10px;
+		padding-left:5px;
+	}
+	
+	#post {
+		width: 220px;
+		height: 150px;
+		border: 1px solid #333;
+		border-radius: 10px;
+		box-shadow: 10px 10px 10px #333;
+		float: right;
+		padding-top:10px;
+		padding-left:5px;
+	}
+</style>
+<!-- CDN을 사용하여 jQuery를 다운로드 받아 사용 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".link").click(function() {
+			movePage();
+		});
+		
+		$("#btnJSGet").click(function() {
+			movePage();
+		});
+		
+		$("#btnGet").click(function() {
+			// JavaScript에서 action과 method를 변경
+			
+			// JavaScript
+			var obj = document.getFrm;
+			// method 변경 : obj.method="변경할 method";
+			// action 변경 : obj.action = "변경할 action"
+			
+			obj.method="get";
+			obj.action="../test_call";
+			
+			/*// jQuery
+			var obj = $("[name='getFrm']");
+			obj.prop("method","get");
+			obj.prop("action","../test_call"); */
+			
+			obj.submit();
+		});
+		
+		$("#btnPost").click(function() {
+			$("#postFrm").submit();
+		});
+	});
+	
+	function movePage() {
+		if(confirm("이동하시겠습니까?")) {
+			// location.href="../test_call"; // 뒤로가기 가능
+			location.replace("../test_call");
+		}
+	}
+</script>
+</head>
+<body>
+<div id="wrap">
+<!-- 
+	서블릿 요청 URL : http://localhost:8080/servlet_prj/test_call 
+	HTML 요청 URL : http://localhost:8080/servlet_prj/date0226/call_servlet.html
+	-->
+	
+	<div id="get">
+		<strong>GET방식 요청</strong>
+		<div>
+			<ul>
+				<li>&lt;a&gt;태그 : <a href="../test_call">요청</a></li>
+				<li>
+					location.href 요청 : <a href="#void" class="link">JavaScript 요청</a>
+					<input type="button" value="JavaScript 요청" class="btn" id="btnJSGet">
+				</li>
+				<li>
+					<!-- JavaScript에서 method와 action을 설정하여 이동 -->
+					<form name="getFrm">
+						<input type="submit" value="get 요청" class="btn" id="btnGet"/>
+					</form>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="post">
+		<strong>POST방식 요청</strong>
+		<div>
+			<form action="../test_call" method="post" id="postFrm">
+				<input type="button" value="post 요청" class="btn" id="btnPost"/>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
