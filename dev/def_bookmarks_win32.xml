@@ -1,6 +1,9 @@
 <?xml version="1.0" ?>
 <SAVED_DATA>
 	<bookmarks>
+		<jdbcDriver className="oracle.jdbc.OracleDriver" name="Oracle JDBC driver" type="ORACLE" version="11.2.0.1.0">
+			<jar fileName="D:\git\repositories\SSangYoung\dev\drivers\ojdbc6.jar" />
+		</jdbcDriver>
 		<jdbcDriver className="org.apache.derby.jdbc.EmbeddedDriver" name="org.apache.derby.jdbc.EmbeddedDriver" type="DERBY" version="">
 			<jar fileName="C:/Users/owner/youngRepositories/SSangYoung/dev/file::/C::/Users/owner/youngRepositories/SSangYoung/dev/eclipse/plugins/com.quantum.derby_3.3.9.jar!/lib/derby.jar" />
 		</jdbcDriver>
@@ -55,65 +58,67 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString>SELECT tname FROM tab WHERE tname='dept'</queryString>
-				</query>
-				<query>
-					<queryString>SELECT tname FROM tab WHERE tname='DEPT'</queryString>
-				</query>
-				<query>
-					<queryString>SELECT * FROM user_procedures</queryString>
-				</query>
-				<query>
-					<queryString>SELECT * FROM user_procedures
-WHERE object_type='PROCEDURE'</queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMPEMP&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASDFG&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASDF&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABCD&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASD&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;SDF&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMP22&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMP33&quot; </queryString>
-				</query>
-				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ABC&quot; </queryString>
-				</query>
-				<query>
 					<queryString></queryString>
 				</query>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (NAME = 'asdfa')</queryString>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1111)</queryString>
 				</query>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (NAME = '뉘신지..')</queryString>
+					<queryString>UPDATE &quot;SCOTT&quot;.&quot;CP_EMP3&quot; SET JOB = '바지' WHERE (EMPNO = 1114)</queryString>
 				</query>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;NAMECARD&quot; WHERE (IMG = 'img.jpg')</queryString>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;CP_EMP3&quot; WHERE (EMPNO = 1)</queryString>
 				</query>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000021')</queryString>
+					<queryString>select * from cp_emp3</queryString>
 				</query>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000023')</queryString>
+					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;CP_EMP3&quot; (EMPNO, ENAME, DEPTNO, JOB, SAL ) VALUES  ( 1111, '김희철', 10, '아이롱', 200 )</queryString>
 				</query>
 				<query>
-					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;LUNCH&quot; WHERE (LUNCH_CODE = 'L_00000022')</queryString>
+					<queryString>SELECT * FROm cp_emp3
+WHERE deptno = 10</queryString>
+				</query>
+				<query>
+					<queryString>CREATE table cp_dept AS (SELECT * FROM dept where 1=0)</queryString>
+				</query>
+				<query>
+					<queryString>ALTER TABLE cp_dept ADD CONSTRAINT pk_cp_dept PRIMARY KEY(deptno)</queryString>
+				</query>
+				<query>
+					<queryString>select deptno from cp_dept order by deptno</queryString>
+				</query>
+			</queryList>
+		</bookmark>
+		<bookmark>
+			<name>oracle_youngs_laptop</name>
+			<username>scott</username>
+			<password>tiger</password>
+			<prompt>false</prompt>
+			<connect>jdbc:oracle:thin:@localhost:1521:orcl</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>false</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>oracle.jdbc.OracleDriver</driver>
+			<type>ORACLE</type>
+			<substituteVariables>false</substituteVariables>
+			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
+			<driverLocation>D:\git\repositories\SSangYoung\dev\drivers\ojdbc6.jar</driverLocation>
+			<Other_Schemas schemaRule="useSelected">
+				<schema>SCOTT</schema>
+			</Other_Schemas>
+			<quickList />
+			<queryList>
+				<query>
+					<queryString>CREATE TABLE cp_dept AS (SELECT * FROM dept WHERE 1=0)</queryString>
+				</query>
+				<query>
+					<queryString>ALTER TABLE cp_dept ADD CONSTRAINT pk_cp_dept PRIMARY KEY(deptno)</queryString>
 				</query>
 			</queryList>
 		</bookmark>
