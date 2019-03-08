@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+body, select, button, div, ul, ol, li, form, fieldset, legend, textarea,
+	p, th, td, input {
+	margin: 0px;
+	padding: 0px
+}
+
+fieldset, img {
+	border: 0px
+}
+
+ul, ol, li {
+	list-style: none
+}
+
+/* line-height는 설정한 font-size로 행의 높이가 결정되는데 
+	설정한 행의 높이에*한 값이 새로운 행의 높이로 설정된다. */
+body, th, td, input, select, textarea, button {
+	font-size: 13px;
+	line-height: 1.5;
+	font-family: '맑은 고딕', dotum, '돋움', sans-serif;
+	color: #3F3F3F;
+}
+
+a {
+	color: #3F3F3F;
+	text-decoration: none
+}
+
+a:hover {
+	color: #128EFD;
+	text-decoration: underline
+}
+
+.inputBox {
+	border: 1px solid #EDEDED;
+	background-color: #FFFFFF;
+	height: 25px;
+}
+
+.btn {
+	border: 1px solid #EDEDED;
+	background-color: #FFFFFF;
+	color: #1C1C1C;
+	height: 25px;
+	padding-left: 3px;
+	padding-right: 3px;
+	cursor:pointer;
+}

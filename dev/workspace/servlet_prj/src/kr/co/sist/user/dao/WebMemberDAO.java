@@ -144,7 +144,8 @@ public class WebMemberDAO {
 				// 4.
 				pstmt = con.prepareStatement(insertLang.toString());
 				for(int i=0; i<wm_vo.getLang().length; i++) {
-					pstmt.setString(1, wm_vo.getLang()[i]);
+					pstmt.setString(1, wm_vo.getId());
+					pstmt.setString(2, wm_vo.getLang()[i]);
 					
 					// 5.
 					pstmt.executeUpdate();
