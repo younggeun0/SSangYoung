@@ -138,4 +138,5 @@
 - 190306 : [DBCP](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-07/)
 - 190307 : [암호화, DBCP를 이용한 회원가입](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-08/)
 - 190308 : [JSP, JSP Tags(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-09/)
-- 190311 : [JSP Tags(2), JSP 요청처리, 내장객체](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-10/)
+- 190311 : [JSP Tags(2), JSP 요청처리, 내장객체(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-10/)
+- 190312 : [내장객체(2), 파라미터 처리, 페이지 이동, 액션태그](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-11/)
