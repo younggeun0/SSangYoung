@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    info="외부 JSP의 페이지 지시자 충돌"
-    %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,13 +21,26 @@
 		<div id="headerTitle">SIST Class4</div>
 	</div>
 <div id="container">
-	<div>
-		<% String name = "노진경"; %>
-		<strong>외부 JSP</strong>
-		<jsp:include page="include_action_b.jsp"/>
-		<strong>외부 JSP</strong>
-		<%= name %>
-	</div>
+<%
+	// HTML Form Control에서 입력된 값
+	String name=request.getParameter("name");
+	String age=request.getParameter("age");
+	String addr=request.getParameter("addr");
+	
+	// <jsp:param>으로 생성된 값
+	String lang = request.getParameter("lang");
+	String date = request.getParameter("date");
+%>
+<strong>Hello? This is a English Page.</strong>	
+<strong>These are what you entered</strong>	
+<ul>
+	<li>name : <strong><%= name %></strong></li>
+	<li>age : <strong><%= age %></strong></li>
+	<li>address : <strong><%= addr %></strong></li>
+	<li>language : <strong><%= lang %></strong></li>
+	<li>access time : <strong><%= date  %></strong></li>
+</ul>
+<a href="forward_a.jsp">back to the page</a>
 </div>
 	<div id="footer">
 		<div id="footerTitle">copyright&copy; all right reserved. class4 </div>

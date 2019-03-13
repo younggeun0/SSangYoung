@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    info="외부 JSP의 페이지 지시자 충돌"
-    %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,15 +20,33 @@
 	<div id="header">
 		<div id="headerTitle">SIST Class4</div>
 	</div>
-<div id="container">
+	<div id="container">
+	<!-- 객체 생성 -->
+	<jsp:useBean id="t_vo" class="date0313.TestVO" scope="page"></jsp:useBean>
+	
+	<!-- setter 호출, set을 제외한 method명을 소문자로 시작(뒤는 대소문자구분) -->
+	<jsp:setProperty name="t_vo" property="firstName" value="영근"/>
+	<jsp:setProperty name="t_vo" property="age" value="30"/>
+	
+	<!--  getter 호출, get을 제외한 method명을 소문자로 시작(뒤는 대소문자 구분) 
+		Expression을 사용하지 않아도 화면 출력이 된다. -->
+	이름 : <jsp:getProperty name="t_vo" property="firstName" /><br/>
+	나이 : <jsp:getProperty name="t_vo" property="age" /><br/>
+		
+	<%
+		// <jsp:useBean>으로 생성된 객체는 자바코드로 접근하여 사용할 수 있다.
+		// setter 호출
+		t_vo.setFirstName("정윤");
+		t_vo.setAge(30);
+	%>
+	
+	<!-- getter 호출 -->
 	<div>
-		<% String name = "노진경"; %>
-		<strong>외부 JSP</strong>
-		<jsp:include page="include_action_b.jsp"/>
-		<strong>외부 JSP</strong>
-		<%= name %>
+	재설정 이름 : <%= t_vo.getFirstName() %><br/>
+	재설정 나이 : <%= t_vo.getAge() %><br/>
 	</div>
-</div>
+	
+	</div>
 	<div id="footer">
 		<div id="footerTitle">copyright&copy; all right reserved. class4 </div>
 	</div>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/html/common/css/main_v190130.css"/>
+<style type="text/css">
+	#joinTitle{ font-weight: bold; font-size: 20px;  }
+	.tdAlign{ text-align: center  }
+	table{ margin: 0px auto }
+	tr{ height: 25px}
+	
+	#wrap{ width: 1007px; margin:0px auto }
+	#joinHeader{ width: 1007px; height: 195px; 
+					background: #FFFFFF url(images/header.png) no-repeat; }	
+					
+	.span{ color: #FF0000 }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		//옵션 생성
+		//년
+		var obj=document.joinFrm;
+		var b_year=obj.b_year; //select얻기
+		
+		var date=new Date();
+		var year_idx=0;
+		//20살의 나이를 가진 년도에 selected
+		var flag_year=date.getFullYear()-20+1;
+	
+		for(var i=1950; i< date.getFullYear()+1; i++  ){
+			//2. select의 옵션을 생성 Option(보여질값 , value값)
+			b_year.options[year_idx]=new Option(i, i);
+			if(flag_year == i){
+				b_year.selectedIndex = year_idx;
+			}//end if
+			year_idx++;
+		}//end for
+		
+		//월 설정 1 ~ 12
+		var b_month=obj.b_month;
+		var month_idx=0;
+		for(var i= 1 ; i < 13 ; i++){
+			b_month.options[month_idx]=new Option(i,i);
+			month_idx++;
+		}//end for
+		
+		//일 설정 1 ~ 31
+		var b_day=obj.b_day;
+		var day_idx=0;
+		for(var i= 1 ; i < 32 ; i++){
+			b_day.options[day_idx]=new Option(i,i);
+			day_idx++;
+		}//end for
+		
+		$("#btnJoin").click(function(){
+			$("#joinFrm").submit();
+		});
+	});
+</script>
+</head>
+<body>
+<div id="wrap">
+<div id="joinHeader"></div>
+<div id="joinContent">
+	<form action="bean_param.jsp" name="joinFrm" id="joinFrm" method="post">
+		<table>
+		
+			<tr>
+				<td  class="tdAlign" colspan="2"><span id="joinTitle">UseBean 사용 회원가입</span></td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>아이디</td>
+				<td>
+					<input type="text" class="inputBox" name="id"  style="width:100px">
+				</td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>비밀번호</td>
+				<td><input type="password" class="inputBox" name="pass1"  style="width:120px"></td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>비밀번호 확인</td>
+				<td><input type="password" class="inputBox" id="pass2" name="pass2" style="width:120px"></td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>이름</td>
+				<td><input type="text" class="inputBox"  name="name" style="width:120px"></td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>주민번호</td>
+				<td><input type="text"  class="inputBox" name="ssn1" id="ssn1" style="width:60px" maxlength="6"><label> - </label>
+					<input type="password"  class="inputBox"  name="ssn2" id="ssn2" style="width:70px" maxlength="7"></td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;성별</td>
+				<td><input type="radio" value="남자" name="gender">남자
+					<input type="radio" value="여자" name="gender">여자</td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;생년월일</td>
+				<td>
+					<select name="b_year"  class="inputBox">
+					</select>
+					<label>년</label>					
+					
+					<select  name="b_month" class="inputBox">
+					</select>
+					<label>월</label>	
+					
+					<select  name="b_day" class="inputBox">
+					</select>				
+					<label>일</label>					
+				</td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;나이</td>
+				<td><input type="text"  name="age" class="inputBox"  style="width:30px"></td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;관심언어</td>
+				<td>
+				<input type="checkbox" value="Java" name="interestlang">Java
+				<input type="checkbox" value="C/C++" name="interestlang">C/C++
+				<input type="checkbox" value="Python" name="interestlang">Python
+				<input type="checkbox" value="VB" name="interestlang">VB
+				<br>
+				<input type="checkbox" value="JSP" name="interestlang">JSP
+				<input type="checkbox" value="Servlet" name="interestlang">Servlet
+				<input type="checkbox" value="ASP" name="interestlang">ASP
+				<input type="checkbox" value="php" name="interestlang">php
+				</td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;결혼여부</td>
+				<td><input type="radio" value="미혼" name="marrigeFlag" checked="checked" >미혼
+							<input type="radio" value="기혼" name="marrigeFlag">기혼</td>
+			</tr>
+			
+			<tr>
+				<td>&nbsp;결혼기념일</td>
+				<td><input type="text" maxlength="4"  name="m_year" style="width:40px" class="inputBox">년&nbsp;
+				<input type="text"  maxlength="2"  name="m_month" style="width:20px" class="inputBox">월&nbsp;
+				<input type="text" maxlength="2"  name="m_day" style="width:20px" class="inputBox">일</td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>우편번호</td>
+				<td><input type="text"  id="zipcode" name="zipcode" style="width:50px" class="inputBox" >
+					&nbsp;<button type="button" class="btn" id="daumZip">우편번호검색</button></td>
+			</tr>
+			
+			<tr>
+				<td><span class="span">*</span>주소</td>
+				<td>
+				<input type="text"  id="roadAddr" name="addr1"  style="width:250px" class="inputBox">
+				참고 주소 : <input type="text" id="extraAddress" class="inputBox"/>
+				</td>
+			</tr>
+			
+			<tr >
+				<td><span class="span">*</span>상세주소</td>
+				<td><input type="text"  class="inputBox" name="addr2" style="width:250px"></td>
+			</tr>
+			
+			<tr valign="middle">
+				<td>&nbsp;가입인사</td>
+				<td><textarea  name="greetings" style="width:250px;height: 100px" class="inputBox"></textarea></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"  class="tdAlign" >
+					<button type="button" class="btn" id="btnJoin">가입</button>&nbsp;
+					<button type="reset" class="btn">초기화</button></td>
+			</tr>
+			<tr>
+				<td colspan="2"> <span class="span">*표는 필수 입력사항.</span></td>
+			</tr>
+		</table>
+	</form>
+	</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

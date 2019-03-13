@@ -54,3 +54,6 @@ dev/workspace/html_prj/WebContent/date190128/media/*
 
 #jQuery 플러그인 제외
 dev/jquery_plugins/*
+
+#libs내용 제외
+dev/libs/*
