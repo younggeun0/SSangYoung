@@ -80,7 +80,7 @@
 - 190122 : [도시락 주문 프로그램(7), 2차 프로젝트 진행](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-47/)
 - 190123 : [소프트웨어 테스트 방식, 단위테스트와 통합테스트, JavaSE 마무리](https://younggeun0.github.io/java-%EC%A0%95%EB%A6%AC-48/)
 
-## 2019.01.23 ~ 2019.28    HTML 학습
+## 2019.01.23 ~ 2019.01.28    HTML 학습
 
 ---
 
