@@ -8,6 +8,12 @@ public class TestVO {
 		System.out.println("TestVO의 기본 생성자");
 	}
 	
+	public TestVO(String firstName, int age) {
+		super();
+		this.firstName = firstName;
+		this.age = age;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -23,4 +29,6 @@ public class TestVO {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+
 }
