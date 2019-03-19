@@ -204,11 +204,16 @@ $( function() {
 %>
 <%
 	Calendar cal = Calendar.getInstance();
-	Calendar todayCal = Calendar.getInstance();
 
-	int currYear = todayCal.get(Calendar.YEAR);
+	StringBuilder toDate = new StringBuilder();
+	// 오늘을 저장
+	toDate.append(cal.get(Calendar.YEAR)).append(cal.get(Calendar.MONTH)+1)
+	.append(cal.get(Calendar.DAY_OF_MONTH));
+	
+/*Calendar todayCal = Calendar.getInstance();
+	 int currYear = todayCal.get(Calendar.YEAR);
 	int currMon = todayCal.get(Calendar.MONTH);
-	int currDay = todayCal.get(Calendar.DAY_OF_MONTH);
+	int currDay = todayCal.get(Calendar.DAY_OF_MONTH); */
 	
 	int nowYear = 0;
 	int nowMonth = 0;
@@ -227,12 +232,20 @@ $( function() {
 	nowYear = cal.get(Calendar.YEAR);
 	nowMonth = cal.get(Calendar.MONTH)+1;
 	
+	boolean todayFlag = false; // 오늘인지 비교하는 불린변수
+	StringBuilder nowDate = new StringBuilder();
+	nowDate.append(nowYear).append(nowMonth).append(nowDay);
+	
+	if (toDate.toString().equals(nowDate.toString())) { 
+		todayFlag = true;
+	}
+	
 	pageContext.setAttribute("nowYear", nowYear);
 	pageContext.setAttribute("nowMonth", nowMonth);
 	pageContext.setAttribute("nowDay", nowDay);
 	
 %>
-<form action="diary.jsp" name="diaryFrm" method="post">
+<form action="diary.jsp" name="diaryFrm" method="post" >
 	<input type="hidden" name="param_month"/>
 	<input type="hidden" name="param_year"/>
 </form>
@@ -262,26 +275,37 @@ $( function() {
 	<tr>
 		<%
 			String dayClass="";
-			String todayClass="";
+			String todayClass=""; // 요일별 색
 			int lastDay=0;
 		
 			// 매월마다 끝나는 날짜가 다르기 때문에 
 			for(int tempDay = 1; ;tempDay++) {
 				cal.set(Calendar.DAY_OF_MONTH, tempDay);	// 임시일자를 설정
-
+				
 				if (cal.get(Calendar.DAY_OF_MONTH) != tempDay) { 
 					// 설정된 날짜가 현재일자가 아니라면 다음달 1일이므로 반복문을 빠져나간다.
 
+					// 마지막일이 토요일이면  
 					// 마지막 날 토요일이면 탈출~ 
-					int nextCnt = 1;
-					for(int blankTd=cal.get(Calendar.DAY_OF_WEEK); blankTd<8; blankTd++) {
-						if (lastDay == Calendar.SATURDAY) {
-							break;
+					/* if (lastDay == Calendar.SATURDAY) {
+						break;
+					} */
+					
+					// 설정된 날짜가 현재 일자가 아니라면 다음달 1일이므로 공백을 출력한 후 
+					// 반복문을 빠져나간다.
+					int week = cal.get(Calendar.DAY_OF_WEEK);
+					int nextMonth = cal.get(Calendar.MONTH)+1;
+					if (week!= Calendar.SUNDAY) { // 마지막일이 일요일이 아니면 출력
+						int nextDay = 1;
+						for(int blankTd=week; blankTd<8; blankTd++) {
+						%>
+							<td class='blankTd'>
+							<div><%= nextMonth == 13 ? 1 : nextMonth %>/<%= nextDay%></div>
+							</td>
+						<%
+							nextDay++;
 						}
-						out.print("<td class='blankTd'>");
-						out.print(nextCnt);
-						out.println("</td>");
-						nextCnt++;
+						break;
 					}
 					break;
 				}
@@ -292,7 +316,21 @@ $( function() {
 					Calendar prevCal = Calendar.getInstance();
 					prevCal.set(Calendar.MONTH, cal.get(Calendar.MONTH)-1); // 지난달로 설정
 					
-					int prevLastDay = 0;
+					// 전달의 마지막
+					cal.set(Calendar.MONTH, nowMonth-2);
+					int prevMonth = cal.get(Calendar.MONTH)+1; // 이전 월
+					int prevLastDay = cal.getActualMaximum(Calendar.DATE); // 이전 월 마지막 일
+					cal.set(Calendar.MONTH, nowMonth-1); // 다시 현재월로 변경
+					// 1일에 맞는 공백을 출력
+					int week = cal.get(Calendar.DAY_OF_WEEK);
+					log(String.valueOf(week)); // 6(요일, 금)
+					for(int blankTd=1; blankTd<cal.get(Calendar.DAY_OF_WEEK); blankTd++) {
+						%>
+						<td class="blankTd"><%=prevMonth %>/<%=prevLastDay-week+blankTd+1%></td>
+						<%
+					}
+				}
+					/* int prevLastDay = 0;
 					for(int temp = 1; ;temp++) {
 						prevCal.set(Calendar.DAY_OF_MONTH, temp); 
 						if(prevCal.get(Calendar.DAY_OF_MONTH) != temp) { // 다음달로 바뀔 때까지 반복
@@ -311,8 +349,9 @@ $( function() {
 						out.print(prevLastDay - cnt);
 						out.println("</td>");
 						cnt--;
-					}
-				}
+					} 					
+				}*/
+
 				
 				// 요일별 색 설정
 				switch(cal.get(Calendar.DAY_OF_WEEK)) {
@@ -326,10 +365,17 @@ $( function() {
 					dayClass="weekColor";
 				}
 				
-				if(currYear == cal.get(Calendar.YEAR) && currMon == cal.get(Calendar.MONTH) && currDay == tempDay) {
+				/* if(currYear == cal.get(Calendar.YEAR) && currMon == cal.get(Calendar.MONTH) && currDay == tempDay) {
 					todayClass = "today";
 				} else {
 					todayClass = "";
+				} */
+				
+				todayClass = "";
+				if(todayFlag) { // 요청한 년월일과 오늘의 년월일이 같다면
+					if (nowDay == tempDay) { // 오늘일자에만 다른 CSS를 적용한다
+						todayClass = "today";
+					}
 				}
 				
 				pageContext.setAttribute("todayClass", todayClass);
@@ -343,7 +389,7 @@ $( function() {
 					out.println("</tr><tr>");
 				}
 		
-				lastDay = cal.get(Calendar.DAY_OF_WEEK);
+				//lastDay = cal.get(Calendar.DAY_OF_WEEK);
 			}
 		%>
 	</tr>
