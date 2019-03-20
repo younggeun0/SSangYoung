@@ -381,7 +381,7 @@ $( function() {
 				pageContext.setAttribute("todayClass", todayClass);
 				pageContext.setAttribute("dayClass", dayClass);
 		%>
-		<td class="diaryTd ${ todayClass }"><span class="${ dayClass }"><%= tempDay %></span></td>
+		<td class="diaryTd ${ todayClass }"><a href="#void"><span class="${ dayClass }"><%= tempDay %></span></a></td>
 		<%
 				
 				switch (cal.get(Calendar.DAY_OF_WEEK)) {

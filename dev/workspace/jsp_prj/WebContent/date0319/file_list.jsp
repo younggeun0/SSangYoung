@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -47,6 +48,8 @@
 	%>
 	<tr>
 		<td><%=i+1 %></td>
+		<!-- 한글파일명을 link로 전송할 때에는 encoding을 해줘야 값이 올바르게 전송된다. -->
+		<!-- form태그로 넘길 때에는 브라우저에서 인코딩을 해주므로 개발자가 인코딩할 필요가 없다. -->
 		<td><a href="download.jsp?file_name=<%=temp.getName()%>"><%=temp.getName() %></a></td>
 		<td><%=new SimpleDateFormat("yyyy-MM-dd a HH:mm").format(temp.lastModified()) %></td>
 		<td><%=new DecimalFormat("#,###,###,###,###").format(temp.length()) %> byte</td>

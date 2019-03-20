@@ -57,3 +57,6 @@ dev/jquery_plugins/*
 
 #libs내용 제외
 dev/libs/*
+
+#summernote 제외
+dev/summernote/*
