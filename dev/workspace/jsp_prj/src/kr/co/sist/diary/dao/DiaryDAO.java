@@ -79,7 +79,8 @@ public class DiaryDAO {
 			selectMonthData
 			.append(" SELECT num, subject ")
 			.append(" FROM diary ")
-			.append(" WHERE e_year=? and e_month=? and e_date=? ");
+			.append(" WHERE e_year=? and e_month=? and e_date=? ")
+			.append(" ORDER BY num DESC ");
 			
 			MonthVO temp = null;
 			List<MonthVO> list = new ArrayList<MonthVO>();
@@ -164,6 +165,35 @@ public class DiaryDAO {
 	public DiaryDetailVO selectDetailEvent(int num) throws SQLException {
 		DiaryDetailVO ddvo = null;
 		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConn();
+			
+			StringBuilder selectOneEvt = new StringBuilder();
+			selectOneEvt
+			.append(" SELECT WRITER, SUBJECT, CONTENT, TO_CHAR(W_DATE, 'YYYY-MM-DD DY HH24:MI') W_DATE, IP ")
+			.append(" FROM DIARY ")
+			.append(" WHERE NUM=? ");
+			
+			pstmt = con.prepareStatement(selectOneEvt.toString());
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				ddvo = new DiaryDetailVO(rs.getString("writer"), 
+					rs.getString("subject"), rs.getString("content"), 
+					rs.getString("w_date"), rs.getString("ip"));
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); } 
+		}
 		
 		return ddvo;
 	}
@@ -178,6 +208,30 @@ public class DiaryDAO {
 	public int updateEvent(DiaryUpdateVO duvo) throws SQLException {
 		int cnt = 0;
 		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConn();
+			
+			StringBuilder updateEvt = new StringBuilder();
+			updateEvt
+			.append(" UPDATE diary ")
+			.append(" SET content=? ")
+			.append(" WHERE num=? and pass=? ");
+			
+			pstmt = con.prepareStatement(updateEvt.toString());
+			pstmt.setString(1, duvo.getContent());
+			pstmt.setInt(2, duvo.getNum());
+			pstmt.setString(3, duvo.getPass());
+			
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
 		return cnt;
 	}
 	
@@ -190,8 +244,69 @@ public class DiaryDAO {
 	public int deleteEvent(DiaryRemoveVO drvo) throws SQLException {
 		int cnt = 0;
 		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConn();
+			
+			StringBuilder updateEvt = new StringBuilder();
+			updateEvt
+			.append(" DELETE FROM diary ")
+			.append(" WHERE num=? and pass=? ");
+			
+			pstmt = con.prepareStatement(updateEvt.toString());
+			pstmt.setInt(1, drvo.getNum());
+			pstmt.setString(2, drvo.getPass());
+			
+			cnt = pstmt.executeUpdate();
+			
+		} finally {
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
 		return cnt;
 	}
+	
+public int selectEvtCnt(SearchDataVO sdvo) throws SQLException {
+	int cnt = 0;
+	
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	try {
+		con = getConn();
+		
+		StringBuilder selectEvtCnt = new StringBuilder();
+		selectEvtCnt
+		.append(" SELECT COUNT(*) cnt ")
+		.append(" FROM diary ");
+
+		// 검색조건에 따라 Count할 총 게시글의 수가 달라진다(동적쿼리)
+		if (sdvo != null) {
+			// Dynamic Query
+			selectEvtCnt
+			.append("  ");
+		}
+
+		pstmt = con.prepareStatement(selectEvtCnt.toString());
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			cnt = rs.getInt("cnt");
+		}
+		
+	} finally {
+		if (rs != null) { rs.close(); }
+		if (pstmt != null) { pstmt.close(); }
+		if (con != null) { con.close(); }
+	}
+	
+	return cnt;
+}
 	
 	/**
 	 * 게시판의 리스트형식으로 조회하는 일
@@ -201,6 +316,44 @@ public class DiaryDAO {
 	 */
 	public List<DiaryListVO> selectList(SearchDataVO sdvo) throws SQLException{
 		List<DiaryListVO> list = new ArrayList<DiaryListVO>();
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConn();
+			
+			StringBuilder selectList = new StringBuilder();
+			
+			selectList
+			.append(" select num, subject, writer, e_year, e_month, e_date, to_char(w_date,'yyyy-mm-dd') w_date, ip ")
+			.append(" from (select rownum r, num, subject, writer, e_year, e_month, e_date, w_date, ip ")
+			.append(" 		from (select num, subject, writer, e_year, e_month, e_date, w_date, ip ")
+			.append(" 	    	  from diary ")
+			.append(" 	    	  order by w_date desc)) ")
+			.append(" where r between 1 and 10 ");
+			
+			pstmt = con.prepareStatement(selectList.toString());
+			
+			rs = pstmt.executeQuery();
+			
+			DiaryListVO dlvo = null;
+			while(rs.next()) {
+				dlvo = new DiaryListVO(rs.getShort("num"),
+						rs.getString("subject"), rs.getString("writer"),
+						rs.getString("e_year"), rs.getString("e_month"),
+						rs.getString("e_date"), rs.getString("w_date"),
+						rs.getString("ip"));
+				
+				list.add(dlvo);
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
 		
 		return list;
 	}

@@ -55,9 +55,6 @@
 			<quickList />
 			<queryList>
 				<query>
-					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;EMPEMP&quot; </queryString>
-				</query>
-				<query>
 					<queryString>DROP TABLE &quot;SCOTT&quot;.&quot;ASDFG&quot; </queryString>
 				</query>
 				<query>
@@ -113,6 +110,9 @@
 				</query>
 				<query>
 					<queryString>INSERT INTO &quot;SCOTT&quot;.&quot;WEB_MEMBER&quot; (ID, PASS, NAME, SSN, GENDER, BIRTH, AGE, MARRIAGE, MARRIAGE_DATE, ZIPCODE, ADDR1, ADDR2, GREETING, INPUT_DATE, IP_ADDR ) VALUES  ( 'hong', 'QL0AFWMIX8NRZTKeof9cXsvbvu8=', '노진경', 'op4q9OPQnn5Avf5xZ6wx+Ey61Mg=', '남자', '1988-1-1', '30', '미혼', '', '11111', '서울시 강서구 공항동', '김포공항', '나는 4강의장 노진경이다!!!!!!!!!!!!', SYSDATE, '211.63.89.139' )</queryString>
+				</query>
+				<query>
+					<queryString>DELETE FROM &quot;SCOTT&quot;.&quot;DIARY&quot; WHERE (IP = '0:0:0:0:0:0:0:1')</queryString>
 				</query>
 			</queryList>
 		</bookmark>

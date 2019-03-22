@@ -65,6 +65,9 @@
 <div id="wrap">
 	<div id="header">
 		<div id="headerTitle">SIST Class4</div>
+		<div style="padding-top:100px;">
+		<c:import url="http://localhost:8080/jsp_prj/diary/main_menu.jsp"></c:import>
+		</div>
 	</div>
 	<div id="container">
 	<br/><br/>

@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>캘린더</title>
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/jsp_prj/common/css/main_v20190130.css"/>
 <style type="text/css">
 	#wrap { margin:0px auto; width:800px; height:860px; }
@@ -122,8 +122,15 @@
 		padding:10px;
 	}
 	
+	#readFrm {
+		background-color: #FFFFFF;
+		border:1px solid #333;
+		box-shadow: 5px 5px 5px #333; 
+		padding:10px;
+	}
 	
-	jQuery tooltip 플러그인
+	
+	/* jQuery tooltip 플러그인 */
 	.ui-tooltip, .arrow:after {
 	  background: black;
 	  border: 2px solid white;
@@ -173,7 +180,6 @@
 <link href="../common/summernote/bootstrap.css" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="../common/summernote/bootstrap.js"></script> 
-
 <link href="../common/summernote/summernote-lite.css" rel="stylesheet">
 <script src="../common/summernote/summernote-lite.js"></script>
 <!-- include summernote-ko-KR -->
@@ -211,6 +217,7 @@ $( function() {
   });
 } ); 
 </script>
+<!-- tooltip 끝 -->
 <script type="text/javascript">
 	function moveMonth(month,year) {
 		// location.href="diary.jsp?param_month="+month+"&param_yaer="+year;
@@ -261,6 +268,35 @@ $( function() {
 			
 			$("[name='writeFrm']").submit();	
 		});
+		
+		
+		$("#btnUpdate").click(function() {
+			if($("#summernote").val() == "") {
+				alert("이벤트 내용은 필수입력 항목입니다.");
+				return;
+			}
+
+			if($("#pass").val() == "") {
+				alert("비밀번호는 필수입력 항목입니다.");
+				$("#pass").focus();
+				return;
+			}
+			
+			$("[name='pageFlag']").val("update_process");
+			$("[name='readFrm']").submit();	
+		});
+		
+		$("#btnRemove").click(function() {
+			if($("#pass").val() == "") {
+				alert("비밀번호는 필수입력 항목입니다.");
+				$("#pass").focus();
+				return;
+			}
+			
+			$("[name='pageFlag']").val("delete_process");
+			$("[name='readFrm']").submit();	
+		});
+		
 	});
 	
 	function writeEvt(year, month, date, pageFlag, evtCnt) {
@@ -276,18 +312,31 @@ $( function() {
 		$("[name='pageFlag']").val(pageFlag);
 		$("[name='diaryFrm']").submit();
 	}
+	
+	function readEvt(num, year, month, date) {
+		$("[name='num']").val(num);
+		$("[name='param_year']").val(year);
+		$("[name='param_month']").val(month);
+		$("[name='param_date']").val(date);
+		$("[name='pageFlag']").val("read_form");
+		$("[name='diaryFrm']").submit();
+	}
 </script>
 </head>
 <body>
 <div id="wrap">
 	<div id="header">
 		<div id="headerTitle">SIST Class4</div>
+		<div style="padding-top:100px;">
+		<c:import url="http://localhost:8080/jsp_prj/diary/main_menu.jsp"></c:import>
+		</div>
 	</div>
 	<div id="container">
 	<br/><br/>
 	
 	
-	
+
+
 
 
 
@@ -346,6 +395,7 @@ $( function() {
 	<input type="hidden" name="param_year"/>
 	<input type="hidden" name="param_date"/>
 	<input type="hidden" name="pageFlag"/>
+	<input type="hidden" name="num"/>
 </form>
 
 <div id="diaryTitle">
@@ -515,7 +565,10 @@ $( function() {
 								tempSubject = tempSubject.substring(0,20)+"...";
 							}
 						%>
-							<img src="images/evtflag.png" title="<%=tempSubject%>"/>
+							<a href="#void" onclick="readEvt(<%=dayEvt[i].getNum()
+								%>, ${ nowYear }, ${ nowMonth }, <%=tempDay %>)">
+								<img src="images/evtflag.png" title="<%=tempSubject %>"/>
+							</a>
 						<%
 						}
 					}
@@ -541,7 +594,6 @@ $( function() {
 		<% 
 			}
 		%>
-	</tr>
 </table>
 <div id="diaryJob">
 	<c:if test="${ not empty param.pageFlag }">
