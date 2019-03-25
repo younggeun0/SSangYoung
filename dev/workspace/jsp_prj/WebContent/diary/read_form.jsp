@@ -1,3 +1,4 @@
+<%@page import="java.io.IOException"%>
 <%@page import="kr.co.sist.vo.DiaryDetailVO"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="kr.co.sist.diary.dao.DiaryDAO"%>
@@ -86,6 +87,10 @@
 	</tr>
 </table>
 </form>
+<%
+	} catch (IOException ie) {
+%>
+	<img src="images/construction.jpg" title="죄송합니다."/>
 <%
 	} catch (SQLException se) {
 %>

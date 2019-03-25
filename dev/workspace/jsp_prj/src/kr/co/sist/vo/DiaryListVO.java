@@ -3,10 +3,10 @@ package kr.co.sist.vo;
 public class DiaryListVO {
 	
 	private int num;
-	private String subject, writer, e_year, e_month, e_date, w_date, ip;
+	private String subject, writer, e_year, e_month, e_date, w_date;
 	
 	public DiaryListVO(int num, String subject, String writer, String e_year, String e_month, String e_date,
-			String w_date, String ip) {
+			String w_date) {
 		this.num = num;
 		this.subject = subject;
 		this.writer = writer;
@@ -14,7 +14,6 @@ public class DiaryListVO {
 		this.e_month = e_month;
 		this.e_date = e_date;
 		this.w_date = w_date;
-		this.ip = ip;
 	}
 
 	public int getNum() {
@@ -45,7 +44,7 @@ public class DiaryListVO {
 		return w_date;
 	}
 
-	public String getIp() {
-		return ip;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 }

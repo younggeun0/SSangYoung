@@ -1,5 +1,8 @@
 package kr.co.sist.diary.dao;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.sql.Clob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +20,7 @@ import kr.co.sist.vo.DiaryListVO;
 import kr.co.sist.vo.DiaryRemoveVO;
 import kr.co.sist.vo.DiaryUpdateVO;
 import kr.co.sist.vo.DiaryVO;
+import kr.co.sist.vo.ListRangeVO;
 import kr.co.sist.vo.MonthVO;
 import kr.co.sist.vo.SearchDataVO;
 
@@ -161,42 +165,57 @@ public class DiaryDAO {
 	 * @param num
 	 * @return
 	 * @throws SQLException
+	 * @throws IOException 
 	 */
-	public DiaryDetailVO selectDetailEvent(int num) throws SQLException {
-		DiaryDetailVO ddvo = null;
+public DiaryDetailVO selectDetailEvent(int num) throws SQLException, IOException{
+	DiaryDetailVO ddvo = null;
+	
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	BufferedReader br = null;
+	
+	try {
+		con = getConn();
 		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		StringBuilder selectOneEvt = new StringBuilder();
+		selectOneEvt
+		.append(" SELECT WRITER, SUBJECT, CONTENT, TO_CHAR(W_DATE, 'YYYY-MM-DD DY HH24:MI') W_DATE, IP ")
+		.append(" FROM DIARY ")
+		.append(" WHERE NUM=? ");
 		
-		try {
-			con = getConn();
+		pstmt = con.prepareStatement(selectOneEvt.toString());
+		pstmt.setInt(1, num);
+		
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			// CLOB(Character Large Object) 처리
+			Clob clob = rs.getClob("content");
+			// CLOB처리를 위해 별도의 스트림을 연결
+			br = new BufferedReader(clob.getCharacterStream());
 			
-			StringBuilder selectOneEvt = new StringBuilder();
-			selectOneEvt
-			.append(" SELECT WRITER, SUBJECT, CONTENT, TO_CHAR(W_DATE, 'YYYY-MM-DD DY HH24:MI') W_DATE, IP ")
-			.append(" FROM DIARY ")
-			.append(" WHERE NUM=? ");
-			
-			pstmt = con.prepareStatement(selectOneEvt.toString());
-			pstmt.setInt(1, num);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				ddvo = new DiaryDetailVO(rs.getString("writer"), 
-					rs.getString("subject"), rs.getString("content"), 
-					rs.getString("w_date"), rs.getString("ip"));
+			String temp = "";
+			StringBuilder content = new StringBuilder();
+			while((temp = br.readLine()) != null) {
+				content.append(temp);
 			}
 			
-		} finally {
-			if (rs != null) { rs.close(); }
-			if (pstmt != null) { pstmt.close(); }
-			if (con != null) { con.close(); } 
+			ddvo = new DiaryDetailVO(rs.getString("writer"), 
+				rs.getString("subject"), content.toString(), 
+				rs.getString("w_date"), rs.getString("ip"));
 		}
 		
-		return ddvo;
+	} finally {
+		if (br != null) { br.close(); }
+		if (rs != null) { rs.close(); }
+		if (pstmt != null) { pstmt.close(); }
+		if (con != null) { con.close(); } 
 	}
+	
+	return ddvo;
+}
 	
 	/**
 	 * 글번호, 내용, 비밀번호를 입력받아 비밀번호가 일치하면 해당 글번호의
@@ -269,44 +288,47 @@ public class DiaryDAO {
 		return cnt;
 	}
 	
-public int selectEvtCnt(SearchDataVO sdvo) throws SQLException {
-	int cnt = 0;
-	
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	try {
-		con = getConn();
+	public int selectEvtCnt(SearchDataVO sdvo) throws SQLException {
+		int cnt = 0;
 		
-		StringBuilder selectEvtCnt = new StringBuilder();
-		selectEvtCnt
-		.append(" SELECT COUNT(*) cnt ")
-		.append(" FROM diary ");
-
-		// 검색조건에 따라 Count할 총 게시글의 수가 달라진다(동적쿼리)
-		if (sdvo != null) {
-			// Dynamic Query
+		System.out.println(sdvo);
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			con = getConn();
+			
+			StringBuilder selectEvtCnt = new StringBuilder();
 			selectEvtCnt
-			.append("  ");
-		}
-
-		pstmt = con.prepareStatement(selectEvtCnt.toString());
-		
-		rs = pstmt.executeQuery();
-		
-		if(rs.next()) {
-			cnt = rs.getInt("cnt");
-		}
-		
-	} finally {
-		if (rs != null) { rs.close(); }
-		if (pstmt != null) { pstmt.close(); }
-		if (con != null) { con.close(); }
-	}
+			.append(" SELECT count(*) cnt ")
+			.append(" FROM diary ");
 	
-	return cnt;
-}
+			// 검색조건에 따라 Count할 총 게시글의 수가 달라진다(Dynamic Query)
+			if (sdvo != null) {
+				selectEvtCnt
+				.append(" WHERE ").append(sdvo.getFieldName()).append(" LIKE '%'||?||'%' ");
+				pstmt = con.prepareStatement(selectEvtCnt.toString());
+				pstmt.setString(1, sdvo.getKeyword());
+			} else {
+				pstmt = con.prepareStatement(selectEvtCnt.toString());
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cnt = rs.getInt("cnt");
+			}
+			
+		} finally {
+			if (rs != null) { rs.close(); }
+			if (pstmt != null) { pstmt.close(); }
+			if (con != null) { con.close(); }
+		}
+		
+		return cnt;
+	}
 	
 	/**
 	 * 게시판의 리스트형식으로 조회하는 일
@@ -314,7 +336,7 @@ public int selectEvtCnt(SearchDataVO sdvo) throws SQLException {
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<DiaryListVO> selectList(SearchDataVO sdvo) throws SQLException{
+	public List<DiaryListVO> selectList(SearchDataVO sdvo, ListRangeVO lrvo) throws SQLException{
 		List<DiaryListVO> list = new ArrayList<DiaryListVO>();
 		
 		Connection con = null;
@@ -327,15 +349,28 @@ public int selectEvtCnt(SearchDataVO sdvo) throws SQLException {
 			StringBuilder selectList = new StringBuilder();
 			
 			selectList
-			.append(" select num, subject, writer, e_year, e_month, e_date, to_char(w_date,'yyyy-mm-dd') w_date, ip ")
-			.append(" from (select rownum r, num, subject, writer, e_year, e_month, e_date, w_date, ip ")
-			.append(" 		from (select num, subject, writer, e_year, e_month, e_date, w_date, ip ")
-			.append(" 	    	  from diary ")
-			.append(" 	    	  order by w_date desc)) ")
-			.append(" where r between 1 and 10 ");
+			.append(" SELECT num, subject, writer, e_year, e_month, e_date, to_char(w_date, 'yyyy-mm-dd hh24:mi') w_date ")
+			.append(" FROM (SELECT num, subject, writer, e_year, e_month,  ")
+			.append(" 			e_date, w_date, ROW_NUMBER() OVER(ORDER BY w_date DESC) r_num ")
+			.append(" 	    FROM diary ");
+			
+			if (sdvo != null) {
+				selectList.append(" WHERE ").append(sdvo.getFieldName())
+				.append(" LIKE '%'||?||'%' ");
+			}
+			
+			selectList.append(") WHERE r_num BETWEEN ? AND ? ");
+			
 			
 			pstmt = con.prepareStatement(selectList.toString());
 			
+		int bindIdx = 1;
+		if (sdvo != null) {
+			pstmt.setString(bindIdx++, sdvo.getKeyword());
+		} 
+		pstmt.setInt(bindIdx++, lrvo.getStartNum());
+		pstmt.setInt(bindIdx++, lrvo.getEndNum());
+
 			rs = pstmt.executeQuery();
 			
 			DiaryListVO dlvo = null;
@@ -343,8 +378,7 @@ public int selectEvtCnt(SearchDataVO sdvo) throws SQLException {
 				dlvo = new DiaryListVO(rs.getShort("num"),
 						rs.getString("subject"), rs.getString("writer"),
 						rs.getString("e_year"), rs.getString("e_month"),
-						rs.getString("e_date"), rs.getString("w_date"),
-						rs.getString("ip"));
+						rs.getString("e_date"), rs.getString("w_date"));
 				
 				list.add(dlvo);
 			}
