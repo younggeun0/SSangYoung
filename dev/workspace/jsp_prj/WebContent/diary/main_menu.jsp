@@ -41,5 +41,6 @@
     </li>
     <li><a href="http://localhost:8080/jsp_prj/date0319/file_list.jsp">다운로드</a></li>
     <li><a href="http://localhost:8080/jsp_prj/date0320/mr_upload_form.jsp">당신도 김본좌!!</a></li>
+    <li><a href="http://localhost:8080/jsp_prj/xml0326/jtbc_rss.jsp">JTBC RSS</a></li>
   </ul>
 </nav>	
