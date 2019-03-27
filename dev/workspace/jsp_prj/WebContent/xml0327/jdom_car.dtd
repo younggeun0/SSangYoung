@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT cars (car*)>
+<!ELEMENT car (model?, company?, owner+, cc?)>
+<!ELEMENT model (#PCDATA)>
+<!ELEMENT company (#PCDATA)>
+<!ELEMENT owner (#PCDATA)>
+<!ELEMENT cc (#PCDATA)>
+
+<!ATTLIST car type CDATA #REQUIRED>
+

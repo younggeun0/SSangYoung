@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT people (person+)>
+<!ELEMENT person (name?, ssn?, address+)>
+<!ELEMENT name (firstName+, lastName?)>
+<!ELEMENT ssn (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>

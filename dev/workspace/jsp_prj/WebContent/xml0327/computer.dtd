@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT computers (computer)*>
+<!ELEMENT computer (cpu+, motherBoard?, ram+, powerSupply+, (hdd?|sdd?), odd?, vga?)>
+<!ELEMENT cpu (#PCDATA)>
+<!ELEMENT motherBoard (#PCDATA)>
+<!ELEMENT ram (#PCDATA)>
+<!ELEMENT powerSupply (#PCDATA)>
+<!ELEMENT hdd (#PCDATA)>
+<!ELEMENT sdd (#PCDATA)>
+<!ELEMENT odd (#PCDATA)>
+<!ELEMENT vga (#PCDATA)>
+
+<!ATTLIST cpu brand CDATA #REQUIRED>
+<!ATTLIST motherBoard brand CDATA #REQUIRED>
+<!ATTLIST hdd brand CDATA #REQUIRED>
+<!ATTLIST vga brand CDATA #FIXED "NVIDIA">

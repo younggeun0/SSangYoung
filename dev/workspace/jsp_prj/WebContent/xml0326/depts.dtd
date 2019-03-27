@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT depts (dept+)>
+<!ELEMENT dept (deptno?, dname+, loc*)>
+<!ELEMENT deptno (#PCDATA)>
+<!ELEMENT dname (#PCDATA)>
+<!ELEMENT loc (#PCDATA)>
