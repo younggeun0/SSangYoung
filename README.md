@@ -150,4 +150,4 @@
 - 190325 : [일정관리 만들기(4)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-19/)
 - 190326 : [XML, JDOM Parser, RSS Parsing](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-20/)
 - 190327 : [XML , DTD](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-21/)
-- 190328 : [JSON, AJAX(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-21/)
+- 190328 : [JSON, AJAX(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-22/)
