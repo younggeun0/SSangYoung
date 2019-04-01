@@ -152,3 +152,4 @@
 - 190327 : [XML , DTD](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-21/)
 - 190328 : [JSON, AJAX(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-22/)
 - 190329 : [AJAX(2)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-23/)
+- 190401 : [AJAX(3), Model2(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-24/)
