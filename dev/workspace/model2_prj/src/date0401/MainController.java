@@ -19,11 +19,9 @@ public class MainController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd = request.getRequestDispatcher("date0401/hello.jsp");
+		/*RequestDispatcher rd = request.getRequestDispatcher("date0401/hello.jsp");*/
+		RequestDispatcher rd = request.getRequestDispatcher("date0402/view.jsp");
 		rd.forward(request, response);
-		
-		
-		
 	}
 
 }
