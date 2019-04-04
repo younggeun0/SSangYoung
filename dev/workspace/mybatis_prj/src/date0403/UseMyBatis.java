@@ -14,6 +14,10 @@ import date0403.domain.Dept;
 
 public class UseMyBatis {
 	
+	public UseMyBatis() {
+		org.apache.ibatis.logging.LogFactory.useLog4JLogging();
+	}
+	
 	public SqlSessionFactory getSessionFactory() throws IOException {
 		// 1. 환경설정 xml에 스트림을 연결
 		Reader reader = Resources.getResourceAsReader("date0403/mybatis_config.xml");
@@ -86,7 +90,7 @@ public class UseMyBatis {
 	public static void main(String[] args) {
 		UseMyBatis umb = new UseMyBatis();
 		try {
-			umb.deleteCpDept(11);
+			umb.updateCpDept(new date0403.vo.Dept(23, "youngss", "seoul"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
