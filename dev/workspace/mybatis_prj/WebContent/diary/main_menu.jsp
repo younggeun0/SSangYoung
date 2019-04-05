@@ -26,9 +26,14 @@
     <li><a href="#void">홈으로</a></li>
     <li><a href="#void">쿼리보기</a>
       <ul>
-        <li><a href="main.jsp?page=single_column">컬럼 하나에 레코드 하나 조회</a></li>
-        <li><a href="main.jsp?page=multi_row">컬럼 하나에 레코드 여러개 조회</a></li>
-        <li><a href="main.jsp?page=multi_column">컬럼 여러개에 레코드 하나 조회</a></li>
+        <li><a href="main.jsp?page=date0404/single_column">컬럼 하나에 레코드 하나 조회</a></li>
+        <li><a href="main.jsp?page=date0404/multi_row">컬럼 하나에 레코드 여러개 조회</a></li>
+        <li><a href="main.jsp?page=date0404/multi_column">컬럼 여러개에 레코드 하나 조회</a></li>
+        <li><a href="main.jsp?page=date0405/multi_column_row">컬럼 여러개에 레코드 여러개 조회</a></li>
+        <li><a href="main.jsp?page=date0405/multi_param">WHERE의 값이 여러개인 경우</a></li>
+        <li><a href="main.jsp?page=date0405/less_than">&lt;의 비교</a></li>
+        <li><a href="main.jsp?page=date0405/greater_than">&gt;의 비교</a></li>
+        <li><a href="main.jsp?page=date0405/like">LIKE의 조회</a></li>
       </ul>
     </li>
   </ul>

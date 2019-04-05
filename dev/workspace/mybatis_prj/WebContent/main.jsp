@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="http://localhost:8080/mybatis_prj/common/css/main_v20190130.css"/>
 <style type="text/css">
 	#wrap { margin:0px auto; width:800px; height:860px; }
@@ -21,6 +22,7 @@
 		
 	}); // ready
 </script>
+
 </head>
 <body>
 <div id="wrap">
@@ -34,7 +36,7 @@
 	<br/><br/>
 	
 <c:if test="${ not empty param.page }">
-	<c:import url="/date0404/${ param.page }.jsp"/>
+	<c:import url="${ param.page }.jsp"/>
 </c:if>
 
 	

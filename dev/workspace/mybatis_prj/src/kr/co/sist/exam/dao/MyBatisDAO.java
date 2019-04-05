@@ -2,7 +2,6 @@ package kr.co.sist.exam.dao;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -11,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.co.sist.exam.domain.DeptInfo;
+import kr.co.sist.exam.domain.Emp;
 
 public class MyBatisDAO {
 	
@@ -27,6 +27,7 @@ public class MyBatisDAO {
 	
 	public synchronized SqlSessionFactory getSessionFactory() { // synchronized로 Thread에 한개만 생성되서 사용된다.
 		Reader r = null;
+		
 		try {
 			// 1. 설정용 XML파일 연결 스트림 생성
 			r = Resources.getResourceAsReader("kr/co/sist/exam/dao/mybatis_config.xml");
@@ -80,6 +81,19 @@ public class MyBatisDAO {
 		ss.close();
 		
 		return di;
+	}
+	
+	public List<Emp> multiColumnRow(int deptno) {
+		List<Emp> list = null;
+		
+		// 4. MyBatis Handler 얻기
+		SqlSession ss = getSessionFactory().openSession();
+		
+		// 5. mapper에서 쿼리가 존재하는 id 찾아 실행
+		list = ss.selectList("multiColumnRow", deptno);
+		ss.close();
+		
+		return list;
 	}
 	
 	public static void main(String[] args) {

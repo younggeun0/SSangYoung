@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.sist.exam.dao.MyBatisDAO;
 import kr.co.sist.exam.domain.DeptInfo;
+import kr.co.sist.exam.domain.Emp;
 
 public class MyBatisService {
 	public String deptName(int deptno) {
@@ -25,6 +26,15 @@ public class MyBatisService {
 		
 		MyBatisDAO mb_dao = MyBatisDAO.getInstance();
 		list = mb_dao.multiRow();
+		
+		return list;
+	}
+	
+	public List<Emp> multiColumnRow(int deptno) {
+		List<Emp> list = null;
+		
+		MyBatisDAO mb_dao = MyBatisDAO.getInstance();
+		list = mb_dao.multiColumnRow(deptno);
 		
 		return list;
 	}
