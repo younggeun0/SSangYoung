@@ -34,6 +34,9 @@
         <li><a href="main.jsp?page=date0405/less_than">&lt;의 비교</a></li>
         <li><a href="main.jsp?page=date0405/greater_than">&gt;의 비교</a></li>
         <li><a href="main.jsp?page=date0405/like">LIKE의 조회</a></li>
+        <li><a href="main.jsp?page=date0408/subquery">서브쿼리를 사용한 조회</a></li>
+        <li><a href="main.jsp?page=date0408/union">UNION를 사용한 조회</a></li>
+        <li><a href="main.jsp?page=date0408/join">JOIN을 사용한 조회</a></li>
       </ul>
     </li>
   </ul>

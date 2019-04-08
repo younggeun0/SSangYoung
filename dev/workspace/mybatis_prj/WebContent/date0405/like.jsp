@@ -41,10 +41,14 @@
 		<c:forEach var="addr" items="${ addrList }">
 		<tr>
 			<td>
-				<c:out value="${ addr.zipcode }"/>
+				<a href="#void" onclick="setMarker('${ addr.sido } ${ addr.gugun } ${ addr.dong }','${ addr.dong }')">
+					<c:out value="${ addr.zipcode }"/>
+				</a>
 			</td>
 			<td>
-				<c:out value="${ addr.sido } ${ addr.gugun } ${ addr.dong } ${ addr.bunji }"/> 
+				<a href="#void" onclick="setMarker('${ addr.sido } ${ addr.gugun } ${ addr.dong }','${ addr.dong }')">
+					<c:out value="${ addr.sido } ${ addr.gugun } ${ addr.dong } ${ addr.bunji }"/> 
+				</a>
 			</td>
 		</tr>
 		</c:forEach>
@@ -55,13 +59,20 @@
 <div id="map" style="width:500px;height:400px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=556561d449900c23e674c88c88f33ce6&libraries=services"></script>
 <script>
+var mapContainer=null;
+var mapOption=null;
+
 $(function() {
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
+	mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+  mapOption = {
+      center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+      level: 3 // 지도의 확대 레벨
+  };  
 	
+	setMarker("서울 동작구 상도동","상도동");
+});
+
+function setMarker(addr, dong) {
 	// 지도를 생성합니다    
 	var map = new daum.maps.Map(mapContainer, mapOption); 
 	
@@ -69,7 +80,7 @@ $(function() {
 	var geocoder = new daum.maps.services.Geocoder();
 	
 	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('서울 강남구 테헤란로 132', function(result, status) {
+	geocoder.addressSearch(addr, function(result, status) {
 	
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === daum.maps.services.Status.OK) {
@@ -81,12 +92,18 @@ $(function() {
 	            map: map,
 	            position: coords
 	        });
+	        
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new daum.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">'+dong+'</div>'
+	        });
+	        infowindow.open(map, marker);
 	
 	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 	        map.setCenter(coords);
 	    } 
 	});    
-});
+}
 </script>
 </div>
 
