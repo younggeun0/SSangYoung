@@ -3,15 +3,54 @@ package kr.co.sist.exam.service;
 import java.util.List;
 
 import kr.co.sist.exam.dao.MyBatisDAO1;
+import kr.co.sist.exam.domain.Car;
 import kr.co.sist.exam.domain.DiaryList;
+import kr.co.sist.exam.domain.DynamicEmp;
+import kr.co.sist.exam.domain.DynamicIf;
 import kr.co.sist.exam.domain.Emp;
 import kr.co.sist.exam.domain.EmpJoin;
 import kr.co.sist.exam.domain.Union;
 import kr.co.sist.exam.domain.Zipcode;
+import kr.co.sist.exam.vo.DeptNo;
 import kr.co.sist.exam.vo.DiaryListParam;
 import kr.co.sist.exam.vo.EmpVO;
+import kr.co.sist.exam.vo.TableName;
 
 public class MyBatisService1 {
+	
+	public List<DynamicIf> dynamicIf(DeptNo deptno) {
+		List<DynamicIf> list = null;
+		
+		MyBatisDAO1 mb_dao = new MyBatisDAO1();
+		list = mb_dao.dynamicIf(deptno);
+		
+		return list;
+	}
+	
+	public List<DynamicEmp> dynamicTable(TableName tname) {
+		List<DynamicEmp> list = null;
+		
+		MyBatisDAO1 mb_dao = new MyBatisDAO1();
+		list = mb_dao.dynamicTable(tname);
+		
+		return list;
+	}
+	
+	public List<Car> joinSubquery() {
+		List<Car> list = null;
+		
+		MyBatisDAO1 mb_dao = new MyBatisDAO1();
+		list = mb_dao.joinSubquery();
+		
+		// 카 옵션이 25자 이상이라면 24까지 보여주고 나머지는 '...'으로 처리
+		for(Car car : list) {
+			if(car.getCarOption().length() > 26) {
+				car.setCarOption(car.getCarOption().substring(0, 24)+"...");
+			}
+		}
+		
+		return list;
+	}
 	
 	public List<EmpJoin> join(int mgr) {
 		List<EmpJoin> list = null;

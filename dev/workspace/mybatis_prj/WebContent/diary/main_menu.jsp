@@ -34,9 +34,12 @@
         <li><a href="main.jsp?page=date0405/less_than">&lt;의 비교</a></li>
         <li><a href="main.jsp?page=date0405/greater_than">&gt;의 비교</a></li>
         <li><a href="main.jsp?page=date0405/like">LIKE의 조회</a></li>
-        <li><a href="main.jsp?page=date0408/subquery">서브쿼리를 사용한 조회</a></li>
+        <li><a href="main.jsp?page=date0408/subquery">SUBQUERY를 사용한 조회</a></li>
         <li><a href="main.jsp?page=date0408/union">UNION를 사용한 조회</a></li>
         <li><a href="main.jsp?page=date0408/join">JOIN을 사용한 조회</a></li>
+        <li><a href="main.jsp?page=date0409/join_subquery">JOIN+SUBQUERY을 사용한 조회</a></li>
+        <li><a href="main.jsp?page=date0409/dynamic_table">테이블명이 동적일 때 조회</a></li>
+        <li><a href="main.jsp?page=date0409/dynamic_if">dynamic if</a></li>
       </ul>
     </li>
   </ul>

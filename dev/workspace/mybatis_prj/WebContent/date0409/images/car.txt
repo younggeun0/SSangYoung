@@ -1,0 +1,231 @@
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC	,CAR_OPTION,CAR_IMG,	HIREDATE)
+values('포르테','2011',1550,1591,'썬루프,알루미늄휠','f7368959_014.jpg');	
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC	,CAR_OPTION,CAR_IMG,	HIREDATE)
+values('포르테','2010',1350,1998,'제논 헤드프림','f7312530_014.jpg');	
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC	,CAR_OPTION,CAR_IMG,	HIREDATE)
+values('포르테1.6','2009',1220,1591,'전동접이 사이드미러','f7260850_014.jpg');	
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('K5 프레스티지','2010',1990,1998,'전동접이 사이드미러, 알루미늄휠, 파워 스티어링, ECM, 스티어링 휠 리모컨, ABS, 후방 감지센서','K5_7392782_011.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('K5 럭셔리','2010',2040,1998,'전동접이 사이드미러, 알루미늄휠, 파워 스티어링, ECM, 스티어링 휠 리모컨, ABS, 후방 감지센서','K5_7232446_011.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('K5 디럭스','2010',2300,1998,'전동접이 사이드미러, 알루미늄휠, 파워 스티어링, ECM, 스티어링 휠 리모컨, ABS, 후방 감지센서','K5_7290087_011.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC,	 CAR_OPTION, CAR_IMG, HIREDATE)
+values('소나타','2012',2900,2000,'무사고, 짧은주행거리, 후방감지기, 열선시트, 전동시트','sonata1.jpg');	
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC,	 CAR_OPTION, CAR_IMG, HIREDATE)
+values('소나타','2006',1570,2400,'신조/무사고/폭풍간지/네비/썬루프/휠+타이어+우퍼/엠프','sonata2.jpg');	
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC,	 CAR_OPTION, CAR_IMG, HIREDATE)
+values('소나타','2004',700,2000,'조수석전동까지풀옵션,옵션상태대비대한민국최저가','sonata3.jpg');
+
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+values('아반떼HD','2010', 1200, 1600, '스티어링 흴 리모컨, 파워 스티어링, 가죽 시트, 파워 윈도우', 'avantehd.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+values('아반떼하이브리드','2011', 1500, 1600, '알루미늄휠, ABS, CD 플레이어', 'avantehy.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+values('아반떼MD','2012', 1600, 1600, '스티어링 흴 리모컨, 자동 에어컨, iPod 단자', 'avantemd.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('쏘렌토','2012',3000,3000,'파워핸들,물폭탄','s01.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('쏘렌토','2011',2500,2000,'파워핸들,선루프','s02.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('쏘렌토','2009',2000,2000,'선루프','s03.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values ('A8','2004',2550,4200,'에어백,ABS,열선시트','a8_1.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values ('A8','2004',2690,4200,'에어백,ABS,선루프','a8_2.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values ('A8','2006',3440,4200,'선루프,ABS,네비게이션','a8_3.jpg');
+
+insert into car_model(MODEL	,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG,HIREDATE)
+		 values('K7_VG270','2010',2700,2650,'파워 스티어링, 가죽시트, 통풍시트, 커튼 에어백','K7_VG270.jpg');
+
+insert into car_model(MODEL	,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG,HIREDATE)
+		 values('K7_2.4GDI','2011',2650,2400,'자동에어컨, 스마트키, 에어백, 사이드미러','K7_2.4GDI.jpg');
+
+insert into car_model(MODEL	,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG,HIREDATE)
+		 values('K7_VG350','2011',2900,3500,'열선 시트, 후방 카메라, CD플레이어, ECM','K7_VG350.jpg');
+
+
+insert into car_model(model,car_year,price,cc,car_option,car_img), values('엑티언','2006',780,1998,'에어백, 핸즈프리, 파워윈도우, 후방감지센서','01.jpg');
+insert into car_model(model,car_year,price,cc,car_option,car_img), values('엑티언','2005',1020,1998,'에어백, 가죽시트, ECM','02.jpg');
+insert into car_model(model,car_year,price,cc,car_option,car_img), values('엑티언','2010',1720,2000,'ABS, 후방카메라, 후방감지센서','03.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE,	CC, CAR_OPTION,	CAR_IMG)
+	values('체어맨', '2008', 2830, 3200,' 광택코팅, 열선시트앞좌석, 네비게이션','chair7352717_001.jpg'); 
+
+insert into car_model(MODEL, CAR_YEAR, PRICE,	CC, CAR_OPTION,	CAR_IMG)
+	values('체어맨', '2011', 3270, 2799, ' 선루프 ,ABS , 광택코팅', 'chair7372914_001.jpg'); 
+
+insert into car_model(MODEL, CAR_YEAR, PRICE,	CC, CAR_OPTION,	CAR_IMG)
+	values('체어맨', '2008', 2890, 3598,'네비게이션, 열선시트앞좌석','chair7199163_001.jpg'); 
+
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+	values ('아반테','2012',1900,1600,'파워핸들, 선루프, ABS, TCS, 크루즈컨트롤','g7377248_014.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+	values ('520i', '2005', 6160, 1997, '무릎보호 에어백, 차선이탈 경보장치', 'bmw5_1.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+	values ('520d','2006',6350, 1995, '파노라마 썬루프, 루프렉', 'bmw5_2.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_img)
+	values ('528i','2008', 6840, 1997, '파노라마 썬루프, 루프렉', 'bmw5_3.jpg');
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG, HIREDATE)
+valuse('E300','2011',8180,3498,'ECM,에어백,ABS,TCS,VDC,ECS,자동에어컨,','e_2011_100.jpg');	
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG, HIREDATE)
+valuse('E63','2011',14450,6208,'파노라마 썬루프,ECM,TCS,후방카메라,오토라이트 컨트롤','e_124.jpg');	
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG, HIREDATE)
+valuse('E350','2011',9440,3498,'ECM,TCS,오토라이트컨트롤','e_100.jpg');	
+
+insert into car_model(model,car_year,price,cc, car_option,car_img) values('SM7_All In New','2010',1600,2000,'파워핸들,선루프,ABS,크루즈컨트롤','SM7_74345_001.jpg');
+insert into car_model(model,car_year,price,cc, car_option,car_img) values('SM7_RE_BLACK','2012',3000,2500,'파워핸들,선루프,ABS,블랙박스','SM7_7422193_002.jpg');
+insert into car_model(model,car_year,price,cc, car_option,car_img) values('SM7_RE_WHITE','2010',2200,3000,'파워핸들,선루프,ABS,네비게이션','SM7_7413552_001.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('SM3','2011',1480,1598,'파워핸들,선루프,ABS,에어백','7290838_001.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('SM3','2011',1590,1598,'물파리,자동주차,네비게이션,에어백','6846402_001.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('SM3','2009',1290,1598,'파워핸들,가죽시트,ABS,사이드미러','7451980_001.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('액센트','2011', 1370, 1396, '전동접이 사이드미러, 알루미늄휠, 스티어링 휠 리모컨, 파워 스티어링','a01.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('액센트','1998', 145, 1495, '알루미늄휠, 파워 스티어링, 파워 도어록, 파워 윈도우','a02.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('액센트','2011', 1390, 1591, '전동접이 사이드미러, 알루미늄휠, 스티어링 휠 리모컨, 파워 스티어링','a03.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE, CC, CAR_OPTION,CAR_IMG)
+values('AUDI A4','2010',3290,1998,'헤드램프, 선루프, ABS, 스마트키','7423378_001.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE, CC, CAR_OPTION,CAR_IMG)
+values('AUDI A4','2006',1490,1781,'전동시트, 커튼에어백, ABS, 파워도어록','7204324_001.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE, CC, CAR_OPTION,CAR_IMG)
+values('AUDI A4','2007',1930,1781,'자동에어컨, 파워윈도우, AV시스템, TCS','7465536_001.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('아우디 A6 2.4','2003',980,2393,'HID, 전동접이 사이드미러, 선루프, 스티어링 휠 리모컨',7344851_001.jpg);
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('아우디 A6 2.0','2008',2750,2000,'ECM, 메모리 시트, 에어백, 후방 카메라',7398273_001.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('아우디 A6 2.6','1997',670,2598,'알루미늄휠, 파워 스티어링, 가죽 시트',6873043_001.jpg);
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('330xi','2003',1700,3000,'선루프,파워도어록,헤드램프...','330xi.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('318i','2002',1000,1995,'커튼에어백,후방감지센서,ABS...','318i.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('328i','2006',2000,2500,'네비,앞TV,후방센서,HID램프,하드탑 컨버터블...','328i.jpg');
+
+insert into car_model(MODEL, CAR_TEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('뉴SM5 SE','2011',1650,1998,'파노라마선루프,후방카메라내비게이션','sm57462082_001.jpg, sm57462082_002.jpg, sm57462082_019.jpg');
+
+insert into car_model(MODEL, CAR_TEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('뉴SM5 PE','2007',1065,1998,'파워핸들,내비게이션,자동변속기','SM57443964_001.jpg, SM57443964_005.jpg, SM57443964_018.jpg');
+
+insert into car_model(MODEL, CAR_TEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('SM5 520','2003',460,1998,'에어백,ABS,선루프','SM57411804_001.jpg, SM57411804_004.jpg, SM57411804_009.jpg');
+
+
+insert into car_model(model, car_year, price, cc, car_option, car_image)
+values('벤츠 C200 CGI', '2011', 5270, 1796, '썬루프, 제논 헤드램프, 알루미늄 휠, 가죽시트, 운전석 에어백, ABS', 'benzc200cgi.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_image)
+values('벤츠 C220 CDI', '2011', 5370, 2143, '파노라마 썬루프, 가죽시트, 도어 잠금, ECM룸미러, TCS, ABS, USB', 'benzc220cdi.jpg');
+
+insert into car_model(model, car_year, price, cc, car_option, car_image)
+values('벤츠 C63 AMG', '2011', 9580, 6208, '타이어공기압경고장치, 이모빌라이저, 열선시트, 네비게이션, 후방감지센서', 'benzc63amg.jpg');
+
+insert into car_model (MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values ('그랜져','2002',1350,2500,'파워핸들,썬루프,크루즈컨트롤,19인치휠','grandeurXG.jpg');
+
+insert into car_model (MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values ('그랜져','2007',2300,2700,'파워핸들,ABS,TCS,크루즈컨트롤,열선시트','grandeurTG.jpg');
+
+insert into car_model (MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values ('그랜져','2012',2900,3300,'우퍼개조,썬루프,ABS,TCS,크루즈컨트롤','grandeurHG.jpg');
+
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG, HIREDATE)
+values('E300','2011',8180,3498,'ECM,에어백,ABS,TCS,VDC,ECS,자동에어컨,','e_2011_100.jpg');	
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG, HIREDATE)
+values('E63','2011',14450,6208,'파노라마 썬루프,ECM,TCS,후방카메라,오토라이트 컨트롤','e_124.jpg');	
+
+insert into car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG, HIREDATE)
+values('E350','2011',9440,3498,'ECM,TCS,오토라이트 컨트롤','e_100.jpg');	
+
+
+insert into car model(MODEL,CAR_YEAR	,PRICE,CC,CAR_OPTION,CAR_IMG,HIREDATE)
+	values('코란도C','2011',1990,1998,'파워 윈도우, 루프랙,크루즈 컨트롤','corando_2.jpg');
+insert into car model(MODEL,CAR_YEAR	,PRICE,CC,CAR_OPTION,CAR_IMG,HIREDATE)
+	values('코란도C','2011',2160,1998,'ABS, 스마트 키, 에어백','corando_1.jpg');
+insert into car model(MODEL,CAR_YEAR	,PRICE,CC,CAR_OPTION,CAR_IMG,HIREDATE)
+	values('코란도C','2011',2050,1998,'파워도워록, 네비게이션,알루미늄휠','corando_3.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('new QM5','2008',1530,2000,'제논 헤드램프,열선 시트,네비게이션','qm5_001.jpg,qm5_002.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('QM5','2008',1630,2488,'알루미늄휠,파워스티어링,후방 감지센서','qm5_003.jpg,qm5_004.jpg');
+insert into car_model(MODEL,CAR_YEAR,PRICE,CC,CAR_OPTION,CAR_IMG)
+values('QM5','2009',1650,2488,'전동접이 사이드미러,ECM,ABS','qm5_005.jpg,qm5_006.jpg');
+
+
+insert car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('7','2011',19750,4395,'ABS,차체자세제어장치,에어백,크루즈컨트롤,공기청정기',7-1.jpg');
+
+insert car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('7','2010',13800,2976,'ABS,차체자세제어장치,에어백,크루즈컨트롤,빗물감지와이퍼',7-2.jpg');
+
+
+insert car_model(MODEL, CAR_YEAR, PRICE, CC, CAR_OPTION, CAR_IMG)
+values('7','2009',14600,2976,'ABS,차체자세제어장치,에어백,바이제논헤드램프,빗물감지와이퍼',7-3.jpg');
+
+insert into car_model(MODEL,CAR_YEAR,	PRICE,CC,CAR_OPTION,CAR_IMG)
+values('S350 BlueTEC','2012',125700000,3000,'파워핸들,선루프','s350BlueTEC.JPG');	
+
+insert into car_model(MODEL,CAR_YEAR,	PRICE,CC,CAR_OPTION,CAR_IMG)
+values('S500 Long','2012',193500000,5462,'오토라이트컨트롤,무릅보호에어백','s500Long.JPG');	
+
+insert into car_model(MODEL,CAR_YEAR,	PRICE,CC,CAR_OPTION,CAR_IMG)
+values('S600 Long','2012',269500000,55514,'전동시트,자동에어컨','s600Long.JPG');	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
