@@ -40,7 +40,11 @@
         <li><a href="main.jsp?page=date0409/join_subquery">JOIN+SUBQUERY을 사용한 조회</a></li>
         <li><a href="main.jsp?page=date0409/dynamic_table">테이블명이 동적일 때 조회</a></li>
         <li><a href="main.jsp?page=date0409/dynamic_if">dynamic if</a></li>
+        <li><a href="main.jsp?page=date0410/dynamic_choose">dynamic choose</a></li>
+        <li><a href="main.jsp?page=date0410/dynamic_foreach">dynamic forEach</a></li>
+        <li><a href="main.jsp?page=date0410/insert_procedure">프로시저 사용</a></li>
       </ul>
     </li>
+    <li><a href="main.jsp?page=date0410/car_search">자동차 조회</a></li>
   </ul>
 </nav>	

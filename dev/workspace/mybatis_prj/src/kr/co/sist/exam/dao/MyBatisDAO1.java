@@ -14,12 +14,43 @@ import kr.co.sist.exam.domain.Emp;
 import kr.co.sist.exam.domain.EmpJoin;
 import kr.co.sist.exam.domain.Union;
 import kr.co.sist.exam.domain.Zipcode;
+import kr.co.sist.exam.vo.CarVO;
 import kr.co.sist.exam.vo.DeptNo;
 import kr.co.sist.exam.vo.DiaryListParam;
 import kr.co.sist.exam.vo.EmpVO;
 import kr.co.sist.exam.vo.TableName;
+import kr.co.sist.exam.vo.TestProcVO;
 
 public class MyBatisDAO1 {
+	
+	public TestProcVO insertProc(TestProcVO tpvo) {
+		
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		System.out.println(tpvo.getMsg());
+		ss.selectOne("insertProcedure",tpvo);
+		System.out.println(tpvo.getMsg());
+		ss.close();
+		
+		return tpvo;
+	}
+	
+	public List<Car> dynamicForEach(CarVO cv) {
+		List<Car> list = null;
+		
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		list = ss.selectList("kr.co.sist.exam2.dynamicForEach", cv);
+		
+		return list;
+	}
+	
+	public List<DynamicIf> dynamicChoose(DeptNo deptno) {
+		List<DynamicIf> list = null;
+		
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		list = ss.selectList("kr.co.sist.exam2.dynamicChoose", deptno);
+		
+		return list;
+	}
 	
 	public List<DynamicIf> dynamicIf(DeptNo deptno) {
 		List<DynamicIf> list = null;
@@ -133,6 +164,7 @@ public class MyBatisDAO1 {
 	public static void main(String[] args) {
 		
 		MyBatisDAO1 md = new  MyBatisDAO1();
-		System.out.println(md.dynamicIf(new DeptNo(30)));
+		TestProcVO tpvo = new TestProcVO("오영근", "사원", "", 3322, 3000, 0);
+		md.insertProc(tpvo);
 	}
 }

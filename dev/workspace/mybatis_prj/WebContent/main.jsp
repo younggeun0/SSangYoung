@@ -22,7 +22,6 @@
 		
 	}); // ready
 </script>
-
 </head>
 <body>
 <div id="wrap">

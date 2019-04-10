@@ -39,13 +39,15 @@ BEGIN
 			INSERT INTO test_proc(empno, ename, hiredate, sal, job)
 			VALUES(empno, INITCAP(ename), SYSDATE, temp_sal, job);
 			       
-			row_cnt := SQL%ROWCOUNT;
+			row_cnt := SQL%ROWCOUNT;        
+			
 			COMMIT;
+			
 			msg := empno||'번 사원 정보가 추가되었습니다.';
 			
 		ELSE
 			msg := job||'은 입력가능한 직급이 아닙니다';		
-		ENd IF;	
+		END IF;	
 				
 				
 	ELSE
