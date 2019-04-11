@@ -15,13 +15,38 @@ import kr.co.sist.exam.domain.EmpJoin;
 import kr.co.sist.exam.domain.Union;
 import kr.co.sist.exam.domain.Zipcode;
 import kr.co.sist.exam.vo.CarVO;
+import kr.co.sist.exam.vo.CursorVO;
 import kr.co.sist.exam.vo.DeptNo;
 import kr.co.sist.exam.vo.DiaryListParam;
 import kr.co.sist.exam.vo.EmpVO;
 import kr.co.sist.exam.vo.TableName;
 import kr.co.sist.exam.vo.TestProcVO;
+import kr.co.sist.exam.vo.TransactionVO;
 
 public class MyBatisDAO1 {
+	
+	public int insertTransaction(TransactionVO tvo) {
+		int cnt = 0;
+		
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		cnt = ss.insert("tr1",tvo);
+		cnt += ss.insert("tr2",tvo);
+		
+		if (cnt == 2) {
+			ss.commit();
+		}
+		// 둘 중에 하나 실패하면 rollback 됨
+		ss.close();
+		
+		return cnt;
+	}
+	
+	
+	public void selectProc(CursorVO cv) {
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		ss.selectOne("selectProcedure",cv);
+		ss.close();
+	}
 	
 	public TestProcVO insertProc(TestProcVO tpvo) {
 		
@@ -164,7 +189,8 @@ public class MyBatisDAO1 {
 	public static void main(String[] args) {
 		
 		MyBatisDAO1 md = new  MyBatisDAO1();
-		TestProcVO tpvo = new TestProcVO("오영근", "사원", "", 3322, 3000, 0);
-		md.insertProc(tpvo);
+		
+		TransactionVO tvo = new TransactionVO("있다는", "김정윤");
+		System.out.println(md.insertTransaction(tvo));
 	}
 }

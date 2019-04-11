@@ -13,6 +13,7 @@ import kr.co.sist.exam.domain.EmpJoin;
 import kr.co.sist.exam.domain.Union;
 import kr.co.sist.exam.domain.Zipcode;
 import kr.co.sist.exam.vo.CarVO;
+import kr.co.sist.exam.vo.CursorVO;
 import kr.co.sist.exam.vo.DeptNo;
 import kr.co.sist.exam.vo.DiaryListParam;
 import kr.co.sist.exam.vo.EmpVO;
@@ -20,6 +21,11 @@ import kr.co.sist.exam.vo.TableName;
 import kr.co.sist.exam.vo.TestProcVO;
 
 public class MyBatisService1 {
+	
+	public void selectProcedure(CursorVO cv) {
+		MyBatisDAO1 mb_dao = new MyBatisDAO1();
+		mb_dao.selectProc(cv);
+	}
 	
 	public TestProcVO insertProcedure(TestProcVO tpvo) {
 		
