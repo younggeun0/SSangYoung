@@ -161,3 +161,4 @@
 - 190409 : [MyBatis(5)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-30/)
 - 190410 : [MyBatis(6)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-31/)
 - 190411 : [MyBatis(7), Spring](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-32/)
+- 190412 : [Spring 버전 설정, 요청방식에 따른 처리, Web Parameter 처리, Controller에서 JSP로 값 전달](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-33/)
