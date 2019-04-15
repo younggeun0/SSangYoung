@@ -38,6 +38,23 @@
 		document.hidFrm.action="request_all.do";
 		document.hidFrm.submit();
 	}
+	
+	function requestString() {
+		var url = "request_string.do";
+		
+		if (confirm("문자열의 매개변수를 전송 하시겠습니까?")){
+			url += "?name=jungyun";
+		}
+		location.href=url;
+	}
+	function requestInt() {
+		var url = "request_int.do";
+		
+		if (confirm("정수형의 매개변수를 전송 하시겠습니까?")){
+			url += "?age=30";
+		}
+		location.href=url;
+	}
 </script>
 <!-- SmartMenus 끝 -->   
 <form action="request_post.do" name="hidFrm" method="post" id="hidFrm">
@@ -53,6 +70,12 @@
         <li><a href="#void" onclick="requestAll()">GET/POST 모두 요청</a></li>
         <li><a href="request_form.do">HttpServletRequest로 파마리터 처리</a></li>
         <li><a href="vo_form.do">VO 파마리터 처리</a></li>
+        <li><a href="#void" onclick="requestString()">단일 파라미터(문자열) 처리</a></li>
+        <li><a href="#void" onclick="requestInt()">단일 파라미터(정수형) 처리</a></li>
+       <li><a href="view_request.do">HttpServletRequest사용 데이터 전달</a></li>
+       <li><a href="view_model.do">Model사용 데이터 전달</a></li>
+       <li><a href="view_modelandview.do">ModelAndView사용 데이터 전달</a></li>
+       <li><a href="use_redirect.do">redirect 페이지 이동</a></li>
       </ul>
     </li>
     <li><a href="#">자동차 조회</a></li>

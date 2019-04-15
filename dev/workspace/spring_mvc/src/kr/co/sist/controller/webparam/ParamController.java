@@ -1,18 +1,41 @@
 package kr.co.sist.controller.webparam;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.sist.controller.vo.ParamVO;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @Controller
 public class ParamController {
+	
+	@RequestMapping(value="/request_int.do", method=RequestMethod.GET)
+	public String requestInt(@RequestParam(name="age", defaultValue="1",
+		required=false) int age, Model m) {
+		m.addAttribute("age", age+"살");
+		
+		return "param/request_int";
+	}
+	
+	@RequestMapping(value="/request_string.do", method=RequestMethod.GET)
+	public String requestString(@RequestParam(defaultValue="anonymous") String name, Model m) {
+		// 단일형으로 매개변수를 받을 때에는 web parameter명(HTML form control명)과 
+		// method의 매개변수명이 같아야 한다.
+		
+		/*if (name == null || "".equals(name)) { // 파라미터 자체가 없거나, 값이 없을 때
+			name = "Guest"; // 
+		}*/
+		m.addAttribute("name", name+"님 안녕하세요?");
+		
+		return "param/request_string";
+	}
 
 	// GET방식으로 요청을 처리할 때에는 URL만 넣어도 된다.
 	@RequestMapping("/request_form.do")
