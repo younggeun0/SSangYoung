@@ -76,8 +76,8 @@
        <li><a href="view_model.do">Model사용 데이터 전달</a></li>
        <li><a href="view_modelandview.do">ModelAndView사용 데이터 전달</a></li>
        <li><a href="use_redirect.do">redirect 페이지 이동</a></li>
-       <li><a href="session/use_session.do">HttpSession 사용</a></li>
-       <li><a href="session/use_session_att.do">@SessionAttribute 사용</a></li>
+       <li><a href="http://localhost:8080/spring_mvc/session/use_session.do">HttpSession 사용</a></li>
+       <li><a href="http://localhost:8080/spring_mvc/session/use_session_att.do">@SessionAttribute 사용</a></li>
       </ul>
     </li>
     <li><a href="#">자동차 조회</a></li>
