@@ -1,4 +1,4 @@
-package kr.co.sist.controller.vo;
+package kr.co.sist.vo;
 
 import java.util.Arrays;
 

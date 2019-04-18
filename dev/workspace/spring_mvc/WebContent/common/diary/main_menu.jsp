@@ -65,13 +65,13 @@
     <li><a href="http://localhost:8080/spring_mvc/index.html">홈으로</a></li>
     <li><a href="#void">Spring MVC 사용</a>
       <ul>
-        <li><a href="request_get.do">GET방식 요청</a></li>
-        <li><a href="#void" onclick="sendPost()">POST방식 요청</a></li>
-        <li><a href="#void" onclick="requestAll()">GET/POST 모두 요청</a></li>
-        <li><a href="request_form.do">HttpServletRequest로 파마리터 처리</a></li>
-        <li><a href="vo_form.do">VO 파마리터 처리</a></li>
-        <li><a href="#void" onclick="requestString()">단일 파라미터(문자열) 처리</a></li>
-        <li><a href="#void" onclick="requestInt()">단일 파라미터(정수형) 처리</a></li>
+       <li><a href="request_get.do">GET방식 요청</a></li>
+       <li><a href="#void" onclick="sendPost()">POST방식 요청</a></li>
+       <li><a href="#void" onclick="requestAll()">GET/POST 모두 요청</a></li>
+       <li><a href="request_form.do">HttpServletRequest로 파마리터 처리</a></li>
+       <li><a href="vo_form.do">VO 파마리터 처리</a></li>
+       <li><a href="#void" onclick="requestString()">단일 파라미터(문자열) 처리</a></li>
+       <li><a href="#void" onclick="requestInt()">단일 파라미터(정수형) 처리</a></li>
        <li><a href="view_request.do">HttpServletRequest사용 데이터 전달</a></li>
        <li><a href="view_model.do">Model사용 데이터 전달</a></li>
        <li><a href="view_modelandview.do">ModelAndView사용 데이터 전달</a></li>
@@ -83,6 +83,11 @@
        <li><a href="include/include.do">JSP include</a></li>
        <li><a href="ajax/ajax.do">AJAX 사용</a></li>
       </ul>
+    </li>
+    <li><a href="#void">Spring MVC 사용2</a>
+    	<ul>
+       <li><a href="diary/list.do">일정 보기</a></li>
+    	</ul>
     </li>
     <li><a href="#">자동차 조회</a></li>
   </ul>

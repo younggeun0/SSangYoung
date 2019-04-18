@@ -9,7 +9,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.co.sist.domain.DiaryDetailDomain;
+import kr.co.sist.domain.DiaryDomain;
+import kr.co.sist.domain.DiaryReplyDomain;
 import kr.co.sist.domain.NoticeDomain;
+import kr.co.sist.vo.DiaryVO;
+import kr.co.sist.vo.ReplyVO;
 
 public class MyBatisDAO {
 	
@@ -46,6 +51,16 @@ public class MyBatisDAO {
 		return ssf;
 	}
 	
+	public DiaryDetailDomain selectDiaryDetail(int num) {
+		DiaryDetailDomain ddd = null;
+		
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		ddd = ss.selectOne("diaryDetail",num);
+		ss.close();
+		
+		return ddd;
+	}
+	
 	public List<NoticeDomain> selectMainNotice() {
 		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
 		List<NoticeDomain> list = ss.selectList("notice");
@@ -54,7 +69,35 @@ public class MyBatisDAO {
 		return list;
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(MyBatisDAO.getInstance().selectMainNotice());
+	public List<DiaryReplyDomain> selectReply(int num) {
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		List<DiaryReplyDomain> list = ss.selectList("diaryReply",num);
+		ss.close();
+		return list;
+	}
+	
+	public List<DiaryDomain> selectList(DiaryVO dv) {
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		List<DiaryDomain> list = ss.selectList("diaryList",dv);
+		ss.close();
+		return list;
+	}
+	
+	public int selectTotalCnt() {
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		int cnt = ss.selectOne("diaryTotalCnt");
+		ss.close();
+		return cnt;
+	}
+	
+	public int insertReply(ReplyVO r_vo) {
+		SqlSession ss = MyBatisDAO.getInstance().getSessionFactory().openSession();
+		int cnt = ss.insert("addReply",r_vo);
+		if (cnt == 1) {
+			ss.commit();
+		}
+		ss.close();
+		
+		return cnt;
 	}
 }

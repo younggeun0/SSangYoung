@@ -6,10 +6,10 @@ import java.security.NoSuchAlgorithmException;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 public class ShaUtil {
-	private static Base64 base64 = new Base64();
 	
 	public static String shaEncoding(String plainText) {
 		String cipherText = "";
+		Base64 base64 = new Base64();
 		
 		if (plainText != null || !"".equals(plainText)) {
 			try {

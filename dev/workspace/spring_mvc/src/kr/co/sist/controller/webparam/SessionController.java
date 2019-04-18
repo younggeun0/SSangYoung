@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import kr.co.sist.controller.vo.SessionVO;
+import kr.co.sist.vo.SessionVO;
 
 @SessionAttributes({"an_name", "an_addr", "an_flag"})
 @Controller
