@@ -60,3 +60,12 @@ dev/libs/*
 
 #summernote 제외
 dev/summernote/*
+
+#spring framework 제외
+dev/framework/spring-framework-4.3.9.RELEASE-dist/*
+
+#demo 제외
+dev/framework/demo/*
+
+#my_libs 제외
+dev/my_libs/*
