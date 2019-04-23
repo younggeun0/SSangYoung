@@ -168,4 +168,5 @@
 - 190418 : [게시판, 댓글 만들기](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-37/)
 - 190419 : [Controller에서 예외처리, 응답시에 JSP가 아닌 다른 do를 다시 요청할 때](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-38/)
 - 190422 : [Spring DI, Spring Container](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-39/)
+- 190423 : [Spring DI(2)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-40/)
 
