@@ -116,5 +116,32 @@
 				</query>
 			</queryList>
 		</bookmark>
+		<bookmark>
+			<name>third_prj</name>
+			<username>ssdba</username>
+			<password>sistfinal</password>
+			<prompt>false</prompt>
+			<connect>jdbc:oracle:thin:@localhost:1521:orcl</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>false</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>oracle.jdbc.OracleDriver</driver>
+			<type>ORACLE</type>
+			<substituteVariables>false</substituteVariables>
+			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
+			<driverLocation>C:\Users\owner\youngRepositories\SSangYoung\dev\drivers\ojdbc6.jar</driverLocation>
+			<Other_Schemas schemaRule="useDefault" />
+			<quickList />
+			<queryList>
+				<query>
+					<queryString>select * from user_table where id='young333'</queryString>
+				</query>
+			</queryList>
+		</bookmark>
 	</bookmarks>
 </SAVED_DATA>
