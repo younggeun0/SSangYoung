@@ -170,4 +170,5 @@
 - 190422 : [Spring DI, Spring Container](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-39/)
 - 190423 : [Spring DI(2)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-40/)
 - 190424 : [Spring JDBC](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-41/)
+- 190424 : [Spring JDBC(2)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-42/)
 
