@@ -1,6 +1,7 @@
 package kr.co.sist.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +14,8 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.sist.dao.JdbcDAO;
+import kr.co.sist.domain.DetailMember;
+import kr.co.sist.domain.Member;
 import kr.co.sist.vo.MemberVO;
 
 @Component
@@ -32,7 +35,7 @@ public class JdbcService {
 		// 바뀌어진 이름으로 추가되어야 하므로 DefaultFileNamePolicy로 만들어진
 		// 새로운 이름을 getFilesystemName을 통해 얻어 img명을 넣는다
 		MemberVO mv = new MemberVO(mr.getParameter("name"),
-				mr.getFilesystemName("img"), mr.getParameter("loc"), 
+				mr.getFilesystemName("upfile"), mr.getParameter("loc"), 
 				mr.getParameter("hightschool"));
 		
 		try {
@@ -44,5 +47,25 @@ public class JdbcService {
 		}
 		
 		return flag;
+	}
+	
+	public List<Member> searchAllMember() {
+		List<Member> list = null;
+		try {
+			list = jdao.selectAllMember();
+		} catch (DataAccessException dae) {
+			dae.printStackTrace();
+		}
+		return list;
+	}
+	
+	public DetailMember searchOneMember(int num) {
+		DetailMember dm = null;
+		try {
+			dm = jdao.selectOneMember(num);
+		} catch (DataAccessException dae) {
+			dae.printStackTrace();
+		}
+		return dm;
 	}
 }

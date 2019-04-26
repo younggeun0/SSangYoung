@@ -17,9 +17,9 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function() {
-		
-	}); // ready
+
+
+
 </script>
 </head>
 <body>
@@ -31,10 +31,35 @@
 	<br><br>
 	
 	
-<ul>
-	<li><a href="add_form.do">정보추가</a></li>
-	<li><a href="search_member.do">정보조회</a></li>
-</ul>
+<div>
+	<c:forEach var="ml" items="${ requestScope.memberList }">
+	<table>
+		<tr>
+			<td rowspan="4">
+				<img src="http://localhost:8080/spring_jdbc/upload/${ ml.img }" width="100" height="100"/>
+			</td>
+		</tr>
+		<tr>
+			<td width="80">이름</td>
+			<td>
+				<a href="detail_member.do?num=${ ml.num }"><c:out value="${ ml.name }"/></a>
+			</td>
+		</tr>
+	</table>
+	</c:forEach>
+	<c:if test="${ empty memberList }">
+		조회된 회원이 존재하지 않습니다. 회원정보를 추가해주세요.<br/>
+		<div>
+		<ul>
+			<li><a href="add_form.do">정보추가</a></li>
+			<li><a href="search_member.do">정보조회</a></li>
+		</ul>
+		</div>
+	</c:if>
+</div>
+
+
+
 	
 	
 	</div>

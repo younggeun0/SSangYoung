@@ -15,12 +15,6 @@
 	#footer { width:800px; height:120px; }
 	#footerTitle { float:right; font-weight:bold; font-size:15px; padding-top:20px; padding-right:20px }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		
-	}); // ready
-</script>
 </head>
 <body>
 <div id="wrap">
@@ -29,12 +23,51 @@
 	</div>
 	<div id="container">
 	<br><br>
+
+<c:choose>
+	<c:when test="${ empty detailMember }">
+		<h2>조회된 회원이 존재하지 않습니다.</h2>
+	</c:when>
+	<c:otherwise>
+		<table border="1" style="text-align:center;">
+			<tr>
+				<th colspan="3"><h2>상세 회원정보</h2></th>
+			</tr>
+			<tr>
+				<td width="100">이미지</td>
+				<td width="100">이름</td>
+				<td width="100">
+					<c:out value="${ detailMember.name }"/>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="4">
+					<img id="img" src="/spring_jdbc/upload/${ detailMember.img }" style="width:100px; height:100px;"/>
+				</td>
+			</tr>
+			<tr>
+				<td>지역</td>
+				<td><c:out value="${ detailMember.loc }"/></td>
+			</tr>
+			<tr>
+				<td>출신고</td>
+				<td>
+					<c:out value="${ detailMember.highschool }"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" onclick="history.back()" value="뒤로가기" class="btn"/>
+				</td>
+			</tr>
+		</table>
+	</c:otherwise>
+</c:choose>	
 	
 	
-<ul>
-	<li><a href="add_form.do">정보추가</a></li>
-	<li><a href="search_member.do">정보조회</a></li>
-</ul>
+
+
+
 	
 	
 	</div>
