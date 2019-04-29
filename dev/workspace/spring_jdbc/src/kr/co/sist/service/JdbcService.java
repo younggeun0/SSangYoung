@@ -1,5 +1,6 @@
 package kr.co.sist.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.co.sist.dao.JdbcDAO;
 import kr.co.sist.domain.DetailMember;
 import kr.co.sist.domain.Member;
+import kr.co.sist.domain.MemberImg;
+import kr.co.sist.vo.MemberUpdateVO;
 import kr.co.sist.vo.MemberVO;
 
 @Component
@@ -67,5 +70,37 @@ public class JdbcService {
 			dae.printStackTrace();
 		}
 		return dm;
+	}
+	
+	public boolean updateMember(MemberUpdateVO muvo) {
+		boolean flag = false;
+		try {
+			flag = jdao.updateMember(muvo) == 1;
+		} catch(DataAccessException dae) {
+			dae.printStackTrace();
+		}
+		
+		return flag;
+	}
+	
+	public boolean deleteMember(int num) {
+		boolean flag = false;
+		
+		try {
+			MemberImg mi = jdao.deleteMember(num);
+			flag = mi.getCnt() == 1;
+			if (flag) { // 삭제된 레코드가 존재하면
+				// 파일 삭제
+				if (!"default.png".equals(mi.getImg())) {
+					File file = new File("C:/Users/owner/youngRepositories/SSangYoung/dev/workspace/spring_jdbc/WebContent/upload/"
+									+mi.getImg());
+					System.out.println("---- 삭제할 이미지 : "+mi.getImg());
+					file.delete();
+				}
+			}
+		} catch(DataAccessException dae) {
+			dae.printStackTrace();
+		}
+		return flag;
 	}
 }

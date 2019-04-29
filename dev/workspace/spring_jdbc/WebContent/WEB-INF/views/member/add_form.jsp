@@ -50,7 +50,12 @@
 	<div id="container">
 	<br><br>
 	
-	
+	<div>
+	<ul>
+		<li><a href="add_form.do">정보추가</a></li>
+		<li><a href="search_member.do">정보조회</a></li>
+	</ul>
+	</div>
 	<form action="add_member_process.do" method="post" enctype="multipart/form-data">
 	<table border="1" style="text-align:center;">
 		<tr>

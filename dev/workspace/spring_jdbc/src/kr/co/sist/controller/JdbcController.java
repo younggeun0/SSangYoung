@@ -11,6 +11,8 @@ import com.oreilly.servlet.MultipartRequest;
 import kr.co.sist.domain.DetailMember;
 import kr.co.sist.domain.Member;
 import kr.co.sist.service.JdbcService;
+import kr.co.sist.vo.MemberUpdateVO;
+
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.io.IOException;
@@ -67,5 +69,39 @@ public class JdbcController {
 		model.addAttribute("detailMember", dm);
 		
 		return "member/detail_member";
+	}
+	
+	@RequestMapping(value="/update_member.do", method=POST)
+	public String modifyMember(MemberUpdateVO muvo, Model model) {
+		
+		String resultMsg = "회원정보를 수정할 수 없습니다";
+		boolean resultFlag = false;
+		
+		if(js.updateMember(muvo)) {
+			resultMsg = muvo.getName()+"님 정보를 변경하였습니다";
+			resultFlag = true;
+		}
+		
+		model.addAttribute("resultMsg", resultMsg);
+		model.addAttribute("resultFlag", resultFlag);
+		
+		return "member/update_result";
+	}
+	
+	@RequestMapping(value="/delete_member.do", method=POST)
+	public String removeMember(int num, Model model) {
+
+		String resultMsg = "회원정보를 삭제할 수 없습니다";
+		boolean resultFlag = false;
+		
+		if(js.deleteMember(num)) {
+			resultMsg = "회원정보가 삭제되었습니다.";
+			resultFlag = true;
+		}
+		
+		model.addAttribute("resultMsg", resultMsg);
+		model.addAttribute("resultFlag", resultFlag);
+		
+		return "member/remove_result";
 	}
 }

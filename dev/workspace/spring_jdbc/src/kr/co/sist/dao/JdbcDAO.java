@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.sist.domain.DetailMember;
 import kr.co.sist.domain.Member;
+import kr.co.sist.domain.MemberImg;
+import kr.co.sist.vo.MemberUpdateVO;
 import kr.co.sist.vo.MemberVO;
 
 @Component
@@ -73,5 +75,41 @@ public class JdbcDAO {
 		System.out.println("=========================="+dm);
 		
 		return dm;
+	}
+	
+	public int updateMember(MemberUpdateVO muvo) throws DataAccessException {
+		int cnt = 0;
+
+		String updateMember = 
+			"UPDATE test_like SET name=?, highschool=?, loc=? WHERE num=?";
+		cnt = jt.update(updateMember,muvo.getName(), muvo.getHighschool(),
+				muvo.getLoc(), muvo.getNum());
+		
+		return cnt;
+	}
+	
+	public MemberImg deleteMember(int num) throws DataAccessException {
+		MemberImg mi = null;
+		int cnt = 0;
+		String img = "";
+		
+		// 삭제할 이미지 조회
+		String selectImg = "SELECT img FROM test_like WHERE num=?"; 
+		RowMapper<String> rm = new RowMapper<String>() {
+			@Override
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+				String img = rs.getString("img");
+				return img;
+			}
+		};
+		
+		img = jt.queryForObject(selectImg, rm, num);
+		
+		String deleteMember = "DELETE FROM test_like WHERE num=?";
+		cnt = jt.update(deleteMember,num);
+		
+		mi = new MemberImg(cnt, img);
+		
+		return mi;
 	}
 }
