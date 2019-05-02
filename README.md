@@ -174,4 +174,5 @@
 - 190426 : [Spring JDBC(3)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-43/)
 - 190429 : [Spring JDBC(4), Spring ORM](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-44/)
 - 190430 : [Spring ORM(2)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-45/)
+- 190502 : [Spring AOP(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-46/)
 
