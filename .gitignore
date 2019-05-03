@@ -69,3 +69,6 @@ dev/framework/demo/*
 
 #my_libs 제외
 dev/my_libs/*
+
+# PyDev 설정파일 제외
+.pydevproject

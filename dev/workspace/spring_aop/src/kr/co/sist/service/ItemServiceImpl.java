@@ -20,4 +20,38 @@ public class ItemServiceImpl implements ItemService {
 		
 		return id;
 	}
+
+	@Override
+	public String getName() {
+		String name = "±èÁ¤À±";
+		System.out.println("getName /// "+name);
+		return name;
+	}
+
+	@Override
+	public String getAddr() {
+		String addr="¼­¿ï½Ã °­³²±¸ ¿ª»ïµ¿";
+		System.out.println("dao /// "+i_dao.getDBName());
+		System.out.println("getAddr /// "+ addr);
+		
+		if (addr instanceof String) {
+			System.out.println("¿½");
+		}
+		
+		return addr;
+	}
+	
+
+	@Override
+	public int getAge() {
+		int age = 30;
+		System.out.println("getAge /// "+age);
+		return age;
+	}
+
+	@Override
+	public ItemDomain searchData(String name) {
+		
+		return new ItemDomain("IO_O001", name+" ¾Ö¹ú·¹, Å©·±Ä¿..");
+	}
 }

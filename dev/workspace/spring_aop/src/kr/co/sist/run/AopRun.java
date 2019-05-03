@@ -14,8 +14,9 @@ public class AopRun {
 		
 		ItemService is = ac.getBean(ItemService.class);
 		
-		ItemDomain id = is.searchItem("±Ë»Ò√∂");
-		
+		ItemDomain id = is.searchData("¡§≈√º∫");
+		System.out.println(id.getItemNo());
+		System.out.println(id.getItem());
 	}
 	
 	public static void main(String[] args) {
