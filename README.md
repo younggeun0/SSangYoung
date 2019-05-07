@@ -181,4 +181,5 @@
 
 ---
 
-- 190503 : [Python]()
+- 190503 : [Python](https://younggeun0.github.io/Python-%EC%A0%95%EB%A6%AC-01/)
+- 190507 : [기본문법, 데이터형, 연산자](https://younggeun0.github.io/Python-%EC%A0%95%EB%A6%AC-02/)
