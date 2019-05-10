@@ -8,10 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"  href="http://localhost:8080/spring_mvc/common/css/main_v190130.css">
+<link rel="stylesheet" type="text/css"  href="http://211.63.89.144/common/css/main_v190130.css">
 <style type="text/css">
 #wrap{ margin:0px auto; width:800px; height:860px; }
-#header{  width:800px; height:140px; background: #FFFFFF url(http://localhost:8080/spring_mvc/common/images/header_bg.png) repeat-x;
+#header{  width:800px; height:140px; background: #FFFFFF url(http://211.63.89.144/common/images/header_bg.png) repeat-x;
 			position: relative;	}
 #headerTitle{ font-family: HT견고딕,고딕; font-size: 30px; font-weight: bold;text-align: center;
 				position:absolute; top: 40px;left: 290px; }

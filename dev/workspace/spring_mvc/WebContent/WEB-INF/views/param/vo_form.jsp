@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/spring_mvc/common/css/main_v20190130.css"/>
+<link rel="stylesheet" type="text/css" href="http://211.63.89.144/common/css/main_v20190130.css"/>
 <style type="text/css">
 	#wrap { margin:0px auto; width:800px; height:860px; }
-	#header { position:relative; width:800px; height:140px; background:#FFFFFF url(http://localhost:8080/spring_mvc/common/images/header_bg.png) repeat-x; }
+	#header { position:relative; width:800px; height:140px; background:#FFFFFF url(http://211.63.89.144/common/images/header_bg.png) repeat-x; }
 	#headerTitle { position:absolute; top:45px; left:280px; font-size:35px; font-family:monaco, HY견고딕, 고딕; font-weight:bold; color:white; }
 	#container { width:800px; min-height:600px; }
 	#footer { width:800px; height:120px; }
@@ -27,7 +27,7 @@
 	<div id="header">
 		<div id="headerTitle">SIST Class4</div>
 		<div style="padding-top:100px;">
-			<c:import url="http://localhost:8080/spring_mvc/common/diary/main_menu.jsp"></c:import>
+			<c:import url="http://211.63.89.144/common/diary/main_menu.jsp"></c:import>
 		</div>
 	</div>
 	<div id="container">
