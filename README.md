@@ -6,7 +6,7 @@
 
 ---
 
-학습내용은 https://younggeun0.github.io/posts/ 에 업로드 중
+학습내용은 https://younggeun0.github.io/posts/ 에 정리 후 업로드
 
 - 181022 : [ORACLE DBMS](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-01/)
 - 181023 : [DDL, DCL](https://younggeun0.github.io/oracle-%EC%A0%95%EB%A6%AC-02/)
@@ -177,7 +177,7 @@
 - 190502 : [Spring AOP(1)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-46/)
 - 190503 : [Spring AOP(2)](https://younggeun0.github.io/JavaEE-%EC%A0%95%EB%A6%AC-47/)
 
-## 2019.05.03 ~ 2019.05.?    Python 학습
+## 2019.05.03 ~ 2019.05.10    Python 학습
 
 ---
 
@@ -187,3 +187,4 @@
 - 190509 : [list, tuple, dict, 함수](https://younggeun0.github.io/Python-%EC%A0%95%EB%A6%AC-04/)
 - 190510 : [예외처리, 클래스](https://younggeun0.github.io/Python-%EC%A0%95%EB%A6%AC-05/)
 
+* 아쉽게 프로젝트 및 기타 일정으로 Python에 대한 공부는 깊이가 부족 => **앞으로 자습으로 보완할 계획**
