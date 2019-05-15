@@ -187,4 +187,4 @@
 - 190509 : [list, tuple, dict, 함수](https://younggeun0.github.io/Python-%EC%A0%95%EB%A6%AC-04/)
 - 190510 : [예외처리, 클래스](https://younggeun0.github.io/Python-%EC%A0%95%EB%A6%AC-05/)
 
-* 아쉽게 프로젝트 및 기타 일정으로 Python에 대한 공부는 깊이가 부족 => **앞으로 자습으로 보완할 계획**
+* 아쉽게 팀 프로젝트 진행 및 기타 일정으로 Python에 대한 공부는 깊이가 부족 => **앞으로 자습으로 보완할 계획**
